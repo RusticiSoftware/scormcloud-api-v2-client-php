@@ -1,6 +1,6 @@
 # RusticiSoftware\Cloud\V2\PingApi
 
-All URIs are relative to *https://dev.cloud.scorm.com/api/v2/*
+All URIs are relative to *https://cloud.scorm.com/api/v2/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **pingAppId**
-> \RusticiSoftware\Cloud\V2\Model\PingSchema pingAppId()
+> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\PingSchema pingAppId()
 
 Get back a message indicating that the API is working.
 
@@ -18,15 +18,22 @@ Get back a message indicating that the API is working.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: APP_NORMAL
-RusticiSoftware\Cloud\V2\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
-RusticiSoftware\Cloud\V2\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
-// Configure OAuth2 access token for authorization: OAUTH
-RusticiSoftware\Cloud\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = RusticiSoftware\Cloud\V2\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
-$api_instance = new RusticiSoftware\Cloud\V2\Api\PingApi();
+// Configure OAuth2 access token for authorization: OAUTH
+$config = RusticiSoftware\Cloud\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new RusticiSoftware\Cloud\V2\Api\PingApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 
 try {
-    $result = $api_instance->pingAppId();
+    $result = $apiInstance->pingAppId();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PingApi->pingAppId: ', $e->getMessage(), PHP_EOL;
@@ -39,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\Model\PingSchema**](../Model/PingSchema.md)
+[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\PingSchema**](../Model/PingSchema.md)
 
 ### Authorization
 

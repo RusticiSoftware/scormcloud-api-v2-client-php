@@ -1,6 +1,6 @@
 # RusticiSoftware\Cloud\V2\AuthenticationApi
 
-All URIs are relative to *https://dev.cloud.scorm.com/api/v2/*
+All URIs are relative to *https://cloud.scorm.com/api/v2/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **getAppToken**
-> \RusticiSoftware\Cloud\V2\Model\ApplicationToken getAppToken($scope, $expiration)
+> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationToken getAppToken($scope, $expiration)
 
 Authenticates for a oauth token
 
@@ -18,15 +18,22 @@ Authenticates for a oauth token
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: APP_NORMAL
-RusticiSoftware\Cloud\V2\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
-RusticiSoftware\Cloud\V2\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
+$config = RusticiSoftware\Cloud\V2\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
-$api_instance = new RusticiSoftware\Cloud\V2\Api\AuthenticationApi();
+
+$apiInstance = new RusticiSoftware\Cloud\V2\Api\AuthenticationApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $scope = "scope_example"; // string | 
 $expiration = 300; // int | 
 
 try {
-    $result = $api_instance->getAppToken($scope, $expiration);
+    $result = $apiInstance->getAppToken($scope, $expiration);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AuthenticationApi->getAppToken: ', $e->getMessage(), PHP_EOL;
@@ -43,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\Model\ApplicationToken**](../Model/ApplicationToken.md)
+[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationToken**](../Model/ApplicationToken.md)
 
 ### Authorization
 

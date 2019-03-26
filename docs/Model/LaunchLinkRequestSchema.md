@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **learner_tags** | **string[]** |  | [optional] 
 **course_tags** | **string[]** |  | [optional] 
 **registration_tags** | **string[]** |  | [optional] 
-**additionalvalues** | [**\RusticiSoftware\Cloud\V2\Model\ItemValuePairSchema[]**](ItemValuePairSchema.md) |  | [optional] 
+**additionalvalues** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ItemValuePairSchema[]**](ItemValuePairSchema.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

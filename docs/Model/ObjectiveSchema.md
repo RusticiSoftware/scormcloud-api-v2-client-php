@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [optional] 
 **primary** | **bool** |  | [optional] 
-**score** | [**\RusticiSoftware\Cloud\V2\Model\ScoreSchema**](ScoreSchema.md) |  | [optional] 
+**score** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ScoreSchema**](ScoreSchema.md) |  | [optional] 
 **score_max** | **double** |  | [optional] 
 **score_min** | **double** |  | [optional] 
 **score_raw** | **double** |  | [optional] 
