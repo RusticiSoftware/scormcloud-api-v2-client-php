@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -60,7 +60,7 @@ class ImportResultSchema implements ModelInterface, ArrayAccess
         'web_path_to_course' => 'string',
         'parser_warnings' => 'string[]',
         'course_languages' => 'string[]',
-        'course' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema'
+        'course' => '\RusticiSoftware\Cloud\V2\Model\CourseSchema'
     ];
 
     /**
@@ -297,7 +297,7 @@ class ImportResultSchema implements ModelInterface, ArrayAccess
     /**
      * Gets course
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\CourseSchema
      */
     public function getCourse()
     {
@@ -307,7 +307,7 @@ class ImportResultSchema implements ModelInterface, ArrayAccess
     /**
      * Sets course
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema $course course
+     * @param \RusticiSoftware\Cloud\V2\Model\CourseSchema $course course
      *
      * @return $this
      */

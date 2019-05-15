@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -64,7 +64,7 @@ class SettingMetadata implements ModelInterface, ArrayAccess
         'learning_standards' => 'string[]',
         'learning_standard_variant' => 'string',
         'fallback' => 'string',
-        'valid_values' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingValidValue[]'
+        'valid_values' => '\RusticiSoftware\Cloud\V2\Model\SettingValidValue[]'
     ];
 
     /**
@@ -451,7 +451,7 @@ class SettingMetadata implements ModelInterface, ArrayAccess
     /**
      * Gets valid_values
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingValidValue[]
+     * @return \RusticiSoftware\Cloud\V2\Model\SettingValidValue[]
      */
     public function getValidValues()
     {
@@ -461,7 +461,7 @@ class SettingMetadata implements ModelInterface, ArrayAccess
     /**
      * Sets valid_values
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingValidValue[] $valid_values For settings with a fixed list of valid values, the list of those values
+     * @param \RusticiSoftware\Cloud\V2\Model\SettingValidValue[] $valid_values For settings with a fixed list of valid values, the list of those values
      *
      * @return $this
      */

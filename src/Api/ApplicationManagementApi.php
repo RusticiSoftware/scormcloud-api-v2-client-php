@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Api;
+namespace RusticiSoftware\Cloud\V2\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -96,7 +96,7 @@ class ApplicationManagementApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\ApplicationSchema
      */
     public function createApplication($application_name)
     {
@@ -113,11 +113,11 @@ class ApplicationManagementApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\ApplicationSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function createApplicationWithHttpInfo($application_name)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\ApplicationSchema';
         $request = $this->createApplicationRequest($application_name);
 
         try {
@@ -169,7 +169,7 @@ class ApplicationManagementApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\ApplicationSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -177,7 +177,7 @@ class ApplicationManagementApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -185,7 +185,7 @@ class ApplicationManagementApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -227,7 +227,7 @@ class ApplicationManagementApi
      */
     public function createApplicationAsyncWithHttpInfo($application_name)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\ApplicationSchema';
         $request = $this->createApplicationRequest($application_name);
 
         return $this->client
@@ -379,11 +379,11 @@ class ApplicationManagementApi
      * Create credential
      *
      * @param  string $child_app_id child_app_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_request credential_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_request credential_request (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialCreatedSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\CredentialCreatedSchema
      */
     public function createCredential($child_app_id, $credential_request)
     {
@@ -397,15 +397,15 @@ class ApplicationManagementApi
      * Create credential
      *
      * @param  string $child_app_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_request (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialCreatedSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\CredentialCreatedSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function createCredentialWithHttpInfo($child_app_id, $credential_request)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialCreatedSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\CredentialCreatedSchema';
         $request = $this->createCredentialRequest($child_app_id, $credential_request);
 
         try {
@@ -457,7 +457,7 @@ class ApplicationManagementApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialCreatedSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\CredentialCreatedSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -465,7 +465,7 @@ class ApplicationManagementApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -473,7 +473,7 @@ class ApplicationManagementApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -489,7 +489,7 @@ class ApplicationManagementApi
      * Create credential
      *
      * @param  string $child_app_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -510,14 +510,14 @@ class ApplicationManagementApi
      * Create credential
      *
      * @param  string $child_app_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createCredentialAsyncWithHttpInfo($child_app_id, $credential_request)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialCreatedSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\CredentialCreatedSchema';
         $request = $this->createCredentialRequest($child_app_id, $credential_request);
 
         return $this->client
@@ -561,7 +561,7 @@ class ApplicationManagementApi
      * Create request for operation 'createCredential'
      *
      * @param  string $child_app_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -678,11 +678,11 @@ class ApplicationManagementApi
      *
      * Create token
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TokenRequestSchema $token_request token_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TokenRequestSchema $token_request token_request (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\StringResultSchema
      */
     public function createToken($token_request)
     {
@@ -695,15 +695,15 @@ class ApplicationManagementApi
      *
      * Create token
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TokenRequestSchema $token_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TokenRequestSchema $token_request (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\StringResultSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTokenWithHttpInfo($token_request)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
         $request = $this->createTokenRequest($token_request);
 
         try {
@@ -755,7 +755,7 @@ class ApplicationManagementApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\StringResultSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -763,7 +763,7 @@ class ApplicationManagementApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -771,7 +771,7 @@ class ApplicationManagementApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -786,7 +786,7 @@ class ApplicationManagementApi
      *
      * Create token
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TokenRequestSchema $token_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TokenRequestSchema $token_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -806,14 +806,14 @@ class ApplicationManagementApi
      *
      * Create token
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TokenRequestSchema $token_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TokenRequestSchema $token_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createTokenAsyncWithHttpInfo($token_request)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
         $request = $this->createTokenRequest($token_request);
 
         return $this->client
@@ -856,7 +856,7 @@ class ApplicationManagementApi
     /**
      * Create request for operation 'createToken'
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TokenRequestSchema $token_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TokenRequestSchema $token_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1017,7 +1017,7 @@ class ApplicationManagementApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1025,7 +1025,7 @@ class ApplicationManagementApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1033,7 +1033,7 @@ class ApplicationManagementApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1276,7 +1276,7 @@ class ApplicationManagementApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1284,7 +1284,7 @@ class ApplicationManagementApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1292,7 +1292,7 @@ class ApplicationManagementApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1494,7 +1494,7 @@ class ApplicationManagementApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\SettingListSchema
      */
     public function getApplicationConfiguration($learning_standard = null, $single_sco = null, $include_metadata = 'false')
     {
@@ -1513,11 +1513,11 @@ class ApplicationManagementApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\SettingListSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getApplicationConfigurationWithHttpInfo($learning_standard = null, $single_sco = null, $include_metadata = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
         $request = $this->getApplicationConfigurationRequest($learning_standard, $single_sco, $include_metadata);
 
         try {
@@ -1569,7 +1569,7 @@ class ApplicationManagementApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\SettingListSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1577,7 +1577,7 @@ class ApplicationManagementApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1585,7 +1585,7 @@ class ApplicationManagementApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1631,7 +1631,7 @@ class ApplicationManagementApi
      */
     public function getApplicationConfigurationAsyncWithHttpInfo($learning_standard = null, $single_sco = null, $include_metadata = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
         $request = $this->getApplicationConfigurationRequest($learning_standard, $single_sco, $include_metadata);
 
         return $this->client
@@ -1785,7 +1785,7 @@ class ApplicationManagementApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationListSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\ApplicationListSchema
      */
     public function getApplicationList()
     {
@@ -1801,11 +1801,11 @@ class ApplicationManagementApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationListSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\ApplicationListSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getApplicationListWithHttpInfo()
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\ApplicationListSchema';
         $request = $this->getApplicationListRequest();
 
         try {
@@ -1857,7 +1857,7 @@ class ApplicationManagementApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationListSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\ApplicationListSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1865,7 +1865,7 @@ class ApplicationManagementApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1873,7 +1873,7 @@ class ApplicationManagementApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1913,7 +1913,7 @@ class ApplicationManagementApi
      */
     public function getApplicationListAsyncWithHttpInfo()
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\ApplicationListSchema';
         $request = $this->getApplicationListRequest();
 
         return $this->client
@@ -2053,7 +2053,7 @@ class ApplicationManagementApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialListSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\CredentialListSchema
      */
     public function getCredentials($child_app_id)
     {
@@ -2070,11 +2070,11 @@ class ApplicationManagementApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialListSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\CredentialListSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCredentialsWithHttpInfo($child_app_id)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\CredentialListSchema';
         $request = $this->getCredentialsRequest($child_app_id);
 
         try {
@@ -2126,7 +2126,7 @@ class ApplicationManagementApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialListSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\CredentialListSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2134,7 +2134,7 @@ class ApplicationManagementApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2142,7 +2142,7 @@ class ApplicationManagementApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2184,7 +2184,7 @@ class ApplicationManagementApi
      */
     public function getCredentialsAsyncWithHttpInfo($child_app_id)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\CredentialListSchema';
         $request = $this->getCredentialsRequest($child_app_id);
 
         return $this->client
@@ -2335,7 +2335,7 @@ class ApplicationManagementApi
      *
      * Set configuration settings for this level.
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings configuration_settings (required)
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
      * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
      *
@@ -2353,7 +2353,7 @@ class ApplicationManagementApi
      *
      * Set configuration settings for this level.
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
      * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
      *
@@ -2401,7 +2401,7 @@ class ApplicationManagementApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2409,7 +2409,7 @@ class ApplicationManagementApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2424,7 +2424,7 @@ class ApplicationManagementApi
      *
      * Set configuration settings for this level.
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
      * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
      *
@@ -2446,7 +2446,7 @@ class ApplicationManagementApi
      *
      * Set configuration settings for this level.
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
      * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
      *
@@ -2484,7 +2484,7 @@ class ApplicationManagementApi
     /**
      * Create request for operation 'setApplicationConfiguration'
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
      * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
      *
@@ -2599,7 +2599,7 @@ class ApplicationManagementApi
      *
      * @param  string $child_app_id child_app_id (required)
      * @param  string $credential_id credential_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_update credential_update (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_update credential_update (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2617,7 +2617,7 @@ class ApplicationManagementApi
      *
      * @param  string $child_app_id (required)
      * @param  string $credential_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_update (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_update (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2663,7 +2663,7 @@ class ApplicationManagementApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2671,7 +2671,7 @@ class ApplicationManagementApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2679,7 +2679,7 @@ class ApplicationManagementApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2696,7 +2696,7 @@ class ApplicationManagementApi
      *
      * @param  string $child_app_id (required)
      * @param  string $credential_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_update (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_update (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2718,7 +2718,7 @@ class ApplicationManagementApi
      *
      * @param  string $child_app_id (required)
      * @param  string $credential_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_update (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_update (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2756,7 +2756,7 @@ class ApplicationManagementApi
      *
      * @param  string $child_app_id (required)
      * @param  string $credential_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_update (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_update (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

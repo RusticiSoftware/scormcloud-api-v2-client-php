@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **createApplication**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationSchema createApplication($application_name)
+> \RusticiSoftware\Cloud\V2\Model\ApplicationSchema createApplication($application_name)
 
 Create a new application
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationSchema**](../Model/ApplicationSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\ApplicationSchema**](../Model/ApplicationSchema.md)
 
 ### Authorization
 
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createCredential**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialCreatedSchema createCredential($child_app_id, $credential_request)
+> \RusticiSoftware\Cloud\V2\Model\CredentialCreatedSchema createCredential($child_app_id, $credential_request)
 
 Create credential
 
@@ -97,7 +97,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\ApplicationManagementApi(
     $config
 );
 $child_app_id = "child_app_id_example"; // string | 
-$credential_request = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema | 
+$credential_request = new \RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema(); // \RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema | 
 
 try {
     $result = $apiInstance->createCredential($child_app_id, $credential_request);
@@ -113,11 +113,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **child_app_id** | **string**|  |
- **credential_request** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema**](../Model/CredentialRequestSchema.md)|  |
+ **credential_request** | [**\RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema**](../Model/CredentialRequestSchema.md)|  |
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialCreatedSchema**](../Model/CredentialCreatedSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\CredentialCreatedSchema**](../Model/CredentialCreatedSchema.md)
 
 ### Authorization
 
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createToken**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema createToken($token_request)
+> \RusticiSoftware\Cloud\V2\Model\StringResultSchema createToken($token_request)
 
 Create token
 
@@ -154,7 +154,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\ApplicationManagementApi(
     new GuzzleHttp\Client(),
     $config
 );
-$token_request = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TokenRequestSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TokenRequestSchema | 
+$token_request = new \RusticiSoftware\Cloud\V2\Model\TokenRequestSchema(); // \RusticiSoftware\Cloud\V2\Model\TokenRequestSchema | 
 
 try {
     $result = $apiInstance->createToken($token_request);
@@ -169,11 +169,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token_request** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TokenRequestSchema**](../Model/TokenRequestSchema.md)|  |
+ **token_request** | [**\RusticiSoftware\Cloud\V2\Model\TokenRequestSchema**](../Model/TokenRequestSchema.md)|  |
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema**](../Model/StringResultSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\StringResultSchema**](../Model/StringResultSchema.md)
 
 ### Authorization
 
@@ -299,7 +299,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getApplicationConfiguration**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema getApplicationConfiguration($learning_standard, $single_sco, $include_metadata)
+> \RusticiSoftware\Cloud\V2\Model\SettingListSchema getApplicationConfiguration($learning_standard, $single_sco, $include_metadata)
 
 Returns all configuration settings for this level
 
@@ -345,7 +345,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema**](../Model/SettingListSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\SettingListSchema**](../Model/SettingListSchema.md)
 
 ### Authorization
 
@@ -359,7 +359,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getApplicationList**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationListSchema getApplicationList()
+> \RusticiSoftware\Cloud\V2\Model\ApplicationListSchema getApplicationList()
 
 Get list of all applications in this realm.
 
@@ -397,7 +397,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationListSchema**](../Model/ApplicationListSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\ApplicationListSchema**](../Model/ApplicationListSchema.md)
 
 ### Authorization
 
@@ -411,7 +411,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getCredentials**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialListSchema getCredentials($child_app_id)
+> \RusticiSoftware\Cloud\V2\Model\CredentialListSchema getCredentials($child_app_id)
 
 List of credentials
 
@@ -453,7 +453,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialListSchema**](../Model/CredentialListSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\CredentialListSchema**](../Model/CredentialListSchema.md)
 
 ### Authorization
 
@@ -490,7 +490,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\ApplicationManagementApi(
     new GuzzleHttp\Client(),
     $config
 );
-$configuration_settings = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema | 
+$configuration_settings = new \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema(); // \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema | 
 $learning_standard = "learning_standard_example"; // string | If specified, the request will be scoped to the provided learning standard.
 $single_sco = true; // bool | Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes.
 
@@ -506,7 +506,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **configuration_settings** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema**](../Model/SettingsPostSchema.md)|  |
+ **configuration_settings** | [**\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema**](../Model/SettingsPostSchema.md)|  |
  **learning_standard** | **string**| If specified, the request will be scoped to the provided learning standard. | [optional]
  **single_sco** | **bool**| Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. | [optional]
 
@@ -551,7 +551,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\ApplicationManagementApi(
 );
 $child_app_id = "child_app_id_example"; // string | 
 $credential_id = "credential_id_example"; // string | 
-$credential_update = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema | 
+$credential_update = new \RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema(); // \RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema | 
 
 try {
     $apiInstance->updateCredential($child_app_id, $credential_id, $credential_update);
@@ -567,7 +567,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **child_app_id** | **string**|  |
  **credential_id** | **string**|  |
- **credential_update** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema**](../Model/CredentialRequestSchema.md)|  |
+ **credential_update** | [**\RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema**](../Model/CredentialRequestSchema.md)|  |
 
 ### Return type
 

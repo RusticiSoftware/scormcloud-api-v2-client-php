@@ -1,6 +1,6 @@
 <?php
 /**
- * ResponseError
+ * BatchTagsSchema
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
 
 /**
- * ResponseError Class Doc Comment
+ * BatchTagsSchema Class Doc Comment
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ResponseError implements ModelInterface, ArrayAccess
+class BatchTagsSchema implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ResponseError implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ResponseError';
+    protected static $swaggerModelName = 'BatchTagsSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,8 @@ class ResponseError implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'message' => 'string'
+        'ids' => 'string[]',
+        'tags' => 'string[]'
     ];
 
     /**
@@ -66,7 +67,8 @@ class ResponseError implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'message' => null
+        'ids' => null,
+        'tags' => null
     ];
 
     /**
@@ -96,7 +98,8 @@ class ResponseError implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'message' => 'message'
+        'ids' => 'ids',
+        'tags' => 'tags'
     ];
 
     /**
@@ -105,7 +108,8 @@ class ResponseError implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'message' => 'setMessage'
+        'ids' => 'setIds',
+        'tags' => 'setTags'
     ];
 
     /**
@@ -114,7 +118,8 @@ class ResponseError implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'message' => 'getMessage'
+        'ids' => 'getIds',
+        'tags' => 'getTags'
     ];
 
     /**
@@ -177,7 +182,8 @@ class ResponseError implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['ids'] = isset($data['ids']) ? $data['ids'] : null;
+        $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
     }
 
     /**
@@ -189,8 +195,11 @@ class ResponseError implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
+        if ($this->container['ids'] === null) {
+            $invalidProperties[] = "'ids' can't be null";
+        }
+        if ($this->container['tags'] === null) {
+            $invalidProperties[] = "'tags' can't be null";
         }
         return $invalidProperties;
     }
@@ -208,25 +217,49 @@ class ResponseError implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets message
+     * Gets ids
      *
-     * @return string
+     * @return string[]
      */
-    public function getMessage()
+    public function getIds()
     {
-        return $this->container['message'];
+        return $this->container['ids'];
     }
 
     /**
-     * Sets message
+     * Sets ids
      *
-     * @param string $message message
+     * @param string[] $ids ids
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setIds($ids)
     {
-        $this->container['message'] = $message;
+        $this->container['ids'] = $ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets tags
+     *
+     * @return string[]
+     */
+    public function getTags()
+    {
+        return $this->container['tags'];
+    }
+
+    /**
+     * Sets tags
+     *
+     * @param string[] $tags tags
+     *
+     * @return $this
+     */
+    public function setTags($tags)
+    {
+        $this->container['tags'] = $tags;
 
         return $this;
     }

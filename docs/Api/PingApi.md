@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **pingAppId**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\PingSchema pingAppId()
+> \RusticiSoftware\Cloud\V2\Model\PingSchema pingAppId()
 
 Get back a message indicating that the API is working.
 
@@ -46,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\PingSchema**](../Model/PingSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\PingSchema**](../Model/PingSchema.md)
 
 ### Authorization
 

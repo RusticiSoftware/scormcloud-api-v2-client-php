@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -60,7 +60,7 @@ class XapiActivity implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'object_type' => 'string',
         'id' => 'string',
-        'definition' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiActivityDefinition'
+        'definition' => '\RusticiSoftware\Cloud\V2\Model\XapiActivityDefinition'
     ];
 
     /**
@@ -271,7 +271,7 @@ class XapiActivity implements ModelInterface, ArrayAccess
     /**
      * Gets definition
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiActivityDefinition
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiActivityDefinition
      */
     public function getDefinition()
     {
@@ -281,7 +281,7 @@ class XapiActivity implements ModelInterface, ArrayAccess
     /**
      * Sets definition
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiActivityDefinition $definition definition
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiActivityDefinition $definition definition
      *
      * @return $this
      */

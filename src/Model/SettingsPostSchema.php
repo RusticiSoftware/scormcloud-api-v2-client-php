@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -57,7 +57,7 @@ class SettingsPostSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'settings' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsIndividualSchema[]'
+        'settings' => '\RusticiSoftware\Cloud\V2\Model\SettingsIndividualSchema[]'
     ];
 
     /**
@@ -207,7 +207,7 @@ class SettingsPostSchema implements ModelInterface, ArrayAccess
     /**
      * Gets settings
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsIndividualSchema[]
+     * @return \RusticiSoftware\Cloud\V2\Model\SettingsIndividualSchema[]
      */
     public function getSettings()
     {
@@ -217,7 +217,7 @@ class SettingsPostSchema implements ModelInterface, ArrayAccess
     /**
      * Sets settings
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsIndividualSchema[] $settings settings
+     * @param \RusticiSoftware\Cloud\V2\Model\SettingsIndividualSchema[] $settings settings
      *
      * @return $this
      */

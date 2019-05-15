@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -57,7 +57,7 @@ class RegistrationListSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'registrations' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema[]',
+        'registrations' => '\RusticiSoftware\Cloud\V2\Model\RegistrationSchema[]',
         'more' => 'string'
     ];
 
@@ -216,7 +216,7 @@ class RegistrationListSchema implements ModelInterface, ArrayAccess
     /**
      * Gets registrations
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema[]
+     * @return \RusticiSoftware\Cloud\V2\Model\RegistrationSchema[]
      */
     public function getRegistrations()
     {
@@ -226,7 +226,7 @@ class RegistrationListSchema implements ModelInterface, ArrayAccess
     /**
      * Sets registrations
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema[] $registrations registrations
+     * @param \RusticiSoftware\Cloud\V2\Model\RegistrationSchema[] $registrations registrations
      *
      * @return $this
      */

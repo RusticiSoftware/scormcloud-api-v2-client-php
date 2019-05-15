@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Api;
+namespace RusticiSoftware\Cloud\V2\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -154,7 +154,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -162,7 +162,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -341,7 +341,7 @@ class RegistrationApi
      *
      * Create a registration.
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema $registration registration (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema $registration registration (required)
      * @param  int $course_version The version of the course you want to create the registration for. Unless you have a reason for using this you probably do not need to. (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -358,7 +358,7 @@ class RegistrationApi
      *
      * Create a registration.
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema $registration (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema $registration (required)
      * @param  int $course_version The version of the course you want to create the registration for. Unless you have a reason for using this you probably do not need to. (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -405,7 +405,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -420,7 +420,7 @@ class RegistrationApi
      *
      * Create a registration.
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema $registration (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema $registration (required)
      * @param  int $course_version The version of the course you want to create the registration for. Unless you have a reason for using this you probably do not need to. (optional)
      *
      * @throws \InvalidArgumentException
@@ -441,7 +441,7 @@ class RegistrationApi
      *
      * Create a registration.
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema $registration (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema $registration (required)
      * @param  int $course_version The version of the course you want to create the registration for. Unless you have a reason for using this you probably do not need to. (optional)
      *
      * @throws \InvalidArgumentException
@@ -478,7 +478,7 @@ class RegistrationApi
     /**
      * Create request for operation 'createRegistration'
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema $registration (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema $registration (required)
      * @param  int $course_version The version of the course you want to create the registration for. Unless you have a reason for using this you probably do not need to. (optional)
      *
      * @throws \InvalidArgumentException
@@ -648,7 +648,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -656,7 +656,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -899,7 +899,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -907,7 +907,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1169,7 +1169,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1177,7 +1177,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1456,7 +1456,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1464,7 +1464,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1644,7 +1644,7 @@ class RegistrationApi
      * Delete tags for this registration
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1661,7 +1661,7 @@ class RegistrationApi
      * Delete tags for this registration
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1707,7 +1707,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1715,7 +1715,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1731,7 +1731,7 @@ class RegistrationApi
      * Delete tags for this registration
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1752,7 +1752,7 @@ class RegistrationApi
      * Delete tags for this registration
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1789,7 +1789,7 @@ class RegistrationApi
      * Create request for operation 'deleteRegistrationTags'
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1968,7 +1968,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1976,7 +1976,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2160,7 +2160,7 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\SettingListSchema
      */
     public function getRegistrationConfiguration($registration_id, $include_metadata = 'false')
     {
@@ -2178,11 +2178,11 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\SettingListSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRegistrationConfigurationWithHttpInfo($registration_id, $include_metadata = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
         $request = $this->getRegistrationConfigurationRequest($registration_id, $include_metadata);
 
         try {
@@ -2234,7 +2234,7 @@ class RegistrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\SettingListSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2242,7 +2242,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2250,7 +2250,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2294,7 +2294,7 @@ class RegistrationApi
      */
     public function getRegistrationConfigurationAsyncWithHttpInfo($registration_id, $include_metadata = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
         $request = $this->getRegistrationConfigurationRequest($registration_id, $include_metadata);
 
         return $this->client
@@ -2456,7 +2456,7 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\SettingListSchema
      */
     public function getRegistrationInstanceConfiguration($registration_id, $instance_id, $include_metadata = 'false')
     {
@@ -2475,11 +2475,11 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\SettingListSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRegistrationInstanceConfigurationWithHttpInfo($registration_id, $instance_id, $include_metadata = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
         $request = $this->getRegistrationInstanceConfigurationRequest($registration_id, $instance_id, $include_metadata);
 
         try {
@@ -2531,7 +2531,7 @@ class RegistrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\SettingListSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2539,7 +2539,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2547,7 +2547,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2593,7 +2593,7 @@ class RegistrationApi
      */
     public function getRegistrationInstanceConfigurationAsyncWithHttpInfo($registration_id, $instance_id, $include_metadata = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
         $request = $this->getRegistrationInstanceConfigurationRequest($registration_id, $instance_id, $include_metadata);
 
         return $this->client
@@ -2774,7 +2774,7 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema
      */
     public function getRegistrationInstanceLaunchHistory($registration_id, $instance_id, $include_history_log = 'false')
     {
@@ -2793,11 +2793,11 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRegistrationInstanceLaunchHistoryWithHttpInfo($registration_id, $instance_id, $include_history_log = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema';
         $request = $this->getRegistrationInstanceLaunchHistoryRequest($registration_id, $instance_id, $include_history_log);
 
         try {
@@ -2849,7 +2849,7 @@ class RegistrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2857,7 +2857,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2865,7 +2865,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2911,7 +2911,7 @@ class RegistrationApi
      */
     public function getRegistrationInstanceLaunchHistoryAsyncWithHttpInfo($registration_id, $instance_id, $include_history_log = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema';
         $request = $this->getRegistrationInstanceLaunchHistoryRequest($registration_id, $instance_id, $include_history_log);
 
         return $this->client
@@ -3094,7 +3094,7 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\RegistrationSchema
      */
     public function getRegistrationInstanceProgress($registration_id, $instance_id, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false')
     {
@@ -3115,11 +3115,11 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\RegistrationSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRegistrationInstanceProgressWithHttpInfo($registration_id, $instance_id, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\RegistrationSchema';
         $request = $this->getRegistrationInstanceProgressRequest($registration_id, $instance_id, $include_child_results, $include_interactions_and_objectives, $include_runtime);
 
         try {
@@ -3171,7 +3171,7 @@ class RegistrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\RegistrationSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3179,7 +3179,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3187,7 +3187,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3237,7 +3237,7 @@ class RegistrationApi
      */
     public function getRegistrationInstanceProgressAsyncWithHttpInfo($registration_id, $instance_id, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\RegistrationSchema';
         $request = $this->getRegistrationInstanceProgressRequest($registration_id, $instance_id, $include_child_results, $include_interactions_and_objectives, $include_runtime);
 
         return $this->client
@@ -3430,7 +3430,7 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiStatementResult
      */
     public function getRegistrationInstanceStatements($registration_id, $instance_id, $since = null, $until = null, $more = null)
     {
@@ -3451,11 +3451,11 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\XapiStatementResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRegistrationInstanceStatementsWithHttpInfo($registration_id, $instance_id, $since = null, $until = null, $more = null)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\XapiStatementResult';
         $request = $this->getRegistrationInstanceStatementsRequest($registration_id, $instance_id, $since, $until, $more);
 
         try {
@@ -3507,7 +3507,7 @@ class RegistrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult',
+                        '\RusticiSoftware\Cloud\V2\Model\XapiStatementResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3515,7 +3515,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3523,7 +3523,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3573,7 +3573,7 @@ class RegistrationApi
      */
     public function getRegistrationInstanceStatementsAsyncWithHttpInfo($registration_id, $instance_id, $since = null, $until = null, $more = null)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\XapiStatementResult';
         $request = $this->getRegistrationInstanceStatementsRequest($registration_id, $instance_id, $since, $until, $more);
 
         return $this->client
@@ -3768,7 +3768,7 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\RegistrationListSchema
      */
     public function getRegistrationInstances($registration_id, $until = null, $since = null, $more = null, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false')
     {
@@ -3791,11 +3791,11 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\RegistrationListSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRegistrationInstancesWithHttpInfo($registration_id, $until = null, $since = null, $more = null, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema';
         $request = $this->getRegistrationInstancesRequest($registration_id, $until, $since, $more, $include_child_results, $include_interactions_and_objectives, $include_runtime);
 
         try {
@@ -3847,7 +3847,7 @@ class RegistrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3855,7 +3855,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3863,7 +3863,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3917,7 +3917,7 @@ class RegistrationApi
      */
     public function getRegistrationInstancesAsyncWithHttpInfo($registration_id, $until = null, $since = null, $more = null, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema';
         $request = $this->getRegistrationInstancesRequest($registration_id, $until, $since, $more, $include_child_results, $include_interactions_and_objectives, $include_runtime);
 
         return $this->client
@@ -4103,7 +4103,7 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema
      */
     public function getRegistrationLaunchHistory($registration_id, $include_history_log = 'false')
     {
@@ -4121,11 +4121,11 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRegistrationLaunchHistoryWithHttpInfo($registration_id, $include_history_log = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema';
         $request = $this->getRegistrationLaunchHistoryRequest($registration_id, $include_history_log);
 
         try {
@@ -4177,7 +4177,7 @@ class RegistrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4185,7 +4185,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4193,7 +4193,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4237,7 +4237,7 @@ class RegistrationApi
      */
     public function getRegistrationLaunchHistoryAsyncWithHttpInfo($registration_id, $include_history_log = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema';
         $request = $this->getRegistrationLaunchHistoryRequest($registration_id, $include_history_log);
 
         return $this->client
@@ -4394,11 +4394,11 @@ class RegistrationApi
      * Returns the link to use to launch this registration
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request launch_link_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request launch_link_request (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema
      */
     public function getRegistrationLaunchLink($registration_id, $launch_link_request)
     {
@@ -4412,15 +4412,15 @@ class RegistrationApi
      * Returns the link to use to launch this registration
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRegistrationLaunchLinkWithHttpInfo($registration_id, $launch_link_request)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema';
         $request = $this->getRegistrationLaunchLinkRequest($registration_id, $launch_link_request);
 
         try {
@@ -4472,7 +4472,7 @@ class RegistrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4480,7 +4480,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4488,7 +4488,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4504,7 +4504,7 @@ class RegistrationApi
      * Returns the link to use to launch this registration
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4525,14 +4525,14 @@ class RegistrationApi
      * Returns the link to use to launch this registration
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function getRegistrationLaunchLinkAsyncWithHttpInfo($registration_id, $launch_link_request)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema';
         $request = $this->getRegistrationLaunchLinkRequest($registration_id, $launch_link_request);
 
         return $this->client
@@ -4576,7 +4576,7 @@ class RegistrationApi
      * Create request for operation 'getRegistrationLaunchLink'
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4700,7 +4700,7 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\RegistrationSchema
      */
     public function getRegistrationProgress($registration_id, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false')
     {
@@ -4720,11 +4720,11 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\RegistrationSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRegistrationProgressWithHttpInfo($registration_id, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\RegistrationSchema';
         $request = $this->getRegistrationProgressRequest($registration_id, $include_child_results, $include_interactions_and_objectives, $include_runtime);
 
         try {
@@ -4776,7 +4776,7 @@ class RegistrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\RegistrationSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4784,7 +4784,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4792,7 +4792,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4840,7 +4840,7 @@ class RegistrationApi
      */
     public function getRegistrationProgressAsyncWithHttpInfo($registration_id, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\RegistrationSchema';
         $request = $this->getRegistrationProgressRequest($registration_id, $include_child_results, $include_interactions_and_objectives, $include_runtime);
 
         return $this->client
@@ -5013,7 +5013,7 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiStatementResult
      */
     public function getRegistrationStatements($registration_id, $since = null, $until = null, $more = null)
     {
@@ -5033,11 +5033,11 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\XapiStatementResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRegistrationStatementsWithHttpInfo($registration_id, $since = null, $until = null, $more = null)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\XapiStatementResult';
         $request = $this->getRegistrationStatementsRequest($registration_id, $since, $until, $more);
 
         try {
@@ -5089,7 +5089,7 @@ class RegistrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult',
+                        '\RusticiSoftware\Cloud\V2\Model\XapiStatementResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5097,7 +5097,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5105,7 +5105,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5153,7 +5153,7 @@ class RegistrationApi
      */
     public function getRegistrationStatementsAsyncWithHttpInfo($registration_id, $since = null, $until = null, $more = null)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\XapiStatementResult';
         $request = $this->getRegistrationStatementsRequest($registration_id, $since, $until, $more);
 
         return $this->client
@@ -5323,7 +5323,7 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\TagListSchema
      */
     public function getRegistrationTags($registration_id)
     {
@@ -5340,11 +5340,11 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\TagListSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRegistrationTagsWithHttpInfo($registration_id)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\TagListSchema';
         $request = $this->getRegistrationTagsRequest($registration_id);
 
         try {
@@ -5396,7 +5396,7 @@ class RegistrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\TagListSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5404,7 +5404,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5412,7 +5412,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5454,7 +5454,7 @@ class RegistrationApi
      */
     public function getRegistrationTagsAsyncWithHttpInfo($registration_id)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\TagListSchema';
         $request = $this->getRegistrationTagsRequest($registration_id);
 
         return $this->client
@@ -5616,7 +5616,7 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\RegistrationListSchema
      */
     public function getRegistrations($course_id = null, $learner_id = null, $since = null, $until = null, $more = null, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false')
     {
@@ -5640,11 +5640,11 @@ class RegistrationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\RegistrationListSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRegistrationsWithHttpInfo($course_id = null, $learner_id = null, $since = null, $until = null, $more = null, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema';
         $request = $this->getRegistrationsRequest($course_id, $learner_id, $since, $until, $more, $include_child_results, $include_interactions_and_objectives, $include_runtime);
 
         try {
@@ -5696,7 +5696,7 @@ class RegistrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5704,7 +5704,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5760,7 +5760,7 @@ class RegistrationApi
      */
     public function getRegistrationsAsyncWithHttpInfo($course_id = null, $learner_id = null, $since = null, $until = null, $more = null, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema';
         $request = $this->getRegistrationsRequest($course_id, $learner_id, $since, $until, $more, $include_child_results, $include_interactions_and_objectives, $include_runtime);
 
         return $this->client
@@ -5937,7 +5937,7 @@ class RegistrationApi
      * Set the tags for this registration
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5954,7 +5954,7 @@ class RegistrationApi
      * Set the tags for this registration
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6000,7 +6000,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6008,7 +6008,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6024,7 +6024,7 @@ class RegistrationApi
      * Set the tags for this registration
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6045,7 +6045,7 @@ class RegistrationApi
      * Set the tags for this registration
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6082,7 +6082,7 @@ class RegistrationApi
      * Create request for operation 'putRegistrationTags'
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -6199,7 +6199,7 @@ class RegistrationApi
      *
      * Sets all of the provided tags on all of the provided registrations
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationTagsBatchSchema $batch batch (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\RegistrationTagsBatchSchema $batch batch (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6215,7 +6215,7 @@ class RegistrationApi
      *
      * Sets all of the provided tags on all of the provided registrations
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationTagsBatchSchema $batch (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\RegistrationTagsBatchSchema $batch (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6261,7 +6261,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6269,7 +6269,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6284,7 +6284,7 @@ class RegistrationApi
      *
      * Sets all of the provided tags on all of the provided registrations
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationTagsBatchSchema $batch (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\RegistrationTagsBatchSchema $batch (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6304,7 +6304,7 @@ class RegistrationApi
      *
      * Sets all of the provided tags on all of the provided registrations
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationTagsBatchSchema $batch (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\RegistrationTagsBatchSchema $batch (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6340,7 +6340,7 @@ class RegistrationApi
     /**
      * Create request for operation 'putRegistrationTagsBatch'
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationTagsBatchSchema $batch (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\RegistrationTagsBatchSchema $batch (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -6505,7 +6505,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6513,7 +6513,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6693,7 +6693,7 @@ class RegistrationApi
      * Set configuration settings for this registration.
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings configuration_settings (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6710,7 +6710,7 @@ class RegistrationApi
      * Set configuration settings for this registration.
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6756,7 +6756,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6764,7 +6764,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6780,7 +6780,7 @@ class RegistrationApi
      * Set configuration settings for this registration.
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6801,7 +6801,7 @@ class RegistrationApi
      * Set configuration settings for this registration.
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6838,7 +6838,7 @@ class RegistrationApi
      * Create request for operation 'setRegistrationConfiguration'
      *
      * @param  string $registration_id id for this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -6957,7 +6957,7 @@ class RegistrationApi
      *
      * @param  string $registration_id id for this registration (required)
      * @param  int $instance_id The instance of this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings configuration_settings (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6975,7 +6975,7 @@ class RegistrationApi
      *
      * @param  string $registration_id id for this registration (required)
      * @param  int $instance_id The instance of this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -7021,7 +7021,7 @@ class RegistrationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7029,7 +7029,7 @@ class RegistrationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7046,7 +7046,7 @@ class RegistrationApi
      *
      * @param  string $registration_id id for this registration (required)
      * @param  int $instance_id The instance of this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7068,7 +7068,7 @@ class RegistrationApi
      *
      * @param  string $registration_id id for this registration (required)
      * @param  int $instance_id The instance of this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7106,7 +7106,7 @@ class RegistrationApi
      *
      * @param  string $registration_id id for this registration (required)
      * @param  int $instance_id The instance of this registration (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

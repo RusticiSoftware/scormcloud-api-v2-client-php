@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -58,10 +58,10 @@ class XapiContextActivity implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'parent' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiActivity[]',
-        'grouping' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiActivity[]',
-        'category' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiActivity[]',
-        'other' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiActivity[]'
+        'parent' => '\RusticiSoftware\Cloud\V2\Model\XapiActivity[]',
+        'grouping' => '\RusticiSoftware\Cloud\V2\Model\XapiActivity[]',
+        'category' => '\RusticiSoftware\Cloud\V2\Model\XapiActivity[]',
+        'other' => '\RusticiSoftware\Cloud\V2\Model\XapiActivity[]'
     ];
 
     /**
@@ -226,7 +226,7 @@ class XapiContextActivity implements ModelInterface, ArrayAccess
     /**
      * Gets parent
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiActivity[]
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiActivity[]
      */
     public function getParent()
     {
@@ -236,7 +236,7 @@ class XapiContextActivity implements ModelInterface, ArrayAccess
     /**
      * Sets parent
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiActivity[] $parent parent
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiActivity[] $parent parent
      *
      * @return $this
      */
@@ -250,7 +250,7 @@ class XapiContextActivity implements ModelInterface, ArrayAccess
     /**
      * Gets grouping
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiActivity[]
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiActivity[]
      */
     public function getGrouping()
     {
@@ -260,7 +260,7 @@ class XapiContextActivity implements ModelInterface, ArrayAccess
     /**
      * Sets grouping
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiActivity[] $grouping grouping
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiActivity[] $grouping grouping
      *
      * @return $this
      */
@@ -274,7 +274,7 @@ class XapiContextActivity implements ModelInterface, ArrayAccess
     /**
      * Gets category
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiActivity[]
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiActivity[]
      */
     public function getCategory()
     {
@@ -284,7 +284,7 @@ class XapiContextActivity implements ModelInterface, ArrayAccess
     /**
      * Sets category
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiActivity[] $category category
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiActivity[] $category category
      *
      * @return $this
      */
@@ -298,7 +298,7 @@ class XapiContextActivity implements ModelInterface, ArrayAccess
     /**
      * Gets other
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiActivity[]
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiActivity[]
      */
     public function getOther()
     {
@@ -308,7 +308,7 @@ class XapiContextActivity implements ModelInterface, ArrayAccess
     /**
      * Sets other
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiActivity[] $other other
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiActivity[] $other other
      *
      * @return $this
      */

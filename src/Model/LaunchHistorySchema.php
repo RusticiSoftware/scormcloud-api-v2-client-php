@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -59,7 +59,7 @@ class LaunchHistorySchema implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'id' => 'string',
         'instance' => 'int',
-        'score' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ScoreSchema',
+        'score' => '\RusticiSoftware\Cloud\V2\Model\ScoreSchema',
         'completion_status' => 'string',
         'success_status' => 'string',
         'history_log' => 'string',
@@ -359,7 +359,7 @@ class LaunchHistorySchema implements ModelInterface, ArrayAccess
     /**
      * Gets score
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ScoreSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\ScoreSchema
      */
     public function getScore()
     {
@@ -369,7 +369,7 @@ class LaunchHistorySchema implements ModelInterface, ArrayAccess
     /**
      * Sets score
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ScoreSchema $score score
+     * @param \RusticiSoftware\Cloud\V2\Model\ScoreSchema $score score
      *
      * @return $this
      */

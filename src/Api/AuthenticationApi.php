@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Api;
+namespace RusticiSoftware\Cloud\V2\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -97,7 +97,7 @@ class AuthenticationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationToken
+     * @return \RusticiSoftware\Cloud\V2\Model\ApplicationToken
      */
     public function getAppToken($scope, $expiration = '300')
     {
@@ -115,11 +115,11 @@ class AuthenticationApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationToken, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\ApplicationToken, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAppTokenWithHttpInfo($scope, $expiration = '300')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationToken';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\ApplicationToken';
         $request = $this->getAppTokenRequest($scope, $expiration);
 
         try {
@@ -171,7 +171,7 @@ class AuthenticationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationToken',
+                        '\RusticiSoftware\Cloud\V2\Model\ApplicationToken',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -215,7 +215,7 @@ class AuthenticationApi
      */
     public function getAppTokenAsyncWithHttpInfo($scope, $expiration = '300')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationToken';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\ApplicationToken';
         $request = $this->getAppTokenRequest($scope, $expiration);
 
         return $this->client

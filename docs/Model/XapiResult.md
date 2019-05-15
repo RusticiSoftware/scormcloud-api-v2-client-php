@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**score** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiScore**](XapiScore.md) |  | [optional] 
+**score** | [**\RusticiSoftware\Cloud\V2\Model\XapiScore**](XapiScore.md) |  | [optional] 
 **success** | **bool** |  | [optional] 
 **completion** | **bool** |  | [optional] 
 **response** | **string** |  | [optional] 

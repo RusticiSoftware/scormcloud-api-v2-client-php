@@ -31,7 +31,7 @@ Method | HTTP request | Description
 
 
 # **buildCoursePreviewLaunchLink**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema buildCoursePreviewLaunchLink($course_id, $launch_link_request, $css_url)
+> \RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema buildCoursePreviewLaunchLink($course_id, $launch_link_request, $css_url)
 
 Returns the launch link to use to preview this course
 
@@ -55,7 +55,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\CourseApi(
     $config
 );
 $course_id = "course_id_example"; // string | 
-$launch_link_request = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema | 
+$launch_link_request = new \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema(); // \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema | 
 $css_url = "css_url_example"; // string | 
 
 try {
@@ -72,12 +72,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **course_id** | **string**|  |
- **launch_link_request** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema**](../Model/LaunchLinkRequestSchema.md)|  |
+ **launch_link_request** | [**\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema**](../Model/LaunchLinkRequestSchema.md)|  |
  **css_url** | **string**|  | [optional]
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema**](../Model/LaunchLinkSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema**](../Model/LaunchLinkSchema.md)
 
 ### Authorization
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **buildCoursePreviewLaunchLinkWithVersion**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema buildCoursePreviewLaunchLinkWithVersion($course_id, $version_id, $launch_link_request)
+> \RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema buildCoursePreviewLaunchLinkWithVersion($course_id, $version_id, $launch_link_request)
 
 Returns the link to use to preview this course
 
@@ -116,7 +116,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\CourseApi(
 );
 $course_id = "course_id_example"; // string | 
 $version_id = 56; // int | The course version
-$launch_link_request = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema | 
+$launch_link_request = new \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema(); // \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema | 
 
 try {
     $result = $apiInstance->buildCoursePreviewLaunchLinkWithVersion($course_id, $version_id, $launch_link_request);
@@ -133,11 +133,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **course_id** | **string**|  |
  **version_id** | **int**| The course version |
- **launch_link_request** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema**](../Model/LaunchLinkRequestSchema.md)|  |
+ **launch_link_request** | [**\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema**](../Model/LaunchLinkRequestSchema.md)|  |
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema**](../Model/LaunchLinkSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema**](../Model/LaunchLinkSchema.md)
 
 ### Authorization
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createFetchAndImportCourseJob**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema createFetchAndImportCourseJob($course_id, $import_request, $may_create_new_version, $postback_url)
+> \RusticiSoftware\Cloud\V2\Model\StringResultSchema createFetchAndImportCourseJob($course_id, $import_request, $may_create_new_version, $postback_url)
 
 Start a job to fetch and import a course.
 
@@ -177,7 +177,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\CourseApi(
     $config
 );
 $course_id = "course_id_example"; // string | A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use.
-$import_request = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema | 
+$import_request = new \RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema(); // \RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema | 
 $may_create_new_version = false; // bool | Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn't already exist.
 $postback_url = "postback_url_example"; // string | An optional parameter that specifies a URL to send a postback to when the course has finished uploading.
 
@@ -195,13 +195,13 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **course_id** | **string**| A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. |
- **import_request** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema**](../Model/ImportFetchRequestSchema.md)|  |
+ **import_request** | [**\RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema**](../Model/ImportFetchRequestSchema.md)|  |
  **may_create_new_version** | **bool**| Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. | [optional] [default to false]
  **postback_url** | **string**| An optional parameter that specifies a URL to send a postback to when the course has finished uploading. | [optional]
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema**](../Model/StringResultSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\StringResultSchema**](../Model/StringResultSchema.md)
 
 ### Authorization
 
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createUploadAndImportCourseJob**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema createUploadAndImportCourseJob($course_id, $may_create_new_version, $file, $postback_url)
+> \RusticiSoftware\Cloud\V2\Model\StringResultSchema createUploadAndImportCourseJob($course_id, $may_create_new_version, $file, $postback_url)
 
 Upload a course and start an import job for it.
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema**](../Model/StringResultSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\StringResultSchema**](../Model/StringResultSchema.md)
 
 ### Authorization
 
@@ -415,7 +415,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\CourseApi(
     $config
 );
 $course_id = "course_id_example"; // string | 
-$tags = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema | 
+$tags = new \RusticiSoftware\Cloud\V2\Model\TagListSchema(); // \RusticiSoftware\Cloud\V2\Model\TagListSchema | 
 
 try {
     $apiInstance->deleteCourseTags($course_id, $tags);
@@ -430,7 +430,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **course_id** | **string**|  |
- **tags** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema**](../Model/TagListSchema.md)|  |
+ **tags** | [**\RusticiSoftware\Cloud\V2\Model\TagListSchema**](../Model/TagListSchema.md)|  |
 
 ### Return type
 
@@ -564,7 +564,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getCourse**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema getCourse($course_id, $include_registration_count, $include_course_metadata)
+> \RusticiSoftware\Cloud\V2\Model\CourseSchema getCourse($course_id, $include_registration_count, $include_course_metadata)
 
 Get information about `courseId`
 
@@ -610,7 +610,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema**](../Model/CourseSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\CourseSchema**](../Model/CourseSchema.md)
 
 ### Authorization
 
@@ -624,7 +624,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getCourseConfiguration**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema getCourseConfiguration($course_id, $include_metadata)
+> \RusticiSoftware\Cloud\V2\Model\SettingListSchema getCourseConfiguration($course_id, $include_metadata)
 
 Returns all configuration settings for this course
 
@@ -668,7 +668,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema**](../Model/SettingListSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\SettingListSchema**](../Model/SettingListSchema.md)
 
 ### Authorization
 
@@ -682,7 +682,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getCourseStatements**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult getCourseStatements($course_id, $learner_id, $since, $until, $more)
+> \RusticiSoftware\Cloud\V2\Model\XapiStatementResult getCourseStatements($course_id, $learner_id, $since, $until, $more)
 
 Get xAPI statements for `courseId`
 
@@ -732,7 +732,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult**](../Model/XapiStatementResult.md)
+[**\RusticiSoftware\Cloud\V2\Model\XapiStatementResult**](../Model/XapiStatementResult.md)
 
 ### Authorization
 
@@ -746,7 +746,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getCourseTags**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema getCourseTags($course_id)
+> \RusticiSoftware\Cloud\V2\Model\TagListSchema getCourseTags($course_id)
 
 Get the tags for this course
 
@@ -788,7 +788,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema**](../Model/TagListSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\TagListSchema**](../Model/TagListSchema.md)
 
 ### Authorization
 
@@ -802,7 +802,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getCourseVersionConfiguration**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema getCourseVersionConfiguration($course_id, $version_id, $include_metadata)
+> \RusticiSoftware\Cloud\V2\Model\SettingListSchema getCourseVersionConfiguration($course_id, $version_id, $include_metadata)
 
 Returns all configuration settings for this course and version.
 
@@ -848,7 +848,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema**](../Model/SettingListSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\SettingListSchema**](../Model/SettingListSchema.md)
 
 ### Authorization
 
@@ -862,7 +862,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getCourseVersionInfo**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema getCourseVersionInfo($course_id, $version_id, $include_registration_count, $include_course_metadata)
+> \RusticiSoftware\Cloud\V2\Model\CourseSchema getCourseVersionInfo($course_id, $version_id, $include_registration_count, $include_course_metadata)
 
 Get version `versionId` of `courseId`
 
@@ -910,7 +910,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema**](../Model/CourseSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\CourseSchema**](../Model/CourseSchema.md)
 
 ### Authorization
 
@@ -924,7 +924,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getCourseVersionStatements**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult getCourseVersionStatements($course_id, $version_id, $learner_id, $since, $until, $more)
+> \RusticiSoftware\Cloud\V2\Model\XapiStatementResult getCourseVersionStatements($course_id, $version_id, $learner_id, $since, $until, $more)
 
 Get xAPI statements for version `versionId` of `courseId`
 
@@ -976,7 +976,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult**](../Model/XapiStatementResult.md)
+[**\RusticiSoftware\Cloud\V2\Model\XapiStatementResult**](../Model/XapiStatementResult.md)
 
 ### Authorization
 
@@ -990,7 +990,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getCourseVersions**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseListNonPagedSchema getCourseVersions($course_id, $since, $until, $include_registration_count, $include_course_metadata)
+> \RusticiSoftware\Cloud\V2\Model\CourseListNonPagedSchema getCourseVersions($course_id, $since, $until, $include_registration_count, $include_course_metadata)
 
 Get all versions of `courseId`
 
@@ -1040,7 +1040,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseListNonPagedSchema**](../Model/CourseListNonPagedSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\CourseListNonPagedSchema**](../Model/CourseListNonPagedSchema.md)
 
 ### Authorization
 
@@ -1054,7 +1054,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getCourses**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseListSchema getCourses($more, $since, $until, $filter, $filter_by, $order_by, $include_registration_count, $include_course_metadata, $tags)
+> \RusticiSoftware\Cloud\V2\Model\CourseListSchema getCourses($more, $since, $until, $filter, $filter_by, $order_by, $include_registration_count, $include_course_metadata, $tags)
 
 Get all courses for `appId`
 
@@ -1112,7 +1112,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseListSchema**](../Model/CourseListSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\CourseListSchema**](../Model/CourseListSchema.md)
 
 ### Authorization
 
@@ -1126,7 +1126,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getImportJobStatus**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ImportJobResultSchema getImportJobStatus($import_job_id)
+> \RusticiSoftware\Cloud\V2\Model\ImportJobResultSchema getImportJobStatus($import_job_id)
 
 Check the status of an import job.
 
@@ -1168,7 +1168,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ImportJobResultSchema**](../Model/ImportJobResultSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\ImportJobResultSchema**](../Model/ImportJobResultSchema.md)
 
 ### Authorization
 
@@ -1206,7 +1206,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\CourseApi(
     $config
 );
 $course_id = "course_id_example"; // string | 
-$tags = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema | 
+$tags = new \RusticiSoftware\Cloud\V2\Model\TagListSchema(); // \RusticiSoftware\Cloud\V2\Model\TagListSchema | 
 
 try {
     $apiInstance->putCourseTags($course_id, $tags);
@@ -1221,7 +1221,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **course_id** | **string**|  |
- **tags** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema**](../Model/TagListSchema.md)|  |
+ **tags** | [**\RusticiSoftware\Cloud\V2\Model\TagListSchema**](../Model/TagListSchema.md)|  |
 
 ### Return type
 
@@ -1262,7 +1262,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\CourseApi(
     new GuzzleHttp\Client(),
     $config
 );
-$batch = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseTagsBatchSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseTagsBatchSchema | 
+$batch = new \RusticiSoftware\Cloud\V2\Model\CourseTagsBatchSchema(); // \RusticiSoftware\Cloud\V2\Model\CourseTagsBatchSchema | 
 
 try {
     $apiInstance->putCourseTagsBatch($batch);
@@ -1276,7 +1276,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **batch** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseTagsBatchSchema**](../Model/CourseTagsBatchSchema.md)|  |
+ **batch** | [**\RusticiSoftware\Cloud\V2\Model\CourseTagsBatchSchema**](../Model/CourseTagsBatchSchema.md)|  |
 
 ### Return type
 
@@ -1318,7 +1318,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\CourseApi(
     $config
 );
 $course_id = "course_id_example"; // string | 
-$configuration_settings = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema | 
+$configuration_settings = new \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema(); // \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema | 
 
 try {
     $apiInstance->setCourseConfiguration($course_id, $configuration_settings);
@@ -1333,7 +1333,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **course_id** | **string**|  |
- **configuration_settings** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema**](../Model/SettingsPostSchema.md)|  |
+ **configuration_settings** | [**\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema**](../Model/SettingsPostSchema.md)|  |
 
 ### Return type
 
@@ -1375,7 +1375,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\CourseApi(
     $config
 );
 $course_id = "course_id_example"; // string | 
-$title = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TitleSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TitleSchema | 
+$title = new \RusticiSoftware\Cloud\V2\Model\TitleSchema(); // \RusticiSoftware\Cloud\V2\Model\TitleSchema | 
 
 try {
     $result = $apiInstance->setCourseTitle($course_id, $title);
@@ -1391,7 +1391,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **course_id** | **string**|  |
- **title** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TitleSchema**](../Model/TitleSchema.md)|  |
+ **title** | [**\RusticiSoftware\Cloud\V2\Model\TitleSchema**](../Model/TitleSchema.md)|  |
 
 ### Return type
 
@@ -1434,7 +1434,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\CourseApi(
 );
 $course_id = "course_id_example"; // string | 
 $version_id = 56; // int | The course version
-$configuration_settings = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema | 
+$configuration_settings = new \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema(); // \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema | 
 
 try {
     $apiInstance->setCourseVersionConfiguration($course_id, $version_id, $configuration_settings);
@@ -1450,7 +1450,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **course_id** | **string**|  |
  **version_id** | **int**| The course version |
- **configuration_settings** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema**](../Model/SettingsPostSchema.md)|  |
+ **configuration_settings** | [**\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema**](../Model/SettingsPostSchema.md)|  |
 
 ### Return type
 

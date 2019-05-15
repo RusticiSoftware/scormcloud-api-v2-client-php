@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -58,7 +58,7 @@ class CourseTagsBatchSchema implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'course_ids' => 'string[]',
-        'tags' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagPostSchema'
+        'tags' => '\RusticiSoftware\Cloud\V2\Model\TagPostSchema'
     ];
 
     /**
@@ -243,7 +243,7 @@ class CourseTagsBatchSchema implements ModelInterface, ArrayAccess
     /**
      * Gets tags
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagPostSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\TagPostSchema
      */
     public function getTags()
     {
@@ -253,7 +253,7 @@ class CourseTagsBatchSchema implements ModelInterface, ArrayAccess
     /**
      * Sets tags
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagPostSchema $tags tags
+     * @param \RusticiSoftware\Cloud\V2\Model\TagPostSchema $tags tags
      *
      * @return $this
      */

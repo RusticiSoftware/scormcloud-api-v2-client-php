@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -62,14 +62,14 @@ class ActivityResultSchema implements ModelInterface, ArrayAccess
         'attempts' => 'int',
         'activity_completion' => 'string',
         'activity_success' => 'string',
-        'score' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ScoreSchema',
+        'score' => '\RusticiSoftware\Cloud\V2\Model\ScoreSchema',
         'time_tracked' => 'string',
-        'completion_amount' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CompletionAmountSchema',
+        'completion_amount' => '\RusticiSoftware\Cloud\V2\Model\CompletionAmountSchema',
         'suspended' => 'bool',
-        'children' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ActivityResultSchema[]',
-        'objectives' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ObjectiveSchema[]',
-        'static_properties' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StaticPropertiesSchema',
-        'runtime' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RuntimeSchema'
+        'children' => '\RusticiSoftware\Cloud\V2\Model\ActivityResultSchema[]',
+        'objectives' => '\RusticiSoftware\Cloud\V2\Model\ObjectiveSchema[]',
+        'static_properties' => '\RusticiSoftware\Cloud\V2\Model\StaticPropertiesSchema',
+        'runtime' => '\RusticiSoftware\Cloud\V2\Model\RuntimeSchema'
     ];
 
     /**
@@ -467,7 +467,7 @@ class ActivityResultSchema implements ModelInterface, ArrayAccess
     /**
      * Gets score
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ScoreSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\ScoreSchema
      */
     public function getScore()
     {
@@ -477,7 +477,7 @@ class ActivityResultSchema implements ModelInterface, ArrayAccess
     /**
      * Sets score
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ScoreSchema $score score
+     * @param \RusticiSoftware\Cloud\V2\Model\ScoreSchema $score score
      *
      * @return $this
      */
@@ -515,7 +515,7 @@ class ActivityResultSchema implements ModelInterface, ArrayAccess
     /**
      * Gets completion_amount
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CompletionAmountSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\CompletionAmountSchema
      */
     public function getCompletionAmount()
     {
@@ -525,7 +525,7 @@ class ActivityResultSchema implements ModelInterface, ArrayAccess
     /**
      * Sets completion_amount
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CompletionAmountSchema $completion_amount completion_amount
+     * @param \RusticiSoftware\Cloud\V2\Model\CompletionAmountSchema $completion_amount completion_amount
      *
      * @return $this
      */
@@ -563,7 +563,7 @@ class ActivityResultSchema implements ModelInterface, ArrayAccess
     /**
      * Gets children
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ActivityResultSchema[]
+     * @return \RusticiSoftware\Cloud\V2\Model\ActivityResultSchema[]
      */
     public function getChildren()
     {
@@ -573,7 +573,7 @@ class ActivityResultSchema implements ModelInterface, ArrayAccess
     /**
      * Sets children
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ActivityResultSchema[] $children children
+     * @param \RusticiSoftware\Cloud\V2\Model\ActivityResultSchema[] $children children
      *
      * @return $this
      */
@@ -587,7 +587,7 @@ class ActivityResultSchema implements ModelInterface, ArrayAccess
     /**
      * Gets objectives
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ObjectiveSchema[]
+     * @return \RusticiSoftware\Cloud\V2\Model\ObjectiveSchema[]
      */
     public function getObjectives()
     {
@@ -597,7 +597,7 @@ class ActivityResultSchema implements ModelInterface, ArrayAccess
     /**
      * Sets objectives
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ObjectiveSchema[] $objectives objectives
+     * @param \RusticiSoftware\Cloud\V2\Model\ObjectiveSchema[] $objectives objectives
      *
      * @return $this
      */
@@ -611,7 +611,7 @@ class ActivityResultSchema implements ModelInterface, ArrayAccess
     /**
      * Gets static_properties
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StaticPropertiesSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\StaticPropertiesSchema
      */
     public function getStaticProperties()
     {
@@ -621,7 +621,7 @@ class ActivityResultSchema implements ModelInterface, ArrayAccess
     /**
      * Sets static_properties
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StaticPropertiesSchema $static_properties static_properties
+     * @param \RusticiSoftware\Cloud\V2\Model\StaticPropertiesSchema $static_properties static_properties
      *
      * @return $this
      */
@@ -635,7 +635,7 @@ class ActivityResultSchema implements ModelInterface, ArrayAccess
     /**
      * Gets runtime
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RuntimeSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\RuntimeSchema
      */
     public function getRuntime()
     {
@@ -645,7 +645,7 @@ class ActivityResultSchema implements ModelInterface, ArrayAccess
     /**
      * Sets runtime
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RuntimeSchema $runtime runtime
+     * @param \RusticiSoftware\Cloud\V2\Model\RuntimeSchema $runtime runtime
      *
      * @return $this
      */

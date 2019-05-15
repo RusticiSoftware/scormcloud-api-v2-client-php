@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -59,13 +59,13 @@ class XapiContext implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'registration' => 'string',
-        'instructor' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup',
-        'team' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup',
-        'context_activities' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiContextActivity',
+        'instructor' => '\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup',
+        'team' => '\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup',
+        'context_activities' => '\RusticiSoftware\Cloud\V2\Model\XapiContextActivity',
         'revision' => 'string',
         'platform' => 'string',
         'language' => 'string',
-        'statement' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementReference',
+        'statement' => '\RusticiSoftware\Cloud\V2\Model\XapiStatementReference',
         'extensions' => 'map[string,object]'
     ];
 
@@ -280,7 +280,7 @@ class XapiContext implements ModelInterface, ArrayAccess
     /**
      * Gets instructor
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiAgentGroup
      */
     public function getInstructor()
     {
@@ -290,7 +290,7 @@ class XapiContext implements ModelInterface, ArrayAccess
     /**
      * Sets instructor
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup $instructor instructor
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiAgentGroup $instructor instructor
      *
      * @return $this
      */
@@ -304,7 +304,7 @@ class XapiContext implements ModelInterface, ArrayAccess
     /**
      * Gets team
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiAgentGroup
      */
     public function getTeam()
     {
@@ -314,7 +314,7 @@ class XapiContext implements ModelInterface, ArrayAccess
     /**
      * Sets team
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup $team team
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiAgentGroup $team team
      *
      * @return $this
      */
@@ -328,7 +328,7 @@ class XapiContext implements ModelInterface, ArrayAccess
     /**
      * Gets context_activities
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiContextActivity
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiContextActivity
      */
     public function getContextActivities()
     {
@@ -338,7 +338,7 @@ class XapiContext implements ModelInterface, ArrayAccess
     /**
      * Sets context_activities
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiContextActivity $context_activities context_activities
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiContextActivity $context_activities context_activities
      *
      * @return $this
      */
@@ -424,7 +424,7 @@ class XapiContext implements ModelInterface, ArrayAccess
     /**
      * Gets statement
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementReference
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiStatementReference
      */
     public function getStatement()
     {
@@ -434,7 +434,7 @@ class XapiContext implements ModelInterface, ArrayAccess
     /**
      * Sets statement
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementReference $statement statement
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiStatementReference $statement statement
      *
      * @return $this
      */

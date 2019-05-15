@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Api;
+namespace RusticiSoftware\Cloud\V2\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -93,12 +93,12 @@ class CourseApi
      * Returns the launch link to use to preview this course
      *
      * @param  string $course_id course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request launch_link_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request launch_link_request (required)
      * @param  string $css_url css_url (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema
      */
     public function buildCoursePreviewLaunchLink($course_id, $launch_link_request, $css_url = null)
     {
@@ -112,16 +112,16 @@ class CourseApi
      * Returns the launch link to use to preview this course
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      * @param  string $css_url (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function buildCoursePreviewLaunchLinkWithHttpInfo($course_id, $launch_link_request, $css_url = null)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema';
         $request = $this->buildCoursePreviewLaunchLinkRequest($course_id, $launch_link_request, $css_url);
 
         try {
@@ -173,7 +173,7 @@ class CourseApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -181,7 +181,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -189,7 +189,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -205,7 +205,7 @@ class CourseApi
      * Returns the launch link to use to preview this course
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      * @param  string $css_url (optional)
      *
      * @throws \InvalidArgumentException
@@ -227,7 +227,7 @@ class CourseApi
      * Returns the launch link to use to preview this course
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      * @param  string $css_url (optional)
      *
      * @throws \InvalidArgumentException
@@ -235,7 +235,7 @@ class CourseApi
      */
     public function buildCoursePreviewLaunchLinkAsyncWithHttpInfo($course_id, $launch_link_request, $css_url = null)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema';
         $request = $this->buildCoursePreviewLaunchLinkRequest($course_id, $launch_link_request, $css_url);
 
         return $this->client
@@ -279,7 +279,7 @@ class CourseApi
      * Create request for operation 'buildCoursePreviewLaunchLink'
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      * @param  string $css_url (optional)
      *
      * @throws \InvalidArgumentException
@@ -403,11 +403,11 @@ class CourseApi
      *
      * @param  string $course_id course_id (required)
      * @param  int $version_id The course version (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request launch_link_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request launch_link_request (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema
      */
     public function buildCoursePreviewLaunchLinkWithVersion($course_id, $version_id, $launch_link_request)
     {
@@ -422,15 +422,15 @@ class CourseApi
      *
      * @param  string $course_id (required)
      * @param  int $version_id The course version (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function buildCoursePreviewLaunchLinkWithVersionWithHttpInfo($course_id, $version_id, $launch_link_request)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema';
         $request = $this->buildCoursePreviewLaunchLinkWithVersionRequest($course_id, $version_id, $launch_link_request);
 
         try {
@@ -482,7 +482,7 @@ class CourseApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -490,7 +490,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -498,7 +498,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -515,7 +515,7 @@ class CourseApi
      *
      * @param  string $course_id (required)
      * @param  int $version_id The course version (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -537,14 +537,14 @@ class CourseApi
      *
      * @param  string $course_id (required)
      * @param  int $version_id The course version (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function buildCoursePreviewLaunchLinkWithVersionAsyncWithHttpInfo($course_id, $version_id, $launch_link_request)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema';
         $request = $this->buildCoursePreviewLaunchLinkWithVersionRequest($course_id, $version_id, $launch_link_request);
 
         return $this->client
@@ -589,7 +589,7 @@ class CourseApi
      *
      * @param  string $course_id (required)
      * @param  int $version_id The course version (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -721,13 +721,13 @@ class CourseApi
      * Start a job to fetch and import a course.
      *
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema $import_request import_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema $import_request import_request (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\StringResultSchema
      */
     public function createFetchAndImportCourseJob($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null)
     {
@@ -741,17 +741,17 @@ class CourseApi
      * Start a job to fetch and import a course.
      *
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema $import_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema $import_request (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\StringResultSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function createFetchAndImportCourseJobWithHttpInfo($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
         $request = $this->createFetchAndImportCourseJobRequest($course_id, $import_request, $may_create_new_version, $postback_url);
 
         try {
@@ -803,7 +803,7 @@ class CourseApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\StringResultSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -811,7 +811,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -819,7 +819,7 @@ class CourseApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -835,7 +835,7 @@ class CourseApi
      * Start a job to fetch and import a course.
      *
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema $import_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema $import_request (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
      *
@@ -858,7 +858,7 @@ class CourseApi
      * Start a job to fetch and import a course.
      *
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema $import_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema $import_request (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
      *
@@ -867,7 +867,7 @@ class CourseApi
      */
     public function createFetchAndImportCourseJobAsyncWithHttpInfo($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
         $request = $this->createFetchAndImportCourseJobRequest($course_id, $import_request, $may_create_new_version, $postback_url);
 
         return $this->client
@@ -911,7 +911,7 @@ class CourseApi
      * Create request for operation 'createFetchAndImportCourseJob'
      *
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema $import_request (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema $import_request (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
      *
@@ -1041,7 +1041,7 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\StringResultSchema
      */
     public function createUploadAndImportCourseJob($course_id, $may_create_new_version = 'false', $file = null, $postback_url = null)
     {
@@ -1061,11 +1061,11 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\StringResultSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function createUploadAndImportCourseJobWithHttpInfo($course_id, $may_create_new_version = 'false', $file = null, $postback_url = null)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
         $request = $this->createUploadAndImportCourseJobRequest($course_id, $may_create_new_version, $file, $postback_url);
 
         try {
@@ -1117,7 +1117,7 @@ class CourseApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\StringResultSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1125,7 +1125,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1133,7 +1133,7 @@ class CourseApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1181,7 +1181,7 @@ class CourseApi
      */
     public function createUploadAndImportCourseJobAsyncWithHttpInfo($course_id, $may_create_new_version = 'false', $file = null, $postback_url = null)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
         $request = $this->createUploadAndImportCourseJobRequest($course_id, $may_create_new_version, $file, $postback_url);
 
         return $this->client
@@ -1406,7 +1406,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1414,7 +1414,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ResponseError',
+                        '\RusticiSoftware\Cloud\V2\Model\ResponseError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1657,7 +1657,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1665,7 +1665,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1862,7 +1862,7 @@ class CourseApi
      * Delete tags for this course
      *
      * @param  string $course_id course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1879,7 +1879,7 @@ class CourseApi
      * Delete tags for this course
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1925,7 +1925,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1933,7 +1933,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1949,7 +1949,7 @@ class CourseApi
      * Delete tags for this course
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1970,7 +1970,7 @@ class CourseApi
      * Delete tags for this course
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2007,7 +2007,7 @@ class CourseApi
      * Create request for operation 'deleteCourseTags'
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2188,7 +2188,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2196,7 +2196,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2458,7 +2458,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2466,7 +2466,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2685,7 +2685,7 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\CourseSchema
      */
     public function getCourse($course_id, $include_registration_count = 'false', $include_course_metadata = 'false')
     {
@@ -2704,11 +2704,11 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\CourseSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCourseWithHttpInfo($course_id, $include_registration_count = 'false', $include_course_metadata = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\CourseSchema';
         $request = $this->getCourseRequest($course_id, $include_registration_count, $include_course_metadata);
 
         try {
@@ -2760,7 +2760,7 @@ class CourseApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\CourseSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2768,7 +2768,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2776,7 +2776,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2822,7 +2822,7 @@ class CourseApi
      */
     public function getCourseAsyncWithHttpInfo($course_id, $include_registration_count = 'false', $include_course_metadata = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\CourseSchema';
         $request = $this->getCourseRequest($course_id, $include_registration_count, $include_course_metadata);
 
         return $this->client
@@ -2988,7 +2988,7 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\SettingListSchema
      */
     public function getCourseConfiguration($course_id, $include_metadata = 'false')
     {
@@ -3006,11 +3006,11 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\SettingListSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCourseConfigurationWithHttpInfo($course_id, $include_metadata = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
         $request = $this->getCourseConfigurationRequest($course_id, $include_metadata);
 
         try {
@@ -3062,7 +3062,7 @@ class CourseApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\SettingListSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3070,7 +3070,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3078,7 +3078,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3122,7 +3122,7 @@ class CourseApi
      */
     public function getCourseConfigurationAsyncWithHttpInfo($course_id, $include_metadata = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
         $request = $this->getCourseConfigurationRequest($course_id, $include_metadata);
 
         return $this->client
@@ -3286,7 +3286,7 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiStatementResult
      */
     public function getCourseStatements($course_id, $learner_id = null, $since = null, $until = null, $more = null)
     {
@@ -3307,11 +3307,11 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\XapiStatementResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCourseStatementsWithHttpInfo($course_id, $learner_id = null, $since = null, $until = null, $more = null)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\XapiStatementResult';
         $request = $this->getCourseStatementsRequest($course_id, $learner_id, $since, $until, $more);
 
         try {
@@ -3363,7 +3363,7 @@ class CourseApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult',
+                        '\RusticiSoftware\Cloud\V2\Model\XapiStatementResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3371,7 +3371,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3379,7 +3379,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3429,7 +3429,7 @@ class CourseApi
      */
     public function getCourseStatementsAsyncWithHttpInfo($course_id, $learner_id = null, $since = null, $until = null, $more = null)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\XapiStatementResult';
         $request = $this->getCourseStatementsRequest($course_id, $learner_id, $since, $until, $more);
 
         return $this->client
@@ -3604,7 +3604,7 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\TagListSchema
      */
     public function getCourseTags($course_id)
     {
@@ -3621,11 +3621,11 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\TagListSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCourseTagsWithHttpInfo($course_id)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\TagListSchema';
         $request = $this->getCourseTagsRequest($course_id);
 
         try {
@@ -3677,7 +3677,7 @@ class CourseApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\TagListSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3685,7 +3685,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3693,7 +3693,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3735,7 +3735,7 @@ class CourseApi
      */
     public function getCourseTagsAsyncWithHttpInfo($course_id)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\TagListSchema';
         $request = $this->getCourseTagsRequest($course_id);
 
         return $this->client
@@ -3892,7 +3892,7 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\SettingListSchema
      */
     public function getCourseVersionConfiguration($course_id, $version_id, $include_metadata = 'false')
     {
@@ -3911,11 +3911,11 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\SettingListSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCourseVersionConfigurationWithHttpInfo($course_id, $version_id, $include_metadata = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
         $request = $this->getCourseVersionConfigurationRequest($course_id, $version_id, $include_metadata);
 
         try {
@@ -3967,7 +3967,7 @@ class CourseApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\SettingListSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3975,7 +3975,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3983,7 +3983,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4029,7 +4029,7 @@ class CourseApi
      */
     public function getCourseVersionConfigurationAsyncWithHttpInfo($course_id, $version_id, $include_metadata = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\SettingListSchema';
         $request = $this->getCourseVersionConfigurationRequest($course_id, $version_id, $include_metadata);
 
         return $this->client
@@ -4207,7 +4207,7 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\CourseSchema
      */
     public function getCourseVersionInfo($course_id, $version_id, $include_registration_count = 'false', $include_course_metadata = 'false')
     {
@@ -4227,11 +4227,11 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\CourseSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCourseVersionInfoWithHttpInfo($course_id, $version_id, $include_registration_count = 'false', $include_course_metadata = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\CourseSchema';
         $request = $this->getCourseVersionInfoRequest($course_id, $version_id, $include_registration_count, $include_course_metadata);
 
         try {
@@ -4283,7 +4283,7 @@ class CourseApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\CourseSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4291,7 +4291,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4299,7 +4299,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4347,7 +4347,7 @@ class CourseApi
      */
     public function getCourseVersionInfoAsyncWithHttpInfo($course_id, $version_id, $include_registration_count = 'false', $include_course_metadata = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\CourseSchema';
         $request = $this->getCourseVersionInfoRequest($course_id, $version_id, $include_registration_count, $include_course_metadata);
 
         return $this->client
@@ -4532,7 +4532,7 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiStatementResult
      */
     public function getCourseVersionStatements($course_id, $version_id, $learner_id = null, $since = null, $until = null, $more = null)
     {
@@ -4554,11 +4554,11 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\XapiStatementResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCourseVersionStatementsWithHttpInfo($course_id, $version_id, $learner_id = null, $since = null, $until = null, $more = null)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\XapiStatementResult';
         $request = $this->getCourseVersionStatementsRequest($course_id, $version_id, $learner_id, $since, $until, $more);
 
         try {
@@ -4610,7 +4610,7 @@ class CourseApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult',
+                        '\RusticiSoftware\Cloud\V2\Model\XapiStatementResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4618,7 +4618,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4626,7 +4626,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4678,7 +4678,7 @@ class CourseApi
      */
     public function getCourseVersionStatementsAsyncWithHttpInfo($course_id, $version_id, $learner_id = null, $since = null, $until = null, $more = null)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\XapiStatementResult';
         $request = $this->getCourseVersionStatementsRequest($course_id, $version_id, $learner_id, $since, $until, $more);
 
         return $this->client
@@ -4872,7 +4872,7 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseListNonPagedSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\CourseListNonPagedSchema
      */
     public function getCourseVersions($course_id, $since = null, $until = null, $include_registration_count = 'false', $include_course_metadata = 'false')
     {
@@ -4893,11 +4893,11 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseListNonPagedSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\CourseListNonPagedSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCourseVersionsWithHttpInfo($course_id, $since = null, $until = null, $include_registration_count = 'false', $include_course_metadata = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseListNonPagedSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\CourseListNonPagedSchema';
         $request = $this->getCourseVersionsRequest($course_id, $since, $until, $include_registration_count, $include_course_metadata);
 
         try {
@@ -4949,7 +4949,7 @@ class CourseApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseListNonPagedSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\CourseListNonPagedSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4957,7 +4957,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4965,7 +4965,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5015,7 +5015,7 @@ class CourseApi
      */
     public function getCourseVersionsAsyncWithHttpInfo($course_id, $since = null, $until = null, $include_registration_count = 'false', $include_course_metadata = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseListNonPagedSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\CourseListNonPagedSchema';
         $request = $this->getCourseVersionsRequest($course_id, $since, $until, $include_registration_count, $include_course_metadata);
 
         return $this->client
@@ -5198,7 +5198,7 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseListSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\CourseListSchema
      */
     public function getCourses($more = null, $since = null, $until = null, $filter = null, $filter_by = null, $order_by = null, $include_registration_count = 'false', $include_course_metadata = 'false', $tags = null)
     {
@@ -5223,11 +5223,11 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseListSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\CourseListSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCoursesWithHttpInfo($more = null, $since = null, $until = null, $filter = null, $filter_by = null, $order_by = null, $include_registration_count = 'false', $include_course_metadata = 'false', $tags = null)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\CourseListSchema';
         $request = $this->getCoursesRequest($more, $since, $until, $filter, $filter_by, $order_by, $include_registration_count, $include_course_metadata, $tags);
 
         try {
@@ -5279,7 +5279,7 @@ class CourseApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseListSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\CourseListSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5287,7 +5287,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5345,7 +5345,7 @@ class CourseApi
      */
     public function getCoursesAsyncWithHttpInfo($more = null, $since = null, $until = null, $filter = null, $filter_by = null, $order_by = null, $include_registration_count = 'false', $include_course_metadata = 'false', $tags = null)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseListSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\CourseListSchema';
         $request = $this->getCoursesRequest($more, $since, $until, $filter, $filter_by, $order_by, $include_registration_count, $include_course_metadata, $tags);
 
         return $this->client
@@ -5533,7 +5533,7 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ImportJobResultSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\ImportJobResultSchema
      */
     public function getImportJobStatus($import_job_id)
     {
@@ -5550,11 +5550,11 @@ class CourseApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ImportJobResultSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\ImportJobResultSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getImportJobStatusWithHttpInfo($import_job_id)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ImportJobResultSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\ImportJobResultSchema';
         $request = $this->getImportJobStatusRequest($import_job_id);
 
         try {
@@ -5606,7 +5606,7 @@ class CourseApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ImportJobResultSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\ImportJobResultSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5614,7 +5614,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5622,7 +5622,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ResponseError',
+                        '\RusticiSoftware\Cloud\V2\Model\ResponseError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5664,7 +5664,7 @@ class CourseApi
      */
     public function getImportJobStatusAsyncWithHttpInfo($import_job_id)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ImportJobResultSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\ImportJobResultSchema';
         $request = $this->getImportJobStatusRequest($import_job_id);
 
         return $this->client
@@ -5816,7 +5816,7 @@ class CourseApi
      * Set the tags for this course
      *
      * @param  string $course_id course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5833,7 +5833,7 @@ class CourseApi
      * Set the tags for this course
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5879,7 +5879,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5887,7 +5887,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5903,7 +5903,7 @@ class CourseApi
      * Set the tags for this course
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5924,7 +5924,7 @@ class CourseApi
      * Set the tags for this course
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5961,7 +5961,7 @@ class CourseApi
      * Create request for operation 'putCourseTags'
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -6078,7 +6078,7 @@ class CourseApi
      *
      * Sets all of the provided tags on all of the provided courses
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseTagsBatchSchema $batch batch (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CourseTagsBatchSchema $batch batch (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6094,7 +6094,7 @@ class CourseApi
      *
      * Sets all of the provided tags on all of the provided courses
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseTagsBatchSchema $batch (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CourseTagsBatchSchema $batch (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6140,7 +6140,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6148,7 +6148,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6163,7 +6163,7 @@ class CourseApi
      *
      * Sets all of the provided tags on all of the provided courses
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseTagsBatchSchema $batch (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CourseTagsBatchSchema $batch (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6183,7 +6183,7 @@ class CourseApi
      *
      * Sets all of the provided tags on all of the provided courses
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseTagsBatchSchema $batch (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CourseTagsBatchSchema $batch (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6219,7 +6219,7 @@ class CourseApi
     /**
      * Create request for operation 'putCourseTagsBatch'
      *
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseTagsBatchSchema $batch (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\CourseTagsBatchSchema $batch (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -6323,7 +6323,7 @@ class CourseApi
      * Set configuration settings for this course.
      *
      * @param  string $course_id course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings configuration_settings (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6340,7 +6340,7 @@ class CourseApi
      * Set configuration settings for this course.
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6386,7 +6386,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6394,7 +6394,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6410,7 +6410,7 @@ class CourseApi
      * Set configuration settings for this course.
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6431,7 +6431,7 @@ class CourseApi
      * Set configuration settings for this course.
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6468,7 +6468,7 @@ class CourseApi
      * Create request for operation 'setCourseConfiguration'
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -6586,7 +6586,7 @@ class CourseApi
      * Sets the course title for `courseId`
      *
      * @param  string $course_id course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TitleSchema $title title (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TitleSchema $title title (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6604,7 +6604,7 @@ class CourseApi
      * Sets the course title for `courseId`
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TitleSchema $title (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TitleSchema $title (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6672,7 +6672,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6680,7 +6680,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6696,7 +6696,7 @@ class CourseApi
      * Sets the course title for `courseId`
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TitleSchema $title (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TitleSchema $title (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6717,7 +6717,7 @@ class CourseApi
      * Sets the course title for `courseId`
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TitleSchema $title (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TitleSchema $title (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6768,7 +6768,7 @@ class CourseApi
      * Create request for operation 'setCourseTitle'
      *
      * @param  string $course_id (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TitleSchema $title (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\TitleSchema $title (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -6887,7 +6887,7 @@ class CourseApi
      *
      * @param  string $course_id course_id (required)
      * @param  int $version_id The course version (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings configuration_settings (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6905,7 +6905,7 @@ class CourseApi
      *
      * @param  string $course_id (required)
      * @param  int $version_id The course version (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6951,7 +6951,7 @@ class CourseApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6959,7 +6959,7 @@ class CourseApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6976,7 +6976,7 @@ class CourseApi
      *
      * @param  string $course_id (required)
      * @param  int $version_id The course version (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6998,7 +6998,7 @@ class CourseApi
      *
      * @param  string $course_id (required)
      * @param  int $version_id The course version (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7036,7 +7036,7 @@ class CourseApi
      *
      * @param  string $course_id (required)
      * @param  int $version_id The course version (required)
-     * @param  \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

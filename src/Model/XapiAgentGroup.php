@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -63,8 +63,8 @@ class XapiAgentGroup implements ModelInterface, ArrayAccess
         'mbox' => 'string',
         'mbox_sha1sum' => 'string',
         'openid' => 'string',
-        'account' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAccount',
-        'member' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup[]'
+        'account' => '\RusticiSoftware\Cloud\V2\Model\XapiAccount',
+        'member' => '\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup[]'
     ];
 
     /**
@@ -399,7 +399,7 @@ class XapiAgentGroup implements ModelInterface, ArrayAccess
     /**
      * Gets account
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAccount
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiAccount
      */
     public function getAccount()
     {
@@ -409,7 +409,7 @@ class XapiAgentGroup implements ModelInterface, ArrayAccess
     /**
      * Sets account
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAccount $account account
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiAccount $account account
      *
      * @return $this
      */
@@ -423,7 +423,7 @@ class XapiAgentGroup implements ModelInterface, ArrayAccess
     /**
      * Gets member
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup[]
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiAgentGroup[]
      */
     public function getMember()
     {
@@ -433,7 +433,7 @@ class XapiAgentGroup implements ModelInterface, ArrayAccess
     /**
      * Sets member
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup[] $member member
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiAgentGroup[] $member member
      *
      * @return $this
      */

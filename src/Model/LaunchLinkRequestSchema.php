@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -66,7 +66,7 @@ class LaunchLinkRequestSchema implements ModelInterface, ArrayAccess
         'learner_tags' => 'string[]',
         'course_tags' => 'string[]',
         'registration_tags' => 'string[]',
-        'additionalvalues' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ItemValuePairSchema[]'
+        'additionalvalues' => '\RusticiSoftware\Cloud\V2\Model\ItemValuePairSchema[]'
     ];
 
     /**
@@ -477,7 +477,7 @@ class LaunchLinkRequestSchema implements ModelInterface, ArrayAccess
     /**
      * Gets additionalvalues
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ItemValuePairSchema[]
+     * @return \RusticiSoftware\Cloud\V2\Model\ItemValuePairSchema[]
      */
     public function getAdditionalvalues()
     {
@@ -487,7 +487,7 @@ class LaunchLinkRequestSchema implements ModelInterface, ArrayAccess
     /**
      * Sets additionalvalues
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ItemValuePairSchema[] $additionalvalues additionalvalues
+     * @param \RusticiSoftware\Cloud\V2\Model\ItemValuePairSchema[] $additionalvalues additionalvalues
      *
      * @return $this
      */
