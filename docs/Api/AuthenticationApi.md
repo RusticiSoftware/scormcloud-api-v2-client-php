@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **getAppToken**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationToken getAppToken($scope, $expiration)
+> \RusticiSoftware\Cloud\V2\Model\ApplicationToken getAppToken($scope, $expiration)
 
 Authenticates for a oauth token
 
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationToken**](../Model/ApplicationToken.md)
+[**\RusticiSoftware\Cloud\V2\Model\ApplicationToken**](../Model/ApplicationToken.md)
 
 ### Authorization
 

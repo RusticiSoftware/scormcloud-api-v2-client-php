@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -58,7 +58,7 @@ class XapiStatementResult implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'statements' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatement[]',
+        'statements' => '\RusticiSoftware\Cloud\V2\Model\XapiStatement[]',
         'more' => 'string'
     ];
 
@@ -217,7 +217,7 @@ class XapiStatementResult implements ModelInterface, ArrayAccess
     /**
      * Gets statements
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatement[]
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiStatement[]
      */
     public function getStatements()
     {
@@ -227,7 +227,7 @@ class XapiStatementResult implements ModelInterface, ArrayAccess
     /**
      * Sets statements
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatement[] $statements statements
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiStatement[] $statements statements
      *
      * @return $this
      */

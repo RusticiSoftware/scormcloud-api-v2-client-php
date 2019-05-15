@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -58,15 +58,15 @@ class CreateRegistrationSchema implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'course_id' => 'string',
-        'learner' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LearnerSchema',
+        'learner' => '\RusticiSoftware\Cloud\V2\Model\LearnerSchema',
         'registration_id' => 'string',
         'xapi_registration_id' => 'string',
         'learner_tags' => 'string[]',
         'course_tags' => 'string[]',
         'registration_tags' => 'string[]',
-        'post_back' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\PostBackSchema',
-        'initial_registration_state' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema',
-        'initial_settings' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema'
+        'post_back' => '\RusticiSoftware\Cloud\V2\Model\PostBackSchema',
+        'initial_registration_state' => '\RusticiSoftware\Cloud\V2\Model\RegistrationSchema',
+        'initial_settings' => '\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema'
     ];
 
     /**
@@ -294,7 +294,7 @@ class CreateRegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Gets learner
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LearnerSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\LearnerSchema
      */
     public function getLearner()
     {
@@ -304,7 +304,7 @@ class CreateRegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Sets learner
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LearnerSchema $learner learner
+     * @param \RusticiSoftware\Cloud\V2\Model\LearnerSchema $learner learner
      *
      * @return $this
      */
@@ -438,7 +438,7 @@ class CreateRegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Gets post_back
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\PostBackSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\PostBackSchema
      */
     public function getPostBack()
     {
@@ -448,7 +448,7 @@ class CreateRegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Sets post_back
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\PostBackSchema $post_back Specifies an optional override URL for which to post activity and status data in real time as the course is completed. By default all of these settings are read from your configuration.
+     * @param \RusticiSoftware\Cloud\V2\Model\PostBackSchema $post_back Specifies an optional override URL for which to post activity and status data in real time as the course is completed. By default all of these settings are read from your configuration.
      *
      * @return $this
      */
@@ -462,7 +462,7 @@ class CreateRegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Gets initial_registration_state
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\RegistrationSchema
      */
     public function getInitialRegistrationState()
     {
@@ -472,7 +472,7 @@ class CreateRegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Sets initial_registration_state
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema $initial_registration_state initial_registration_state
+     * @param \RusticiSoftware\Cloud\V2\Model\RegistrationSchema $initial_registration_state initial_registration_state
      *
      * @return $this
      */
@@ -486,7 +486,7 @@ class CreateRegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Gets initial_settings
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema
      */
     public function getInitialSettings()
     {
@@ -496,7 +496,7 @@ class CreateRegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Sets initial_settings
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $initial_settings initial_settings
+     * @param \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $initial_settings initial_settings
      *
      * @return $this
      */

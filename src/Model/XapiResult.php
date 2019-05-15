@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -58,7 +58,7 @@ class XapiResult implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'score' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiScore',
+        'score' => '\RusticiSoftware\Cloud\V2\Model\XapiScore',
         'success' => 'bool',
         'completion' => 'bool',
         'response' => 'string',
@@ -238,7 +238,7 @@ class XapiResult implements ModelInterface, ArrayAccess
     /**
      * Gets score
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiScore
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiScore
      */
     public function getScore()
     {
@@ -248,7 +248,7 @@ class XapiResult implements ModelInterface, ArrayAccess
     /**
      * Sets score
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiScore $score score
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiScore $score score
      *
      * @return $this
      */

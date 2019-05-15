@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -64,11 +64,11 @@ class XapiActivityDefinition implements ModelInterface, ArrayAccess
         'more_info' => 'string',
         'interaction_type' => 'string',
         'correct_responses_pattern' => 'string[]',
-        'choices' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]',
-        'scale' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]',
-        'source' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]',
-        'target' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]',
-        'steps' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]',
+        'choices' => '\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]',
+        'scale' => '\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]',
+        'source' => '\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]',
+        'target' => '\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]',
+        'steps' => '\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]',
         'extensions' => 'map[string,object]'
     ];
 
@@ -418,7 +418,7 @@ class XapiActivityDefinition implements ModelInterface, ArrayAccess
     /**
      * Gets choices
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]
      */
     public function getChoices()
     {
@@ -428,7 +428,7 @@ class XapiActivityDefinition implements ModelInterface, ArrayAccess
     /**
      * Sets choices
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[] $choices choices
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[] $choices choices
      *
      * @return $this
      */
@@ -442,7 +442,7 @@ class XapiActivityDefinition implements ModelInterface, ArrayAccess
     /**
      * Gets scale
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]
      */
     public function getScale()
     {
@@ -452,7 +452,7 @@ class XapiActivityDefinition implements ModelInterface, ArrayAccess
     /**
      * Sets scale
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[] $scale scale
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[] $scale scale
      *
      * @return $this
      */
@@ -466,7 +466,7 @@ class XapiActivityDefinition implements ModelInterface, ArrayAccess
     /**
      * Gets source
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]
      */
     public function getSource()
     {
@@ -476,7 +476,7 @@ class XapiActivityDefinition implements ModelInterface, ArrayAccess
     /**
      * Sets source
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[] $source source
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[] $source source
      *
      * @return $this
      */
@@ -490,7 +490,7 @@ class XapiActivityDefinition implements ModelInterface, ArrayAccess
     /**
      * Gets target
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]
      */
     public function getTarget()
     {
@@ -500,7 +500,7 @@ class XapiActivityDefinition implements ModelInterface, ArrayAccess
     /**
      * Sets target
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[] $target target
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[] $target target
      *
      * @return $this
      */
@@ -514,7 +514,7 @@ class XapiActivityDefinition implements ModelInterface, ArrayAccess
     /**
      * Gets steps
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[]
      */
     public function getSteps()
     {
@@ -524,7 +524,7 @@ class XapiActivityDefinition implements ModelInterface, ArrayAccess
     /**
      * Sets steps
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[] $steps steps
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiInteractionComponent[] $steps steps
      *
      * @return $this
      */

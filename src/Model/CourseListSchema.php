@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -57,7 +57,7 @@ class CourseListSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'courses' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema[]',
+        'courses' => '\RusticiSoftware\Cloud\V2\Model\CourseSchema[]',
         'more' => 'string'
     ];
 
@@ -213,7 +213,7 @@ class CourseListSchema implements ModelInterface, ArrayAccess
     /**
      * Gets courses
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema[]
+     * @return \RusticiSoftware\Cloud\V2\Model\CourseSchema[]
      */
     public function getCourses()
     {
@@ -223,7 +223,7 @@ class CourseListSchema implements ModelInterface, ArrayAccess
     /**
      * Sets courses
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseSchema[] $courses courses
+     * @param \RusticiSoftware\Cloud\V2\Model\CourseSchema[] $courses courses
      *
      * @return $this
      */

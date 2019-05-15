@@ -60,25 +60,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure HTTP basic authorization: APP_NORMAL
 $config = RusticiSoftware\Cloud\V2\Configuration::getDefaultConfiguration()
     ->setUsername('YOUR_USERNAME')
-    ->setPassword('YOUR_PASSWORD');
-// Configure OAuth2 access token for authorization: OAUTH
-$config = RusticiSoftware\Cloud\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+    ->setPassword('YOUR_PASSWORD')
+    ->setAccessToken(null);
+// Alternatively configure OAuth2 access token for authorization: OAUTH
+// $config = RusticiSoftware\Cloud\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$apiInstance = new RusticiSoftware\Cloud\V2\Api\ApplicationManagementApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$application_name = "application_name_example"; // string | 
+$pingInstance = new RusticiSoftware\Cloud\V2\Api\PingApi(null, $config, null);
 
 try {
-    $result = $apiInstance->createApplication($application_name);
+    $result = $pingInstance->pingAppId();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ApplicationManagementApi->createApplication: ', $e->getMessage(), PHP_EOL;
+    echo $e->getMessage();
 }
-
 ?>
 ```
 

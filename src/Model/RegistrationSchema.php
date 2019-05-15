@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -62,21 +62,21 @@ class RegistrationSchema implements ModelInterface, ArrayAccess
         'xapi_registration_id' => 'string',
         'dispatch_id' => 'string',
         'updated' => '\DateTime',
-        'registration_completion' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationCompletion',
+        'registration_completion' => '\RusticiSoftware\Cloud\V2\Model\RegistrationCompletion',
         'registration_completion_amount' => 'double',
-        'registration_success' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSuccess',
-        'score' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ScoreSchema',
+        'registration_success' => '\RusticiSoftware\Cloud\V2\Model\RegistrationSuccess',
+        'score' => '\RusticiSoftware\Cloud\V2\Model\ScoreSchema',
         'total_seconds_tracked' => 'double',
         'first_access_date' => '\DateTime',
         'last_access_date' => '\DateTime',
         'completed_date' => '\DateTime',
         'created_date' => '\DateTime',
-        'course' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseReferenceSchema',
-        'learner' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LearnerSchema',
-        'global_objectives' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ObjectiveSchema[]',
-        'shared_data' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SharedDataEntrySchema[]',
+        'course' => '\RusticiSoftware\Cloud\V2\Model\CourseReferenceSchema',
+        'learner' => '\RusticiSoftware\Cloud\V2\Model\LearnerSchema',
+        'global_objectives' => '\RusticiSoftware\Cloud\V2\Model\ObjectiveSchema[]',
+        'shared_data' => '\RusticiSoftware\Cloud\V2\Model\SharedDataEntrySchema[]',
         'suspended_activity_id' => 'string',
-        'activity_details' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ActivityResultSchema'
+        'activity_details' => '\RusticiSoftware\Cloud\V2\Model\ActivityResultSchema'
     ];
 
     /**
@@ -441,7 +441,7 @@ class RegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Gets registration_completion
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationCompletion
+     * @return \RusticiSoftware\Cloud\V2\Model\RegistrationCompletion
      */
     public function getRegistrationCompletion()
     {
@@ -451,7 +451,7 @@ class RegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Sets registration_completion
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationCompletion $registration_completion registration_completion
+     * @param \RusticiSoftware\Cloud\V2\Model\RegistrationCompletion $registration_completion registration_completion
      *
      * @return $this
      */
@@ -489,7 +489,7 @@ class RegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Gets registration_success
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSuccess
+     * @return \RusticiSoftware\Cloud\V2\Model\RegistrationSuccess
      */
     public function getRegistrationSuccess()
     {
@@ -499,7 +499,7 @@ class RegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Sets registration_success
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSuccess $registration_success registration_success
+     * @param \RusticiSoftware\Cloud\V2\Model\RegistrationSuccess $registration_success registration_success
      *
      * @return $this
      */
@@ -513,7 +513,7 @@ class RegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Gets score
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ScoreSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\ScoreSchema
      */
     public function getScore()
     {
@@ -523,7 +523,7 @@ class RegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Sets score
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ScoreSchema $score score
+     * @param \RusticiSoftware\Cloud\V2\Model\ScoreSchema $score score
      *
      * @return $this
      */
@@ -657,7 +657,7 @@ class RegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Gets course
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseReferenceSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\CourseReferenceSchema
      */
     public function getCourse()
     {
@@ -667,7 +667,7 @@ class RegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Sets course
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseReferenceSchema $course course
+     * @param \RusticiSoftware\Cloud\V2\Model\CourseReferenceSchema $course course
      *
      * @return $this
      */
@@ -681,7 +681,7 @@ class RegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Gets learner
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LearnerSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\LearnerSchema
      */
     public function getLearner()
     {
@@ -691,7 +691,7 @@ class RegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Sets learner
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LearnerSchema $learner learner
+     * @param \RusticiSoftware\Cloud\V2\Model\LearnerSchema $learner learner
      *
      * @return $this
      */
@@ -705,7 +705,7 @@ class RegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Gets global_objectives
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ObjectiveSchema[]
+     * @return \RusticiSoftware\Cloud\V2\Model\ObjectiveSchema[]
      */
     public function getGlobalObjectives()
     {
@@ -715,7 +715,7 @@ class RegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Sets global_objectives
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ObjectiveSchema[] $global_objectives global_objectives
+     * @param \RusticiSoftware\Cloud\V2\Model\ObjectiveSchema[] $global_objectives global_objectives
      *
      * @return $this
      */
@@ -729,7 +729,7 @@ class RegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Gets shared_data
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SharedDataEntrySchema[]
+     * @return \RusticiSoftware\Cloud\V2\Model\SharedDataEntrySchema[]
      */
     public function getSharedData()
     {
@@ -739,7 +739,7 @@ class RegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Sets shared_data
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SharedDataEntrySchema[] $shared_data shared_data
+     * @param \RusticiSoftware\Cloud\V2\Model\SharedDataEntrySchema[] $shared_data shared_data
      *
      * @return $this
      */
@@ -777,7 +777,7 @@ class RegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Gets activity_details
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ActivityResultSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\ActivityResultSchema
      */
     public function getActivityDetails()
     {
@@ -787,7 +787,7 @@ class RegistrationSchema implements ModelInterface, ArrayAccess
     /**
      * Sets activity_details
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ActivityResultSchema $activity_details activity_details
+     * @param \RusticiSoftware\Cloud\V2\Model\ActivityResultSchema $activity_details activity_details
      *
      * @return $this
      */

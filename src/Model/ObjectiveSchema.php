@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -59,7 +59,7 @@ class ObjectiveSchema implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'id' => 'string',
         'primary' => 'bool',
-        'score' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ScoreSchema',
+        'score' => '\RusticiSoftware\Cloud\V2\Model\ScoreSchema',
         'score_max' => 'double',
         'score_min' => 'double',
         'score_raw' => 'double',
@@ -402,7 +402,7 @@ class ObjectiveSchema implements ModelInterface, ArrayAccess
     /**
      * Gets score
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ScoreSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\ScoreSchema
      */
     public function getScore()
     {
@@ -412,7 +412,7 @@ class ObjectiveSchema implements ModelInterface, ArrayAccess
     /**
      * Sets score
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ScoreSchema $score score
+     * @param \RusticiSoftware\Cloud\V2\Model\ScoreSchema $score score
      *
      * @return $this
      */

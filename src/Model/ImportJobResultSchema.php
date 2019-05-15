@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -60,7 +60,7 @@ class ImportJobResultSchema implements ModelInterface, ArrayAccess
         'job_id' => 'string',
         'status' => 'string',
         'message' => 'string',
-        'import_result' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ImportResultSchema'
+        'import_result' => '\RusticiSoftware\Cloud\V2\Model\ImportResultSchema'
     ];
 
     /**
@@ -331,7 +331,7 @@ class ImportJobResultSchema implements ModelInterface, ArrayAccess
     /**
      * Gets import_result
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ImportResultSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\ImportResultSchema
      */
     public function getImportResult()
     {
@@ -341,7 +341,7 @@ class ImportJobResultSchema implements ModelInterface, ArrayAccess
     /**
      * Sets import_result
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ImportResultSchema $import_result import_result
+     * @param \RusticiSoftware\Cloud\V2\Model\ImportResultSchema $import_result import_result
      *
      * @return $this
      */

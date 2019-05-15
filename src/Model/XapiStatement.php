@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -59,18 +59,18 @@ class XapiStatement implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'id' => 'string',
-        'actor' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup',
-        'verb' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiVerb',
-        'object_activity' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiActivity',
-        'object_agent_group' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup',
-        'object_statement_reference' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementReference',
-        'object_sub_statement' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatement',
-        'result' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiResult',
-        'context' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiContext',
+        'actor' => '\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup',
+        'verb' => '\RusticiSoftware\Cloud\V2\Model\XapiVerb',
+        'object_activity' => '\RusticiSoftware\Cloud\V2\Model\XapiActivity',
+        'object_agent_group' => '\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup',
+        'object_statement_reference' => '\RusticiSoftware\Cloud\V2\Model\XapiStatementReference',
+        'object_sub_statement' => '\RusticiSoftware\Cloud\V2\Model\XapiStatement',
+        'result' => '\RusticiSoftware\Cloud\V2\Model\XapiResult',
+        'context' => '\RusticiSoftware\Cloud\V2\Model\XapiContext',
         'timestamp' => '\DateTime',
         'stored' => '\DateTime',
-        'authority' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup',
-        'attachments' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAttachment[]'
+        'authority' => '\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup',
+        'attachments' => '\RusticiSoftware\Cloud\V2\Model\XapiAttachment[]'
     ];
 
     /**
@@ -304,7 +304,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Gets actor
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiAgentGroup
      */
     public function getActor()
     {
@@ -314,7 +314,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Sets actor
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup $actor actor
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiAgentGroup $actor actor
      *
      * @return $this
      */
@@ -328,7 +328,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Gets verb
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiVerb
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiVerb
      */
     public function getVerb()
     {
@@ -338,7 +338,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Sets verb
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiVerb $verb verb
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiVerb $verb verb
      *
      * @return $this
      */
@@ -352,7 +352,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Gets object_activity
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiActivity
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiActivity
      */
     public function getObjectActivity()
     {
@@ -362,7 +362,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Sets object_activity
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiActivity $object_activity object_activity
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiActivity $object_activity object_activity
      *
      * @return $this
      */
@@ -376,7 +376,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Gets object_agent_group
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiAgentGroup
      */
     public function getObjectAgentGroup()
     {
@@ -386,7 +386,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Sets object_agent_group
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup $object_agent_group object_agent_group
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiAgentGroup $object_agent_group object_agent_group
      *
      * @return $this
      */
@@ -400,7 +400,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Gets object_statement_reference
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementReference
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiStatementReference
      */
     public function getObjectStatementReference()
     {
@@ -410,7 +410,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Sets object_statement_reference
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementReference $object_statement_reference object_statement_reference
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiStatementReference $object_statement_reference object_statement_reference
      *
      * @return $this
      */
@@ -424,7 +424,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Gets object_sub_statement
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatement
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiStatement
      */
     public function getObjectSubStatement()
     {
@@ -434,7 +434,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Sets object_sub_statement
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatement $object_sub_statement object_sub_statement
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiStatement $object_sub_statement object_sub_statement
      *
      * @return $this
      */
@@ -448,7 +448,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Gets result
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiResult
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiResult
      */
     public function getResult()
     {
@@ -458,7 +458,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Sets result
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiResult $result result
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiResult $result result
      *
      * @return $this
      */
@@ -472,7 +472,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Gets context
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiContext
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiContext
      */
     public function getContext()
     {
@@ -482,7 +482,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Sets context
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiContext $context context
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiContext $context context
      *
      * @return $this
      */
@@ -544,7 +544,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Gets authority
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiAgentGroup
      */
     public function getAuthority()
     {
@@ -554,7 +554,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Sets authority
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAgentGroup $authority authority
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiAgentGroup $authority authority
      *
      * @return $this
      */
@@ -568,7 +568,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Gets attachments
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAttachment[]
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiAttachment[]
      */
     public function getAttachments()
     {
@@ -578,7 +578,7 @@ class XapiStatement implements ModelInterface, ArrayAccess
     /**
      * Sets attachments
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiAttachment[] $attachments attachments
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiAttachment[] $attachments attachments
      *
      * @return $this
      */

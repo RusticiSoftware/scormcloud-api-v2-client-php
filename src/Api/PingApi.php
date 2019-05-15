@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Api;
+namespace RusticiSoftware\Cloud\V2\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -95,7 +95,7 @@ class PingApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\PingSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\PingSchema
      */
     public function pingAppId()
     {
@@ -111,11 +111,11 @@ class PingApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\PingSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\PingSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function pingAppIdWithHttpInfo()
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\PingSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\PingSchema';
         $request = $this->pingAppIdRequest();
 
         try {
@@ -167,7 +167,7 @@ class PingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\PingSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\PingSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -207,7 +207,7 @@ class PingApi
      */
     public function pingAppIdAsyncWithHttpInfo()
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\PingSchema';
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\PingSchema';
         $request = $this->pingAppIdRequest();
 
         return $this->client

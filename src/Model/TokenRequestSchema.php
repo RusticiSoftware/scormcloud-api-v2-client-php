@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -57,7 +57,7 @@ class TokenRequestSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'permissions' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\PermissionsSchema',
+        'permissions' => '\RusticiSoftware\Cloud\V2\Model\PermissionsSchema',
         'expiry' => '\DateTime'
     ];
 
@@ -219,7 +219,7 @@ class TokenRequestSchema implements ModelInterface, ArrayAccess
     /**
      * Gets permissions
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\PermissionsSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\PermissionsSchema
      */
     public function getPermissions()
     {
@@ -229,7 +229,7 @@ class TokenRequestSchema implements ModelInterface, ArrayAccess
     /**
      * Sets permissions
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\PermissionsSchema $permissions permissions
+     * @param \RusticiSoftware\Cloud\V2\Model\PermissionsSchema $permissions permissions
      *
      * @return $this
      */

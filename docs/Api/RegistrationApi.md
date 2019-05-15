@@ -110,7 +110,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\RegistrationApi(
     new GuzzleHttp\Client(),
     $config
 );
-$registration = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema | 
+$registration = new \RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema(); // \RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema | 
 $course_version = 56; // int | The version of the course you want to create the registration for. Unless you have a reason for using this you probably do not need to.
 
 try {
@@ -125,7 +125,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **registration** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema**](../Model/CreateRegistrationSchema.md)|  |
+ **registration** | [**\RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema**](../Model/CreateRegistrationSchema.md)|  |
  **course_version** | **int**| The version of the course you want to create the registration for. Unless you have a reason for using this you probably do not need to. | [optional]
 
 ### Return type
@@ -394,7 +394,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\RegistrationApi(
     $config
 );
 $registration_id = "registration_id_example"; // string | id for this registration
-$tags = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema | 
+$tags = new \RusticiSoftware\Cloud\V2\Model\TagListSchema(); // \RusticiSoftware\Cloud\V2\Model\TagListSchema | 
 
 try {
     $apiInstance->deleteRegistrationTags($registration_id, $tags);
@@ -409,7 +409,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **registration_id** | **string**| id for this registration |
- **tags** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema**](../Model/TagListSchema.md)|  |
+ **tags** | [**\RusticiSoftware\Cloud\V2\Model\TagListSchema**](../Model/TagListSchema.md)|  |
 
 ### Return type
 
@@ -482,7 +482,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRegistrationConfiguration**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema getRegistrationConfiguration($registration_id, $include_metadata)
+> \RusticiSoftware\Cloud\V2\Model\SettingListSchema getRegistrationConfiguration($registration_id, $include_metadata)
 
 Returns all configuration settings for this registration
 
@@ -526,7 +526,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema**](../Model/SettingListSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\SettingListSchema**](../Model/SettingListSchema.md)
 
 ### Authorization
 
@@ -540,7 +540,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRegistrationInstanceConfiguration**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema getRegistrationInstanceConfiguration($registration_id, $instance_id, $include_metadata)
+> \RusticiSoftware\Cloud\V2\Model\SettingListSchema getRegistrationInstanceConfiguration($registration_id, $instance_id, $include_metadata)
 
 Returns all configuration settings for this registration instance
 
@@ -586,7 +586,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingListSchema**](../Model/SettingListSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\SettingListSchema**](../Model/SettingListSchema.md)
 
 ### Authorization
 
@@ -600,7 +600,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRegistrationInstanceLaunchHistory**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema getRegistrationInstanceLaunchHistory($registration_id, $instance_id, $include_history_log)
+> \RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema getRegistrationInstanceLaunchHistory($registration_id, $instance_id, $include_history_log)
 
 Returns history of this registration's launches
 
@@ -646,7 +646,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema**](../Model/LaunchHistoryListSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema**](../Model/LaunchHistoryListSchema.md)
 
 ### Authorization
 
@@ -660,7 +660,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRegistrationInstanceProgress**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema getRegistrationInstanceProgress($registration_id, $instance_id, $include_child_results, $include_interactions_and_objectives, $include_runtime)
+> \RusticiSoftware\Cloud\V2\Model\RegistrationSchema getRegistrationInstanceProgress($registration_id, $instance_id, $include_child_results, $include_interactions_and_objectives, $include_runtime)
 
 Get registration progress for instance `instanceId` of `registrationId`
 
@@ -710,7 +710,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema**](../Model/RegistrationSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\RegistrationSchema**](../Model/RegistrationSchema.md)
 
 ### Authorization
 
@@ -724,7 +724,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRegistrationInstanceStatements**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult getRegistrationInstanceStatements($registration_id, $instance_id, $since, $until, $more)
+> \RusticiSoftware\Cloud\V2\Model\XapiStatementResult getRegistrationInstanceStatements($registration_id, $instance_id, $since, $until, $more)
 
 Get xAPI statements for instance `instanceId` of `registrationId`
 
@@ -774,7 +774,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult**](../Model/XapiStatementResult.md)
+[**\RusticiSoftware\Cloud\V2\Model\XapiStatementResult**](../Model/XapiStatementResult.md)
 
 ### Authorization
 
@@ -788,7 +788,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRegistrationInstances**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema getRegistrationInstances($registration_id, $until, $since, $more, $include_child_results, $include_interactions_and_objectives, $include_runtime)
+> \RusticiSoftware\Cloud\V2\Model\RegistrationListSchema getRegistrationInstances($registration_id, $until, $since, $more, $include_child_results, $include_interactions_and_objectives, $include_runtime)
 
 Get all the instances of this the registration specified by the registration ID
 
@@ -842,7 +842,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema**](../Model/RegistrationListSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema**](../Model/RegistrationListSchema.md)
 
 ### Authorization
 
@@ -856,7 +856,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRegistrationLaunchHistory**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema getRegistrationLaunchHistory($registration_id, $include_history_log)
+> \RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema getRegistrationLaunchHistory($registration_id, $include_history_log)
 
 Returns history of this registration's launches
 
@@ -900,7 +900,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema**](../Model/LaunchHistoryListSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\LaunchHistoryListSchema**](../Model/LaunchHistoryListSchema.md)
 
 ### Authorization
 
@@ -914,7 +914,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRegistrationLaunchLink**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema getRegistrationLaunchLink($registration_id, $launch_link_request)
+> \RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema getRegistrationLaunchLink($registration_id, $launch_link_request)
 
 Returns the link to use to launch this registration
 
@@ -938,7 +938,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\RegistrationApi(
     $config
 );
 $registration_id = "registration_id_example"; // string | id for this registration
-$launch_link_request = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema | 
+$launch_link_request = new \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema(); // \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema | 
 
 try {
     $result = $apiInstance->getRegistrationLaunchLink($registration_id, $launch_link_request);
@@ -954,11 +954,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **registration_id** | **string**| id for this registration |
- **launch_link_request** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema**](../Model/LaunchLinkRequestSchema.md)|  |
+ **launch_link_request** | [**\RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema**](../Model/LaunchLinkRequestSchema.md)|  |
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema**](../Model/LaunchLinkSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema**](../Model/LaunchLinkSchema.md)
 
 ### Authorization
 
@@ -972,7 +972,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRegistrationProgress**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema getRegistrationProgress($registration_id, $include_child_results, $include_interactions_and_objectives, $include_runtime)
+> \RusticiSoftware\Cloud\V2\Model\RegistrationSchema getRegistrationProgress($registration_id, $include_child_results, $include_interactions_and_objectives, $include_runtime)
 
 Get registration progress for `registrationId`
 
@@ -1020,7 +1020,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationSchema**](../Model/RegistrationSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\RegistrationSchema**](../Model/RegistrationSchema.md)
 
 ### Authorization
 
@@ -1034,7 +1034,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRegistrationStatements**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult getRegistrationStatements($registration_id, $since, $until, $more)
+> \RusticiSoftware\Cloud\V2\Model\XapiStatementResult getRegistrationStatements($registration_id, $since, $until, $more)
 
 Get xAPI statements for `registrationId`
 
@@ -1082,7 +1082,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\XapiStatementResult**](../Model/XapiStatementResult.md)
+[**\RusticiSoftware\Cloud\V2\Model\XapiStatementResult**](../Model/XapiStatementResult.md)
 
 ### Authorization
 
@@ -1096,7 +1096,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRegistrationTags**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema getRegistrationTags($registration_id)
+> \RusticiSoftware\Cloud\V2\Model\TagListSchema getRegistrationTags($registration_id)
 
 Get the tags for this registration
 
@@ -1138,7 +1138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema**](../Model/TagListSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\TagListSchema**](../Model/TagListSchema.md)
 
 ### Authorization
 
@@ -1152,7 +1152,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRegistrations**
-> \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema getRegistrations($course_id, $learner_id, $since, $until, $more, $include_child_results, $include_interactions_and_objectives, $include_runtime)
+> \RusticiSoftware\Cloud\V2\Model\RegistrationListSchema getRegistrations($course_id, $learner_id, $since, $until, $more, $include_child_results, $include_interactions_and_objectives, $include_runtime)
 
 Gets a list of registrations including a summary of the status of each registration.
 
@@ -1208,7 +1208,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema**](../Model/RegistrationListSchema.md)
+[**\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema**](../Model/RegistrationListSchema.md)
 
 ### Authorization
 
@@ -1246,7 +1246,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\RegistrationApi(
     $config
 );
 $registration_id = "registration_id_example"; // string | id for this registration
-$tags = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema | 
+$tags = new \RusticiSoftware\Cloud\V2\Model\TagListSchema(); // \RusticiSoftware\Cloud\V2\Model\TagListSchema | 
 
 try {
     $apiInstance->putRegistrationTags($registration_id, $tags);
@@ -1261,7 +1261,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **registration_id** | **string**| id for this registration |
- **tags** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\TagListSchema**](../Model/TagListSchema.md)|  |
+ **tags** | [**\RusticiSoftware\Cloud\V2\Model\TagListSchema**](../Model/TagListSchema.md)|  |
 
 ### Return type
 
@@ -1302,7 +1302,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\RegistrationApi(
     new GuzzleHttp\Client(),
     $config
 );
-$batch = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationTagsBatchSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationTagsBatchSchema | 
+$batch = new \RusticiSoftware\Cloud\V2\Model\RegistrationTagsBatchSchema(); // \RusticiSoftware\Cloud\V2\Model\RegistrationTagsBatchSchema | 
 
 try {
     $apiInstance->putRegistrationTagsBatch($batch);
@@ -1316,7 +1316,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **batch** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RegistrationTagsBatchSchema**](../Model/RegistrationTagsBatchSchema.md)|  |
+ **batch** | [**\RusticiSoftware\Cloud\V2\Model\RegistrationTagsBatchSchema**](../Model/RegistrationTagsBatchSchema.md)|  |
 
 ### Return type
 
@@ -1413,7 +1413,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\RegistrationApi(
     $config
 );
 $registration_id = "registration_id_example"; // string | id for this registration
-$configuration_settings = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema | 
+$configuration_settings = new \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema(); // \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema | 
 
 try {
     $apiInstance->setRegistrationConfiguration($registration_id, $configuration_settings);
@@ -1428,7 +1428,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **registration_id** | **string**| id for this registration |
- **configuration_settings** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema**](../Model/SettingsPostSchema.md)|  |
+ **configuration_settings** | [**\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema**](../Model/SettingsPostSchema.md)|  |
 
 ### Return type
 
@@ -1471,7 +1471,7 @@ $apiInstance = new RusticiSoftware\Cloud\V2\Api\RegistrationApi(
 );
 $registration_id = "registration_id_example"; // string | id for this registration
 $instance_id = 56; // int | The instance of this registration
-$configuration_settings = new \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema(); // \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema | 
+$configuration_settings = new \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema(); // \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema | 
 
 try {
     $apiInstance->setRegistrationInstanceConfiguration($registration_id, $instance_id, $configuration_settings);
@@ -1487,7 +1487,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **registration_id** | **string**| id for this registration |
  **instance_id** | **int**| The instance of this registration |
- **configuration_settings** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema**](../Model/SettingsPostSchema.md)|  |
+ **configuration_settings** | [**\RusticiSoftware\Cloud\V2\Model\SettingsPostSchema**](../Model/SettingsPostSchema.md)|  |
 
 ### Return type
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **href** | **string** | The web path used to launch this activity | [optional] 
 **scaled_passing_score** | **string** | The score required of a learner to pass this activity | [optional] 
 **title** | **string** | The title of the activity | [optional] 
-**children** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseActivitySchema[]**](CourseActivitySchema.md) |  | [optional] 
+**children** | [**\RusticiSoftware\Cloud\V2\Model\CourseActivitySchema[]**](CourseActivitySchema.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

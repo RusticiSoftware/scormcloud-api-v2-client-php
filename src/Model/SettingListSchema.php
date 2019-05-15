@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -57,7 +57,7 @@ class SettingListSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'setting_items' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingItem[]'
+        'setting_items' => '\RusticiSoftware\Cloud\V2\Model\SettingItem[]'
     ];
 
     /**
@@ -210,7 +210,7 @@ class SettingListSchema implements ModelInterface, ArrayAccess
     /**
      * Gets setting_items
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingItem[]
+     * @return \RusticiSoftware\Cloud\V2\Model\SettingItem[]
      */
     public function getSettingItems()
     {
@@ -220,7 +220,7 @@ class SettingListSchema implements ModelInterface, ArrayAccess
     /**
      * Sets setting_items
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\SettingItem[] $setting_items setting_items
+     * @param \RusticiSoftware\Cloud\V2\Model\SettingItem[] $setting_items setting_items
      *
      * @return $this
      */

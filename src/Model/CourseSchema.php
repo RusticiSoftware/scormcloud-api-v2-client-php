@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -68,8 +68,8 @@ class CourseSchema implements ModelInterface, ArrayAccess
         'course_learning_standard' => 'string',
         'tags' => 'string[]',
         'dispatched' => 'bool',
-        'metadata' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MetadataSchema',
-        'root_activity' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseActivitySchema'
+        'metadata' => '\RusticiSoftware\Cloud\V2\Model\MetadataSchema',
+        'root_activity' => '\RusticiSoftware\Cloud\V2\Model\CourseActivitySchema'
     ];
 
     /**
@@ -589,7 +589,7 @@ class CourseSchema implements ModelInterface, ArrayAccess
     /**
      * Gets metadata
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MetadataSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\MetadataSchema
      */
     public function getMetadata()
     {
@@ -599,7 +599,7 @@ class CourseSchema implements ModelInterface, ArrayAccess
     /**
      * Sets metadata
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MetadataSchema $metadata metadata
+     * @param \RusticiSoftware\Cloud\V2\Model\MetadataSchema $metadata metadata
      *
      * @return $this
      */
@@ -613,7 +613,7 @@ class CourseSchema implements ModelInterface, ArrayAccess
     /**
      * Gets root_activity
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseActivitySchema
+     * @return \RusticiSoftware\Cloud\V2\Model\CourseActivitySchema
      */
     public function getRootActivity()
     {
@@ -623,7 +623,7 @@ class CourseSchema implements ModelInterface, ArrayAccess
     /**
      * Sets root_activity
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseActivitySchema $root_activity root_activity
+     * @param \RusticiSoftware\Cloud\V2\Model\CourseActivitySchema $root_activity root_activity
      *
      * @return $this
      */

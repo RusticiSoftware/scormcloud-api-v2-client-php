@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -61,7 +61,7 @@ class RuntimeSchema implements ModelInterface, ArrayAccess
         'credit' => 'string',
         'entry' => 'string',
         'exit' => 'string',
-        'learner_preference' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LearnerPreferenceSchema',
+        'learner_preference' => '\RusticiSoftware\Cloud\V2\Model\LearnerPreferenceSchema',
         'location' => 'string',
         'mode' => 'string',
         'progress_measure' => 'string',
@@ -73,10 +73,10 @@ class RuntimeSchema implements ModelInterface, ArrayAccess
         'time_tracked' => 'string',
         'runtime_success_status' => 'string',
         'suspend_data' => 'string',
-        'learner_comments' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CommentSchema[]',
-        'lms_comments' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CommentSchema[]',
-        'runtime_interactions' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RuntimeInteractionSchema[]',
-        'runtime_objectives' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RuntimeObjectiveSchema[]'
+        'learner_comments' => '\RusticiSoftware\Cloud\V2\Model\CommentSchema[]',
+        'lms_comments' => '\RusticiSoftware\Cloud\V2\Model\CommentSchema[]',
+        'runtime_interactions' => '\RusticiSoftware\Cloud\V2\Model\RuntimeInteractionSchema[]',
+        'runtime_objectives' => '\RusticiSoftware\Cloud\V2\Model\RuntimeObjectiveSchema[]'
     ];
 
     /**
@@ -442,7 +442,7 @@ class RuntimeSchema implements ModelInterface, ArrayAccess
     /**
      * Gets learner_preference
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LearnerPreferenceSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\LearnerPreferenceSchema
      */
     public function getLearnerPreference()
     {
@@ -452,7 +452,7 @@ class RuntimeSchema implements ModelInterface, ArrayAccess
     /**
      * Sets learner_preference
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LearnerPreferenceSchema $learner_preference learner_preference
+     * @param \RusticiSoftware\Cloud\V2\Model\LearnerPreferenceSchema $learner_preference learner_preference
      *
      * @return $this
      */
@@ -739,7 +739,7 @@ class RuntimeSchema implements ModelInterface, ArrayAccess
     /**
      * Gets learner_comments
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CommentSchema[]
+     * @return \RusticiSoftware\Cloud\V2\Model\CommentSchema[]
      */
     public function getLearnerComments()
     {
@@ -749,7 +749,7 @@ class RuntimeSchema implements ModelInterface, ArrayAccess
     /**
      * Sets learner_comments
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CommentSchema[] $learner_comments learner_comments
+     * @param \RusticiSoftware\Cloud\V2\Model\CommentSchema[] $learner_comments learner_comments
      *
      * @return $this
      */
@@ -763,7 +763,7 @@ class RuntimeSchema implements ModelInterface, ArrayAccess
     /**
      * Gets lms_comments
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CommentSchema[]
+     * @return \RusticiSoftware\Cloud\V2\Model\CommentSchema[]
      */
     public function getLmsComments()
     {
@@ -773,7 +773,7 @@ class RuntimeSchema implements ModelInterface, ArrayAccess
     /**
      * Sets lms_comments
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CommentSchema[] $lms_comments lms_comments
+     * @param \RusticiSoftware\Cloud\V2\Model\CommentSchema[] $lms_comments lms_comments
      *
      * @return $this
      */
@@ -787,7 +787,7 @@ class RuntimeSchema implements ModelInterface, ArrayAccess
     /**
      * Gets runtime_interactions
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RuntimeInteractionSchema[]
+     * @return \RusticiSoftware\Cloud\V2\Model\RuntimeInteractionSchema[]
      */
     public function getRuntimeInteractions()
     {
@@ -797,7 +797,7 @@ class RuntimeSchema implements ModelInterface, ArrayAccess
     /**
      * Sets runtime_interactions
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RuntimeInteractionSchema[] $runtime_interactions runtime_interactions
+     * @param \RusticiSoftware\Cloud\V2\Model\RuntimeInteractionSchema[] $runtime_interactions runtime_interactions
      *
      * @return $this
      */
@@ -811,7 +811,7 @@ class RuntimeSchema implements ModelInterface, ArrayAccess
     /**
      * Gets runtime_objectives
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RuntimeObjectiveSchema[]
+     * @return \RusticiSoftware\Cloud\V2\Model\RuntimeObjectiveSchema[]
      */
     public function getRuntimeObjectives()
     {
@@ -821,7 +821,7 @@ class RuntimeSchema implements ModelInterface, ArrayAccess
     /**
      * Sets runtime_objectives
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\RuntimeObjectiveSchema[] $runtime_objectives runtime_objectives
+     * @param \RusticiSoftware\Cloud\V2\Model\RuntimeObjectiveSchema[] $runtime_objectives runtime_objectives
      *
      * @return $this
      */

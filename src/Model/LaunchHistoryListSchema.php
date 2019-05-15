@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -57,7 +57,7 @@ class LaunchHistoryListSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'launch_history' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchHistorySchema[]'
+        'launch_history' => '\RusticiSoftware\Cloud\V2\Model\LaunchHistorySchema[]'
     ];
 
     /**
@@ -207,7 +207,7 @@ class LaunchHistoryListSchema implements ModelInterface, ArrayAccess
     /**
      * Gets launch_history
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchHistorySchema[]
+     * @return \RusticiSoftware\Cloud\V2\Model\LaunchHistorySchema[]
      */
     public function getLaunchHistory()
     {
@@ -217,7 +217,7 @@ class LaunchHistoryListSchema implements ModelInterface, ArrayAccess
     /**
      * Sets launch_history
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\LaunchHistorySchema[] $launch_history launch_history
+     * @param \RusticiSoftware\Cloud\V2\Model\LaunchHistorySchema[] $launch_history launch_history
      *
      * @return $this
      */

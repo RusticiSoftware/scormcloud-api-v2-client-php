@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **course_learning_standard** | **string** |  | [optional] 
 **tags** | **string[]** |  | [optional] 
 **dispatched** | **bool** |  | [optional] 
-**metadata** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\MetadataSchema**](MetadataSchema.md) |  | [optional] 
-**root_activity** | [**\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseActivitySchema**](CourseActivitySchema.md) |  | [optional] 
+**metadata** | [**\RusticiSoftware\Cloud\V2\Model\MetadataSchema**](MetadataSchema.md) |  | [optional] 
+**root_activity** | [**\RusticiSoftware\Cloud\V2\Model\CourseActivitySchema**](CourseActivitySchema.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

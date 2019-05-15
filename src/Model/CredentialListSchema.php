@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -57,7 +57,7 @@ class CredentialListSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'credentials' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialSchema[]'
+        'credentials' => '\RusticiSoftware\Cloud\V2\Model\CredentialSchema[]'
     ];
 
     /**
@@ -207,7 +207,7 @@ class CredentialListSchema implements ModelInterface, ArrayAccess
     /**
      * Gets credentials
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialSchema[]
+     * @return \RusticiSoftware\Cloud\V2\Model\CredentialSchema[]
      */
     public function getCredentials()
     {
@@ -217,7 +217,7 @@ class CredentialListSchema implements ModelInterface, ArrayAccess
     /**
      * Sets credentials
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CredentialSchema[] $credentials credentials
+     * @param \RusticiSoftware\Cloud\V2\Model\CredentialSchema[] $credentials credentials
      *
      * @return $this
      */

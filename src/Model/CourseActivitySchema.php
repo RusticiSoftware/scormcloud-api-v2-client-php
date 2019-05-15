@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -64,7 +64,7 @@ class CourseActivitySchema implements ModelInterface, ArrayAccess
         'href' => 'string',
         'scaled_passing_score' => 'string',
         'title' => 'string',
-        'children' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseActivitySchema[]'
+        'children' => '\RusticiSoftware\Cloud\V2\Model\CourseActivitySchema[]'
     ];
 
     /**
@@ -455,7 +455,7 @@ class CourseActivitySchema implements ModelInterface, ArrayAccess
     /**
      * Gets children
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseActivitySchema[]
+     * @return \RusticiSoftware\Cloud\V2\Model\CourseActivitySchema[]
      */
     public function getChildren()
     {
@@ -465,7 +465,7 @@ class CourseActivitySchema implements ModelInterface, ArrayAccess
     /**
      * Sets children
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\CourseActivitySchema[] $children children
+     * @param \RusticiSoftware\Cloud\V2\Model\CourseActivitySchema[] $children children
      *
      * @return $this
      */

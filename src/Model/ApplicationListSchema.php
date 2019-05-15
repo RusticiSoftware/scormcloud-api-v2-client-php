@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model;
+namespace RusticiSoftware\Cloud\V2\Model;
 
 use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
@@ -57,7 +57,7 @@ class ApplicationListSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'applications' => '\RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationSchema[]'
+        'applications' => '\RusticiSoftware\Cloud\V2\Model\ApplicationSchema[]'
     ];
 
     /**
@@ -207,7 +207,7 @@ class ApplicationListSchema implements ModelInterface, ArrayAccess
     /**
      * Gets applications
      *
-     * @return \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationSchema[]
+     * @return \RusticiSoftware\Cloud\V2\Model\ApplicationSchema[]
      */
     public function getApplications()
     {
@@ -217,7 +217,7 @@ class ApplicationListSchema implements ModelInterface, ArrayAccess
     /**
      * Sets applications
      *
-     * @param \RusticiSoftware\Cloud\V2\RusticiSoftware\Cloud\V2\Model\ApplicationSchema[] $applications applications
+     * @param \RusticiSoftware\Cloud\V2\Model\ApplicationSchema[] $applications applications
      *
      * @return $this
      */
