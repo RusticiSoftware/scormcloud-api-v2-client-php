@@ -1,6 +1,6 @@
 {
     "name": "rustici-software/scormcloud-api-v2-client-php",
-    "version": "1.0.0-beta",
+    "version": "1.0.0",
     "description": "",
     "keywords": [
         "scorm",
