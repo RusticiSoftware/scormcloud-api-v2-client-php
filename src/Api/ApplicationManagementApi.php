@@ -820,7 +820,7 @@ class ApplicationManagementApi
     /**
      * Operation getApplicationList
      *
-     * 
+     * Get a list of all applications for the realm.
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @return \RusticiSoftware\Cloud\V2\Model\ApplicationListSchema
@@ -834,7 +834,7 @@ class ApplicationManagementApi
     /**
      * Operation getApplicationListWithHttpInfo
      *
-     * 
+     * Get a list of all applications for the realm.
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @return array of \RusticiSoftware\Cloud\V2\Model\ApplicationListSchema, HTTP status code, HTTP response headers (array of strings)

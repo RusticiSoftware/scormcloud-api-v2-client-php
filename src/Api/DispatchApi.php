@@ -270,7 +270,7 @@ class DispatchApi
     /**
      * Operation deleteDestination
      *
-     * DestinationsByTenantAndDestinationId
+     * Delete destination
      *
      * @param string $destination_id Identifier for the destination (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -285,7 +285,7 @@ class DispatchApi
     /**
      * Operation deleteDestinationWithHttpInfo
      *
-     * DestinationsByTenantAndDestinationId
+     * Delete destination
      *
      * @param string $destination_id Identifier for the destination (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -367,7 +367,7 @@ class DispatchApi
     /**
      * Operation deleteDestinationDispatches
      *
-     * DestinationsDispatchesByTenant
+     * Delete dispatches in destination
      *
      * @param string $destination_id Identifier for the destination (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -382,7 +382,7 @@ class DispatchApi
     /**
      * Operation deleteDestinationDispatchesWithHttpInfo
      *
-     * DestinationsDispatchesByTenant
+     * Delete dispatches in destination
      *
      * @param string $destination_id Identifier for the destination (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -464,7 +464,7 @@ class DispatchApi
     /**
      * Operation deleteDestinationTags
      *
-     * Delete tags for this destination
+     * Delete the tags for this destination
      *
      * @param string $destination_id Identifier for the destination (required)
      * @param \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags  (required)
@@ -480,7 +480,7 @@ class DispatchApi
     /**
      * Operation deleteDestinationTagsWithHttpInfo
      *
-     * Delete tags for this destination
+     * Delete the tags for this destination
      *
      * @param string $destination_id Identifier for the destination (required)
      * @param \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags  (required)
@@ -572,7 +572,7 @@ class DispatchApi
     /**
      * Operation deleteDispatch
      *
-     * DispatchesByTenantAndDispatchId
+     * Delete the dispatch with `dispatchId`.
      *
      * @param string $dispatch_id Identifier for the dispatch (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -587,7 +587,7 @@ class DispatchApi
     /**
      * Operation deleteDispatchWithHttpInfo
      *
-     * DispatchesByTenantAndDispatchId
+     * Delete the dispatch with `dispatchId`.
      *
      * @param string $dispatch_id Identifier for the dispatch (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -766,7 +766,7 @@ class DispatchApi
     /**
      * Operation deleteDispatchTags
      *
-     * Delete tags for this dispatch
+     * Delete the tags for this dispatch.
      *
      * @param string $dispatch_id Identifier for the dispatch (required)
      * @param \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags  (required)
@@ -782,7 +782,7 @@ class DispatchApi
     /**
      * Operation deleteDispatchTagsWithHttpInfo
      *
-     * Delete tags for this dispatch
+     * Delete the tags for this dispatch.
      *
      * @param string $dispatch_id Identifier for the dispatch (required)
      * @param \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags  (required)
@@ -1883,7 +1883,7 @@ class DispatchApi
     /**
      * Operation getDispatchEnabled
      *
-     * DispatchesEnabledByTenantAndDispatchId
+     * Get the `enabled` status for `dispatchId`.
      *
      * @param string $dispatch_id Identifier for the dispatch (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -1898,7 +1898,7 @@ class DispatchApi
     /**
      * Operation getDispatchEnabledWithHttpInfo
      *
-     * DispatchesEnabledByTenantAndDispatchId
+     * Get the `enabled` status for `dispatchId`.
      *
      * @param string $dispatch_id Identifier for the dispatch (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2085,7 +2085,7 @@ class DispatchApi
     /**
      * Operation getDispatchRegistrationCount
      *
-     * DispatchesRegistrationCountByTenant
+     * Get the registration count for `dispatchId`.
      *
      * @param string $dispatch_id Identifier for the dispatch (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2100,7 +2100,7 @@ class DispatchApi
     /**
      * Operation getDispatchRegistrationCountWithHttpInfo
      *
-     * DispatchesRegistrationCountByTenant
+     * Get the registration count for `dispatchId`.
      *
      * @param string $dispatch_id Identifier for the dispatch (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2186,7 +2186,7 @@ class DispatchApi
     /**
      * Operation getDispatchTags
      *
-     * Get the tags for this dispatch
+     * Get the tags for this dispatch.
      *
      * @param string $dispatch_id Identifier for the dispatch (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2201,7 +2201,7 @@ class DispatchApi
     /**
      * Operation getDispatchTagsWithHttpInfo
      *
-     * Get the tags for this dispatch
+     * Get the tags for this dispatch.
      *
      * @param string $dispatch_id Identifier for the dispatch (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2730,7 +2730,7 @@ class DispatchApi
     /**
      * Operation putDispatchTags
      *
-     * Set the tags for this dispatch
+     * Set the tags for this dispatch.
      *
      * @param string $dispatch_id Identifier for the dispatch (required)
      * @param \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags  (required)
@@ -2746,7 +2746,7 @@ class DispatchApi
     /**
      * Operation putDispatchTagsWithHttpInfo
      *
-     * Set the tags for this dispatch
+     * Set the tags for this dispatch.
      *
      * @param string $dispatch_id Identifier for the dispatch (required)
      * @param \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags  (required)
@@ -3029,7 +3029,7 @@ class DispatchApi
     /**
      * Operation resetDispatchRegistrationCount
      *
-     * DispatchesRegistrationCountByTenant
+     * Reset registration count.
      *
      * @param string $dispatch_id Identifier for the dispatch (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -3044,7 +3044,7 @@ class DispatchApi
     /**
      * Operation resetDispatchRegistrationCountWithHttpInfo
      *
-     * DispatchesRegistrationCountByTenant
+     * Reset registration count.
      *
      * @param string $dispatch_id Identifier for the dispatch (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -3126,7 +3126,7 @@ class DispatchApi
     /**
      * Operation setDestination
      *
-     * Creates or updates the destination identified by the `destinationId` provided in the path. If the destination is being created, a name should be provided in the DestinationSchema, else an error will be thrown. You may also optionally supply the e-mail address of the user to be associated with this destination.  This e-mail address should correspond to a SCORM Cloud user account. If you do not supply an e-mail address upon the creation of a destination, the owner of the Realm will be used.  This can, of course, also be changed via calling this method to update an existing destination.
+     * 
      *
      * @param string $destination_id Identifier for the destination (required)
      * @param \RusticiSoftware\Cloud\V2\Model\DestinationSchema $destination  (required)
@@ -3142,7 +3142,7 @@ class DispatchApi
     /**
      * Operation setDestinationWithHttpInfo
      *
-     * Creates or updates the destination identified by the `destinationId` provided in the path. If the destination is being created, a name should be provided in the DestinationSchema, else an error will be thrown. You may also optionally supply the e-mail address of the user to be associated with this destination.  This e-mail address should correspond to a SCORM Cloud user account. If you do not supply an e-mail address upon the creation of a destination, the owner of the Realm will be used.  This can, of course, also be changed via calling this method to update an existing destination.
+     * 
      *
      * @param string $destination_id Identifier for the destination (required)
      * @param \RusticiSoftware\Cloud\V2\Model\DestinationSchema $destination  (required)
@@ -3325,10 +3325,6 @@ class DispatchApi
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
-                case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
             }
 
             throw $e;
@@ -3338,7 +3334,7 @@ class DispatchApi
     /**
      * Operation setDispatchEnabled
      *
-     * DispatchesEnabledByTenantAndDispatchId
+     * Set the `enabled` status for `dispatchId`.
      *
      * @param string $dispatch_id Identifier for the dispatch (required)
      * @param \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled  (required)
@@ -3354,7 +3350,7 @@ class DispatchApi
     /**
      * Operation setDispatchEnabledWithHttpInfo
      *
-     * DispatchesEnabledByTenantAndDispatchId
+     * Set the `enabled` status for `dispatchId`.
      *
      * @param string $dispatch_id Identifier for the dispatch (required)
      * @param \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled  (required)

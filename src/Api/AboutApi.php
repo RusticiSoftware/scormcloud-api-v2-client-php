@@ -90,7 +90,7 @@ class AboutApi
     /**
      * Operation getAbout
      *
-     * Get back the version and platform of the running instance of Engine
+     * Get back the API version and application name.
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @return \RusticiSoftware\Cloud\V2\Model\AboutSchema
@@ -104,7 +104,7 @@ class AboutApi
     /**
      * Operation getAboutWithHttpInfo
      *
-     * Get back the version and platform of the running instance of Engine
+     * Get back the API version and application name.
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @return array of \RusticiSoftware\Cloud\V2\Model\AboutSchema, HTTP status code, HTTP response headers (array of strings)

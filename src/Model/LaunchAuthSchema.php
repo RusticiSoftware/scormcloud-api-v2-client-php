@@ -1,6 +1,6 @@
 <?php
 /**
- * DestinationSchema
+ * LaunchAuthSchema
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace RusticiSoftware\Cloud\V2\Model;
 use \ArrayAccess;
 
 /**
- * DestinationSchema Class Doc Comment
+ * LaunchAuthSchema Class Doc Comment
  *
  * @category    Class
  * @package     RusticiSoftware\Cloud\V2
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class DestinationSchema implements ArrayAccess
+class LaunchAuthSchema implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,18 +47,15 @@ class DestinationSchema implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'DestinationSchema';
+    protected static $swaggerModelName = 'LaunchAuthSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'name' => 'string',
-        'tags' => 'string[]',
-        'email' => 'string',
-        'notes' => 'string',
-        'launch_auth' => '\RusticiSoftware\Cloud\V2\Model\LaunchAuthSchema'
+        'type' => 'string',
+        'options' => '\RusticiSoftware\Cloud\V2\Model\LaunchAuthOptionsSchema'
     ];
 
     public static function swaggerTypes()
@@ -71,11 +68,8 @@ class DestinationSchema implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'tags' => 'tags',
-        'email' => 'email',
-        'notes' => 'notes',
-        'launch_auth' => 'launchAuth'
+        'type' => 'type',
+        'options' => 'options'
     ];
 
 
@@ -84,11 +78,8 @@ class DestinationSchema implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'tags' => 'setTags',
-        'email' => 'setEmail',
-        'notes' => 'setNotes',
-        'launch_auth' => 'setLaunchAuth'
+        'type' => 'setType',
+        'options' => 'setOptions'
     ];
 
 
@@ -97,11 +88,8 @@ class DestinationSchema implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'tags' => 'getTags',
-        'email' => 'getEmail',
-        'notes' => 'getNotes',
-        'launch_auth' => 'getLaunchAuth'
+        'type' => 'getType',
+        'options' => 'getOptions'
     ];
 
     public static function attributeMap()
@@ -119,8 +107,22 @@ class DestinationSchema implements ArrayAccess
         return self::$getters;
     }
 
+    const TYPE_COOKIES = 'cookies';
+    const TYPE_VAULT = 'vault';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_COOKIES,
+            self::TYPE_VAULT,
+        ];
+    }
     
 
     /**
@@ -135,11 +137,8 @@ class DestinationSchema implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
-        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
-        $this->container['notes'] = isset($data['notes']) ? $data['notes'] : null;
-        $this->container['launch_auth'] = isset($data['launch_auth']) ? $data['launch_auth'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : 'cookies';
+        $this->container['options'] = isset($data['options']) ? $data['options'] : null;
     }
 
     /**
@@ -150,6 +149,11 @@ class DestinationSchema implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
+
+        $allowed_values = ["cookies", "vault"];
+        if (!in_array($this->container['type'], $allowed_values)) {
+            $invalid_properties[] = "invalid value for 'type', must be one of 'cookies', 'vault'.";
+        }
 
         return $invalid_properties;
     }
@@ -163,111 +167,56 @@ class DestinationSchema implements ArrayAccess
     public function valid()
     {
 
+        $allowed_values = ["cookies", "vault"];
+        if (!in_array($this->container['type'], $allowed_values)) {
+            return false;
+        }
         return true;
     }
 
 
     /**
-     * Gets name
+     * Gets type
      * @return string
      */
-    public function getName()
+    public function getType()
     {
-        return $this->container['name'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets name
-     * @param string $name The destination's name.
+     * Sets type
+     * @param string $type
      * @return $this
      */
-    public function setName($name)
+    public function setType($type)
     {
-        $this->container['name'] = $name;
+        $allowed_values = array('cookies', 'vault');
+        if (!is_null($type) && (!in_array($type, $allowed_values))) {
+            throw new \InvalidArgumentException("Invalid value for 'type', must be one of 'cookies', 'vault'");
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets tags
-     * @return string[]
+     * Gets options
+     * @return \RusticiSoftware\Cloud\V2\Model\LaunchAuthOptionsSchema
      */
-    public function getTags()
+    public function getOptions()
     {
-        return $this->container['tags'];
+        return $this->container['options'];
     }
 
     /**
-     * Sets tags
-     * @param string[] $tags Optional array of tags.
+     * Sets options
+     * @param \RusticiSoftware\Cloud\V2\Model\LaunchAuthOptionsSchema $options
      * @return $this
      */
-    public function setTags($tags)
+    public function setOptions($options)
     {
-        $this->container['tags'] = $tags;
-
-        return $this;
-    }
-
-    /**
-     * Gets email
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->container['email'];
-    }
-
-    /**
-     * Sets email
-     * @param string $email SCORM Cloud user e-mail associated with this destination. If this is not provided, it will default to the owner of the Realm.
-     * @return $this
-     */
-    public function setEmail($email)
-    {
-        $this->container['email'] = $email;
-
-        return $this;
-    }
-
-    /**
-     * Gets notes
-     * @return string
-     */
-    public function getNotes()
-    {
-        return $this->container['notes'];
-    }
-
-    /**
-     * Sets notes
-     * @param string $notes Any provided notes about this Destination
-     * @return $this
-     */
-    public function setNotes($notes)
-    {
-        $this->container['notes'] = $notes;
-
-        return $this;
-    }
-
-    /**
-     * Gets launch_auth
-     * @return \RusticiSoftware\Cloud\V2\Model\LaunchAuthSchema
-     */
-    public function getLaunchAuth()
-    {
-        return $this->container['launch_auth'];
-    }
-
-    /**
-     * Sets launch_auth
-     * @param \RusticiSoftware\Cloud\V2\Model\LaunchAuthSchema $launch_auth
-     * @return $this
-     */
-    public function setLaunchAuth($launch_auth)
-    {
-        $this->container['launch_auth'] = $launch_auth;
+        $this->container['options'] = $options;
 
         return $this;
     }

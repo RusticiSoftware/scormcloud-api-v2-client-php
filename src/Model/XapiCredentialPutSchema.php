@@ -1,6 +1,6 @@
 <?php
 /**
- * DestinationSchema
+ * XapiCredentialPutSchema
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace RusticiSoftware\Cloud\V2\Model;
 use \ArrayAccess;
 
 /**
- * DestinationSchema Class Doc Comment
+ * XapiCredentialPutSchema Class Doc Comment
  *
  * @category    Class
  * @package     RusticiSoftware\Cloud\V2
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class DestinationSchema implements ArrayAccess
+class XapiCredentialPutSchema implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,18 +47,20 @@ class DestinationSchema implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'DestinationSchema';
+    protected static $swaggerModelName = 'XapiCredentialPutSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'id' => 'string',
         'name' => 'string',
-        'tags' => 'string[]',
-        'email' => 'string',
-        'notes' => 'string',
-        'launch_auth' => '\RusticiSoftware\Cloud\V2\Model\LaunchAuthSchema'
+        'info' => 'string',
+        'secret' => 'string',
+        'is_enabled' => 'bool',
+        'auth' => '\RusticiSoftware\Cloud\V2\Model\XapiCredentialAuthTypeSchema',
+        'permissions_level' => '\RusticiSoftware\Cloud\V2\Model\XapiCredentialPermissionsLevelSchema'
     ];
 
     public static function swaggerTypes()
@@ -71,11 +73,13 @@ class DestinationSchema implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'name' => 'name',
-        'tags' => 'tags',
-        'email' => 'email',
-        'notes' => 'notes',
-        'launch_auth' => 'launchAuth'
+        'info' => 'info',
+        'secret' => 'secret',
+        'is_enabled' => 'isEnabled',
+        'auth' => 'auth',
+        'permissions_level' => 'permissionsLevel'
     ];
 
 
@@ -84,11 +88,13 @@ class DestinationSchema implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'name' => 'setName',
-        'tags' => 'setTags',
-        'email' => 'setEmail',
-        'notes' => 'setNotes',
-        'launch_auth' => 'setLaunchAuth'
+        'info' => 'setInfo',
+        'secret' => 'setSecret',
+        'is_enabled' => 'setIsEnabled',
+        'auth' => 'setAuth',
+        'permissions_level' => 'setPermissionsLevel'
     ];
 
 
@@ -97,11 +103,13 @@ class DestinationSchema implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'name' => 'getName',
-        'tags' => 'getTags',
-        'email' => 'getEmail',
-        'notes' => 'getNotes',
-        'launch_auth' => 'getLaunchAuth'
+        'info' => 'getInfo',
+        'secret' => 'getSecret',
+        'is_enabled' => 'getIsEnabled',
+        'auth' => 'getAuth',
+        'permissions_level' => 'getPermissionsLevel'
     ];
 
     public static function attributeMap()
@@ -135,11 +143,13 @@ class DestinationSchema implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
-        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
-        $this->container['notes'] = isset($data['notes']) ? $data['notes'] : null;
-        $this->container['launch_auth'] = isset($data['launch_auth']) ? $data['launch_auth'] : null;
+        $this->container['info'] = isset($data['info']) ? $data['info'] : null;
+        $this->container['secret'] = isset($data['secret']) ? $data['secret'] : null;
+        $this->container['is_enabled'] = isset($data['is_enabled']) ? $data['is_enabled'] : null;
+        $this->container['auth'] = isset($data['auth']) ? $data['auth'] : null;
+        $this->container['permissions_level'] = isset($data['permissions_level']) ? $data['permissions_level'] : null;
     }
 
     /**
@@ -168,6 +178,27 @@ class DestinationSchema implements ArrayAccess
 
 
     /**
+     * Gets id
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     * @param string $id
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets name
      * @return string
      */
@@ -178,7 +209,7 @@ class DestinationSchema implements ArrayAccess
 
     /**
      * Sets name
-     * @param string $name The destination's name.
+     * @param string $name
      * @return $this
      */
     public function setName($name)
@@ -189,85 +220,106 @@ class DestinationSchema implements ArrayAccess
     }
 
     /**
-     * Gets tags
-     * @return string[]
-     */
-    public function getTags()
-    {
-        return $this->container['tags'];
-    }
-
-    /**
-     * Sets tags
-     * @param string[] $tags Optional array of tags.
-     * @return $this
-     */
-    public function setTags($tags)
-    {
-        $this->container['tags'] = $tags;
-
-        return $this;
-    }
-
-    /**
-     * Gets email
+     * Gets info
      * @return string
      */
-    public function getEmail()
+    public function getInfo()
     {
-        return $this->container['email'];
+        return $this->container['info'];
     }
 
     /**
-     * Sets email
-     * @param string $email SCORM Cloud user e-mail associated with this destination. If this is not provided, it will default to the owner of the Realm.
+     * Sets info
+     * @param string $info
      * @return $this
      */
-    public function setEmail($email)
+    public function setInfo($info)
     {
-        $this->container['email'] = $email;
+        $this->container['info'] = $info;
 
         return $this;
     }
 
     /**
-     * Gets notes
+     * Gets secret
      * @return string
      */
-    public function getNotes()
+    public function getSecret()
     {
-        return $this->container['notes'];
+        return $this->container['secret'];
     }
 
     /**
-     * Sets notes
-     * @param string $notes Any provided notes about this Destination
+     * Sets secret
+     * @param string $secret
      * @return $this
      */
-    public function setNotes($notes)
+    public function setSecret($secret)
     {
-        $this->container['notes'] = $notes;
+        $this->container['secret'] = $secret;
 
         return $this;
     }
 
     /**
-     * Gets launch_auth
-     * @return \RusticiSoftware\Cloud\V2\Model\LaunchAuthSchema
+     * Gets is_enabled
+     * @return bool
      */
-    public function getLaunchAuth()
+    public function getIsEnabled()
     {
-        return $this->container['launch_auth'];
+        return $this->container['is_enabled'];
     }
 
     /**
-     * Sets launch_auth
-     * @param \RusticiSoftware\Cloud\V2\Model\LaunchAuthSchema $launch_auth
+     * Sets is_enabled
+     * @param bool $is_enabled
      * @return $this
      */
-    public function setLaunchAuth($launch_auth)
+    public function setIsEnabled($is_enabled)
     {
-        $this->container['launch_auth'] = $launch_auth;
+        $this->container['is_enabled'] = $is_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets auth
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiCredentialAuthTypeSchema
+     */
+    public function getAuth()
+    {
+        return $this->container['auth'];
+    }
+
+    /**
+     * Sets auth
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiCredentialAuthTypeSchema $auth
+     * @return $this
+     */
+    public function setAuth($auth)
+    {
+        $this->container['auth'] = $auth;
+
+        return $this;
+    }
+
+    /**
+     * Gets permissions_level
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiCredentialPermissionsLevelSchema
+     */
+    public function getPermissionsLevel()
+    {
+        return $this->container['permissions_level'];
+    }
+
+    /**
+     * Sets permissions_level
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiCredentialPermissionsLevelSchema $permissions_level
+     * @return $this
+     */
+    public function setPermissionsLevel($permissions_level)
+    {
+        $this->container['permissions_level'] = $permissions_level;
 
         return $this;
     }

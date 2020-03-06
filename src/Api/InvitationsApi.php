@@ -278,7 +278,7 @@ class InvitationsApi
     /**
      * Operation deleteInvitationTags
      *
-     * Delete tags for this invitation
+     * Delete the tags for this invitation
      *
      * @param string $invitation_id invitation id (required)
      * @param \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags  (required)
@@ -294,7 +294,7 @@ class InvitationsApi
     /**
      * Operation deleteInvitationTagsWithHttpInfo
      *
-     * Delete tags for this invitation
+     * Delete the tags for this invitation
      *
      * @param string $invitation_id invitation id (required)
      * @param \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags  (required)

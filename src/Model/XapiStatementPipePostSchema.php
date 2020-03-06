@@ -136,6 +136,9 @@ class XapiStatementPipePostSchema implements ArrayAccess
     {
         $invalid_properties = [];
 
+        if ($this->container['target'] === null) {
+            $invalid_properties[] = "'target' can't be null";
+        }
         return $invalid_properties;
     }
 
@@ -148,6 +151,9 @@ class XapiStatementPipePostSchema implements ArrayAccess
     public function valid()
     {
 
+        if ($this->container['target'] === null) {
+            return false;
+        }
         return true;
     }
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * DestinationSchema
+ * LaunchAuthOptionsSchema
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace RusticiSoftware\Cloud\V2\Model;
 use \ArrayAccess;
 
 /**
- * DestinationSchema Class Doc Comment
+ * LaunchAuthOptionsSchema Class Doc Comment
  *
  * @category    Class
  * @package     RusticiSoftware\Cloud\V2
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class DestinationSchema implements ArrayAccess
+class LaunchAuthOptionsSchema implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,18 +47,17 @@ class DestinationSchema implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'DestinationSchema';
+    protected static $swaggerModelName = 'LaunchAuthOptionsSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'name' => 'string',
-        'tags' => 'string[]',
-        'email' => 'string',
-        'notes' => 'string',
-        'launch_auth' => '\RusticiSoftware\Cloud\V2\Model\LaunchAuthSchema'
+        'ip_address' => 'bool',
+        'fingerprint' => 'bool',
+        'expiry' => 'int',
+        'sliding_expiry' => 'int'
     ];
 
     public static function swaggerTypes()
@@ -71,11 +70,10 @@ class DestinationSchema implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'tags' => 'tags',
-        'email' => 'email',
-        'notes' => 'notes',
-        'launch_auth' => 'launchAuth'
+        'ip_address' => 'ipAddress',
+        'fingerprint' => 'fingerprint',
+        'expiry' => 'expiry',
+        'sliding_expiry' => 'slidingExpiry'
     ];
 
 
@@ -84,11 +82,10 @@ class DestinationSchema implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'tags' => 'setTags',
-        'email' => 'setEmail',
-        'notes' => 'setNotes',
-        'launch_auth' => 'setLaunchAuth'
+        'ip_address' => 'setIpAddress',
+        'fingerprint' => 'setFingerprint',
+        'expiry' => 'setExpiry',
+        'sliding_expiry' => 'setSlidingExpiry'
     ];
 
 
@@ -97,11 +94,10 @@ class DestinationSchema implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'tags' => 'getTags',
-        'email' => 'getEmail',
-        'notes' => 'getNotes',
-        'launch_auth' => 'getLaunchAuth'
+        'ip_address' => 'getIpAddress',
+        'fingerprint' => 'getFingerprint',
+        'expiry' => 'getExpiry',
+        'sliding_expiry' => 'getSlidingExpiry'
     ];
 
     public static function attributeMap()
@@ -135,11 +131,10 @@ class DestinationSchema implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
-        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
-        $this->container['notes'] = isset($data['notes']) ? $data['notes'] : null;
-        $this->container['launch_auth'] = isset($data['launch_auth']) ? $data['launch_auth'] : null;
+        $this->container['ip_address'] = isset($data['ip_address']) ? $data['ip_address'] : null;
+        $this->container['fingerprint'] = isset($data['fingerprint']) ? $data['fingerprint'] : null;
+        $this->container['expiry'] = isset($data['expiry']) ? $data['expiry'] : null;
+        $this->container['sliding_expiry'] = isset($data['sliding_expiry']) ? $data['sliding_expiry'] : null;
     }
 
     /**
@@ -168,106 +163,85 @@ class DestinationSchema implements ArrayAccess
 
 
     /**
-     * Gets name
-     * @return string
+     * Gets ip_address
+     * @return bool
      */
-    public function getName()
+    public function getIpAddress()
     {
-        return $this->container['name'];
+        return $this->container['ip_address'];
     }
 
     /**
-     * Sets name
-     * @param string $name The destination's name.
+     * Sets ip_address
+     * @param bool $ip_address
      * @return $this
      */
-    public function setName($name)
+    public function setIpAddress($ip_address)
     {
-        $this->container['name'] = $name;
+        $this->container['ip_address'] = $ip_address;
 
         return $this;
     }
 
     /**
-     * Gets tags
-     * @return string[]
+     * Gets fingerprint
+     * @return bool
      */
-    public function getTags()
+    public function getFingerprint()
     {
-        return $this->container['tags'];
+        return $this->container['fingerprint'];
     }
 
     /**
-     * Sets tags
-     * @param string[] $tags Optional array of tags.
+     * Sets fingerprint
+     * @param bool $fingerprint
      * @return $this
      */
-    public function setTags($tags)
+    public function setFingerprint($fingerprint)
     {
-        $this->container['tags'] = $tags;
+        $this->container['fingerprint'] = $fingerprint;
 
         return $this;
     }
 
     /**
-     * Gets email
-     * @return string
+     * Gets expiry
+     * @return int
      */
-    public function getEmail()
+    public function getExpiry()
     {
-        return $this->container['email'];
+        return $this->container['expiry'];
     }
 
     /**
-     * Sets email
-     * @param string $email SCORM Cloud user e-mail associated with this destination. If this is not provided, it will default to the owner of the Realm.
+     * Sets expiry
+     * @param int $expiry
      * @return $this
      */
-    public function setEmail($email)
+    public function setExpiry($expiry)
     {
-        $this->container['email'] = $email;
+        $this->container['expiry'] = $expiry;
 
         return $this;
     }
 
     /**
-     * Gets notes
-     * @return string
+     * Gets sliding_expiry
+     * @return int
      */
-    public function getNotes()
+    public function getSlidingExpiry()
     {
-        return $this->container['notes'];
+        return $this->container['sliding_expiry'];
     }
 
     /**
-     * Sets notes
-     * @param string $notes Any provided notes about this Destination
+     * Sets sliding_expiry
+     * @param int $sliding_expiry
      * @return $this
      */
-    public function setNotes($notes)
+    public function setSlidingExpiry($sliding_expiry)
     {
-        $this->container['notes'] = $notes;
-
-        return $this;
-    }
-
-    /**
-     * Gets launch_auth
-     * @return \RusticiSoftware\Cloud\V2\Model\LaunchAuthSchema
-     */
-    public function getLaunchAuth()
-    {
-        return $this->container['launch_auth'];
-    }
-
-    /**
-     * Sets launch_auth
-     * @param \RusticiSoftware\Cloud\V2\Model\LaunchAuthSchema $launch_auth
-     * @return $this
-     */
-    public function setLaunchAuth($launch_auth)
-    {
-        $this->container['launch_auth'] = $launch_auth;
+        $this->container['sliding_expiry'] = $sliding_expiry;
 
         return $this;
     }
