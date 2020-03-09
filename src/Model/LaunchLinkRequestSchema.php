@@ -63,7 +63,8 @@ class LaunchLinkRequestSchema implements ArrayAccess
         'learner_tags' => 'string[]',
         'course_tags' => 'string[]',
         'registration_tags' => 'string[]',
-        'additionalvalues' => '\RusticiSoftware\Cloud\V2\Model\ItemValuePairSchema[]'
+        'additionalvalues' => '\RusticiSoftware\Cloud\V2\Model\ItemValuePairSchema[]',
+        'launch_auth' => '\RusticiSoftware\Cloud\V2\Model\LaunchAuthSchema'
     ];
 
     public static function swaggerTypes()
@@ -85,7 +86,8 @@ class LaunchLinkRequestSchema implements ArrayAccess
         'learner_tags' => 'learnerTags',
         'course_tags' => 'courseTags',
         'registration_tags' => 'registrationTags',
-        'additionalvalues' => 'additionalvalues'
+        'additionalvalues' => 'additionalvalues',
+        'launch_auth' => 'launchAuth'
     ];
 
 
@@ -103,7 +105,8 @@ class LaunchLinkRequestSchema implements ArrayAccess
         'learner_tags' => 'setLearnerTags',
         'course_tags' => 'setCourseTags',
         'registration_tags' => 'setRegistrationTags',
-        'additionalvalues' => 'setAdditionalvalues'
+        'additionalvalues' => 'setAdditionalvalues',
+        'launch_auth' => 'setLaunchAuth'
     ];
 
 
@@ -121,7 +124,8 @@ class LaunchLinkRequestSchema implements ArrayAccess
         'learner_tags' => 'getLearnerTags',
         'course_tags' => 'getCourseTags',
         'registration_tags' => 'getRegistrationTags',
-        'additionalvalues' => 'getAdditionalvalues'
+        'additionalvalues' => 'getAdditionalvalues',
+        'launch_auth' => 'getLaunchAuth'
     ];
 
     public static function attributeMap()
@@ -165,6 +169,7 @@ class LaunchLinkRequestSchema implements ArrayAccess
         $this->container['course_tags'] = isset($data['course_tags']) ? $data['course_tags'] : null;
         $this->container['registration_tags'] = isset($data['registration_tags']) ? $data['registration_tags'] : null;
         $this->container['additionalvalues'] = isset($data['additionalvalues']) ? $data['additionalvalues'] : null;
+        $this->container['launch_auth'] = isset($data['launch_auth']) ? $data['launch_auth'] : null;
     }
 
     /**
@@ -404,6 +409,27 @@ class LaunchLinkRequestSchema implements ArrayAccess
     public function setAdditionalvalues($additionalvalues)
     {
         $this->container['additionalvalues'] = $additionalvalues;
+
+        return $this;
+    }
+
+    /**
+     * Gets launch_auth
+     * @return \RusticiSoftware\Cloud\V2\Model\LaunchAuthSchema
+     */
+    public function getLaunchAuth()
+    {
+        return $this->container['launch_auth'];
+    }
+
+    /**
+     * Sets launch_auth
+     * @param \RusticiSoftware\Cloud\V2\Model\LaunchAuthSchema $launch_auth
+     * @return $this
+     */
+    public function setLaunchAuth($launch_auth)
+    {
+        $this->container['launch_auth'] = $launch_auth;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * WebsiteApi
+ * ZoomiApi
  * PHP version 5
  *
  * @category Class
@@ -34,14 +34,14 @@ use \RusticiSoftware\Cloud\V2\Configuration;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
 
 /**
- * WebsiteApi Class Doc Comment
+ * ZoomiApi Class Doc Comment
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class WebsiteApi
+class ZoomiApi
 {
     /**
      * API Client
@@ -79,7 +79,7 @@ class WebsiteApi
      *
      * @param \RusticiSoftware\Cloud\V2\ApiClient $apiClient set the API client
      *
-     * @return WebsiteApi
+     * @return ZoomiApi
      */
     public function setApiClient(\RusticiSoftware\Cloud\V2\ApiClient $apiClient)
     {
@@ -93,7 +93,7 @@ class WebsiteApi
      * Delete the keys for an application.
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return string
+     * @return void
      */
     public function deleteApplicationZoomiKeys()
     {
@@ -107,7 +107,7 @@ class WebsiteApi
      * Delete the keys for an application.
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteApplicationZoomiKeysWithHttpInfo()
     {
@@ -149,120 +149,8 @@ class WebsiteApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                'string',
-                '/zoomi/key'
-            );
-
-            return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 204:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation deleteInvitationTags
-     *
-     * Delete tags for this invitation
-     *
-     * @param string $invitation_id invitation id (required)
-     * @param \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags  (required)
-     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return void
-     */
-    public function deleteInvitationTags($invitation_id, $tags)
-    {
-        list($response) = $this->deleteInvitationTagsWithHttpInfo($invitation_id, $tags);
-        return $response;
-    }
-
-    /**
-     * Operation deleteInvitationTagsWithHttpInfo
-     *
-     * Delete tags for this invitation
-     *
-     * @param string $invitation_id invitation id (required)
-     * @param \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags  (required)
-     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function deleteInvitationTagsWithHttpInfo($invitation_id, $tags)
-    {
-        // verify the required parameter 'invitation_id' is set
-        if ($invitation_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $invitation_id when calling deleteInvitationTags');
-        }
-        // verify the required parameter 'tags' is set
-        if ($tags === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $tags when calling deleteInvitationTags');
-        }
-        // parse inputs
-        $resourcePath = "/invitations/{invitationId}/tags";
-        $httpBody = '';
-        $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
-
-        // path params
-        if ($invitation_id !== null) {
-            $resourcePath = str_replace(
-                "{" . "invitationId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($invitation_id),
-                $resourcePath
-            );
-        }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
-        // body params
-        $_tempBody = null;
-        if (isset($tags)) {
-            $_tempBody = $tags;
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // this endpoint requires HTTP basic authentication
-        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
-            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'DELETE',
-                $queryParams,
-                $httpBody,
-                $headerParams,
                 null,
-                '/invitations/{invitationId}/tags'
+                '/zoomi/key'
             );
 
             return [null, $statusCode, $httpHeader];
@@ -290,7 +178,7 @@ class WebsiteApi
      * @param string $course_id  (required)
      * @param int $version_id The course version (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return string
+     * @return void
      */
     public function deleteZoomiCourse($course_id, $version_id)
     {
@@ -306,7 +194,7 @@ class WebsiteApi
      * @param string $course_id  (required)
      * @param int $version_id The course version (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteZoomiCourseWithHttpInfo($course_id, $version_id)
     {
@@ -372,17 +260,13 @@ class WebsiteApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                'string',
+                null,
                 '/zoomi/course/{courseId}/version/{versionId}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
+            return [null, $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 204:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
                 case 400:
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
                     $e->setResponseObject($data);
@@ -403,7 +287,7 @@ class WebsiteApi
      * Gets the zoomi company id of an application.
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return string
+     * @return \RusticiSoftware\Cloud\V2\Model\StringResultSchema
      */
     public function getApplicationZoomiCompanyId()
     {
@@ -417,7 +301,7 @@ class WebsiteApi
      * Gets the zoomi company id of an application.
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\StringResultSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getApplicationZoomiCompanyIdWithHttpInfo()
     {
@@ -459,15 +343,15 @@ class WebsiteApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                'string',
+                '\RusticiSoftware\Cloud\V2\Model\StringResultSchema',
                 '/zoomi'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\RusticiSoftware\Cloud\V2\Model\StringResultSchema', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\StringResultSchema', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
@@ -490,7 +374,7 @@ class WebsiteApi
      * Gets the public key for an application.
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return string
+     * @return \RusticiSoftware\Cloud\V2\Model\StringResultSchema
      */
     public function getApplicationZoomiPublicKey()
     {
@@ -504,7 +388,7 @@ class WebsiteApi
      * Gets the public key for an application.
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\StringResultSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getApplicationZoomiPublicKeyWithHttpInfo()
     {
@@ -546,15 +430,15 @@ class WebsiteApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                'string',
+                '\RusticiSoftware\Cloud\V2\Model\StringResultSchema',
                 '/zoomi/key'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\RusticiSoftware\Cloud\V2\Model\StringResultSchema', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\StringResultSchema', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
@@ -579,7 +463,7 @@ class WebsiteApi
      * @param string $course_id  (required)
      * @param int $version_id The course version (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return string
+     * @return \RusticiSoftware\Cloud\V2\Model\EnabledSchema
      */
     public function getCourseZoomiEnabled($course_id, $version_id)
     {
@@ -595,7 +479,7 @@ class WebsiteApi
      * @param string $course_id  (required)
      * @param int $version_id The course version (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\EnabledSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCourseZoomiEnabledWithHttpInfo($course_id, $version_id)
     {
@@ -661,116 +545,15 @@ class WebsiteApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                'string',
+                '\RusticiSoftware\Cloud\V2\Model\EnabledSchema',
                 '/zoomi/course/{courseId}/version/{versionId}/enabled'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\RusticiSoftware\Cloud\V2\Model\EnabledSchema', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getInvitationTags
-     *
-     * Get the tags for this invitation
-     *
-     * @param string $invitation_id invitation id (required)
-     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return \RusticiSoftware\Cloud\V2\Model\TagListSchema
-     */
-    public function getInvitationTags($invitation_id)
-    {
-        list($response) = $this->getInvitationTagsWithHttpInfo($invitation_id);
-        return $response;
-    }
-
-    /**
-     * Operation getInvitationTagsWithHttpInfo
-     *
-     * Get the tags for this invitation
-     *
-     * @param string $invitation_id invitation id (required)
-     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return array of \RusticiSoftware\Cloud\V2\Model\TagListSchema, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getInvitationTagsWithHttpInfo($invitation_id)
-    {
-        // verify the required parameter 'invitation_id' is set
-        if ($invitation_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $invitation_id when calling getInvitationTags');
-        }
-        // parse inputs
-        $resourcePath = "/invitations/{invitationId}/tags";
-        $httpBody = '';
-        $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
-
-        // path params
-        if ($invitation_id !== null) {
-            $resourcePath = str_replace(
-                "{" . "invitationId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($invitation_id),
-                $resourcePath
-            );
-        }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
-        
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // this endpoint requires HTTP basic authentication
-        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
-            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'GET',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                '\RusticiSoftware\Cloud\V2\Model\TagListSchema',
-                '/invitations/{invitationId}/tags'
-            );
-
-            return [$this->apiClient->getSerializer()->deserialize($response, '\RusticiSoftware\Cloud\V2\Model\TagListSchema', $httpHeader), $statusCode, $httpHeader];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\TagListSchema', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\EnabledSchema', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
@@ -795,7 +578,7 @@ class WebsiteApi
      * @param string $course_id  (required)
      * @param int $version_id The course version (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return string
+     * @return \RusticiSoftware\Cloud\V2\Model\StringResultSchema
      */
     public function getZoomiCourseStatus($course_id, $version_id)
     {
@@ -811,7 +594,7 @@ class WebsiteApi
      * @param string $course_id  (required)
      * @param int $version_id The course version (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\StringResultSchema, HTTP status code, HTTP response headers (array of strings)
      */
     public function getZoomiCourseStatusWithHttpInfo($course_id, $version_id)
     {
@@ -877,219 +660,17 @@ class WebsiteApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                'string',
+                '\RusticiSoftware\Cloud\V2\Model\StringResultSchema',
                 '/zoomi/course/{courseId}/version/{versionId}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\RusticiSoftware\Cloud\V2\Model\StringResultSchema', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\StringResultSchema', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
-                case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation putInvitationTags
-     *
-     * Set the tags for this invitation
-     *
-     * @param string $invitation_id invitation id (required)
-     * @param \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags  (required)
-     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return void
-     */
-    public function putInvitationTags($invitation_id, $tags)
-    {
-        list($response) = $this->putInvitationTagsWithHttpInfo($invitation_id, $tags);
-        return $response;
-    }
-
-    /**
-     * Operation putInvitationTagsWithHttpInfo
-     *
-     * Set the tags for this invitation
-     *
-     * @param string $invitation_id invitation id (required)
-     * @param \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags  (required)
-     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function putInvitationTagsWithHttpInfo($invitation_id, $tags)
-    {
-        // verify the required parameter 'invitation_id' is set
-        if ($invitation_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $invitation_id when calling putInvitationTags');
-        }
-        // verify the required parameter 'tags' is set
-        if ($tags === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $tags when calling putInvitationTags');
-        }
-        // parse inputs
-        $resourcePath = "/invitations/{invitationId}/tags";
-        $httpBody = '';
-        $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
-
-        // path params
-        if ($invitation_id !== null) {
-            $resourcePath = str_replace(
-                "{" . "invitationId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($invitation_id),
-                $resourcePath
-            );
-        }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
-        // body params
-        $_tempBody = null;
-        if (isset($tags)) {
-            $_tempBody = $tags;
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // this endpoint requires HTTP basic authentication
-        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
-            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'PUT',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                null,
-                '/invitations/{invitationId}/tags'
-            );
-
-            return [null, $statusCode, $httpHeader];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation putInvitationTagsBatch
-     *
-     * Sets all of the provided tags on all of the provided invitations
-     *
-     * @param \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
-     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return void
-     */
-    public function putInvitationTagsBatch($batch)
-    {
-        list($response) = $this->putInvitationTagsBatchWithHttpInfo($batch);
-        return $response;
-    }
-
-    /**
-     * Operation putInvitationTagsBatchWithHttpInfo
-     *
-     * Sets all of the provided tags on all of the provided invitations
-     *
-     * @param \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
-     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function putInvitationTagsBatchWithHttpInfo($batch)
-    {
-        // verify the required parameter 'batch' is set
-        if ($batch === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $batch when calling putInvitationTagsBatch');
-        }
-        // parse inputs
-        $resourcePath = "/invitations/tags";
-        $httpBody = '';
-        $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
-
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
-        // body params
-        $_tempBody = null;
-        if (isset($batch)) {
-            $_tempBody = $batch;
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // this endpoint requires HTTP basic authentication
-        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
-            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'PUT',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                null,
-                '/invitations/tags'
-            );
-
-            return [null, $statusCode, $httpHeader];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
                 case 400:
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
                     $e->setResponseObject($data);
@@ -1111,7 +692,7 @@ class WebsiteApi
      *
      * @param \RusticiSoftware\Cloud\V2\Model\ZoomiCompanyId $zoomi_company_id  (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return string
+     * @return void
      */
     public function setApplicationZoomiCompanyId($zoomi_company_id)
     {
@@ -1126,7 +707,7 @@ class WebsiteApi
      *
      * @param \RusticiSoftware\Cloud\V2\Model\ZoomiCompanyId $zoomi_company_id  (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function setApplicationZoomiCompanyIdWithHttpInfo($zoomi_company_id)
     {
@@ -1177,17 +758,13 @@ class WebsiteApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                'string',
+                null,
                 '/zoomi'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
+            return [null, $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 204:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
                 case 400:
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
                     $e->setResponseObject($data);
@@ -1211,7 +788,7 @@ class WebsiteApi
      * @param int $version_id The course version (required)
      * @param \RusticiSoftware\Cloud\V2\Model\ZoomiCourseOptionsSchema $zoomi_course_options  (optional)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return string
+     * @return void
      */
     public function setCourseZoomiEnabled($course_id, $version_id, $zoomi_course_options = null)
     {
@@ -1228,7 +805,7 @@ class WebsiteApi
      * @param int $version_id The course version (required)
      * @param \RusticiSoftware\Cloud\V2\Model\ZoomiCourseOptionsSchema $zoomi_course_options  (optional)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function setCourseZoomiEnabledWithHttpInfo($course_id, $version_id, $zoomi_course_options = null)
     {
@@ -1299,17 +876,13 @@ class WebsiteApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                'string',
+                null,
                 '/zoomi/course/{courseId}/version/{versionId}/enabled'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
+            return [null, $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 204:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
                 case 400:
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
                     $e->setResponseObject($data);

@@ -90,12 +90,12 @@ class LearnerApi
     /**
      * Operation deleteAllLearnerData
      *
-     * Deletes all of the information associated with a learner in an application, by learner id. This is meant for use with complying with GDPR requests from learners.
+     * Deletes all of the information associated with a learner in an application, by learner id.
      *
      * @param string $learner_id The id of the learner for which to remove all data from an application (required)
      * @param string $user_email The email of the user initiating this request on behalf of the learner being deleted. This must be a valid primary email address for a SCORM Cloud realm which this application is in. (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return string
+     * @return void
      */
     public function deleteAllLearnerData($learner_id, $user_email)
     {
@@ -106,12 +106,12 @@ class LearnerApi
     /**
      * Operation deleteAllLearnerDataWithHttpInfo
      *
-     * Deletes all of the information associated with a learner in an application, by learner id. This is meant for use with complying with GDPR requests from learners.
+     * Deletes all of the information associated with a learner in an application, by learner id.
      *
      * @param string $learner_id The id of the learner for which to remove all data from an application (required)
      * @param string $user_email The email of the user initiating this request on behalf of the learner being deleted. This must be a valid primary email address for a SCORM Cloud realm which this application is in. (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteAllLearnerDataWithHttpInfo($learner_id, $user_email)
     {
@@ -173,23 +173,19 @@ class LearnerApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                'string',
+                null,
                 '/learner/{learnerId}/delete-information'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
+            return [null, $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 204:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
                 case 403:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -201,7 +197,7 @@ class LearnerApi
     /**
      * Operation deleteLearnerTags
      *
-     * Delete tags for this learner
+     * Delete the tags for this learner
      *
      * @param string $learner_id The id of the learner for which to remove all data from an application (required)
      * @param \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags  (required)
@@ -217,7 +213,7 @@ class LearnerApi
     /**
      * Operation deleteLearnerTagsWithHttpInfo
      *
-     * Delete tags for this learner
+     * Delete the tags for this learner
      *
      * @param string $learner_id The id of the learner for which to remove all data from an application (required)
      * @param \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags  (required)
@@ -505,6 +501,204 @@ class LearnerApi
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
+                case 404:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation putLearnerTagsBatch
+     *
+     * Sets all of the provided tags on all of the provided learners
+     *
+     * @param \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @return void
+     */
+    public function putLearnerTagsBatch($batch)
+    {
+        list($response) = $this->putLearnerTagsBatchWithHttpInfo($batch);
+        return $response;
+    }
+
+    /**
+     * Operation putLearnerTagsBatchWithHttpInfo
+     *
+     * Sets all of the provided tags on all of the provided learners
+     *
+     * @param \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function putLearnerTagsBatchWithHttpInfo($batch)
+    {
+        // verify the required parameter 'batch' is set
+        if ($batch === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $batch when calling putLearnerTagsBatch');
+        }
+        // parse inputs
+        $resourcePath = "/learner/tags";
+        $httpBody = '';
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        // body params
+        $_tempBody = null;
+        if (isset($batch)) {
+            $_tempBody = $batch;
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires HTTP basic authentication
+        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
+            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'PUT',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                null,
+                '/learner/tags'
+            );
+
+            return [null, $statusCode, $httpHeader];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateLearnerInfo
+     *
+     * Update a learner's info on all of their registrations.
+     *
+     * @param string $learner_id The id of the learner to be updated (required)
+     * @param \RusticiSoftware\Cloud\V2\Model\LearnerSchema $learner_info  (required)
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @return void
+     */
+    public function updateLearnerInfo($learner_id, $learner_info)
+    {
+        list($response) = $this->updateLearnerInfoWithHttpInfo($learner_id, $learner_info);
+        return $response;
+    }
+
+    /**
+     * Operation updateLearnerInfoWithHttpInfo
+     *
+     * Update a learner's info on all of their registrations.
+     *
+     * @param string $learner_id The id of the learner to be updated (required)
+     * @param \RusticiSoftware\Cloud\V2\Model\LearnerSchema $learner_info  (required)
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateLearnerInfoWithHttpInfo($learner_id, $learner_info)
+    {
+        // verify the required parameter 'learner_id' is set
+        if ($learner_id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $learner_id when calling updateLearnerInfo');
+        }
+        // verify the required parameter 'learner_info' is set
+        if ($learner_info === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $learner_info when calling updateLearnerInfo');
+        }
+        // parse inputs
+        $resourcePath = "/learner/{learnerId}/updateInfo";
+        $httpBody = '';
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+
+        // path params
+        if ($learner_id !== null) {
+            $resourcePath = str_replace(
+                "{" . "learnerId" . "}",
+                $this->apiClient->getSerializer()->toPathValue($learner_id),
+                $resourcePath
+            );
+        }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        // body params
+        $_tempBody = null;
+        if (isset($learner_info)) {
+            $_tempBody = $learner_info;
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires HTTP basic authentication
+        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
+            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'POST',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                null,
+                '/learner/{learnerId}/updateInfo'
+            );
+
+            return [null, $statusCode, $httpHeader];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
                 case 404:
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RusticiSoftware\Cloud\V2\Model\MessageSchema', $e->getResponseHeaders());
                     $e->setResponseObject($data);

@@ -1,6 +1,6 @@
 <?php
 /**
- * DestinationSchema
+ * XapiStatementPipePutSchema
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace RusticiSoftware\Cloud\V2\Model;
 use \ArrayAccess;
 
 /**
- * DestinationSchema Class Doc Comment
+ * XapiStatementPipePutSchema Class Doc Comment
  *
  * @category    Class
  * @package     RusticiSoftware\Cloud\V2
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class DestinationSchema implements ArrayAccess
+class XapiStatementPipePutSchema implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,18 +47,15 @@ class DestinationSchema implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'DestinationSchema';
+    protected static $swaggerModelName = 'XapiStatementPipePutSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'name' => 'string',
-        'tags' => 'string[]',
-        'email' => 'string',
-        'notes' => 'string',
-        'launch_auth' => '\RusticiSoftware\Cloud\V2\Model\LaunchAuthSchema'
+        'source' => '\RusticiSoftware\Cloud\V2\Model\XapiEndpointSchema',
+        'target' => '\RusticiSoftware\Cloud\V2\Model\XapiEndpointSchema'
     ];
 
     public static function swaggerTypes()
@@ -71,11 +68,8 @@ class DestinationSchema implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'tags' => 'tags',
-        'email' => 'email',
-        'notes' => 'notes',
-        'launch_auth' => 'launchAuth'
+        'source' => 'source',
+        'target' => 'target'
     ];
 
 
@@ -84,11 +78,8 @@ class DestinationSchema implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'tags' => 'setTags',
-        'email' => 'setEmail',
-        'notes' => 'setNotes',
-        'launch_auth' => 'setLaunchAuth'
+        'source' => 'setSource',
+        'target' => 'setTarget'
     ];
 
 
@@ -97,11 +88,8 @@ class DestinationSchema implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'tags' => 'getTags',
-        'email' => 'getEmail',
-        'notes' => 'getNotes',
-        'launch_auth' => 'getLaunchAuth'
+        'source' => 'getSource',
+        'target' => 'getTarget'
     ];
 
     public static function attributeMap()
@@ -135,11 +123,8 @@ class DestinationSchema implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
-        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
-        $this->container['notes'] = isset($data['notes']) ? $data['notes'] : null;
-        $this->container['launch_auth'] = isset($data['launch_auth']) ? $data['launch_auth'] : null;
+        $this->container['source'] = isset($data['source']) ? $data['source'] : null;
+        $this->container['target'] = isset($data['target']) ? $data['target'] : null;
     }
 
     /**
@@ -168,106 +153,43 @@ class DestinationSchema implements ArrayAccess
 
 
     /**
-     * Gets name
-     * @return string
+     * Gets source
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiEndpointSchema
      */
-    public function getName()
+    public function getSource()
     {
-        return $this->container['name'];
+        return $this->container['source'];
     }
 
     /**
-     * Sets name
-     * @param string $name The destination's name.
+     * Sets source
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiEndpointSchema $source
      * @return $this
      */
-    public function setName($name)
+    public function setSource($source)
     {
-        $this->container['name'] = $name;
+        $this->container['source'] = $source;
 
         return $this;
     }
 
     /**
-     * Gets tags
-     * @return string[]
+     * Gets target
+     * @return \RusticiSoftware\Cloud\V2\Model\XapiEndpointSchema
      */
-    public function getTags()
+    public function getTarget()
     {
-        return $this->container['tags'];
+        return $this->container['target'];
     }
 
     /**
-     * Sets tags
-     * @param string[] $tags Optional array of tags.
+     * Sets target
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiEndpointSchema $target
      * @return $this
      */
-    public function setTags($tags)
+    public function setTarget($target)
     {
-        $this->container['tags'] = $tags;
-
-        return $this;
-    }
-
-    /**
-     * Gets email
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->container['email'];
-    }
-
-    /**
-     * Sets email
-     * @param string $email SCORM Cloud user e-mail associated with this destination. If this is not provided, it will default to the owner of the Realm.
-     * @return $this
-     */
-    public function setEmail($email)
-    {
-        $this->container['email'] = $email;
-
-        return $this;
-    }
-
-    /**
-     * Gets notes
-     * @return string
-     */
-    public function getNotes()
-    {
-        return $this->container['notes'];
-    }
-
-    /**
-     * Sets notes
-     * @param string $notes Any provided notes about this Destination
-     * @return $this
-     */
-    public function setNotes($notes)
-    {
-        $this->container['notes'] = $notes;
-
-        return $this;
-    }
-
-    /**
-     * Gets launch_auth
-     * @return \RusticiSoftware\Cloud\V2\Model\LaunchAuthSchema
-     */
-    public function getLaunchAuth()
-    {
-        return $this->container['launch_auth'];
-    }
-
-    /**
-     * Sets launch_auth
-     * @param \RusticiSoftware\Cloud\V2\Model\LaunchAuthSchema $launch_auth
-     * @return $this
-     */
-    public function setLaunchAuth($launch_auth)
-    {
-        $this->container['launch_auth'] = $launch_auth;
+        $this->container['target'] = $target;
 
         return $this;
     }

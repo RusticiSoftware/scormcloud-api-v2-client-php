@@ -831,7 +831,7 @@ class XapiApi
      * Edit an existing xAPI pipe or create a new one.
      *
      * @param string $statement_pipe_id id for this xAPI statement pipe (required)
-     * @param \RusticiSoftware\Cloud\V2\Model\XapiStatementPipeSchema $xapi_statement_pipe  (required)
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiStatementPipePutSchema $xapi_statement_pipe  (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @return \RusticiSoftware\Cloud\V2\Model\StringResultSchema
      */
@@ -847,7 +847,7 @@ class XapiApi
      * Edit an existing xAPI pipe or create a new one.
      *
      * @param string $statement_pipe_id id for this xAPI statement pipe (required)
-     * @param \RusticiSoftware\Cloud\V2\Model\XapiStatementPipeSchema $xapi_statement_pipe  (required)
+     * @param \RusticiSoftware\Cloud\V2\Model\XapiStatementPipePutSchema $xapi_statement_pipe  (required)
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @return array of \RusticiSoftware\Cloud\V2\Model\StringResultSchema, HTTP status code, HTTP response headers (array of strings)
      */

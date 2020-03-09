@@ -159,6 +159,9 @@ class XapiCredentialPostSchema implements ArrayAccess
         if ($this->container['name'] === null) {
             $invalid_properties[] = "'name' can't be null";
         }
+        if ($this->container['secret'] === null) {
+            $invalid_properties[] = "'secret' can't be null";
+        }
         if ($this->container['is_enabled'] === null) {
             $invalid_properties[] = "'is_enabled' can't be null";
         }
@@ -181,6 +184,9 @@ class XapiCredentialPostSchema implements ArrayAccess
     {
 
         if ($this->container['name'] === null) {
+            return false;
+        }
+        if ($this->container['secret'] === null) {
             return false;
         }
         if ($this->container['is_enabled'] === null) {
