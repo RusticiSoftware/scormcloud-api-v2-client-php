@@ -20,7 +20,7 @@ To install the bindings via [Composer](http://getcomposer.org/), add the followi
 {
   "repositories": [
     {
-      "type": "git",
+      "type": "vcs",
       "url": "https://github.com/RusticiSoftware/scormcloud-api-v2-client-php.git"
     }
   ],
