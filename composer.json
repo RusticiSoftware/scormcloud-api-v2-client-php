@@ -23,7 +23,7 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "guzzlehttp/guzzle": "~6.0|^7.0.1"
+        "guzzlehttp/guzzle": "~6.0|^7.0.0"
     },
     "autoload": {
         "psr-4": { "RusticiSoftware\\Cloud\\V2\\" : "src/" }
