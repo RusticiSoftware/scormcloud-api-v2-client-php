@@ -2,7 +2,7 @@
 /**
  * CourseActivitySchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -252,14 +252,6 @@ class CourseActivitySchema implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getActivityTypeAllowableValues();
-        if (!is_null($this->container['activity_type']) && !in_array($this->container['activity_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'activity_type', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -366,15 +358,6 @@ class CourseActivitySchema implements ModelInterface, ArrayAccess
      */
     public function setActivityType($activity_type)
     {
-        $allowedValues = $this->getActivityTypeAllowableValues();
-        if (!is_null($activity_type) && !in_array($activity_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'activity_type', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['activity_type'] = $activity_type;
 
         return $this;

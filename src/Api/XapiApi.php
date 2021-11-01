@@ -1,7 +1,7 @@
 <?php
 /**
  * XapiApi
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -75,7 +75,7 @@ class XapiApi
         HeaderSelector $selector = null
     ) {
         $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
+        $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
     }
 
@@ -90,7 +90,7 @@ class XapiApi
     /**
      * Operation createStatementPipe
      *
-     * Create an xAPI statement pipe.
+     * Create an xAPI Statement Pipe
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\XapiStatementPipePostSchema $xapi_statement_pipe xapi_statement_pipe (required)
      *
@@ -107,7 +107,7 @@ class XapiApi
     /**
      * Operation createStatementPipeWithHttpInfo
      *
-     * Create an xAPI statement pipe.
+     * Create an xAPI Statement Pipe
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\XapiStatementPipePostSchema $xapi_statement_pipe (required)
      *
@@ -190,7 +190,7 @@ class XapiApi
     /**
      * Operation createStatementPipeAsync
      *
-     * Create an xAPI statement pipe.
+     * Create an xAPI Statement Pipe
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\XapiStatementPipePostSchema $xapi_statement_pipe (required)
      *
@@ -210,7 +210,7 @@ class XapiApi
     /**
      * Operation createStatementPipeAsyncWithHttpInfo
      *
-     * Create an xAPI statement pipe.
+     * Create an xAPI Statement Pipe
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\XapiStatementPipePostSchema $xapi_statement_pipe (required)
      *
@@ -306,7 +306,7 @@ class XapiApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -334,7 +334,7 @@ class XapiApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -358,7 +358,7 @@ class XapiApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -370,7 +370,7 @@ class XapiApi
     /**
      * Operation createXapiCredential
      *
-     * Create a xAPI credential.
+     * Create xAPI Credentials
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\XapiCredentialPostSchema $xapi_credential xapi_credential (required)
      *
@@ -387,7 +387,7 @@ class XapiApi
     /**
      * Operation createXapiCredentialWithHttpInfo
      *
-     * Create a xAPI credential.
+     * Create xAPI Credentials
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\XapiCredentialPostSchema $xapi_credential (required)
      *
@@ -470,7 +470,7 @@ class XapiApi
     /**
      * Operation createXapiCredentialAsync
      *
-     * Create a xAPI credential.
+     * Create xAPI Credentials
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\XapiCredentialPostSchema $xapi_credential (required)
      *
@@ -490,7 +490,7 @@ class XapiApi
     /**
      * Operation createXapiCredentialAsyncWithHttpInfo
      *
-     * Create a xAPI credential.
+     * Create xAPI Credentials
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\XapiCredentialPostSchema $xapi_credential (required)
      *
@@ -586,7 +586,7 @@ class XapiApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -614,7 +614,7 @@ class XapiApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -638,7 +638,7 @@ class XapiApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -650,9 +650,9 @@ class XapiApi
     /**
      * Operation deleteStatementPipe
      *
-     * Deletes this xAPI pipe.
+     * Delete an xAPI Statement Pipe
      *
-     * @param  string $statement_pipe_id id for this xAPI statement pipe (required)
+     * @param  string $statement_pipe_id statement_pipe_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -666,9 +666,9 @@ class XapiApi
     /**
      * Operation deleteStatementPipeWithHttpInfo
      *
-     * Deletes this xAPI pipe.
+     * Delete an xAPI Statement Pipe
      *
-     * @param  string $statement_pipe_id id for this xAPI statement pipe (required)
+     * @param  string $statement_pipe_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -727,9 +727,9 @@ class XapiApi
     /**
      * Operation deleteStatementPipeAsync
      *
-     * Deletes this xAPI pipe.
+     * Delete an xAPI Statement Pipe
      *
-     * @param  string $statement_pipe_id id for this xAPI statement pipe (required)
+     * @param  string $statement_pipe_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -747,9 +747,9 @@ class XapiApi
     /**
      * Operation deleteStatementPipeAsyncWithHttpInfo
      *
-     * Deletes this xAPI pipe.
+     * Delete an xAPI Statement Pipe
      *
-     * @param  string $statement_pipe_id id for this xAPI statement pipe (required)
+     * @param  string $statement_pipe_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -785,7 +785,7 @@ class XapiApi
     /**
      * Create request for operation 'deleteStatementPipe'
      *
-     * @param  string $statement_pipe_id id for this xAPI statement pipe (required)
+     * @param  string $statement_pipe_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -834,7 +834,7 @@ class XapiApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -862,7 +862,7 @@ class XapiApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -886,7 +886,7 @@ class XapiApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -898,9 +898,9 @@ class XapiApi
     /**
      * Operation deleteXapiCredential
      *
-     * Deletes the xAPI credentials specified by the xAPI credentials id
+     * Delete xAPI Credentials
      *
-     * @param  string $xapi_credential_id id for this xAPI credential (required)
+     * @param  string $xapi_credential_id xapi_credential_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -914,9 +914,9 @@ class XapiApi
     /**
      * Operation deleteXapiCredentialWithHttpInfo
      *
-     * Deletes the xAPI credentials specified by the xAPI credentials id
+     * Delete xAPI Credentials
      *
-     * @param  string $xapi_credential_id id for this xAPI credential (required)
+     * @param  string $xapi_credential_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -975,9 +975,9 @@ class XapiApi
     /**
      * Operation deleteXapiCredentialAsync
      *
-     * Deletes the xAPI credentials specified by the xAPI credentials id
+     * Delete xAPI Credentials
      *
-     * @param  string $xapi_credential_id id for this xAPI credential (required)
+     * @param  string $xapi_credential_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -995,9 +995,9 @@ class XapiApi
     /**
      * Operation deleteXapiCredentialAsyncWithHttpInfo
      *
-     * Deletes the xAPI credentials specified by the xAPI credentials id
+     * Delete xAPI Credentials
      *
-     * @param  string $xapi_credential_id id for this xAPI credential (required)
+     * @param  string $xapi_credential_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1033,7 +1033,7 @@ class XapiApi
     /**
      * Create request for operation 'deleteXapiCredential'
      *
-     * @param  string $xapi_credential_id id for this xAPI credential (required)
+     * @param  string $xapi_credential_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1082,7 +1082,7 @@ class XapiApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1110,7 +1110,7 @@ class XapiApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1134,7 +1134,7 @@ class XapiApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1146,9 +1146,9 @@ class XapiApi
     /**
      * Operation getStatementPipe
      *
-     * Retrieves xAPI pipe for `xapiPipeId`
+     * Get detailed information about an xAPI Statement Pipe
      *
-     * @param  string $statement_pipe_id id for this xAPI statement pipe (required)
+     * @param  string $statement_pipe_id statement_pipe_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1163,9 +1163,9 @@ class XapiApi
     /**
      * Operation getStatementPipeWithHttpInfo
      *
-     * Retrieves xAPI pipe for `xapiPipeId`
+     * Get detailed information about an xAPI Statement Pipe
      *
-     * @param  string $statement_pipe_id id for this xAPI statement pipe (required)
+     * @param  string $statement_pipe_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1246,9 +1246,9 @@ class XapiApi
     /**
      * Operation getStatementPipeAsync
      *
-     * Retrieves xAPI pipe for `xapiPipeId`
+     * Get detailed information about an xAPI Statement Pipe
      *
-     * @param  string $statement_pipe_id id for this xAPI statement pipe (required)
+     * @param  string $statement_pipe_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1266,9 +1266,9 @@ class XapiApi
     /**
      * Operation getStatementPipeAsyncWithHttpInfo
      *
-     * Retrieves xAPI pipe for `xapiPipeId`
+     * Get detailed information about an xAPI Statement Pipe
      *
-     * @param  string $statement_pipe_id id for this xAPI statement pipe (required)
+     * @param  string $statement_pipe_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1318,7 +1318,7 @@ class XapiApi
     /**
      * Create request for operation 'getStatementPipe'
      *
-     * @param  string $statement_pipe_id id for this xAPI statement pipe (required)
+     * @param  string $statement_pipe_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1367,7 +1367,7 @@ class XapiApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1395,7 +1395,7 @@ class XapiApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1419,7 +1419,7 @@ class XapiApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1431,7 +1431,7 @@ class XapiApi
     /**
      * Operation getStatementPipes
      *
-     * Get all of the xapiPipes for `appId`
+     * Get a list of xAPI Statement Pipes
      *
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -1447,7 +1447,7 @@ class XapiApi
     /**
      * Operation getStatementPipesWithHttpInfo
      *
-     * Get all of the xapiPipes for `appId`
+     * Get a list of xAPI Statement Pipes
      *
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -1521,7 +1521,7 @@ class XapiApi
     /**
      * Operation getStatementPipesAsync
      *
-     * Get all of the xapiPipes for `appId`
+     * Get a list of xAPI Statement Pipes
      *
      *
      * @throws \InvalidArgumentException
@@ -1540,7 +1540,7 @@ class XapiApi
     /**
      * Operation getStatementPipesAsyncWithHttpInfo
      *
-     * Get all of the xapiPipes for `appId`
+     * Get a list of xAPI Statement Pipes
      *
      *
      * @throws \InvalidArgumentException
@@ -1625,7 +1625,7 @@ class XapiApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1653,7 +1653,7 @@ class XapiApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1677,7 +1677,7 @@ class XapiApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1689,9 +1689,9 @@ class XapiApi
     /**
      * Operation getXapiCredential
      *
-     * Retrieves the xAPI credentials specified by the xAPI credentials id.
+     * Get detailed information about the xAPI Credentials
      *
-     * @param  string $xapi_credential_id id for this xAPI credential (required)
+     * @param  string $xapi_credential_id xapi_credential_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1706,9 +1706,9 @@ class XapiApi
     /**
      * Operation getXapiCredentialWithHttpInfo
      *
-     * Retrieves the xAPI credentials specified by the xAPI credentials id.
+     * Get detailed information about the xAPI Credentials
      *
-     * @param  string $xapi_credential_id id for this xAPI credential (required)
+     * @param  string $xapi_credential_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1789,9 +1789,9 @@ class XapiApi
     /**
      * Operation getXapiCredentialAsync
      *
-     * Retrieves the xAPI credentials specified by the xAPI credentials id.
+     * Get detailed information about the xAPI Credentials
      *
-     * @param  string $xapi_credential_id id for this xAPI credential (required)
+     * @param  string $xapi_credential_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1809,9 +1809,9 @@ class XapiApi
     /**
      * Operation getXapiCredentialAsyncWithHttpInfo
      *
-     * Retrieves the xAPI credentials specified by the xAPI credentials id.
+     * Get detailed information about the xAPI Credentials
      *
-     * @param  string $xapi_credential_id id for this xAPI credential (required)
+     * @param  string $xapi_credential_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1861,7 +1861,7 @@ class XapiApi
     /**
      * Create request for operation 'getXapiCredential'
      *
-     * @param  string $xapi_credential_id id for this xAPI credential (required)
+     * @param  string $xapi_credential_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1910,7 +1910,7 @@ class XapiApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1938,7 +1938,7 @@ class XapiApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1962,7 +1962,7 @@ class XapiApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1974,37 +1974,47 @@ class XapiApi
     /**
      * Operation getXapiCredentials
      *
-     * Get the list of xapiCredentials
+     * Get a list of xAPI Credentials
      *
-     * @param  \DateTime $since Only &lt;&lt;resourcePathName&gt;&gt; updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of &lt;&lt;resourcePathName&gt;&gt; lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to credential_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\XapiCredentialsListSchema
      */
-    public function getXapiCredentials($since = null, $more = null)
+    public function getXapiCredentials($since = null, $until = null, $datetime_filter = 'updated', $filter = null, $filter_by = 'credential_id', $order_by = 'updated_asc', $more = null)
     {
-        list($response) = $this->getXapiCredentialsWithHttpInfo($since, $more);
+        list($response) = $this->getXapiCredentialsWithHttpInfo($since, $until, $datetime_filter, $filter, $filter_by, $order_by, $more);
         return $response;
     }
 
     /**
      * Operation getXapiCredentialsWithHttpInfo
      *
-     * Get the list of xapiCredentials
+     * Get a list of xAPI Credentials
      *
-     * @param  \DateTime $since Only &lt;&lt;resourcePathName&gt;&gt; updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of &lt;&lt;resourcePathName&gt;&gt; lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to credential_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\XapiCredentialsListSchema, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getXapiCredentialsWithHttpInfo($since = null, $more = null)
+    public function getXapiCredentialsWithHttpInfo($since = null, $until = null, $datetime_filter = 'updated', $filter = null, $filter_by = 'credential_id', $order_by = 'updated_asc', $more = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\XapiCredentialsListSchema';
-        $request = $this->getXapiCredentialsRequest($since, $more);
+        $request = $this->getXapiCredentialsRequest($since, $until, $datetime_filter, $filter, $filter_by, $order_by, $more);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2068,17 +2078,22 @@ class XapiApi
     /**
      * Operation getXapiCredentialsAsync
      *
-     * Get the list of xapiCredentials
+     * Get a list of xAPI Credentials
      *
-     * @param  \DateTime $since Only &lt;&lt;resourcePathName&gt;&gt; updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of &lt;&lt;resourcePathName&gt;&gt; lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to credential_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getXapiCredentialsAsync($since = null, $more = null)
+    public function getXapiCredentialsAsync($since = null, $until = null, $datetime_filter = 'updated', $filter = null, $filter_by = 'credential_id', $order_by = 'updated_asc', $more = null)
     {
-        return $this->getXapiCredentialsAsyncWithHttpInfo($since, $more)
+        return $this->getXapiCredentialsAsyncWithHttpInfo($since, $until, $datetime_filter, $filter, $filter_by, $order_by, $more)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2089,18 +2104,23 @@ class XapiApi
     /**
      * Operation getXapiCredentialsAsyncWithHttpInfo
      *
-     * Get the list of xapiCredentials
+     * Get a list of xAPI Credentials
      *
-     * @param  \DateTime $since Only &lt;&lt;resourcePathName&gt;&gt; updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of &lt;&lt;resourcePathName&gt;&gt; lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to credential_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getXapiCredentialsAsyncWithHttpInfo($since = null, $more = null)
+    public function getXapiCredentialsAsyncWithHttpInfo($since = null, $until = null, $datetime_filter = 'updated', $filter = null, $filter_by = 'credential_id', $order_by = 'updated_asc', $more = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\XapiCredentialsListSchema';
-        $request = $this->getXapiCredentialsRequest($since, $more);
+        $request = $this->getXapiCredentialsRequest($since, $until, $datetime_filter, $filter, $filter_by, $order_by, $more);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2142,13 +2162,18 @@ class XapiApi
     /**
      * Create request for operation 'getXapiCredentials'
      *
-     * @param  \DateTime $since Only &lt;&lt;resourcePathName&gt;&gt; updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of &lt;&lt;resourcePathName&gt;&gt; lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to credential_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getXapiCredentialsRequest($since = null, $more = null)
+    protected function getXapiCredentialsRequest($since = null, $until = null, $datetime_filter = 'updated', $filter = null, $filter_by = 'credential_id', $order_by = 'updated_asc', $more = null)
     {
 
         $resourcePath = '/xapi/credentials';
@@ -2161,6 +2186,26 @@ class XapiApi
         // query params
         if ($since !== null) {
             $queryParams['since'] = ObjectSerializer::toQueryValue($since);
+        }
+        // query params
+        if ($until !== null) {
+            $queryParams['until'] = ObjectSerializer::toQueryValue($until);
+        }
+        // query params
+        if ($datetime_filter !== null) {
+            $queryParams['datetimeFilter'] = ObjectSerializer::toQueryValue($datetime_filter);
+        }
+        // query params
+        if ($filter !== null) {
+            $queryParams['filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($filter_by !== null) {
+            $queryParams['filterBy'] = ObjectSerializer::toQueryValue($filter_by);
+        }
+        // query params
+        if ($order_by !== null) {
+            $queryParams['orderBy'] = ObjectSerializer::toQueryValue($order_by);
         }
         // query params
         if ($more !== null) {
@@ -2186,7 +2231,7 @@ class XapiApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2214,7 +2259,7 @@ class XapiApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2238,7 +2283,7 @@ class XapiApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2250,9 +2295,9 @@ class XapiApi
     /**
      * Operation setStatementPipe
      *
-     * Edit an existing xAPI pipe or create a new one.
+     * Create or update an xAPI Statement Pipe
      *
-     * @param  string $statement_pipe_id id for this xAPI statement pipe (required)
+     * @param  string $statement_pipe_id statement_pipe_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\XapiStatementPipePutSchema $xapi_statement_pipe xapi_statement_pipe (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2268,9 +2313,9 @@ class XapiApi
     /**
      * Operation setStatementPipeWithHttpInfo
      *
-     * Edit an existing xAPI pipe or create a new one.
+     * Create or update an xAPI Statement Pipe
      *
-     * @param  string $statement_pipe_id id for this xAPI statement pipe (required)
+     * @param  string $statement_pipe_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\XapiStatementPipePutSchema $xapi_statement_pipe (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2360,9 +2405,9 @@ class XapiApi
     /**
      * Operation setStatementPipeAsync
      *
-     * Edit an existing xAPI pipe or create a new one.
+     * Create or update an xAPI Statement Pipe
      *
-     * @param  string $statement_pipe_id id for this xAPI statement pipe (required)
+     * @param  string $statement_pipe_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\XapiStatementPipePutSchema $xapi_statement_pipe (required)
      *
      * @throws \InvalidArgumentException
@@ -2381,9 +2426,9 @@ class XapiApi
     /**
      * Operation setStatementPipeAsyncWithHttpInfo
      *
-     * Edit an existing xAPI pipe or create a new one.
+     * Create or update an xAPI Statement Pipe
      *
-     * @param  string $statement_pipe_id id for this xAPI statement pipe (required)
+     * @param  string $statement_pipe_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\XapiStatementPipePutSchema $xapi_statement_pipe (required)
      *
      * @throws \InvalidArgumentException
@@ -2434,7 +2479,7 @@ class XapiApi
     /**
      * Create request for operation 'setStatementPipe'
      *
-     * @param  string $statement_pipe_id id for this xAPI statement pipe (required)
+     * @param  string $statement_pipe_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\XapiStatementPipePutSchema $xapi_statement_pipe (required)
      *
      * @throws \InvalidArgumentException
@@ -2493,7 +2538,7 @@ class XapiApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2521,7 +2566,7 @@ class XapiApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2545,7 +2590,7 @@ class XapiApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2557,9 +2602,9 @@ class XapiApi
     /**
      * Operation setXapiCredential
      *
-     * Edit an existing xAPI credential or create a new one, specified by the xAPI credentials id
+     * Create or update xAPI Credentials
      *
-     * @param  string $xapi_credential_id id for this xAPI credential (required)
+     * @param  string $xapi_credential_id xapi_credential_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\XapiCredentialPostSchema $xapi_credential xapi_credential (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2574,9 +2619,9 @@ class XapiApi
     /**
      * Operation setXapiCredentialWithHttpInfo
      *
-     * Edit an existing xAPI credential or create a new one, specified by the xAPI credentials id
+     * Create or update xAPI Credentials
      *
-     * @param  string $xapi_credential_id id for this xAPI credential (required)
+     * @param  string $xapi_credential_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\XapiCredentialPostSchema $xapi_credential (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2636,9 +2681,9 @@ class XapiApi
     /**
      * Operation setXapiCredentialAsync
      *
-     * Edit an existing xAPI credential or create a new one, specified by the xAPI credentials id
+     * Create or update xAPI Credentials
      *
-     * @param  string $xapi_credential_id id for this xAPI credential (required)
+     * @param  string $xapi_credential_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\XapiCredentialPostSchema $xapi_credential (required)
      *
      * @throws \InvalidArgumentException
@@ -2657,9 +2702,9 @@ class XapiApi
     /**
      * Operation setXapiCredentialAsyncWithHttpInfo
      *
-     * Edit an existing xAPI credential or create a new one, specified by the xAPI credentials id
+     * Create or update xAPI Credentials
      *
-     * @param  string $xapi_credential_id id for this xAPI credential (required)
+     * @param  string $xapi_credential_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\XapiCredentialPostSchema $xapi_credential (required)
      *
      * @throws \InvalidArgumentException
@@ -2696,7 +2741,7 @@ class XapiApi
     /**
      * Create request for operation 'setXapiCredential'
      *
-     * @param  string $xapi_credential_id id for this xAPI credential (required)
+     * @param  string $xapi_credential_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\XapiCredentialPostSchema $xapi_credential (required)
      *
      * @throws \InvalidArgumentException
@@ -2755,7 +2800,7 @@ class XapiApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2783,7 +2828,7 @@ class XapiApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2807,7 +2852,7 @@ class XapiApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

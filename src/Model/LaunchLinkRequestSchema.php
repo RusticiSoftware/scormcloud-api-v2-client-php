@@ -2,7 +2,7 @@
 /**
  * LaunchLinkRequestSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -304,7 +304,7 @@ class LaunchLinkRequestSchema implements ModelInterface, ArrayAccess
     /**
      * Sets redirect_on_exit_url
      *
-     * @param string $redirect_on_exit_url The URL the application should redirect to when the learner exits a course. If not specified, configured value will be used.
+     * @param string $redirect_on_exit_url The URL the application should redirect to when the learner exits a course.  Alternatively one of the following keywords can be used to redirect to: - `closer` - A page that automatically tries to close the browser tab/window - `blank` - A blank page - `message` - A page with a message about the course being complete  If an empty string is specified, the configured setting will be used (default www.scorm.com). If an invalid url is specified, the Message.html page will be loaded.
      *
      * @return $this
      */
@@ -328,7 +328,7 @@ class LaunchLinkRequestSchema implements ModelInterface, ArrayAccess
     /**
      * Sets tracking
      *
-     * @param bool $tracking Should this launch be tracked? If false, Engine will avoid tracking to the extent possible for the standard being used.
+     * @param bool $tracking Should this launch be tracked? If false, SCORM Cloud will avoid tracking to the extent possible for the standard being used.
      *
      * @return $this
      */

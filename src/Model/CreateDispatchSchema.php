@@ -2,7 +2,7 @@
 /**
  * CreateDispatchSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -403,7 +403,7 @@ class CreateDispatchSchema implements ModelInterface, ArrayAccess
     /**
      * Sets expiration_date
      *
-     * @param \DateTime $expiration_date The date after which this dispatch will be disabled as an ISO 8601 string, or not present for no expiration date.
+     * @param \DateTime $expiration_date The ISO 8601 TimeStamp (defaults to UTC) after which this dispatch will be disabled. An empty value will represent no expiration date.
      *
      * @return $this
      */

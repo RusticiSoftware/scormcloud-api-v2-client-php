@@ -1,8 +1,8 @@
 <?php
 /**
- * ConnectorContentListEntrySchema
+ * AssetFileSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
 
 /**
- * ConnectorContentListEntrySchema Class Doc Comment
+ * AssetFileSchema Class Doc Comment
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ConnectorContentListEntrySchema implements ModelInterface, ArrayAccess
+class AssetFileSchema implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ConnectorContentListEntrySchema implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ConnectorContentListEntrySchema';
+    protected static $swaggerModelName = 'AssetFileSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,8 @@ class ConnectorContentListEntrySchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'connector_type' => 'string',
-        'connector_id' => 'string',
-        'details' => '\RusticiSoftware\Cloud\V2\Model\ConnectorContentItemSchema'
+        'filename' => 'string',
+        'destination' => 'string'
     ];
 
     /**
@@ -68,9 +67,8 @@ class ConnectorContentListEntrySchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'connector_type' => null,
-        'connector_id' => null,
-        'details' => null
+        'filename' => null,
+        'destination' => null
     ];
 
     /**
@@ -100,9 +98,8 @@ class ConnectorContentListEntrySchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'connector_type' => 'connectorType',
-        'connector_id' => 'connectorId',
-        'details' => 'details'
+        'filename' => 'filename',
+        'destination' => 'destination'
     ];
 
     /**
@@ -111,9 +108,8 @@ class ConnectorContentListEntrySchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'connector_type' => 'setConnectorType',
-        'connector_id' => 'setConnectorId',
-        'details' => 'setDetails'
+        'filename' => 'setFilename',
+        'destination' => 'setDestination'
     ];
 
     /**
@@ -122,9 +118,8 @@ class ConnectorContentListEntrySchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'connector_type' => 'getConnectorType',
-        'connector_id' => 'getConnectorId',
-        'details' => 'getDetails'
+        'filename' => 'getFilename',
+        'destination' => 'getDestination'
     ];
 
     /**
@@ -187,9 +182,8 @@ class ConnectorContentListEntrySchema implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['connector_type'] = isset($data['connector_type']) ? $data['connector_type'] : null;
-        $this->container['connector_id'] = isset($data['connector_id']) ? $data['connector_id'] : null;
-        $this->container['details'] = isset($data['details']) ? $data['details'] : null;
+        $this->container['filename'] = isset($data['filename']) ? $data['filename'] : null;
+        $this->container['destination'] = isset($data['destination']) ? $data['destination'] : null;
     }
 
     /**
@@ -217,73 +211,49 @@ class ConnectorContentListEntrySchema implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets connector_type
+     * Gets filename
      *
      * @return string
      */
-    public function getConnectorType()
+    public function getFilename()
     {
-        return $this->container['connector_type'];
+        return $this->container['filename'];
     }
 
     /**
-     * Sets connector_type
+     * Sets filename
      *
-     * @param string $connector_type connector_type
+     * @param string $filename filename
      *
      * @return $this
      */
-    public function setConnectorType($connector_type)
+    public function setFilename($filename)
     {
-        $this->container['connector_type'] = $connector_type;
+        $this->container['filename'] = $filename;
 
         return $this;
     }
 
     /**
-     * Gets connector_id
+     * Gets destination
      *
      * @return string
      */
-    public function getConnectorId()
+    public function getDestination()
     {
-        return $this->container['connector_id'];
+        return $this->container['destination'];
     }
 
     /**
-     * Sets connector_id
+     * Sets destination
      *
-     * @param string $connector_id connector_id
+     * @param string $destination destination
      *
      * @return $this
      */
-    public function setConnectorId($connector_id)
+    public function setDestination($destination)
     {
-        $this->container['connector_id'] = $connector_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets details
-     *
-     * @return \RusticiSoftware\Cloud\V2\Model\ConnectorContentItemSchema
-     */
-    public function getDetails()
-    {
-        return $this->container['details'];
-    }
-
-    /**
-     * Sets details
-     *
-     * @param \RusticiSoftware\Cloud\V2\Model\ConnectorContentItemSchema $details details
-     *
-     * @return $this
-     */
-    public function setDetails($details)
-    {
-        $this->container['details'] = $details;
+        $this->container['destination'] = $destination;
 
         return $this;
     }

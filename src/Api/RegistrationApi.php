@@ -1,7 +1,7 @@
 <?php
 /**
  * RegistrationApi
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -75,7 +75,7 @@ class RegistrationApi
         HeaderSelector $selector = null
     ) {
         $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
+        $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
     }
 
@@ -90,9 +90,9 @@ class RegistrationApi
     /**
      * Operation buildRegistrationLaunchLink
      *
-     * Get registration launch link.
+     * Get a launch link for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request launch_link_request (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -108,9 +108,9 @@ class RegistrationApi
     /**
      * Operation buildRegistrationLaunchLinkWithHttpInfo
      *
-     * Get registration launch link.
+     * Get a launch link for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -200,9 +200,9 @@ class RegistrationApi
     /**
      * Operation buildRegistrationLaunchLinkAsync
      *
-     * Get registration launch link.
+     * Get a launch link for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      *
      * @throws \InvalidArgumentException
@@ -221,9 +221,9 @@ class RegistrationApi
     /**
      * Operation buildRegistrationLaunchLinkAsyncWithHttpInfo
      *
-     * Get registration launch link.
+     * Get a launch link for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      *
      * @throws \InvalidArgumentException
@@ -274,7 +274,7 @@ class RegistrationApi
     /**
      * Create request for operation 'buildRegistrationLaunchLink'
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      *
      * @throws \InvalidArgumentException
@@ -333,7 +333,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -361,7 +361,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -385,7 +385,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -397,7 +397,9 @@ class RegistrationApi
     /**
      * Operation createNewRegistrationInstance
      *
-     * @param  string $registration_id id for this registration (required)
+     * Create a Registration Instance
+     *
+     * @param  string $registration_id registration_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -411,7 +413,9 @@ class RegistrationApi
     /**
      * Operation createNewRegistrationInstanceWithHttpInfo
      *
-     * @param  string $registration_id id for this registration (required)
+     * Create a Registration Instance
+     *
+     * @param  string $registration_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -478,9 +482,9 @@ class RegistrationApi
     /**
      * Operation createNewRegistrationInstanceAsync
      *
-     * 
+     * Create a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -498,9 +502,9 @@ class RegistrationApi
     /**
      * Operation createNewRegistrationInstanceAsyncWithHttpInfo
      *
-     * 
+     * Create a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -536,7 +540,7 @@ class RegistrationApi
     /**
      * Create request for operation 'createNewRegistrationInstance'
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -585,7 +589,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -613,7 +617,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -637,7 +641,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -649,10 +653,10 @@ class RegistrationApi
     /**
      * Operation createRegistration
      *
-     * Create a registration.
+     * Create a Registration
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema $registration registration (required)
-     * @param  int $course_version The version of the course you want to create the registration for. Unless you have a reason for using this you probably do not need to. (optional)
+     * @param  int $course_version Unless you have a reason for using this you probably do not need to. (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -666,10 +670,10 @@ class RegistrationApi
     /**
      * Operation createRegistrationWithHttpInfo
      *
-     * Create a registration.
+     * Create a Registration
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema $registration (required)
-     * @param  int $course_version The version of the course you want to create the registration for. Unless you have a reason for using this you probably do not need to. (optional)
+     * @param  int $course_version Unless you have a reason for using this you probably do not need to. (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -728,10 +732,10 @@ class RegistrationApi
     /**
      * Operation createRegistrationAsync
      *
-     * Create a registration.
+     * Create a Registration
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema $registration (required)
-     * @param  int $course_version The version of the course you want to create the registration for. Unless you have a reason for using this you probably do not need to. (optional)
+     * @param  int $course_version Unless you have a reason for using this you probably do not need to. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -749,10 +753,10 @@ class RegistrationApi
     /**
      * Operation createRegistrationAsyncWithHttpInfo
      *
-     * Create a registration.
+     * Create a Registration
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema $registration (required)
-     * @param  int $course_version The version of the course you want to create the registration for. Unless you have a reason for using this you probably do not need to. (optional)
+     * @param  int $course_version Unless you have a reason for using this you probably do not need to. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -789,7 +793,7 @@ class RegistrationApi
      * Create request for operation 'createRegistration'
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\CreateRegistrationSchema $registration (required)
-     * @param  int $course_version The version of the course you want to create the registration for. Unless you have a reason for using this you probably do not need to. (optional)
+     * @param  int $course_version Unless you have a reason for using this you probably do not need to. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -837,7 +841,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -865,7 +869,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -889,7 +893,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -901,9 +905,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistration
      *
-     * Delete a registration.
+     * Delete a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id registration_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -917,9 +921,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationWithHttpInfo
      *
-     * Delete a registration.
+     * Delete a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -986,9 +990,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationAsync
      *
-     * Delete a registration.
+     * Delete a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1006,9 +1010,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationAsyncWithHttpInfo
      *
-     * Delete a registration.
+     * Delete a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1044,7 +1048,7 @@ class RegistrationApi
     /**
      * Create request for operation 'deleteRegistration'
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1093,7 +1097,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1121,7 +1125,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1145,7 +1149,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1157,9 +1161,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationConfigurationSetting
      *
-     * Clear a registration configuration.
+     * Delete a configuration setting explicitly set for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id registration_id (required)
      * @param  string $setting_id setting_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -1174,9 +1178,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationConfigurationSettingWithHttpInfo
      *
-     * Clear a registration configuration.
+     * Delete a configuration setting explicitly set for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  string $setting_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -1244,9 +1248,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationConfigurationSettingAsync
      *
-     * Clear a registration configuration.
+     * Delete a configuration setting explicitly set for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  string $setting_id (required)
      *
      * @throws \InvalidArgumentException
@@ -1265,9 +1269,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationConfigurationSettingAsyncWithHttpInfo
      *
-     * Clear a registration configuration.
+     * Delete a configuration setting explicitly set for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  string $setting_id (required)
      *
      * @throws \InvalidArgumentException
@@ -1304,7 +1308,7 @@ class RegistrationApi
     /**
      * Create request for operation 'deleteRegistrationConfigurationSetting'
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  string $setting_id (required)
      *
      * @throws \InvalidArgumentException
@@ -1368,7 +1372,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1396,7 +1400,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1420,7 +1424,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1432,9 +1436,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationGlobalData
      *
-     * Delete the global data of a registration.
+     * Reset global data for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id registration_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1448,9 +1452,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationGlobalDataWithHttpInfo
      *
-     * Delete the global data of a registration.
+     * Reset global data for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1517,9 +1521,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationGlobalDataAsync
      *
-     * Delete the global data of a registration.
+     * Reset global data for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1537,9 +1541,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationGlobalDataAsyncWithHttpInfo
      *
-     * Delete the global data of a registration.
+     * Reset global data for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1575,7 +1579,7 @@ class RegistrationApi
     /**
      * Create request for operation 'deleteRegistrationGlobalData'
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1624,7 +1628,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1652,7 +1656,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1676,7 +1680,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1688,10 +1692,10 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationInstance
      *
-     * Delete instance `instanceId` of `registrationId`.
+     * Delete a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id registration_id (required)
+     * @param  int $instance_id instance_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1705,10 +1709,10 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationInstanceWithHttpInfo
      *
-     * Delete instance `instanceId` of `registrationId`.
+     * Delete a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1775,10 +1779,10 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationInstanceAsync
      *
-     * Delete instance `instanceId` of `registrationId`.
+     * Delete a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1796,10 +1800,10 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationInstanceAsyncWithHttpInfo
      *
-     * Delete instance `instanceId` of `registrationId`.
+     * Delete a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1835,8 +1839,8 @@ class RegistrationApi
     /**
      * Create request for operation 'deleteRegistrationInstance'
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1855,10 +1859,6 @@ class RegistrationApi
                 'Missing the required parameter $instance_id when calling deleteRegistrationInstance'
             );
         }
-        if ($instance_id < 0) {
-            throw new \InvalidArgumentException('invalid value for "$instance_id" when calling RegistrationApi.deleteRegistrationInstance, must be bigger than or equal to 0.');
-        }
-
 
         $resourcePath = '/registrations/{registrationId}/instances/{instanceId}';
         $formParams = [];
@@ -1903,7 +1903,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1931,7 +1931,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1955,7 +1955,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1967,10 +1967,10 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationInstanceConfigurationSetting
      *
-     * Clear a configuration for an instance of a registration.
+     * Delete a configuration setting explicitly set for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id registration_id (required)
+     * @param  int $instance_id instance_id (required)
      * @param  string $setting_id setting_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -1985,10 +1985,10 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationInstanceConfigurationSettingWithHttpInfo
      *
-     * Clear a configuration for an instance of a registration.
+     * Delete a configuration setting explicitly set for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  string $setting_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2056,10 +2056,10 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationInstanceConfigurationSettingAsync
      *
-     * Clear a configuration for an instance of a registration.
+     * Delete a configuration setting explicitly set for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  string $setting_id (required)
      *
      * @throws \InvalidArgumentException
@@ -2078,10 +2078,10 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationInstanceConfigurationSettingAsyncWithHttpInfo
      *
-     * Clear a configuration for an instance of a registration.
+     * Delete a configuration setting explicitly set for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  string $setting_id (required)
      *
      * @throws \InvalidArgumentException
@@ -2118,8 +2118,8 @@ class RegistrationApi
     /**
      * Create request for operation 'deleteRegistrationInstanceConfigurationSetting'
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  string $setting_id (required)
      *
      * @throws \InvalidArgumentException
@@ -2139,10 +2139,6 @@ class RegistrationApi
                 'Missing the required parameter $instance_id when calling deleteRegistrationInstanceConfigurationSetting'
             );
         }
-        if ($instance_id < 0) {
-            throw new \InvalidArgumentException('invalid value for "$instance_id" when calling RegistrationApi.deleteRegistrationInstanceConfigurationSetting, must be bigger than or equal to 0.');
-        }
-
         // verify the required parameter 'setting_id' is set
         if ($setting_id === null || (is_array($setting_id) && count($setting_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -2201,7 +2197,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2229,7 +2225,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2253,7 +2249,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2265,9 +2261,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationProgress
      *
-     * Reset a registration.
+     * Reset a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id registration_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2281,9 +2277,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationProgressWithHttpInfo
      *
-     * Reset a registration.
+     * Reset a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2350,9 +2346,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationProgressAsync
      *
-     * Reset a registration.
+     * Reset a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2370,9 +2366,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationProgressAsyncWithHttpInfo
      *
-     * Reset a registration.
+     * Reset a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2408,7 +2404,7 @@ class RegistrationApi
     /**
      * Create request for operation 'deleteRegistrationProgress'
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2457,7 +2453,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2485,7 +2481,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2509,7 +2505,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2521,9 +2517,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationTags
      *
-     * Delete tags from a registration.
+     * Delete tags from a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2538,9 +2534,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationTagsWithHttpInfo
      *
-     * Delete tags from a registration.
+     * Delete tags from a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2608,9 +2604,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationTagsAsync
      *
-     * Delete tags from a registration.
+     * Delete tags from a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
@@ -2629,9 +2625,9 @@ class RegistrationApi
     /**
      * Operation deleteRegistrationTagsAsyncWithHttpInfo
      *
-     * Delete tags from a registration.
+     * Delete tags from a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
@@ -2668,7 +2664,7 @@ class RegistrationApi
     /**
      * Create request for operation 'deleteRegistrationTags'
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
@@ -2727,7 +2723,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2755,7 +2751,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2779,7 +2775,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2791,9 +2787,9 @@ class RegistrationApi
     /**
      * Operation getRegistration
      *
-     * See if a registration exists.
+     * Check that a Registration exists
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id registration_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2807,9 +2803,9 @@ class RegistrationApi
     /**
      * Operation getRegistrationWithHttpInfo
      *
-     * See if a registration exists.
+     * Check that a Registration exists
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2876,9 +2872,9 @@ class RegistrationApi
     /**
      * Operation getRegistrationAsync
      *
-     * See if a registration exists.
+     * Check that a Registration exists
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2896,9 +2892,9 @@ class RegistrationApi
     /**
      * Operation getRegistrationAsyncWithHttpInfo
      *
-     * See if a registration exists.
+     * Check that a Registration exists
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2934,7 +2930,7 @@ class RegistrationApi
     /**
      * Create request for operation 'getRegistration'
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2983,7 +2979,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -3011,7 +3007,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -3035,7 +3031,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'HEAD',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3047,9 +3043,9 @@ class RegistrationApi
     /**
      * Operation getRegistrationConfiguration
      *
-     * Get registration configuration.
+     * Get effective configuration settings for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id registration_id (required)
      * @param  bool $include_metadata include_metadata (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -3065,9 +3061,9 @@ class RegistrationApi
     /**
      * Operation getRegistrationConfigurationWithHttpInfo
      *
-     * Get registration configuration.
+     * Get effective configuration settings for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  bool $include_metadata (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -3157,9 +3153,9 @@ class RegistrationApi
     /**
      * Operation getRegistrationConfigurationAsync
      *
-     * Get registration configuration.
+     * Get effective configuration settings for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  bool $include_metadata (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -3178,9 +3174,9 @@ class RegistrationApi
     /**
      * Operation getRegistrationConfigurationAsyncWithHttpInfo
      *
-     * Get registration configuration.
+     * Get effective configuration settings for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  bool $include_metadata (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -3231,7 +3227,7 @@ class RegistrationApi
     /**
      * Create request for operation 'getRegistrationConfiguration'
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  bool $include_metadata (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -3285,7 +3281,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -3313,7 +3309,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -3337,7 +3333,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3349,10 +3345,10 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstanceConfiguration
      *
-     * Get configuration for instance of registration.
+     * Get effective configuration settings for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id registration_id (required)
+     * @param  int $instance_id instance_id (required)
      * @param  bool $include_metadata include_metadata (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -3368,10 +3364,10 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstanceConfigurationWithHttpInfo
      *
-     * Get configuration for instance of registration.
+     * Get effective configuration settings for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  bool $include_metadata (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -3461,10 +3457,10 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstanceConfigurationAsync
      *
-     * Get configuration for instance of registration.
+     * Get effective configuration settings for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  bool $include_metadata (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -3483,10 +3479,10 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstanceConfigurationAsyncWithHttpInfo
      *
-     * Get configuration for instance of registration.
+     * Get effective configuration settings for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  bool $include_metadata (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -3537,8 +3533,8 @@ class RegistrationApi
     /**
      * Create request for operation 'getRegistrationInstanceConfiguration'
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  bool $include_metadata (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -3558,10 +3554,6 @@ class RegistrationApi
                 'Missing the required parameter $instance_id when calling getRegistrationInstanceConfiguration'
             );
         }
-        if ($instance_id < 0) {
-            throw new \InvalidArgumentException('invalid value for "$instance_id" when calling RegistrationApi.getRegistrationInstanceConfiguration, must be bigger than or equal to 0.');
-        }
-
 
         $resourcePath = '/registrations/{registrationId}/instances/{instanceId}/configuration';
         $formParams = [];
@@ -3610,7 +3602,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -3638,7 +3630,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -3662,7 +3654,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3674,10 +3666,10 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstanceLaunchHistory
      *
-     * Get launch history for an instance of a registration.
+     * Get launch history for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id registration_id (required)
+     * @param  int $instance_id instance_id (required)
      * @param  bool $include_history_log Whether to include the history log in the launch history (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -3693,10 +3685,10 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstanceLaunchHistoryWithHttpInfo
      *
-     * Get launch history for an instance of a registration.
+     * Get launch history for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  bool $include_history_log Whether to include the history log in the launch history (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -3786,10 +3778,10 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstanceLaunchHistoryAsync
      *
-     * Get launch history for an instance of a registration.
+     * Get launch history for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  bool $include_history_log Whether to include the history log in the launch history (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -3808,10 +3800,10 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstanceLaunchHistoryAsyncWithHttpInfo
      *
-     * Get launch history for an instance of a registration.
+     * Get launch history for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  bool $include_history_log Whether to include the history log in the launch history (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -3862,8 +3854,8 @@ class RegistrationApi
     /**
      * Create request for operation 'getRegistrationInstanceLaunchHistory'
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  bool $include_history_log Whether to include the history log in the launch history (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -3883,10 +3875,6 @@ class RegistrationApi
                 'Missing the required parameter $instance_id when calling getRegistrationInstanceLaunchHistory'
             );
         }
-        if ($instance_id < 0) {
-            throw new \InvalidArgumentException('invalid value for "$instance_id" when calling RegistrationApi.getRegistrationInstanceLaunchHistory, must be bigger than or equal to 0.');
-        }
-
 
         $resourcePath = '/registrations/{registrationId}/instances/{instanceId}/launchHistory';
         $formParams = [];
@@ -3935,7 +3923,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -3963,7 +3951,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -3987,7 +3975,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3999,10 +3987,10 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstanceProgress
      *
-     * Get details of an instance of a registration.
+     * Get detailed information about a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id registration_id (required)
+     * @param  int $instance_id instance_id (required)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
@@ -4020,10 +4008,10 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstanceProgressWithHttpInfo
      *
-     * Get details of an instance of a registration.
+     * Get detailed information about a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
@@ -4115,10 +4103,10 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstanceProgressAsync
      *
-     * Get details of an instance of a registration.
+     * Get detailed information about a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
@@ -4139,10 +4127,10 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstanceProgressAsyncWithHttpInfo
      *
-     * Get details of an instance of a registration.
+     * Get detailed information about a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
@@ -4195,8 +4183,8 @@ class RegistrationApi
     /**
      * Create request for operation 'getRegistrationInstanceProgress'
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
@@ -4218,10 +4206,6 @@ class RegistrationApi
                 'Missing the required parameter $instance_id when calling getRegistrationInstanceProgress'
             );
         }
-        if ($instance_id < 0) {
-            throw new \InvalidArgumentException('invalid value for "$instance_id" when calling RegistrationApi.getRegistrationInstanceProgress, must be bigger than or equal to 0.');
-        }
-
 
         $resourcePath = '/registrations/{registrationId}/instances/{instanceId}';
         $formParams = [];
@@ -4278,7 +4262,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -4306,7 +4290,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -4330,7 +4314,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4342,13 +4326,13 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstanceStatements
      *
-     * Get xAPI statements for an instance of a registration.
+     * Get xAPI statements for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $registration_id registration_id (required)
+     * @param  int $instance_id instance_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4363,13 +4347,13 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstanceStatementsWithHttpInfo
      *
-     * Get xAPI statements for an instance of a registration.
+     * Get xAPI statements for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4458,13 +4442,13 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstanceStatementsAsync
      *
-     * Get xAPI statements for an instance of a registration.
+     * Get xAPI statements for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4482,13 +4466,13 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstanceStatementsAsyncWithHttpInfo
      *
-     * Get xAPI statements for an instance of a registration.
+     * Get xAPI statements for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4538,11 +4522,11 @@ class RegistrationApi
     /**
      * Create request for operation 'getRegistrationInstanceStatements'
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4561,10 +4545,6 @@ class RegistrationApi
                 'Missing the required parameter $instance_id when calling getRegistrationInstanceStatements'
             );
         }
-        if ($instance_id < 0) {
-            throw new \InvalidArgumentException('invalid value for "$instance_id" when calling RegistrationApi.getRegistrationInstanceStatements, must be bigger than or equal to 0.');
-        }
-
 
         $resourcePath = '/registrations/{registrationId}/instances/{instanceId}/xAPIStatements';
         $formParams = [];
@@ -4621,7 +4601,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -4649,7 +4629,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -4673,7 +4653,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4685,12 +4665,12 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstances
      *
-     * Get all instances of a registration.
+     * Get a list of a Registration's Instances
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $registration_id registration_id (required)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
@@ -4708,12 +4688,12 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstancesWithHttpInfo
      *
-     * Get all instances of a registration.
+     * Get a list of a Registration's Instances
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $registration_id (required)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
@@ -4805,12 +4785,12 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstancesAsync
      *
-     * Get all instances of a registration.
+     * Get a list of a Registration's Instances
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $registration_id (required)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
@@ -4831,12 +4811,12 @@ class RegistrationApi
     /**
      * Operation getRegistrationInstancesAsyncWithHttpInfo
      *
-     * Get all instances of a registration.
+     * Get a list of a Registration's Instances
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $registration_id (required)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
@@ -4889,10 +4869,10 @@ class RegistrationApi
     /**
      * Create request for operation 'getRegistrationInstances'
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $registration_id (required)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
@@ -4968,7 +4948,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -4996,7 +4976,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -5020,7 +5000,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -5032,9 +5012,9 @@ class RegistrationApi
     /**
      * Operation getRegistrationLaunchHistory
      *
-     * Get launch history for a registration.
+     * Get launch history for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id registration_id (required)
      * @param  bool $include_history_log Whether to include the history log in the launch history (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -5050,9 +5030,9 @@ class RegistrationApi
     /**
      * Operation getRegistrationLaunchHistoryWithHttpInfo
      *
-     * Get launch history for a registration.
+     * Get launch history for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  bool $include_history_log Whether to include the history log in the launch history (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -5142,9 +5122,9 @@ class RegistrationApi
     /**
      * Operation getRegistrationLaunchHistoryAsync
      *
-     * Get launch history for a registration.
+     * Get launch history for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  bool $include_history_log Whether to include the history log in the launch history (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -5163,9 +5143,9 @@ class RegistrationApi
     /**
      * Operation getRegistrationLaunchHistoryAsyncWithHttpInfo
      *
-     * Get launch history for a registration.
+     * Get launch history for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  bool $include_history_log Whether to include the history log in the launch history (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -5216,7 +5196,7 @@ class RegistrationApi
     /**
      * Create request for operation 'getRegistrationLaunchHistory'
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  bool $include_history_log Whether to include the history log in the launch history (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -5270,7 +5250,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -5298,7 +5278,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -5322,7 +5302,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -5334,9 +5314,9 @@ class RegistrationApi
     /**
      * Operation getRegistrationProgress
      *
-     * Get details of a registration.
+     * Get detailed information about a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id registration_id (required)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
@@ -5354,9 +5334,9 @@ class RegistrationApi
     /**
      * Operation getRegistrationProgressWithHttpInfo
      *
-     * Get details of a registration.
+     * Get detailed information about a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
@@ -5448,9 +5428,9 @@ class RegistrationApi
     /**
      * Operation getRegistrationProgressAsync
      *
-     * Get details of a registration.
+     * Get detailed information about a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
@@ -5471,9 +5451,9 @@ class RegistrationApi
     /**
      * Operation getRegistrationProgressAsyncWithHttpInfo
      *
-     * Get details of a registration.
+     * Get detailed information about a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
@@ -5526,7 +5506,7 @@ class RegistrationApi
     /**
      * Create request for operation 'getRegistrationProgress'
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
@@ -5590,7 +5570,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -5618,7 +5598,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -5642,7 +5622,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -5654,12 +5634,12 @@ class RegistrationApi
     /**
      * Operation getRegistrationStatements
      *
-     * Get xAPI statements for a registration.
+     * Get xAPI statements for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $registration_id registration_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5674,12 +5654,12 @@ class RegistrationApi
     /**
      * Operation getRegistrationStatementsWithHttpInfo
      *
-     * Get xAPI statements for a registration.
+     * Get xAPI statements for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $registration_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5768,12 +5748,12 @@ class RegistrationApi
     /**
      * Operation getRegistrationStatementsAsync
      *
-     * Get xAPI statements for a registration.
+     * Get xAPI statements for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $registration_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5791,12 +5771,12 @@ class RegistrationApi
     /**
      * Operation getRegistrationStatementsAsyncWithHttpInfo
      *
-     * Get xAPI statements for a registration.
+     * Get xAPI statements for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $registration_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5846,10 +5826,10 @@ class RegistrationApi
     /**
      * Create request for operation 'getRegistrationStatements'
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $registration_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5910,7 +5890,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -5938,7 +5918,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -5962,7 +5942,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -5974,9 +5954,9 @@ class RegistrationApi
     /**
      * Operation getRegistrationTags
      *
-     * Get tags for a registration.
+     * Get tags for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id registration_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5991,9 +5971,9 @@ class RegistrationApi
     /**
      * Operation getRegistrationTagsWithHttpInfo
      *
-     * Get tags for a registration.
+     * Get tags for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6082,9 +6062,9 @@ class RegistrationApi
     /**
      * Operation getRegistrationTagsAsync
      *
-     * Get tags for a registration.
+     * Get tags for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6102,9 +6082,9 @@ class RegistrationApi
     /**
      * Operation getRegistrationTagsAsyncWithHttpInfo
      *
-     * Get tags for a registration.
+     * Get tags for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6154,7 +6134,7 @@ class RegistrationApi
     /**
      * Create request for operation 'getRegistrationTags'
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -6203,7 +6183,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -6231,7 +6211,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -6255,7 +6235,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -6267,51 +6247,59 @@ class RegistrationApi
     /**
      * Operation getRegistrations
      *
-     * Get a list of all registrations.
+     * Get a list of Registrations
      *
-     * @param  string $course_id Only registrations for the specified course id will be included. (optional)
-     * @param  string $learner_id Only registrations for the specified learner id will be included. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  string $learner_id Only retrieve resources having &#x60;learnerId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to created)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to registration_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to created_desc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
-     * @param  string[] $tags tags (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\RegistrationListSchema
      */
-    public function getRegistrations($course_id = null, $learner_id = null, $since = null, $until = null, $more = null, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false', $tags = null)
+    public function getRegistrations($course_id = null, $learner_id = null, $since = null, $until = null, $datetime_filter = 'created', $tags = null, $filter = null, $filter_by = 'registration_id', $order_by = 'created_desc', $more = null, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false')
     {
-        list($response) = $this->getRegistrationsWithHttpInfo($course_id, $learner_id, $since, $until, $more, $include_child_results, $include_interactions_and_objectives, $include_runtime, $tags);
+        list($response) = $this->getRegistrationsWithHttpInfo($course_id, $learner_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_child_results, $include_interactions_and_objectives, $include_runtime);
         return $response;
     }
 
     /**
      * Operation getRegistrationsWithHttpInfo
      *
-     * Get a list of all registrations.
+     * Get a list of Registrations
      *
-     * @param  string $course_id Only registrations for the specified course id will be included. (optional)
-     * @param  string $learner_id Only registrations for the specified learner id will be included. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  string $learner_id Only retrieve resources having &#x60;learnerId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to created)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to registration_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to created_desc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
-     * @param  string[] $tags (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\RegistrationListSchema, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRegistrationsWithHttpInfo($course_id = null, $learner_id = null, $since = null, $until = null, $more = null, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false', $tags = null)
+    public function getRegistrationsWithHttpInfo($course_id = null, $learner_id = null, $since = null, $until = null, $datetime_filter = 'created', $tags = null, $filter = null, $filter_by = 'registration_id', $order_by = 'created_desc', $more = null, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false')
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema';
-        $request = $this->getRegistrationsRequest($course_id, $learner_id, $since, $until, $more, $include_child_results, $include_interactions_and_objectives, $include_runtime, $tags);
+        $request = $this->getRegistrationsRequest($course_id, $learner_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_child_results, $include_interactions_and_objectives, $include_runtime);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6383,24 +6371,28 @@ class RegistrationApi
     /**
      * Operation getRegistrationsAsync
      *
-     * Get a list of all registrations.
+     * Get a list of Registrations
      *
-     * @param  string $course_id Only registrations for the specified course id will be included. (optional)
-     * @param  string $learner_id Only registrations for the specified learner id will be included. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  string $learner_id Only retrieve resources having &#x60;learnerId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to created)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to registration_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to created_desc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
-     * @param  string[] $tags (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRegistrationsAsync($course_id = null, $learner_id = null, $since = null, $until = null, $more = null, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false', $tags = null)
+    public function getRegistrationsAsync($course_id = null, $learner_id = null, $since = null, $until = null, $datetime_filter = 'created', $tags = null, $filter = null, $filter_by = 'registration_id', $order_by = 'created_desc', $more = null, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false')
     {
-        return $this->getRegistrationsAsyncWithHttpInfo($course_id, $learner_id, $since, $until, $more, $include_child_results, $include_interactions_and_objectives, $include_runtime, $tags)
+        return $this->getRegistrationsAsyncWithHttpInfo($course_id, $learner_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_child_results, $include_interactions_and_objectives, $include_runtime)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6411,25 +6403,29 @@ class RegistrationApi
     /**
      * Operation getRegistrationsAsyncWithHttpInfo
      *
-     * Get a list of all registrations.
+     * Get a list of Registrations
      *
-     * @param  string $course_id Only registrations for the specified course id will be included. (optional)
-     * @param  string $learner_id Only registrations for the specified learner id will be included. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  string $learner_id Only retrieve resources having &#x60;learnerId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to created)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to registration_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to created_desc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
-     * @param  string[] $tags (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRegistrationsAsyncWithHttpInfo($course_id = null, $learner_id = null, $since = null, $until = null, $more = null, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false', $tags = null)
+    public function getRegistrationsAsyncWithHttpInfo($course_id = null, $learner_id = null, $since = null, $until = null, $datetime_filter = 'created', $tags = null, $filter = null, $filter_by = 'registration_id', $order_by = 'created_desc', $more = null, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false')
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\RegistrationListSchema';
-        $request = $this->getRegistrationsRequest($course_id, $learner_id, $since, $until, $more, $include_child_results, $include_interactions_and_objectives, $include_runtime, $tags);
+        $request = $this->getRegistrationsRequest($course_id, $learner_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_child_results, $include_interactions_and_objectives, $include_runtime);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6471,20 +6467,24 @@ class RegistrationApi
     /**
      * Create request for operation 'getRegistrations'
      *
-     * @param  string $course_id Only registrations for the specified course id will be included. (optional)
-     * @param  string $learner_id Only registrations for the specified learner id will be included. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  string $learner_id Only retrieve resources having &#x60;learnerId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to created)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to registration_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to created_desc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      * @param  bool $include_child_results Include information about each learning object, not just the top level in the results (optional, default to false)
      * @param  bool $include_interactions_and_objectives Include interactions and objectives in the results (optional, default to false)
      * @param  bool $include_runtime Include runtime details in the results (optional, default to false)
-     * @param  string[] $tags (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getRegistrationsRequest($course_id = null, $learner_id = null, $since = null, $until = null, $more = null, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false', $tags = null)
+    protected function getRegistrationsRequest($course_id = null, $learner_id = null, $since = null, $until = null, $datetime_filter = 'created', $tags = null, $filter = null, $filter_by = 'registration_id', $order_by = 'created_desc', $more = null, $include_child_results = 'false', $include_interactions_and_objectives = 'false', $include_runtime = 'false')
     {
 
         $resourcePath = '/registrations';
@@ -6511,6 +6511,29 @@ class RegistrationApi
             $queryParams['until'] = ObjectSerializer::toQueryValue($until);
         }
         // query params
+        if ($datetime_filter !== null) {
+            $queryParams['datetimeFilter'] = ObjectSerializer::toQueryValue($datetime_filter);
+        }
+        // query params
+        if (is_array($tags)) {
+            $queryParams['tags'] = $tags;
+        } else
+        if ($tags !== null) {
+            $queryParams['tags'] = ObjectSerializer::toQueryValue($tags);
+        }
+        // query params
+        if ($filter !== null) {
+            $queryParams['filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($filter_by !== null) {
+            $queryParams['filterBy'] = ObjectSerializer::toQueryValue($filter_by);
+        }
+        // query params
+        if ($order_by !== null) {
+            $queryParams['orderBy'] = ObjectSerializer::toQueryValue($order_by);
+        }
+        // query params
         if ($more !== null) {
             $queryParams['more'] = ObjectSerializer::toQueryValue($more);
         }
@@ -6525,13 +6548,6 @@ class RegistrationApi
         // query params
         if ($include_runtime !== null) {
             $queryParams['includeRuntime'] = ObjectSerializer::toQueryValue($include_runtime);
-        }
-        // query params
-        if (is_array($tags)) {
-            $queryParams['tags'] = $tags;
-        } else
-        if ($tags !== null) {
-            $queryParams['tags'] = ObjectSerializer::toQueryValue($tags);
         }
 
 
@@ -6553,7 +6569,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -6581,7 +6597,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -6605,7 +6621,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -6617,9 +6633,9 @@ class RegistrationApi
     /**
      * Operation putRegistrationTags
      *
-     * Set tags on a registration.
+     * Add tags to a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -6634,9 +6650,9 @@ class RegistrationApi
     /**
      * Operation putRegistrationTagsWithHttpInfo
      *
-     * Set tags on a registration.
+     * Add tags to a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -6704,9 +6720,9 @@ class RegistrationApi
     /**
      * Operation putRegistrationTagsAsync
      *
-     * Set tags on a registration.
+     * Add tags to a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
@@ -6725,9 +6741,9 @@ class RegistrationApi
     /**
      * Operation putRegistrationTagsAsyncWithHttpInfo
      *
-     * Set tags on a registration.
+     * Add tags to a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
@@ -6764,7 +6780,7 @@ class RegistrationApi
     /**
      * Create request for operation 'putRegistrationTags'
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
@@ -6823,7 +6839,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -6851,7 +6867,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -6875,7 +6891,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -6887,9 +6903,9 @@ class RegistrationApi
     /**
      * Operation putRegistrationTagsBatch
      *
-     * Set tags on registrations.
+     * Add a group of tags to a group of Registrations
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6903,9 +6919,9 @@ class RegistrationApi
     /**
      * Operation putRegistrationTagsBatchWithHttpInfo
      *
-     * Set tags on registrations.
+     * Add a group of tags to a group of Registrations
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6972,9 +6988,9 @@ class RegistrationApi
     /**
      * Operation putRegistrationTagsBatchAsync
      *
-     * Set tags on registrations.
+     * Add a group of tags to a group of Registrations
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6992,9 +7008,9 @@ class RegistrationApi
     /**
      * Operation putRegistrationTagsBatchAsyncWithHttpInfo
      *
-     * Set tags on registrations.
+     * Add a group of tags to a group of Registrations
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7030,7 +7046,7 @@ class RegistrationApi
     /**
      * Create request for operation 'putRegistrationTagsBatch'
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -7074,7 +7090,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -7102,7 +7118,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -7126,7 +7142,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -7138,9 +7154,9 @@ class RegistrationApi
     /**
      * Operation setRegistrationConfiguration
      *
-     * Set registration configuration.
+     * Update configuration settings for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings configuration_settings (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -7155,9 +7171,9 @@ class RegistrationApi
     /**
      * Operation setRegistrationConfigurationWithHttpInfo
      *
-     * Set registration configuration.
+     * Update configuration settings for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -7225,9 +7241,9 @@ class RegistrationApi
     /**
      * Operation setRegistrationConfigurationAsync
      *
-     * Set registration configuration.
+     * Update configuration settings for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
@@ -7246,9 +7262,9 @@ class RegistrationApi
     /**
      * Operation setRegistrationConfigurationAsyncWithHttpInfo
      *
-     * Set registration configuration.
+     * Update configuration settings for a Registration
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
@@ -7285,7 +7301,7 @@ class RegistrationApi
     /**
      * Create request for operation 'setRegistrationConfiguration'
      *
-     * @param  string $registration_id id for this registration (required)
+     * @param  string $registration_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
@@ -7344,7 +7360,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -7372,7 +7388,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -7396,7 +7412,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -7408,10 +7424,10 @@ class RegistrationApi
     /**
      * Operation setRegistrationInstanceConfiguration
      *
-     * Set configuration for instance of registration.
+     * Update configuration settings for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id registration_id (required)
+     * @param  int $instance_id instance_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings configuration_settings (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -7426,10 +7442,10 @@ class RegistrationApi
     /**
      * Operation setRegistrationInstanceConfigurationWithHttpInfo
      *
-     * Set configuration for instance of registration.
+     * Update configuration settings for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -7497,10 +7513,10 @@ class RegistrationApi
     /**
      * Operation setRegistrationInstanceConfigurationAsync
      *
-     * Set configuration for instance of registration.
+     * Update configuration settings for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
@@ -7519,10 +7535,10 @@ class RegistrationApi
     /**
      * Operation setRegistrationInstanceConfigurationAsyncWithHttpInfo
      *
-     * Set configuration for instance of registration.
+     * Update configuration settings for a Registration Instance
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
@@ -7559,8 +7575,8 @@ class RegistrationApi
     /**
      * Create request for operation 'setRegistrationInstanceConfiguration'
      *
-     * @param  string $registration_id id for this registration (required)
-     * @param  int $instance_id The instance of this registration (required)
+     * @param  string $registration_id (required)
+     * @param  int $instance_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
@@ -7580,10 +7596,6 @@ class RegistrationApi
                 'Missing the required parameter $instance_id when calling setRegistrationInstanceConfiguration'
             );
         }
-        if ($instance_id < 0) {
-            throw new \InvalidArgumentException('invalid value for "$instance_id" when calling RegistrationApi.setRegistrationInstanceConfiguration, must be bigger than or equal to 0.');
-        }
-
         // verify the required parameter 'configuration_settings' is set
         if ($configuration_settings === null || (is_array($configuration_settings) && count($configuration_settings) === 0)) {
             throw new \InvalidArgumentException(
@@ -7637,7 +7649,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -7665,7 +7677,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -7689,7 +7701,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -7701,7 +7713,7 @@ class RegistrationApi
     /**
      * Operation testRegistrationPostback
      *
-     * Send a test postback with a provided configuration.
+     * Send a test postback with the provided configuration
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\PostBackSchema $post_back post_back (required)
      *
@@ -7717,7 +7729,7 @@ class RegistrationApi
     /**
      * Operation testRegistrationPostbackWithHttpInfo
      *
-     * Send a test postback with a provided configuration.
+     * Send a test postback with the provided configuration
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\PostBackSchema $post_back (required)
      *
@@ -7778,7 +7790,7 @@ class RegistrationApi
     /**
      * Operation testRegistrationPostbackAsync
      *
-     * Send a test postback with a provided configuration.
+     * Send a test postback with the provided configuration
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\PostBackSchema $post_back (required)
      *
@@ -7798,7 +7810,7 @@ class RegistrationApi
     /**
      * Operation testRegistrationPostbackAsyncWithHttpInfo
      *
-     * Send a test postback with a provided configuration.
+     * Send a test postback with the provided configuration
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\PostBackSchema $post_back (required)
      *
@@ -7880,7 +7892,7 @@ class RegistrationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -7908,7 +7920,7 @@ class RegistrationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -7932,7 +7944,7 @@ class RegistrationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

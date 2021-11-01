@@ -1,7 +1,7 @@
 <?php
 /**
  * ReportingApi
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -75,7 +75,7 @@ class ReportingApi
         HeaderSelector $selector = null
     ) {
         $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
+        $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
     }
 
@@ -90,7 +90,7 @@ class ReportingApi
     /**
      * Operation getAccountInfo
      *
-     * Get all of the account information specified by the given app ID
+     * Get account information
      *
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -106,7 +106,7 @@ class ReportingApi
     /**
      * Operation getAccountInfoWithHttpInfo
      *
-     * Get all of the account information specified by the given app ID
+     * Get account information
      *
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -188,7 +188,7 @@ class ReportingApi
     /**
      * Operation getAccountInfoAsync
      *
-     * Get all of the account information specified by the given app ID
+     * Get account information
      *
      *
      * @throws \InvalidArgumentException
@@ -207,7 +207,7 @@ class ReportingApi
     /**
      * Operation getAccountInfoAsyncWithHttpInfo
      *
-     * Get all of the account information specified by the given app ID
+     * Get account information
      *
      *
      * @throws \InvalidArgumentException
@@ -292,7 +292,7 @@ class ReportingApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -320,7 +320,7 @@ class ReportingApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -344,7 +344,7 @@ class ReportingApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -356,7 +356,7 @@ class ReportingApi
     /**
      * Operation getReportageAuthToken
      *
-     * Get a session authentication token to use when launching Reportage
+     * Get a Reportage session authentication token
      *
      * @param  string $nav_permission The navigation permissions for this Reportage session (required)
      * @param  bool $admin Grant admin privileges to this Reportage session (optional, default to false)
@@ -374,7 +374,7 @@ class ReportingApi
     /**
      * Operation getReportageAuthTokenWithHttpInfo
      *
-     * Get a session authentication token to use when launching Reportage
+     * Get a Reportage session authentication token
      *
      * @param  string $nav_permission The navigation permissions for this Reportage session (required)
      * @param  bool $admin Grant admin privileges to this Reportage session (optional, default to false)
@@ -458,7 +458,7 @@ class ReportingApi
     /**
      * Operation getReportageAuthTokenAsync
      *
-     * Get a session authentication token to use when launching Reportage
+     * Get a Reportage session authentication token
      *
      * @param  string $nav_permission The navigation permissions for this Reportage session (required)
      * @param  bool $admin Grant admin privileges to this Reportage session (optional, default to false)
@@ -479,7 +479,7 @@ class ReportingApi
     /**
      * Operation getReportageAuthTokenAsyncWithHttpInfo
      *
-     * Get a session authentication token to use when launching Reportage
+     * Get a Reportage session authentication token
      *
      * @param  string $nav_permission The navigation permissions for this Reportage session (required)
      * @param  bool $admin Grant admin privileges to this Reportage session (optional, default to false)
@@ -582,7 +582,7 @@ class ReportingApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -610,7 +610,7 @@ class ReportingApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -634,7 +634,7 @@ class ReportingApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -646,10 +646,10 @@ class ReportingApi
     /**
      * Operation getReportageLink
      *
-     * Get the link to a page in Reportage with the given authentication and permissions
+     * Get a link to a page in Reportage with the given permissions
      *
-     * @param  string $auth The reportage authentication token retrieved from a previous call to &#x60;GET reportageAuth&#x60; (required)
-     * @param  string $report_url The Reportage URL to try and access (required)
+     * @param  string $auth The Reportage authentication token retrieved from a previous call to &#x60;GET reportageAuth&#x60; (required)
+     * @param  string $report_url The Reportage URL to try and access.  Common values are the Reportage homepage &#x60;https://cloud.scorm.com/Reportage/reportage.php?appId&#x3D;{{your appId}}&#x60; or a URL pointing to a specific report within Reportage.  The latter type of URL includes lots of parameters of the report, such as the date range, demographic (via tags), specific course or learner, and so on. (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -664,10 +664,10 @@ class ReportingApi
     /**
      * Operation getReportageLinkWithHttpInfo
      *
-     * Get the link to a page in Reportage with the given authentication and permissions
+     * Get a link to a page in Reportage with the given permissions
      *
-     * @param  string $auth The reportage authentication token retrieved from a previous call to &#x60;GET reportageAuth&#x60; (required)
-     * @param  string $report_url The Reportage URL to try and access (required)
+     * @param  string $auth The Reportage authentication token retrieved from a previous call to &#x60;GET reportageAuth&#x60; (required)
+     * @param  string $report_url The Reportage URL to try and access.  Common values are the Reportage homepage &#x60;https://cloud.scorm.com/Reportage/reportage.php?appId&#x3D;{{your appId}}&#x60; or a URL pointing to a specific report within Reportage.  The latter type of URL includes lots of parameters of the report, such as the date range, demographic (via tags), specific course or learner, and so on. (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -748,10 +748,10 @@ class ReportingApi
     /**
      * Operation getReportageLinkAsync
      *
-     * Get the link to a page in Reportage with the given authentication and permissions
+     * Get a link to a page in Reportage with the given permissions
      *
-     * @param  string $auth The reportage authentication token retrieved from a previous call to &#x60;GET reportageAuth&#x60; (required)
-     * @param  string $report_url The Reportage URL to try and access (required)
+     * @param  string $auth The Reportage authentication token retrieved from a previous call to &#x60;GET reportageAuth&#x60; (required)
+     * @param  string $report_url The Reportage URL to try and access.  Common values are the Reportage homepage &#x60;https://cloud.scorm.com/Reportage/reportage.php?appId&#x3D;{{your appId}}&#x60; or a URL pointing to a specific report within Reportage.  The latter type of URL includes lots of parameters of the report, such as the date range, demographic (via tags), specific course or learner, and so on. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -769,10 +769,10 @@ class ReportingApi
     /**
      * Operation getReportageLinkAsyncWithHttpInfo
      *
-     * Get the link to a page in Reportage with the given authentication and permissions
+     * Get a link to a page in Reportage with the given permissions
      *
-     * @param  string $auth The reportage authentication token retrieved from a previous call to &#x60;GET reportageAuth&#x60; (required)
-     * @param  string $report_url The Reportage URL to try and access (required)
+     * @param  string $auth The Reportage authentication token retrieved from a previous call to &#x60;GET reportageAuth&#x60; (required)
+     * @param  string $report_url The Reportage URL to try and access.  Common values are the Reportage homepage &#x60;https://cloud.scorm.com/Reportage/reportage.php?appId&#x3D;{{your appId}}&#x60; or a URL pointing to a specific report within Reportage.  The latter type of URL includes lots of parameters of the report, such as the date range, demographic (via tags), specific course or learner, and so on. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -822,8 +822,8 @@ class ReportingApi
     /**
      * Create request for operation 'getReportageLink'
      *
-     * @param  string $auth The reportage authentication token retrieved from a previous call to &#x60;GET reportageAuth&#x60; (required)
-     * @param  string $report_url The Reportage URL to try and access (required)
+     * @param  string $auth The Reportage authentication token retrieved from a previous call to &#x60;GET reportageAuth&#x60; (required)
+     * @param  string $report_url The Reportage URL to try and access.  Common values are the Reportage homepage &#x60;https://cloud.scorm.com/Reportage/reportage.php?appId&#x3D;{{your appId}}&#x60; or a URL pointing to a specific report within Reportage.  The latter type of URL includes lots of parameters of the report, such as the date range, demographic (via tags), specific course or learner, and so on. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -878,7 +878,7 @@ class ReportingApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -906,7 +906,7 @@ class ReportingApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -930,7 +930,7 @@ class ReportingApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

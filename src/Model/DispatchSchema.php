@@ -2,7 +2,7 @@
 /**
  * DispatchSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -58,7 +58,11 @@ class DispatchSchema implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'destination_id' => 'string',
+        'destination_name' => 'string',
         'course_id' => 'string',
+        'course_title' => 'string',
+        'updated' => '\DateTime',
+        'created' => '\DateTime',
         'allow_new_registrations' => 'bool',
         'enabled' => 'bool',
         'instanced' => 'bool',
@@ -77,7 +81,11 @@ class DispatchSchema implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'destination_id' => null,
+        'destination_name' => null,
         'course_id' => null,
+        'course_title' => null,
+        'updated' => 'date-time',
+        'created' => 'date-time',
         'allow_new_registrations' => null,
         'enabled' => null,
         'instanced' => null,
@@ -117,7 +125,11 @@ class DispatchSchema implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'destination_id' => 'destinationId',
+        'destination_name' => 'destinationName',
         'course_id' => 'courseId',
+        'course_title' => 'courseTitle',
+        'updated' => 'updated',
+        'created' => 'created',
         'allow_new_registrations' => 'allowNewRegistrations',
         'enabled' => 'enabled',
         'instanced' => 'instanced',
@@ -136,7 +148,11 @@ class DispatchSchema implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'destination_id' => 'setDestinationId',
+        'destination_name' => 'setDestinationName',
         'course_id' => 'setCourseId',
+        'course_title' => 'setCourseTitle',
+        'updated' => 'setUpdated',
+        'created' => 'setCreated',
         'allow_new_registrations' => 'setAllowNewRegistrations',
         'enabled' => 'setEnabled',
         'instanced' => 'setInstanced',
@@ -155,7 +171,11 @@ class DispatchSchema implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'destination_id' => 'getDestinationId',
+        'destination_name' => 'getDestinationName',
         'course_id' => 'getCourseId',
+        'course_title' => 'getCourseTitle',
+        'updated' => 'getUpdated',
+        'created' => 'getCreated',
         'allow_new_registrations' => 'getAllowNewRegistrations',
         'enabled' => 'getEnabled',
         'instanced' => 'getInstanced',
@@ -228,7 +248,11 @@ class DispatchSchema implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['destination_id'] = isset($data['destination_id']) ? $data['destination_id'] : null;
+        $this->container['destination_name'] = isset($data['destination_name']) ? $data['destination_name'] : null;
         $this->container['course_id'] = isset($data['course_id']) ? $data['course_id'] : null;
+        $this->container['course_title'] = isset($data['course_title']) ? $data['course_title'] : null;
+        $this->container['updated'] = isset($data['updated']) ? $data['updated'] : null;
+        $this->container['created'] = isset($data['created']) ? $data['created'] : null;
         $this->container['allow_new_registrations'] = isset($data['allow_new_registrations']) ? $data['allow_new_registrations'] : null;
         $this->container['enabled'] = isset($data['enabled']) ? $data['enabled'] : null;
         $this->container['instanced'] = isset($data['instanced']) ? $data['instanced'] : null;
@@ -289,6 +313,30 @@ class DispatchSchema implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets destination_name
+     *
+     * @return string
+     */
+    public function getDestinationName()
+    {
+        return $this->container['destination_name'];
+    }
+
+    /**
+     * Sets destination_name
+     *
+     * @param string $destination_name Name of the destination housing this dispatch
+     *
+     * @return $this
+     */
+    public function setDestinationName($destination_name)
+    {
+        $this->container['destination_name'] = $destination_name;
+
+        return $this;
+    }
+
+    /**
      * Gets course_id
      *
      * @return string
@@ -308,6 +356,78 @@ class DispatchSchema implements ModelInterface, ArrayAccess
     public function setCourseId($course_id)
     {
         $this->container['course_id'] = $course_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets course_title
+     *
+     * @return string
+     */
+    public function getCourseTitle()
+    {
+        return $this->container['course_title'];
+    }
+
+    /**
+     * Sets course_title
+     *
+     * @param string $course_title Title of this dispatched course
+     *
+     * @return $this
+     */
+    public function setCourseTitle($course_title)
+    {
+        $this->container['course_title'] = $course_title;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->container['updated'];
+    }
+
+    /**
+     * Sets updated
+     *
+     * @param \DateTime $updated updated
+     *
+     * @return $this
+     */
+    public function setUpdated($updated)
+    {
+        $this->container['updated'] = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Gets created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->container['created'];
+    }
+
+    /**
+     * Sets created
+     *
+     * @param \DateTime $created created
+     *
+     * @return $this
+     */
+    public function setCreated($created)
+    {
+        $this->container['created'] = $created;
 
         return $this;
     }
@@ -445,7 +565,7 @@ class DispatchSchema implements ModelInterface, ArrayAccess
     /**
      * Sets expiration_date
      *
-     * @param \DateTime $expiration_date The date after which this dispatch will be disabled as an ISO 8601 string, or 'none' for no expiration date.
+     * @param \DateTime $expiration_date The ISO 8601 TimeStamp (defaults to UTC) after which this dispatch will be disabled. An empty value will represent no expiration date.
      *
      * @return $this
      */

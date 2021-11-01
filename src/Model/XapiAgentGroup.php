@@ -2,7 +2,7 @@
 /**
  * XapiAgentGroup
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -244,14 +244,6 @@ class XapiAgentGroup implements ModelInterface, ArrayAccess
         if ($this->container['object_type'] === null) {
             $invalidProperties[] = "'object_type' can't be null";
         }
-        $allowedValues = $this->getObjectTypeAllowableValues();
-        if (!is_null($this->container['object_type']) && !in_array($this->container['object_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'object_type', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -286,15 +278,6 @@ class XapiAgentGroup implements ModelInterface, ArrayAccess
      */
     public function setObjectType($object_type)
     {
-        $allowedValues = $this->getObjectTypeAllowableValues();
-        if (!in_array($object_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'object_type', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['object_type'] = $object_type;
 
         return $this;

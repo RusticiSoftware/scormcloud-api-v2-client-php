@@ -1,8 +1,8 @@
 <?php
 /**
- * UpdateConnectorSchema
+ * PrivateInvitationUpdateSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
 
 /**
- * UpdateConnectorSchema Class Doc Comment
+ * PrivateInvitationUpdateSchema Class Doc Comment
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class UpdateConnectorSchema implements ModelInterface, ArrayAccess
+class PrivateInvitationUpdateSchema implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class UpdateConnectorSchema implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'UpdateConnectorSchema';
+    protected static $swaggerModelName = 'PrivateInvitationUpdateSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,10 @@ class UpdateConnectorSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'configuration' => 'object',
-        'enabled' => 'bool'
+        'allow_launch' => 'bool',
+        'invitation_email' => '\RusticiSoftware\Cloud\V2\Model\InvitationEmailSchema',
+        'post_back' => '\RusticiSoftware\Cloud\V2\Model\PostBackSchema',
+        'expiration_date' => '\DateTime'
     ];
 
     /**
@@ -67,8 +69,10 @@ class UpdateConnectorSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'configuration' => null,
-        'enabled' => null
+        'allow_launch' => null,
+        'invitation_email' => null,
+        'post_back' => null,
+        'expiration_date' => 'date-time'
     ];
 
     /**
@@ -98,8 +102,10 @@ class UpdateConnectorSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'configuration' => 'configuration',
-        'enabled' => 'enabled'
+        'allow_launch' => 'allowLaunch',
+        'invitation_email' => 'invitationEmail',
+        'post_back' => 'postBack',
+        'expiration_date' => 'expirationDate'
     ];
 
     /**
@@ -108,8 +114,10 @@ class UpdateConnectorSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'configuration' => 'setConfiguration',
-        'enabled' => 'setEnabled'
+        'allow_launch' => 'setAllowLaunch',
+        'invitation_email' => 'setInvitationEmail',
+        'post_back' => 'setPostBack',
+        'expiration_date' => 'setExpirationDate'
     ];
 
     /**
@@ -118,8 +126,10 @@ class UpdateConnectorSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'configuration' => 'getConfiguration',
-        'enabled' => 'getEnabled'
+        'allow_launch' => 'getAllowLaunch',
+        'invitation_email' => 'getInvitationEmail',
+        'post_back' => 'getPostBack',
+        'expiration_date' => 'getExpirationDate'
     ];
 
     /**
@@ -182,8 +192,10 @@ class UpdateConnectorSchema implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['configuration'] = isset($data['configuration']) ? $data['configuration'] : null;
-        $this->container['enabled'] = isset($data['enabled']) ? $data['enabled'] : null;
+        $this->container['allow_launch'] = isset($data['allow_launch']) ? $data['allow_launch'] : null;
+        $this->container['invitation_email'] = isset($data['invitation_email']) ? $data['invitation_email'] : null;
+        $this->container['post_back'] = isset($data['post_back']) ? $data['post_back'] : null;
+        $this->container['expiration_date'] = isset($data['expiration_date']) ? $data['expiration_date'] : null;
     }
 
     /**
@@ -211,49 +223,97 @@ class UpdateConnectorSchema implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets configuration
+     * Gets allow_launch
      *
-     * @return object
+     * @return bool
      */
-    public function getConfiguration()
+    public function getAllowLaunch()
     {
-        return $this->container['configuration'];
+        return $this->container['allow_launch'];
     }
 
     /**
-     * Sets configuration
+     * Sets allow_launch
      *
-     * @param object $configuration configuration for this content connector, format is implementation specific
+     * @param bool $allow_launch If true, then new registrations can be created for this invitation.
      *
      * @return $this
      */
-    public function setConfiguration($configuration)
+    public function setAllowLaunch($allow_launch)
     {
-        $this->container['configuration'] = $configuration;
+        $this->container['allow_launch'] = $allow_launch;
 
         return $this;
     }
 
     /**
-     * Gets enabled
+     * Gets invitation_email
      *
-     * @return bool
+     * @return \RusticiSoftware\Cloud\V2\Model\InvitationEmailSchema
      */
-    public function getEnabled()
+    public function getInvitationEmail()
     {
-        return $this->container['enabled'];
+        return $this->container['invitation_email'];
     }
 
     /**
-     * Sets enabled
+     * Sets invitation_email
      *
-     * @param bool $enabled is this connector enabled
+     * @param \RusticiSoftware\Cloud\V2\Model\InvitationEmailSchema $invitation_email invitation_email
      *
      * @return $this
      */
-    public function setEnabled($enabled)
+    public function setInvitationEmail($invitation_email)
     {
-        $this->container['enabled'] = $enabled;
+        $this->container['invitation_email'] = $invitation_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets post_back
+     *
+     * @return \RusticiSoftware\Cloud\V2\Model\PostBackSchema
+     */
+    public function getPostBack()
+    {
+        return $this->container['post_back'];
+    }
+
+    /**
+     * Sets post_back
+     *
+     * @param \RusticiSoftware\Cloud\V2\Model\PostBackSchema $post_back Specifies a URL for which to post activity and status data in real time as the course is completed
+     *
+     * @return $this
+     */
+    public function setPostBack($post_back)
+    {
+        $this->container['post_back'] = $post_back;
+
+        return $this;
+    }
+
+    /**
+     * Gets expiration_date
+     *
+     * @return \DateTime
+     */
+    public function getExpirationDate()
+    {
+        return $this->container['expiration_date'];
+    }
+
+    /**
+     * Sets expiration_date
+     *
+     * @param \DateTime $expiration_date The ISO 8601 TimeStamp (defaults to UTC) after which this invitation will expire and can no longer be launched. An empty value will represent no expiration date.
+     *
+     * @return $this
+     */
+    public function setExpirationDate($expiration_date)
+    {
+        $this->container['expiration_date'] = $expiration_date;
 
         return $this;
     }

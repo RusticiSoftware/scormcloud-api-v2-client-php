@@ -2,7 +2,7 @@
 /**
  * CreateDispatchIdSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -198,10 +198,6 @@ class CreateDispatchIdSchema implements ModelInterface, ArrayAccess
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ((mb_strlen($this->container['id']) < 9)) {
-            $invalidProperties[] = "invalid value for 'id', the character length must be bigger than or equal to 9.";
-        }
-
         if ($this->container['data'] === null) {
             $invalidProperties[] = "'data' can't be null";
         }
@@ -239,11 +235,6 @@ class CreateDispatchIdSchema implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
-
-        if ((mb_strlen($id) < 9)) {
-            throw new \InvalidArgumentException('invalid length for $id when calling CreateDispatchIdSchema., must be bigger than or equal to 9.');
-        }
-
         $this->container['id'] = $id;
 
         return $this;

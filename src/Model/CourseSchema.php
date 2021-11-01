@@ -2,7 +2,7 @@
 /**
  * CourseSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -290,14 +290,6 @@ class CourseSchema implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getCourseLearningStandardAllowableValues();
-        if (!is_null($this->container['course_learning_standard']) && !in_array($this->container['course_learning_standard'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'course_learning_standard', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -524,15 +516,6 @@ class CourseSchema implements ModelInterface, ArrayAccess
      */
     public function setCourseLearningStandard($course_learning_standard)
     {
-        $allowedValues = $this->getCourseLearningStandardAllowableValues();
-        if (!is_null($course_learning_standard) && !in_array($course_learning_standard, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'course_learning_standard', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['course_learning_standard'] = $course_learning_standard;
 
         return $this;

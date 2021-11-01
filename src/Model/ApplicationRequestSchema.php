@@ -1,8 +1,8 @@
 <?php
 /**
- * ConnectorContentListSchema
+ * ApplicationRequestSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -33,15 +33,14 @@ use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
 
 /**
- * ConnectorContentListSchema Class Doc Comment
+ * ApplicationRequestSchema Class Doc Comment
  *
  * @category Class
- * @description List of content available via a connector
  * @package  RusticiSoftware\Cloud\V2
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ConnectorContentListSchema implements ModelInterface, ArrayAccess
+class ApplicationRequestSchema implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class ConnectorContentListSchema implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ConnectorContentListSchema';
+    protected static $swaggerModelName = 'ApplicationRequestSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +57,7 @@ class ConnectorContentListSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'content_entries' => '\RusticiSoftware\Cloud\V2\Model\ConnectorContentListEntrySchema[]',
-        'more' => 'string'
+        'name' => 'string'
     ];
 
     /**
@@ -68,8 +66,7 @@ class ConnectorContentListSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'content_entries' => null,
-        'more' => null
+        'name' => null
     ];
 
     /**
@@ -99,8 +96,7 @@ class ConnectorContentListSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'content_entries' => 'contentEntries',
-        'more' => 'more'
+        'name' => 'name'
     ];
 
     /**
@@ -109,8 +105,7 @@ class ConnectorContentListSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'content_entries' => 'setContentEntries',
-        'more' => 'setMore'
+        'name' => 'setName'
     ];
 
     /**
@@ -119,8 +114,7 @@ class ConnectorContentListSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'content_entries' => 'getContentEntries',
-        'more' => 'getMore'
+        'name' => 'getName'
     ];
 
     /**
@@ -183,8 +177,7 @@ class ConnectorContentListSchema implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['content_entries'] = isset($data['content_entries']) ? $data['content_entries'] : null;
-        $this->container['more'] = isset($data['more']) ? $data['more'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     }
 
     /**
@@ -212,49 +205,25 @@ class ConnectorContentListSchema implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets content_entries
-     *
-     * @return \RusticiSoftware\Cloud\V2\Model\ConnectorContentListEntrySchema[]
-     */
-    public function getContentEntries()
-    {
-        return $this->container['content_entries'];
-    }
-
-    /**
-     * Sets content_entries
-     *
-     * @param \RusticiSoftware\Cloud\V2\Model\ConnectorContentListEntrySchema[] $content_entries content_entries
-     *
-     * @return $this
-     */
-    public function setContentEntries($content_entries)
-    {
-        $this->container['content_entries'] = $content_entries;
-
-        return $this;
-    }
-
-    /**
-     * Gets more
+     * Gets name
      *
      * @return string
      */
-    public function getMore()
+    public function getName()
     {
-        return $this->container['more'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets more
+     * Sets name
      *
-     * @param string $more more
+     * @param string $name The name of this application.
      *
      * @return $this
      */
-    public function setMore($more)
+    public function setName($name)
     {
-        $this->container['more'] = $more;
+        $this->container['name'] = $name;
 
         return $this;
     }

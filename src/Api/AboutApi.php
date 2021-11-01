@@ -1,7 +1,7 @@
 <?php
 /**
  * AboutApi
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -75,7 +75,7 @@ class AboutApi
         HeaderSelector $selector = null
     ) {
         $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
+        $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
     }
 
@@ -90,7 +90,7 @@ class AboutApi
     /**
      * Operation getAbout
      *
-     * Get back the API version and application name.
+     * Get back the API version and Application name
      *
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -106,7 +106,7 @@ class AboutApi
     /**
      * Operation getAboutWithHttpInfo
      *
-     * Get back the API version and application name.
+     * Get back the API version and Application name
      *
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -180,7 +180,7 @@ class AboutApi
     /**
      * Operation getAboutAsync
      *
-     * Get back the API version and application name.
+     * Get back the API version and Application name
      *
      *
      * @throws \InvalidArgumentException
@@ -199,7 +199,7 @@ class AboutApi
     /**
      * Operation getAboutAsyncWithHttpInfo
      *
-     * Get back the API version and application name.
+     * Get back the API version and Application name
      *
      *
      * @throws \InvalidArgumentException
@@ -284,7 +284,7 @@ class AboutApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -312,7 +312,7 @@ class AboutApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -336,7 +336,7 @@ class AboutApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

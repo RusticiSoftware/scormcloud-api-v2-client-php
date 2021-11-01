@@ -1,8 +1,8 @@
 <?php
 /**
- * ConnectorContentSearchSchema
+ * ApplicationInfoSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -33,15 +33,14 @@ use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
 
 /**
- * ConnectorContentSearchSchema Class Doc Comment
+ * ApplicationInfoSchema Class Doc Comment
  *
  * @category Class
- * @description Search options for remote connector content
  * @package  RusticiSoftware\Cloud\V2
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ConnectorContentSearchSchema implements ModelInterface, ArrayAccess
+class ApplicationInfoSchema implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class ConnectorContentSearchSchema implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ConnectorContentSearchSchema';
+    protected static $swaggerModelName = 'ApplicationInfoSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +57,12 @@ class ConnectorContentSearchSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'connector_id' => 'string',
-        'search' => 'string',
-        'since' => '\DateTime',
-        'context' => '\RusticiSoftware\Cloud\V2\Model\ConnectorContentSearchContextSchema',
-        'more' => 'string'
+        'id' => 'string',
+        'name' => 'string',
+        'create_date' => '\DateTime',
+        'allow_delete' => 'bool',
+        'course_count' => 'int',
+        'registration_count' => 'int'
     ];
 
     /**
@@ -71,11 +71,12 @@ class ConnectorContentSearchSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'connector_id' => null,
-        'search' => null,
-        'since' => 'date-time',
-        'context' => null,
-        'more' => null
+        'id' => null,
+        'name' => null,
+        'create_date' => 'date-time',
+        'allow_delete' => null,
+        'course_count' => 'int32',
+        'registration_count' => 'int32'
     ];
 
     /**
@@ -105,11 +106,12 @@ class ConnectorContentSearchSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'connector_id' => 'connectorId',
-        'search' => 'search',
-        'since' => 'since',
-        'context' => 'context',
-        'more' => 'more'
+        'id' => 'id',
+        'name' => 'name',
+        'create_date' => 'createDate',
+        'allow_delete' => 'allowDelete',
+        'course_count' => 'courseCount',
+        'registration_count' => 'registrationCount'
     ];
 
     /**
@@ -118,11 +120,12 @@ class ConnectorContentSearchSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'connector_id' => 'setConnectorId',
-        'search' => 'setSearch',
-        'since' => 'setSince',
-        'context' => 'setContext',
-        'more' => 'setMore'
+        'id' => 'setId',
+        'name' => 'setName',
+        'create_date' => 'setCreateDate',
+        'allow_delete' => 'setAllowDelete',
+        'course_count' => 'setCourseCount',
+        'registration_count' => 'setRegistrationCount'
     ];
 
     /**
@@ -131,11 +134,12 @@ class ConnectorContentSearchSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'connector_id' => 'getConnectorId',
-        'search' => 'getSearch',
-        'since' => 'getSince',
-        'context' => 'getContext',
-        'more' => 'getMore'
+        'id' => 'getId',
+        'name' => 'getName',
+        'create_date' => 'getCreateDate',
+        'allow_delete' => 'getAllowDelete',
+        'course_count' => 'getCourseCount',
+        'registration_count' => 'getRegistrationCount'
     ];
 
     /**
@@ -198,11 +202,12 @@ class ConnectorContentSearchSchema implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['connector_id'] = isset($data['connector_id']) ? $data['connector_id'] : null;
-        $this->container['search'] = isset($data['search']) ? $data['search'] : null;
-        $this->container['since'] = isset($data['since']) ? $data['since'] : null;
-        $this->container['context'] = isset($data['context']) ? $data['context'] : null;
-        $this->container['more'] = isset($data['more']) ? $data['more'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['create_date'] = isset($data['create_date']) ? $data['create_date'] : null;
+        $this->container['allow_delete'] = isset($data['allow_delete']) ? $data['allow_delete'] : null;
+        $this->container['course_count'] = isset($data['course_count']) ? $data['course_count'] : null;
+        $this->container['registration_count'] = isset($data['registration_count']) ? $data['registration_count'] : null;
     }
 
     /**
@@ -230,121 +235,145 @@ class ConnectorContentSearchSchema implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets connector_id
+     * Gets id
      *
      * @return string
      */
-    public function getConnectorId()
+    public function getId()
     {
-        return $this->container['connector_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets connector_id
+     * Sets id
      *
-     * @param string $connector_id only search using the specified connector
+     * @param string $id The application id for this application.
      *
      * @return $this
      */
-    public function setConnectorId($connector_id)
+    public function setId($id)
     {
-        $this->container['connector_id'] = $connector_id;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets search
+     * Gets name
      *
      * @return string
      */
-    public function getSearch()
+    public function getName()
     {
-        return $this->container['search'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets search
+     * Sets name
      *
-     * @param string $search search
+     * @param string $name The name of this application.
      *
      * @return $this
      */
-    public function setSearch($search)
+    public function setName($name)
     {
-        $this->container['search'] = $search;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets since
+     * Gets create_date
      *
      * @return \DateTime
      */
-    public function getSince()
+    public function getCreateDate()
     {
-        return $this->container['since'];
+        return $this->container['create_date'];
     }
 
     /**
-     * Sets since
+     * Sets create_date
      *
-     * @param \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
+     * @param \DateTime $create_date The time the application was created in UTC
      *
      * @return $this
      */
-    public function setSince($since)
+    public function setCreateDate($create_date)
     {
-        $this->container['since'] = $since;
+        $this->container['create_date'] = $create_date;
 
         return $this;
     }
 
     /**
-     * Gets context
+     * Gets allow_delete
      *
-     * @return \RusticiSoftware\Cloud\V2\Model\ConnectorContentSearchContextSchema
+     * @return bool
      */
-    public function getContext()
+    public function getAllowDelete()
     {
-        return $this->container['context'];
+        return $this->container['allow_delete'];
     }
 
     /**
-     * Sets context
+     * Sets allow_delete
      *
-     * @param \RusticiSoftware\Cloud\V2\Model\ConnectorContentSearchContextSchema $context context
+     * @param bool $allow_delete Whether the application is allowed to perform delete operations
      *
      * @return $this
      */
-    public function setContext($context)
+    public function setAllowDelete($allow_delete)
     {
-        $this->container['context'] = $context;
+        $this->container['allow_delete'] = $allow_delete;
 
         return $this;
     }
 
     /**
-     * Gets more
+     * Gets course_count
      *
-     * @return string
+     * @return int
      */
-    public function getMore()
+    public function getCourseCount()
     {
-        return $this->container['more'];
+        return $this->container['course_count'];
     }
 
     /**
-     * Sets more
+     * Sets course_count
      *
-     * @param string $more Token for getting the next set of results, from the prior set of results.
+     * @param int $course_count course_count
      *
      * @return $this
      */
-    public function setMore($more)
+    public function setCourseCount($course_count)
     {
-        $this->container['more'] = $more;
+        $this->container['course_count'] = $course_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets registration_count
+     *
+     * @return int
+     */
+    public function getRegistrationCount()
+    {
+        return $this->container['registration_count'];
+    }
+
+    /**
+     * Sets registration_count
+     *
+     * @param int $registration_count registration_count
+     *
+     * @return $this
+     */
+    public function setRegistrationCount($registration_count)
+    {
+        $this->container['registration_count'] = $registration_count;
 
         return $this;
     }

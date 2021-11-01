@@ -1,7 +1,7 @@
 <?php
 /**
  * ApplicationManagementApi
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -75,7 +75,7 @@ class ApplicationManagementApi
         HeaderSelector $selector = null
     ) {
         $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
+        $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
     }
 
@@ -90,31 +90,35 @@ class ApplicationManagementApi
     /**
      * Operation createApplication
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\ApplicationSchema $application_name application_name (required)
+     * Use the Application Management App to create a new Application
+     *
+     * @param  \RusticiSoftware\Cloud\V2\Model\ApplicationRequestSchema $application_request application_request (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\ApplicationSchema
      */
-    public function createApplication($application_name)
+    public function createApplication($application_request)
     {
-        list($response) = $this->createApplicationWithHttpInfo($application_name);
+        list($response) = $this->createApplicationWithHttpInfo($application_request);
         return $response;
     }
 
     /**
      * Operation createApplicationWithHttpInfo
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\ApplicationSchema $application_name (required)
+     * Use the Application Management App to create a new Application
+     *
+     * @param  \RusticiSoftware\Cloud\V2\Model\ApplicationRequestSchema $application_request (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\ApplicationSchema, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createApplicationWithHttpInfo($application_name)
+    public function createApplicationWithHttpInfo($application_request)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\ApplicationSchema';
-        $request = $this->createApplicationRequest($application_name);
+        $request = $this->createApplicationRequest($application_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -194,16 +198,16 @@ class ApplicationManagementApi
     /**
      * Operation createApplicationAsync
      *
-     * 
+     * Use the Application Management App to create a new Application
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\ApplicationSchema $application_name (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\ApplicationRequestSchema $application_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createApplicationAsync($application_name)
+    public function createApplicationAsync($application_request)
     {
-        return $this->createApplicationAsyncWithHttpInfo($application_name)
+        return $this->createApplicationAsyncWithHttpInfo($application_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -214,17 +218,17 @@ class ApplicationManagementApi
     /**
      * Operation createApplicationAsyncWithHttpInfo
      *
-     * 
+     * Use the Application Management App to create a new Application
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\ApplicationSchema $application_name (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\ApplicationRequestSchema $application_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createApplicationAsyncWithHttpInfo($application_name)
+    public function createApplicationAsyncWithHttpInfo($application_request)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\ApplicationSchema';
-        $request = $this->createApplicationRequest($application_name);
+        $request = $this->createApplicationRequest($application_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -266,17 +270,17 @@ class ApplicationManagementApi
     /**
      * Create request for operation 'createApplication'
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\ApplicationSchema $application_name (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\ApplicationRequestSchema $application_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createApplicationRequest($application_name)
+    protected function createApplicationRequest($application_request)
     {
-        // verify the required parameter 'application_name' is set
-        if ($application_name === null || (is_array($application_name) && count($application_name) === 0)) {
+        // verify the required parameter 'application_request' is set
+        if ($application_request === null || (is_array($application_request) && count($application_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $application_name when calling createApplication'
+                'Missing the required parameter $application_request when calling createApplication'
             );
         }
 
@@ -291,8 +295,8 @@ class ApplicationManagementApi
 
         // body params
         $_tempBody = null;
-        if (isset($application_name)) {
-            $_tempBody = $application_name;
+        if (isset($application_request)) {
+            $_tempBody = $application_request;
         }
 
         if ($multipart) {
@@ -310,7 +314,7 @@ class ApplicationManagementApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -338,7 +342,7 @@ class ApplicationManagementApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -362,7 +366,7 @@ class ApplicationManagementApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -373,6 +377,8 @@ class ApplicationManagementApi
 
     /**
      * Operation createCredential
+     *
+     * Use the Application Manager App to create a new secret key for an Application
      *
      * @param  string $child_app_id child_app_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_request credential_request (required)
@@ -389,6 +395,8 @@ class ApplicationManagementApi
 
     /**
      * Operation createCredentialWithHttpInfo
+     *
+     * Use the Application Manager App to create a new secret key for an Application
      *
      * @param  string $child_app_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_request (required)
@@ -480,7 +488,7 @@ class ApplicationManagementApi
     /**
      * Operation createCredentialAsync
      *
-     * 
+     * Use the Application Manager App to create a new secret key for an Application
      *
      * @param  string $child_app_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_request (required)
@@ -501,7 +509,7 @@ class ApplicationManagementApi
     /**
      * Operation createCredentialAsyncWithHttpInfo
      *
-     * 
+     * Use the Application Manager App to create a new secret key for an Application
      *
      * @param  string $child_app_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\CredentialRequestSchema $credential_request (required)
@@ -613,7 +621,7 @@ class ApplicationManagementApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -641,7 +649,7 @@ class ApplicationManagementApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -665,7 +673,7 @@ class ApplicationManagementApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -676,6 +684,8 @@ class ApplicationManagementApi
 
     /**
      * Operation createToken
+     *
+     * Obtain an OAuth token for scoped access to an Application
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\TokenRequestSchema $token_request token_request (required)
      *
@@ -691,6 +701,8 @@ class ApplicationManagementApi
 
     /**
      * Operation createTokenWithHttpInfo
+     *
+     * Obtain an OAuth token for scoped access to an Application
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\TokenRequestSchema $token_request (required)
      *
@@ -781,7 +793,7 @@ class ApplicationManagementApi
     /**
      * Operation createTokenAsync
      *
-     * 
+     * Obtain an OAuth token for scoped access to an Application
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\TokenRequestSchema $token_request (required)
      *
@@ -801,7 +813,7 @@ class ApplicationManagementApi
     /**
      * Operation createTokenAsyncWithHttpInfo
      *
-     * 
+     * Obtain an OAuth token for scoped access to an Application
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\TokenRequestSchema $token_request (required)
      *
@@ -897,7 +909,7 @@ class ApplicationManagementApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -925,7 +937,7 @@ class ApplicationManagementApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -945,7 +957,7 @@ class ApplicationManagementApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -956,6 +968,8 @@ class ApplicationManagementApi
 
     /**
      * Operation deleteApplication
+     *
+     * Use the Application Management App to delete an Application
      *
      * @param  string $child_app_id child_app_id (required)
      *
@@ -970,6 +984,8 @@ class ApplicationManagementApi
 
     /**
      * Operation deleteApplicationWithHttpInfo
+     *
+     * Use the Application Management App to delete an Application
      *
      * @param  string $child_app_id (required)
      *
@@ -1046,7 +1062,7 @@ class ApplicationManagementApi
     /**
      * Operation deleteApplicationAsync
      *
-     * 
+     * Use the Application Management App to delete an Application
      *
      * @param  string $child_app_id (required)
      *
@@ -1066,7 +1082,7 @@ class ApplicationManagementApi
     /**
      * Operation deleteApplicationAsyncWithHttpInfo
      *
-     * 
+     * Use the Application Management App to delete an Application
      *
      * @param  string $child_app_id (required)
      *
@@ -1153,7 +1169,7 @@ class ApplicationManagementApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1181,7 +1197,7 @@ class ApplicationManagementApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1205,7 +1221,7 @@ class ApplicationManagementApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1217,11 +1233,11 @@ class ApplicationManagementApi
     /**
      * Operation deleteApplicationConfigurationSetting
      *
-     * Clears the `settingId` value for this level
+     * Delete a configuration setting explicitly set for an Application
      *
      * @param  string $setting_id setting_id (required)
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
-     * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
+     * @param  bool $single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1235,11 +1251,11 @@ class ApplicationManagementApi
     /**
      * Operation deleteApplicationConfigurationSettingWithHttpInfo
      *
-     * Clears the `settingId` value for this level
+     * Delete a configuration setting explicitly set for an Application
      *
      * @param  string $setting_id (required)
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
-     * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
+     * @param  bool $single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1298,11 +1314,11 @@ class ApplicationManagementApi
     /**
      * Operation deleteApplicationConfigurationSettingAsync
      *
-     * Clears the `settingId` value for this level
+     * Delete a configuration setting explicitly set for an Application
      *
      * @param  string $setting_id (required)
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
-     * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
+     * @param  bool $single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1320,11 +1336,11 @@ class ApplicationManagementApi
     /**
      * Operation deleteApplicationConfigurationSettingAsyncWithHttpInfo
      *
-     * Clears the `settingId` value for this level
+     * Delete a configuration setting explicitly set for an Application
      *
      * @param  string $setting_id (required)
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
-     * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
+     * @param  bool $single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1362,7 +1378,7 @@ class ApplicationManagementApi
      *
      * @param  string $setting_id (required)
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
-     * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
+     * @param  bool $single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1419,7 +1435,7 @@ class ApplicationManagementApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1447,7 +1463,7 @@ class ApplicationManagementApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1471,7 +1487,7 @@ class ApplicationManagementApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1482,6 +1498,8 @@ class ApplicationManagementApi
 
     /**
      * Operation deleteCredential
+     *
+     * Use the Application Management App to delete a secret key from an Application
      *
      * @param  string $child_app_id child_app_id (required)
      * @param  string $credential_id credential_id (required)
@@ -1497,6 +1515,8 @@ class ApplicationManagementApi
 
     /**
      * Operation deleteCredentialWithHttpInfo
+     *
+     * Use the Application Management App to delete a secret key from an Application
      *
      * @param  string $child_app_id (required)
      * @param  string $credential_id (required)
@@ -1574,7 +1594,7 @@ class ApplicationManagementApi
     /**
      * Operation deleteCredentialAsync
      *
-     * 
+     * Use the Application Management App to delete a secret key from an Application
      *
      * @param  string $child_app_id (required)
      * @param  string $credential_id (required)
@@ -1595,7 +1615,7 @@ class ApplicationManagementApi
     /**
      * Operation deleteCredentialAsyncWithHttpInfo
      *
-     * 
+     * Use the Application Management App to delete a secret key from an Application
      *
      * @param  string $child_app_id (required)
      * @param  string $credential_id (required)
@@ -1698,7 +1718,7 @@ class ApplicationManagementApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1726,7 +1746,7 @@ class ApplicationManagementApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1750,7 +1770,7 @@ class ApplicationManagementApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1762,8 +1782,10 @@ class ApplicationManagementApi
     /**
      * Operation getApplicationConfiguration
      *
+     * Get effective configuration settings for an Application
+     *
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
-     * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
+     * @param  bool $single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. (optional)
      * @param  bool $include_metadata include_metadata (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -1779,8 +1801,10 @@ class ApplicationManagementApi
     /**
      * Operation getApplicationConfigurationWithHttpInfo
      *
+     * Get effective configuration settings for an Application
+     *
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
-     * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
+     * @param  bool $single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. (optional)
      * @param  bool $include_metadata (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -1870,10 +1894,10 @@ class ApplicationManagementApi
     /**
      * Operation getApplicationConfigurationAsync
      *
-     * 
+     * Get effective configuration settings for an Application
      *
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
-     * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
+     * @param  bool $single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. (optional)
      * @param  bool $include_metadata (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -1892,10 +1916,10 @@ class ApplicationManagementApi
     /**
      * Operation getApplicationConfigurationAsyncWithHttpInfo
      *
-     * 
+     * Get effective configuration settings for an Application
      *
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
-     * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
+     * @param  bool $single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. (optional)
      * @param  bool $include_metadata (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -1947,7 +1971,7 @@ class ApplicationManagementApi
      * Create request for operation 'getApplicationConfiguration'
      *
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
-     * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
+     * @param  bool $single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. (optional)
      * @param  bool $include_metadata (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -1995,7 +2019,7 @@ class ApplicationManagementApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2023,7 +2047,7 @@ class ApplicationManagementApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2047,7 +2071,326 @@ class ApplicationManagementApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getApplicationInfo
+     *
+     * Use the Application Management App to get detailed information about an Application
+     *
+     * @param  string $child_app_id child_app_id (required)
+     * @param  bool $include_course_count Include a count of courses for the application. (optional, default to false)
+     * @param  bool $include_registration_count Include a count of registrations created for the application during the current billing period. (optional, default to false)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \RusticiSoftware\Cloud\V2\Model\ApplicationInfoSchema
+     */
+    public function getApplicationInfo($child_app_id, $include_course_count = 'false', $include_registration_count = 'false')
+    {
+        list($response) = $this->getApplicationInfoWithHttpInfo($child_app_id, $include_course_count, $include_registration_count);
+        return $response;
+    }
+
+    /**
+     * Operation getApplicationInfoWithHttpInfo
+     *
+     * Use the Application Management App to get detailed information about an Application
+     *
+     * @param  string $child_app_id (required)
+     * @param  bool $include_course_count Include a count of courses for the application. (optional, default to false)
+     * @param  bool $include_registration_count Include a count of registrations created for the application during the current billing period. (optional, default to false)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \RusticiSoftware\Cloud\V2\Model\ApplicationInfoSchema, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getApplicationInfoWithHttpInfo($child_app_id, $include_course_count = 'false', $include_registration_count = 'false')
+    {
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\ApplicationInfoSchema';
+        $request = $this->getApplicationInfoRequest($child_app_id, $include_course_count, $include_registration_count);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\ApplicationInfoSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getApplicationInfoAsync
+     *
+     * Use the Application Management App to get detailed information about an Application
+     *
+     * @param  string $child_app_id (required)
+     * @param  bool $include_course_count Include a count of courses for the application. (optional, default to false)
+     * @param  bool $include_registration_count Include a count of registrations created for the application during the current billing period. (optional, default to false)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getApplicationInfoAsync($child_app_id, $include_course_count = 'false', $include_registration_count = 'false')
+    {
+        return $this->getApplicationInfoAsyncWithHttpInfo($child_app_id, $include_course_count, $include_registration_count)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getApplicationInfoAsyncWithHttpInfo
+     *
+     * Use the Application Management App to get detailed information about an Application
+     *
+     * @param  string $child_app_id (required)
+     * @param  bool $include_course_count Include a count of courses for the application. (optional, default to false)
+     * @param  bool $include_registration_count Include a count of registrations created for the application during the current billing period. (optional, default to false)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getApplicationInfoAsyncWithHttpInfo($child_app_id, $include_course_count = 'false', $include_registration_count = 'false')
+    {
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\ApplicationInfoSchema';
+        $request = $this->getApplicationInfoRequest($child_app_id, $include_course_count, $include_registration_count);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getApplicationInfo'
+     *
+     * @param  string $child_app_id (required)
+     * @param  bool $include_course_count Include a count of courses for the application. (optional, default to false)
+     * @param  bool $include_registration_count Include a count of registrations created for the application during the current billing period. (optional, default to false)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getApplicationInfoRequest($child_app_id, $include_course_count = 'false', $include_registration_count = 'false')
+    {
+        // verify the required parameter 'child_app_id' is set
+        if ($child_app_id === null || (is_array($child_app_id) && count($child_app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $child_app_id when calling getApplicationInfo'
+            );
+        }
+
+        $resourcePath = '/appManagement/applications/{childAppId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($include_course_count !== null) {
+            $queryParams['includeCourseCount'] = ObjectSerializer::toQueryValue($include_course_count);
+        }
+        // query params
+        if ($include_registration_count !== null) {
+            $queryParams['includeRegistrationCount'] = ObjectSerializer::toQueryValue($include_registration_count);
+        }
+
+        // path params
+        if ($child_app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'childAppId' . '}',
+                ObjectSerializer::toPathValue($child_app_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2059,7 +2402,7 @@ class ApplicationManagementApi
     /**
      * Operation getApplicationList
      *
-     * Get a list of all applications for the realm.
+     * Use the Application Management App to get a list of Applications
      *
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2075,7 +2418,7 @@ class ApplicationManagementApi
     /**
      * Operation getApplicationListWithHttpInfo
      *
-     * Get a list of all applications for the realm.
+     * Use the Application Management App to get a list of Applications
      *
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2165,7 +2508,7 @@ class ApplicationManagementApi
     /**
      * Operation getApplicationListAsync
      *
-     * Get a list of all applications for the realm.
+     * Use the Application Management App to get a list of Applications
      *
      *
      * @throws \InvalidArgumentException
@@ -2184,7 +2527,7 @@ class ApplicationManagementApi
     /**
      * Operation getApplicationListAsyncWithHttpInfo
      *
-     * Get a list of all applications for the realm.
+     * Use the Application Management App to get a list of Applications
      *
      *
      * @throws \InvalidArgumentException
@@ -2269,7 +2612,7 @@ class ApplicationManagementApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2297,7 +2640,7 @@ class ApplicationManagementApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2321,7 +2664,7 @@ class ApplicationManagementApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2332,6 +2675,8 @@ class ApplicationManagementApi
 
     /**
      * Operation getCredentials
+     *
+     * Use the Application Manager App to get a list of secret keys for an Application
      *
      * @param  string $child_app_id child_app_id (required)
      *
@@ -2347,6 +2692,8 @@ class ApplicationManagementApi
 
     /**
      * Operation getCredentialsWithHttpInfo
+     *
+     * Use the Application Manager App to get a list of secret keys for an Application
      *
      * @param  string $child_app_id (required)
      *
@@ -2437,7 +2784,7 @@ class ApplicationManagementApi
     /**
      * Operation getCredentialsAsync
      *
-     * 
+     * Use the Application Manager App to get a list of secret keys for an Application
      *
      * @param  string $child_app_id (required)
      *
@@ -2457,7 +2804,7 @@ class ApplicationManagementApi
     /**
      * Operation getCredentialsAsyncWithHttpInfo
      *
-     * 
+     * Use the Application Manager App to get a list of secret keys for an Application
      *
      * @param  string $child_app_id (required)
      *
@@ -2558,7 +2905,7 @@ class ApplicationManagementApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2586,7 +2933,7 @@ class ApplicationManagementApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2610,7 +2957,7 @@ class ApplicationManagementApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2622,9 +2969,11 @@ class ApplicationManagementApi
     /**
      * Operation setApplicationConfiguration
      *
+     * Update configuration settings for an Application
+     *
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings configuration_settings (required)
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
-     * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
+     * @param  bool $single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2638,9 +2987,11 @@ class ApplicationManagementApi
     /**
      * Operation setApplicationConfigurationWithHttpInfo
      *
+     * Update configuration settings for an Application
+     *
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
-     * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
+     * @param  bool $single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2707,11 +3058,11 @@ class ApplicationManagementApi
     /**
      * Operation setApplicationConfigurationAsync
      *
-     * 
+     * Update configuration settings for an Application
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
-     * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
+     * @param  bool $single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2729,11 +3080,11 @@ class ApplicationManagementApi
     /**
      * Operation setApplicationConfigurationAsyncWithHttpInfo
      *
-     * 
+     * Update configuration settings for an Application
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
-     * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
+     * @param  bool $single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2771,7 +3122,7 @@ class ApplicationManagementApi
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      * @param  string $learning_standard If specified, the request will be scoped to the provided learning standard. (optional)
-     * @param  bool $single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes. (optional)
+     * @param  bool $single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2823,7 +3174,7 @@ class ApplicationManagementApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2851,7 +3202,7 @@ class ApplicationManagementApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2875,7 +3226,7 @@ class ApplicationManagementApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2885,7 +3236,287 @@ class ApplicationManagementApi
     }
 
     /**
+     * Operation updateApplication
+     *
+     * Use the Application Management App to update information about an Application
+     *
+     * @param  string $child_app_id child_app_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\UpdateApplicationSchema $application_properties application_properties (required)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function updateApplication($child_app_id, $application_properties)
+    {
+        $this->updateApplicationWithHttpInfo($child_app_id, $application_properties);
+    }
+
+    /**
+     * Operation updateApplicationWithHttpInfo
+     *
+     * Use the Application Management App to update information about an Application
+     *
+     * @param  string $child_app_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\UpdateApplicationSchema $application_properties (required)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateApplicationWithHttpInfo($child_app_id, $application_properties)
+    {
+        $returnType = '';
+        $request = $this->updateApplicationRequest($child_app_id, $application_properties);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateApplicationAsync
+     *
+     * Use the Application Management App to update information about an Application
+     *
+     * @param  string $child_app_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\UpdateApplicationSchema $application_properties (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateApplicationAsync($child_app_id, $application_properties)
+    {
+        return $this->updateApplicationAsyncWithHttpInfo($child_app_id, $application_properties)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateApplicationAsyncWithHttpInfo
+     *
+     * Use the Application Management App to update information about an Application
+     *
+     * @param  string $child_app_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\UpdateApplicationSchema $application_properties (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateApplicationAsyncWithHttpInfo($child_app_id, $application_properties)
+    {
+        $returnType = '';
+        $request = $this->updateApplicationRequest($child_app_id, $application_properties);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateApplication'
+     *
+     * @param  string $child_app_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\UpdateApplicationSchema $application_properties (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function updateApplicationRequest($child_app_id, $application_properties)
+    {
+        // verify the required parameter 'child_app_id' is set
+        if ($child_app_id === null || (is_array($child_app_id) && count($child_app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $child_app_id when calling updateApplication'
+            );
+        }
+        // verify the required parameter 'application_properties' is set
+        if ($application_properties === null || (is_array($application_properties) && count($application_properties) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $application_properties when calling updateApplication'
+            );
+        }
+
+        $resourcePath = '/appManagement/applications/{childAppId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($child_app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'childAppId' . '}',
+                ObjectSerializer::toPathValue($child_app_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($application_properties)) {
+            $_tempBody = $application_properties;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'PUT',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation updateCredential
+     *
+     * Use the Application Manager App to update an existing secret key for an Application
      *
      * @param  string $child_app_id child_app_id (required)
      * @param  string $credential_id credential_id (required)
@@ -2902,6 +3533,8 @@ class ApplicationManagementApi
 
     /**
      * Operation updateCredentialWithHttpInfo
+     *
+     * Use the Application Manager App to update an existing secret key for an Application
      *
      * @param  string $child_app_id (required)
      * @param  string $credential_id (required)
@@ -2980,7 +3613,7 @@ class ApplicationManagementApi
     /**
      * Operation updateCredentialAsync
      *
-     * 
+     * Use the Application Manager App to update an existing secret key for an Application
      *
      * @param  string $child_app_id (required)
      * @param  string $credential_id (required)
@@ -3002,7 +3635,7 @@ class ApplicationManagementApi
     /**
      * Operation updateCredentialAsyncWithHttpInfo
      *
-     * 
+     * Use the Application Manager App to update an existing secret key for an Application
      *
      * @param  string $child_app_id (required)
      * @param  string $credential_id (required)
@@ -3116,7 +3749,7 @@ class ApplicationManagementApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -3144,7 +3777,7 @@ class ApplicationManagementApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -3168,7 +3801,7 @@ class ApplicationManagementApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
