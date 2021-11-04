@@ -1,8 +1,8 @@
 <?php
 /**
- * ConnectorListSchema
+ * UpdateApplicationSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -33,15 +33,14 @@ use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
 
 /**
- * ConnectorListSchema Class Doc Comment
+ * UpdateApplicationSchema Class Doc Comment
  *
  * @category Class
- * @description List of content connectors.
  * @package  RusticiSoftware\Cloud\V2
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ConnectorListSchema implements ModelInterface, ArrayAccess
+class UpdateApplicationSchema implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class ConnectorListSchema implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ConnectorListSchema';
+    protected static $swaggerModelName = 'UpdateApplicationSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +57,8 @@ class ConnectorListSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'connector_entries' => '\RusticiSoftware\Cloud\V2\Model\ConnectorSchema[]'
+        'name' => 'string',
+        'allow_delete' => 'bool'
     ];
 
     /**
@@ -67,7 +67,8 @@ class ConnectorListSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'connector_entries' => null
+        'name' => null,
+        'allow_delete' => null
     ];
 
     /**
@@ -97,7 +98,8 @@ class ConnectorListSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'connector_entries' => 'connectorEntries'
+        'name' => 'name',
+        'allow_delete' => 'allowDelete'
     ];
 
     /**
@@ -106,7 +108,8 @@ class ConnectorListSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'connector_entries' => 'setConnectorEntries'
+        'name' => 'setName',
+        'allow_delete' => 'setAllowDelete'
     ];
 
     /**
@@ -115,7 +118,8 @@ class ConnectorListSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'connector_entries' => 'getConnectorEntries'
+        'name' => 'getName',
+        'allow_delete' => 'getAllowDelete'
     ];
 
     /**
@@ -178,7 +182,8 @@ class ConnectorListSchema implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['connector_entries'] = isset($data['connector_entries']) ? $data['connector_entries'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['allow_delete'] = isset($data['allow_delete']) ? $data['allow_delete'] : null;
     }
 
     /**
@@ -206,25 +211,49 @@ class ConnectorListSchema implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets connector_entries
+     * Gets name
      *
-     * @return \RusticiSoftware\Cloud\V2\Model\ConnectorSchema[]
+     * @return string
      */
-    public function getConnectorEntries()
+    public function getName()
     {
-        return $this->container['connector_entries'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets connector_entries
+     * Sets name
      *
-     * @param \RusticiSoftware\Cloud\V2\Model\ConnectorSchema[] $connector_entries connector_entries
+     * @param string $name The new name of the application.
      *
      * @return $this
      */
-    public function setConnectorEntries($connector_entries)
+    public function setName($name)
     {
-        $this->container['connector_entries'] = $connector_entries;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_delete
+     *
+     * @return bool
+     */
+    public function getAllowDelete()
+    {
+        return $this->container['allow_delete'];
+    }
+
+    /**
+     * Sets allow_delete
+     *
+     * @param bool $allow_delete Whether or not the application is allowed to perform deletion operations.
+     *
+     * @return $this
+     */
+    public function setAllowDelete($allow_delete)
+    {
+        $this->container['allow_delete'] = $allow_delete;
 
         return $this;
     }

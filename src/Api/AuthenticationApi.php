@@ -1,7 +1,7 @@
 <?php
 /**
  * AuthenticationApi
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -75,7 +75,7 @@ class AuthenticationApi
         HeaderSelector $selector = null
     ) {
         $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
+        $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
     }
 
@@ -90,10 +90,10 @@ class AuthenticationApi
     /**
      * Operation getAppToken
      *
-     * Authenticates for a oauth token
+     * Obtain an OAuth token for scoped access to an Application
      *
-     * @param  string $scope scope (required)
-     * @param  int $expiration expiration (optional, default to 300)
+     * @param  string $scope Space separated string of OAuth scopes, e.g. \&quot;write:course read:registration\&quot;. (required)
+     * @param  int $expiration Amount of seconds until the OAuth token expires. (optional, default to 300)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -108,10 +108,10 @@ class AuthenticationApi
     /**
      * Operation getAppTokenWithHttpInfo
      *
-     * Authenticates for a oauth token
+     * Obtain an OAuth token for scoped access to an Application
      *
-     * @param  string $scope (required)
-     * @param  int $expiration (optional, default to 300)
+     * @param  string $scope Space separated string of OAuth scopes, e.g. \&quot;write:course read:registration\&quot;. (required)
+     * @param  int $expiration Amount of seconds until the OAuth token expires. (optional, default to 300)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -192,10 +192,10 @@ class AuthenticationApi
     /**
      * Operation getAppTokenAsync
      *
-     * Authenticates for a oauth token
+     * Obtain an OAuth token for scoped access to an Application
      *
-     * @param  string $scope (required)
-     * @param  int $expiration (optional, default to 300)
+     * @param  string $scope Space separated string of OAuth scopes, e.g. \&quot;write:course read:registration\&quot;. (required)
+     * @param  int $expiration Amount of seconds until the OAuth token expires. (optional, default to 300)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -213,10 +213,10 @@ class AuthenticationApi
     /**
      * Operation getAppTokenAsyncWithHttpInfo
      *
-     * Authenticates for a oauth token
+     * Obtain an OAuth token for scoped access to an Application
      *
-     * @param  string $scope (required)
-     * @param  int $expiration (optional, default to 300)
+     * @param  string $scope Space separated string of OAuth scopes, e.g. \&quot;write:course read:registration\&quot;. (required)
+     * @param  int $expiration Amount of seconds until the OAuth token expires. (optional, default to 300)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -266,8 +266,8 @@ class AuthenticationApi
     /**
      * Create request for operation 'getAppToken'
      *
-     * @param  string $scope (required)
-     * @param  int $expiration (optional, default to 300)
+     * @param  string $scope Space separated string of OAuth scopes, e.g. \&quot;write:course read:registration\&quot;. (required)
+     * @param  int $expiration Amount of seconds until the OAuth token expires. (optional, default to 300)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -280,13 +280,6 @@ class AuthenticationApi
                 'Missing the required parameter $scope when calling getAppToken'
             );
         }
-        if ($expiration !== null && $expiration > 43200) {
-            throw new \InvalidArgumentException('invalid value for "$expiration" when calling AuthenticationApi.getAppToken, must be smaller than or equal to 43200.');
-        }
-        if ($expiration !== null && $expiration < 60) {
-            throw new \InvalidArgumentException('invalid value for "$expiration" when calling AuthenticationApi.getAppToken, must be bigger than or equal to 60.');
-        }
-
 
         $resourcePath = '/oauth/authenticate/application/token';
         $formParams = [];
@@ -323,7 +316,7 @@ class AuthenticationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -351,7 +344,7 @@ class AuthenticationApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -371,7 +364,7 @@ class AuthenticationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

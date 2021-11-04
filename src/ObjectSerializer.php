@@ -2,7 +2,7 @@
 /**
  * ObjectSerializer
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -70,13 +70,6 @@ class ObjectSerializer
             foreach ($data::swaggerTypes() as $property => $swaggerType) {
                 $getter = $data::getters()[$property];
                 $value = $data->$getter();
-                if ($value !== null
-                    && !in_array($swaggerType, ['DateTime', 'bool', 'boolean', 'byte', 'double', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)
-                    && method_exists($swaggerType, 'getAllowableEnumValues')
-                    && !in_array($value, $swaggerType::getAllowableEnumValues(), true)) {
-                    $imploded = implode("', '", $swaggerType::getAllowableEnumValues());
-                    throw new \InvalidArgumentException("Invalid value for enum '$swaggerType', must be one of: '$imploded'");
-                }
                 if ($value !== null) {
                     $values[$data::attributeMap()[$property]] = self::sanitizeForSerialization($value, $swaggerType, $formats[$property]);
                 }
@@ -123,7 +116,7 @@ class ObjectSerializer
      * If it's a string, pass through unchanged. It will be url-encoded
      * later.
      *
-     * @param string[]|string|\DateTime $object an object to be serialized to a string
+     * @param bool|string[]|string|\DateTime $object an object to be serialized to a string
      *
      * @return string the serialized object
      */
@@ -172,8 +165,9 @@ class ObjectSerializer
      * Take value and turn it into a string suitable for inclusion in
      * the parameter. If it's a string, pass through unchanged
      * If it's a datetime object, format it in ISO8601
+     * If it's a bool, pass through string representation
      *
-     * @param string|\DateTime $value the value of the parameter
+     * @param bool|string|\DateTime $value the value of the parameter
      *
      * @return string the header string
      */
@@ -181,6 +175,8 @@ class ObjectSerializer
     {
         if ($value instanceof \DateTime) { // datetime in ISO8601 format
             return $value->format(\DateTime::ATOM);
+        } elseif (is_bool($value)) {
+            return $value ? 'true' : 'false';
         } else {
             return $value;
         }
@@ -289,10 +285,6 @@ class ObjectSerializer
 
             return new \SplFileObject($filename, 'r');
         } elseif (method_exists($class, 'getAllowableEnumValues')) {
-            if (!in_array($data, $class::getAllowableEnumValues(), true)) {
-                $imploded = implode("', '", $class::getAllowableEnumValues());
-                throw new \InvalidArgumentException("Invalid value for enum '$class', must be one of: '$imploded'");
-            }
             return $data;
         } else {
             // If a discriminator is defined and points to a valid subclass, use it.

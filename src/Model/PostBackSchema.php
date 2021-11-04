@@ -2,7 +2,7 @@
 /**
  * PostBackSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -255,22 +255,6 @@ class PostBackSchema implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getAuthTypeAllowableValues();
-        if (!is_null($this->container['auth_type']) && !in_array($this->container['auth_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'auth_type', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getResultsFormatAllowableValues();
-        if (!is_null($this->container['results_format']) && !in_array($this->container['results_format'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'results_format', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -329,15 +313,6 @@ class PostBackSchema implements ModelInterface, ArrayAccess
      */
     public function setAuthType($auth_type)
     {
-        $allowedValues = $this->getAuthTypeAllowableValues();
-        if (!is_null($auth_type) && !in_array($auth_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'auth_type', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['auth_type'] = $auth_type;
 
         return $this;
@@ -410,15 +385,6 @@ class PostBackSchema implements ModelInterface, ArrayAccess
      */
     public function setResultsFormat($results_format)
     {
-        $allowedValues = $this->getResultsFormatAllowableValues();
-        if (!is_null($results_format) && !in_array($results_format, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'results_format', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['results_format'] = $results_format;
 
         return $this;

@@ -2,7 +2,7 @@
 /**
  * ActivityResultSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -295,22 +295,6 @@ class ActivityResultSchema implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getActivityCompletionAllowableValues();
-        if (!is_null($this->container['activity_completion']) && !in_array($this->container['activity_completion'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'activity_completion', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getActivitySuccessAllowableValues();
-        if (!is_null($this->container['activity_success']) && !in_array($this->container['activity_success'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'activity_success', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -417,15 +401,6 @@ class ActivityResultSchema implements ModelInterface, ArrayAccess
      */
     public function setActivityCompletion($activity_completion)
     {
-        $allowedValues = $this->getActivityCompletionAllowableValues();
-        if (!is_null($activity_completion) && !in_array($activity_completion, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'activity_completion', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['activity_completion'] = $activity_completion;
 
         return $this;
@@ -450,15 +425,6 @@ class ActivityResultSchema implements ModelInterface, ArrayAccess
      */
     public function setActivitySuccess($activity_success)
     {
-        $allowedValues = $this->getActivitySuccessAllowableValues();
-        if (!is_null($activity_success) && !in_array($activity_success, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'activity_success', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['activity_success'] = $activity_success;
 
         return $this;

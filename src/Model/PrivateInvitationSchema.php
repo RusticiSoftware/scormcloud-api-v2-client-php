@@ -2,7 +2,7 @@
 /**
  * PrivateInvitationSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -313,7 +313,7 @@ class PrivateInvitationSchema implements ModelInterface, ArrayAccess
     /**
      * Sets allow_launch
      *
-     * @param bool $allow_launch If true, then new registrations can be created for this dispatch.
+     * @param bool $allow_launch If true, then new registrations can be created for this invitation.
      *
      * @return $this
      */
@@ -433,7 +433,7 @@ class PrivateInvitationSchema implements ModelInterface, ArrayAccess
     /**
      * Sets expiration_date
      *
-     * @param \DateTime $expiration_date The date this invitation will expire and can not be launched (formatted yyyyMMddHHmmss in UTC time).
+     * @param \DateTime $expiration_date The ISO 8601 TimeStamp (defaults to UTC) after which this invitation will expire and can no longer be launched. An empty value will represent no expiration date.
      *
      * @return $this
      */

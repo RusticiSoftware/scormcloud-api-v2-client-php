@@ -1,7 +1,7 @@
 <?php
 /**
  * DispatchApi
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -75,7 +75,7 @@ class DispatchApi
         HeaderSelector $selector = null
     ) {
         $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
+        $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
     }
 
@@ -90,7 +90,7 @@ class DispatchApi
     /**
      * Operation createDestinations
      *
-     * DestinationsByTenant
+     * Create a group of Destinations
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\DestinationListSchema $destinations_list  (required)
      *
@@ -106,7 +106,7 @@ class DispatchApi
     /**
      * Operation createDestinationsWithHttpInfo
      *
-     * DestinationsByTenant
+     * Create a group of Destinations
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\DestinationListSchema $destinations_list  (required)
      *
@@ -167,7 +167,7 @@ class DispatchApi
     /**
      * Operation createDestinationsAsync
      *
-     * DestinationsByTenant
+     * Create a group of Destinations
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\DestinationListSchema $destinations_list  (required)
      *
@@ -187,7 +187,7 @@ class DispatchApi
     /**
      * Operation createDestinationsAsyncWithHttpInfo
      *
-     * DestinationsByTenant
+     * Create a group of Destinations
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\DestinationListSchema $destinations_list  (required)
      *
@@ -269,7 +269,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -297,7 +297,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -321,7 +321,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -333,7 +333,7 @@ class DispatchApi
     /**
      * Operation createDispatches
      *
-     * Create dispatches.
+     * Create a group of Dispatches
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\CreateDispatchListSchema $dispatch_list dispatch_list (required)
      *
@@ -349,7 +349,7 @@ class DispatchApi
     /**
      * Operation createDispatchesWithHttpInfo
      *
-     * Create dispatches.
+     * Create a group of Dispatches
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\CreateDispatchListSchema $dispatch_list (required)
      *
@@ -410,7 +410,7 @@ class DispatchApi
     /**
      * Operation createDispatchesAsync
      *
-     * Create dispatches.
+     * Create a group of Dispatches
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\CreateDispatchListSchema $dispatch_list (required)
      *
@@ -430,7 +430,7 @@ class DispatchApi
     /**
      * Operation createDispatchesAsyncWithHttpInfo
      *
-     * Create dispatches.
+     * Create a group of Dispatches
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\CreateDispatchListSchema $dispatch_list (required)
      *
@@ -512,7 +512,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -540,7 +540,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -564,7 +564,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -576,7 +576,7 @@ class DispatchApi
     /**
      * Operation deleteDestination
      *
-     * Delete destination
+     * Delete a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -592,7 +592,7 @@ class DispatchApi
     /**
      * Operation deleteDestinationWithHttpInfo
      *
-     * Delete destination
+     * Delete a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -661,7 +661,7 @@ class DispatchApi
     /**
      * Operation deleteDestinationAsync
      *
-     * Delete destination
+     * Delete a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -681,7 +681,7 @@ class DispatchApi
     /**
      * Operation deleteDestinationAsyncWithHttpInfo
      *
-     * Delete destination
+     * Delete a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -768,7 +768,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -796,7 +796,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -820,7 +820,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -832,7 +832,7 @@ class DispatchApi
     /**
      * Operation deleteDestinationDispatches
      *
-     * Delete dispatches in destination
+     * Delete a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -848,7 +848,7 @@ class DispatchApi
     /**
      * Operation deleteDestinationDispatchesWithHttpInfo
      *
-     * Delete dispatches in destination
+     * Delete a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -917,7 +917,7 @@ class DispatchApi
     /**
      * Operation deleteDestinationDispatchesAsync
      *
-     * Delete dispatches in destination
+     * Delete a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -937,7 +937,7 @@ class DispatchApi
     /**
      * Operation deleteDestinationDispatchesAsyncWithHttpInfo
      *
-     * Delete dispatches in destination
+     * Delete a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -1024,7 +1024,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1052,7 +1052,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1076,7 +1076,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1088,7 +1088,7 @@ class DispatchApi
     /**
      * Operation deleteDestinationTags
      *
-     * Delete the tags for this destination
+     * Delete tags from a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
@@ -1105,7 +1105,7 @@ class DispatchApi
     /**
      * Operation deleteDestinationTagsWithHttpInfo
      *
-     * Delete the tags for this destination
+     * Delete tags from a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
@@ -1175,7 +1175,7 @@ class DispatchApi
     /**
      * Operation deleteDestinationTagsAsync
      *
-     * Delete the tags for this destination
+     * Delete tags from a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
@@ -1196,7 +1196,7 @@ class DispatchApi
     /**
      * Operation deleteDestinationTagsAsyncWithHttpInfo
      *
-     * Delete the tags for this destination
+     * Delete tags from a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
@@ -1294,7 +1294,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1322,7 +1322,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1346,7 +1346,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1358,7 +1358,7 @@ class DispatchApi
     /**
      * Operation deleteDispatch
      *
-     * Delete the dispatch with `dispatchId`.
+     * Delete a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -1374,7 +1374,7 @@ class DispatchApi
     /**
      * Operation deleteDispatchWithHttpInfo
      *
-     * Delete the dispatch with `dispatchId`.
+     * Delete a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -1443,7 +1443,7 @@ class DispatchApi
     /**
      * Operation deleteDispatchAsync
      *
-     * Delete the dispatch with `dispatchId`.
+     * Delete a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -1463,7 +1463,7 @@ class DispatchApi
     /**
      * Operation deleteDispatchAsyncWithHttpInfo
      *
-     * Delete the dispatch with `dispatchId`.
+     * Delete a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -1550,7 +1550,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1578,7 +1578,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1602,7 +1602,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1614,7 +1614,7 @@ class DispatchApi
     /**
      * Operation deleteDispatchPostbackInfo
      *
-     * DispatchesByTenantAndDispatchId
+     * Delete postback information from a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -1630,7 +1630,7 @@ class DispatchApi
     /**
      * Operation deleteDispatchPostbackInfoWithHttpInfo
      *
-     * DispatchesByTenantAndDispatchId
+     * Delete postback information from a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -1699,7 +1699,7 @@ class DispatchApi
     /**
      * Operation deleteDispatchPostbackInfoAsync
      *
-     * DispatchesByTenantAndDispatchId
+     * Delete postback information from a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -1719,7 +1719,7 @@ class DispatchApi
     /**
      * Operation deleteDispatchPostbackInfoAsyncWithHttpInfo
      *
-     * DispatchesByTenantAndDispatchId
+     * Delete postback information from a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -1806,7 +1806,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1834,7 +1834,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1858,7 +1858,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1870,7 +1870,7 @@ class DispatchApi
     /**
      * Operation deleteDispatchTags
      *
-     * Delete the tags for this dispatch.
+     * Delete tags from a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
@@ -1887,7 +1887,7 @@ class DispatchApi
     /**
      * Operation deleteDispatchTagsWithHttpInfo
      *
-     * Delete the tags for this dispatch.
+     * Delete tags from a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
@@ -1957,7 +1957,7 @@ class DispatchApi
     /**
      * Operation deleteDispatchTagsAsync
      *
-     * Delete the tags for this dispatch.
+     * Delete tags from a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
@@ -1978,7 +1978,7 @@ class DispatchApi
     /**
      * Operation deleteDispatchTagsAsyncWithHttpInfo
      *
-     * Delete the tags for this dispatch.
+     * Delete tags from a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
@@ -2076,7 +2076,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2104,7 +2104,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2128,7 +2128,302 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteDispatches
+     *
+     * Delete a group of Dispatches
+     *
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteDispatches($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id')
+    {
+        $this->deleteDispatchesWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by);
+    }
+
+    /**
+     * Operation deleteDispatchesWithHttpInfo
+     *
+     * Delete a group of Dispatches
+     *
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteDispatchesWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id')
+    {
+        $returnType = '';
+        $request = $this->deleteDispatchesRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteDispatchesAsync
+     *
+     * Delete a group of Dispatches
+     *
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteDispatchesAsync($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id')
+    {
+        return $this->deleteDispatchesAsyncWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteDispatchesAsyncWithHttpInfo
+     *
+     * Delete a group of Dispatches
+     *
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteDispatchesAsyncWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id')
+    {
+        $returnType = '';
+        $request = $this->deleteDispatchesRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteDispatches'
+     *
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function deleteDispatchesRequest($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id')
+    {
+
+        $resourcePath = '/dispatch/dispatches';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($course_id !== null) {
+            $queryParams['courseId'] = ObjectSerializer::toQueryValue($course_id);
+        }
+        // query params
+        if ($since !== null) {
+            $queryParams['since'] = ObjectSerializer::toQueryValue($since);
+        }
+        // query params
+        if ($until !== null) {
+            $queryParams['until'] = ObjectSerializer::toQueryValue($until);
+        }
+        // query params
+        if ($datetime_filter !== null) {
+            $queryParams['datetimeFilter'] = ObjectSerializer::toQueryValue($datetime_filter);
+        }
+        // query params
+        if (is_array($tags)) {
+            $queryParams['tags'] = $tags;
+        } else
+        if ($tags !== null) {
+            $queryParams['tags'] = ObjectSerializer::toQueryValue($tags);
+        }
+        // query params
+        if ($filter !== null) {
+            $queryParams['filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($filter_by !== null) {
+            $queryParams['filterBy'] = ObjectSerializer::toQueryValue($filter_by);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2140,7 +2435,7 @@ class DispatchApi
     /**
      * Operation enableRegistrationInstancing
      *
-     * DestinationsDispatchesRegistrationInstancing
+     * Update registration instancing status for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled  (required)
@@ -2157,7 +2452,7 @@ class DispatchApi
     /**
      * Operation enableRegistrationInstancingWithHttpInfo
      *
-     * DestinationsDispatchesRegistrationInstancing
+     * Update registration instancing status for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled  (required)
@@ -2227,7 +2522,7 @@ class DispatchApi
     /**
      * Operation enableRegistrationInstancingAsync
      *
-     * DestinationsDispatchesRegistrationInstancing
+     * Update registration instancing status for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled  (required)
@@ -2248,7 +2543,7 @@ class DispatchApi
     /**
      * Operation enableRegistrationInstancingAsyncWithHttpInfo
      *
-     * DestinationsDispatchesRegistrationInstancing
+     * Update registration instancing status for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled  (required)
@@ -2346,7 +2641,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2374,7 +2669,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2398,7 +2693,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2410,7 +2705,7 @@ class DispatchApi
     /**
      * Operation getDestination
      *
-     * Get destination information by destinationId.
+     * Get detailed information about a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -2427,7 +2722,7 @@ class DispatchApi
     /**
      * Operation getDestinationWithHttpInfo
      *
-     * Get destination information by destinationId.
+     * Get detailed information about a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -2518,7 +2813,7 @@ class DispatchApi
     /**
      * Operation getDestinationAsync
      *
-     * Get destination information by destinationId.
+     * Get detailed information about a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -2538,7 +2833,7 @@ class DispatchApi
     /**
      * Operation getDestinationAsyncWithHttpInfo
      *
-     * Get destination information by destinationId.
+     * Get detailed information about a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -2639,7 +2934,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2667,7 +2962,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2691,7 +2986,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2703,7 +2998,7 @@ class DispatchApi
     /**
      * Operation getDestinationDispatchRegistrationCount
      *
-     * DestinationsDispatchesRegistrationCount
+     * Get registration count for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -2720,7 +3015,7 @@ class DispatchApi
     /**
      * Operation getDestinationDispatchRegistrationCountWithHttpInfo
      *
-     * DestinationsDispatchesRegistrationCount
+     * Get registration count for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -2811,7 +3106,7 @@ class DispatchApi
     /**
      * Operation getDestinationDispatchRegistrationCountAsync
      *
-     * DestinationsDispatchesRegistrationCount
+     * Get registration count for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -2831,7 +3126,7 @@ class DispatchApi
     /**
      * Operation getDestinationDispatchRegistrationCountAsyncWithHttpInfo
      *
-     * DestinationsDispatchesRegistrationCount
+     * Get registration count for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -2932,7 +3227,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2960,7 +3255,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2984,7 +3279,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2996,18 +3291,18 @@ class DispatchApi
     /**
      * Operation getDestinationDispatchZip
      *
-     * Get a ZIP of related dispatches.
+     * Download a zip file for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
-     * @param  string $type The type of dispatch package to export (SCORM12 only supported in cloud today) (optional, default to SCORM12)
+     * @param  string $type The type of dispatch package to export (SCORM_12 only supported in SCORM Cloud today) (optional, default to SCORM_12)
      * @param  string $css_url css_url (optional)
-     * @param  string[] $tags tags (optional)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SplFileObject
      */
-    public function getDestinationDispatchZip($destination_id, $type = 'SCORM12', $css_url = null, $tags = null)
+    public function getDestinationDispatchZip($destination_id, $type = 'SCORM_12', $css_url = null, $tags = null)
     {
         list($response) = $this->getDestinationDispatchZipWithHttpInfo($destination_id, $type, $css_url, $tags);
         return $response;
@@ -3016,18 +3311,18 @@ class DispatchApi
     /**
      * Operation getDestinationDispatchZipWithHttpInfo
      *
-     * Get a ZIP of related dispatches.
+     * Download a zip file for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
-     * @param  string $type The type of dispatch package to export (SCORM12 only supported in cloud today) (optional, default to SCORM12)
+     * @param  string $type The type of dispatch package to export (SCORM_12 only supported in SCORM Cloud today) (optional, default to SCORM_12)
      * @param  string $css_url (optional)
-     * @param  string[] $tags (optional)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDestinationDispatchZipWithHttpInfo($destination_id, $type = 'SCORM12', $css_url = null, $tags = null)
+    public function getDestinationDispatchZipWithHttpInfo($destination_id, $type = 'SCORM_12', $css_url = null, $tags = null)
     {
         $returnType = '\SplFileObject';
         $request = $this->getDestinationDispatchZipRequest($destination_id, $type, $css_url, $tags);
@@ -3110,17 +3405,17 @@ class DispatchApi
     /**
      * Operation getDestinationDispatchZipAsync
      *
-     * Get a ZIP of related dispatches.
+     * Download a zip file for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
-     * @param  string $type The type of dispatch package to export (SCORM12 only supported in cloud today) (optional, default to SCORM12)
+     * @param  string $type The type of dispatch package to export (SCORM_12 only supported in SCORM Cloud today) (optional, default to SCORM_12)
      * @param  string $css_url (optional)
-     * @param  string[] $tags (optional)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDestinationDispatchZipAsync($destination_id, $type = 'SCORM12', $css_url = null, $tags = null)
+    public function getDestinationDispatchZipAsync($destination_id, $type = 'SCORM_12', $css_url = null, $tags = null)
     {
         return $this->getDestinationDispatchZipAsyncWithHttpInfo($destination_id, $type, $css_url, $tags)
             ->then(
@@ -3133,17 +3428,17 @@ class DispatchApi
     /**
      * Operation getDestinationDispatchZipAsyncWithHttpInfo
      *
-     * Get a ZIP of related dispatches.
+     * Download a zip file for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
-     * @param  string $type The type of dispatch package to export (SCORM12 only supported in cloud today) (optional, default to SCORM12)
+     * @param  string $type The type of dispatch package to export (SCORM_12 only supported in SCORM Cloud today) (optional, default to SCORM_12)
      * @param  string $css_url (optional)
-     * @param  string[] $tags (optional)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDestinationDispatchZipAsyncWithHttpInfo($destination_id, $type = 'SCORM12', $css_url = null, $tags = null)
+    public function getDestinationDispatchZipAsyncWithHttpInfo($destination_id, $type = 'SCORM_12', $css_url = null, $tags = null)
     {
         $returnType = '\SplFileObject';
         $request = $this->getDestinationDispatchZipRequest($destination_id, $type, $css_url, $tags);
@@ -3189,14 +3484,14 @@ class DispatchApi
      * Create request for operation 'getDestinationDispatchZip'
      *
      * @param  string $destination_id Identifier for the destination (required)
-     * @param  string $type The type of dispatch package to export (SCORM12 only supported in cloud today) (optional, default to SCORM12)
+     * @param  string $type The type of dispatch package to export (SCORM_12 only supported in SCORM Cloud today) (optional, default to SCORM_12)
      * @param  string $css_url (optional)
-     * @param  string[] $tags (optional)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getDestinationDispatchZipRequest($destination_id, $type = 'SCORM12', $css_url = null, $tags = null)
+    protected function getDestinationDispatchZipRequest($destination_id, $type = 'SCORM_12', $css_url = null, $tags = null)
     {
         // verify the required parameter 'destination_id' is set
         if ($destination_id === null || (is_array($destination_id) && count($destination_id) === 0)) {
@@ -3255,7 +3550,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -3283,7 +3578,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -3307,7 +3602,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3319,49 +3614,53 @@ class DispatchApi
     /**
      * Operation getDestinationDispatches
      *
-     * Get a list of dispatches in this destination
+     * Get a list of a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
-     * @param  string $course_id Only retreive resources having &#x60;courseId&#x60; (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string[] $tags tags (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string $order_by order_by (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\DispatchListSchema
      */
-    public function getDestinationDispatches($destination_id, $course_id = null, $more = null, $since = null, $until = null, $tags = null, $datetime_filter = 'updated', $order_by = null)
+    public function getDestinationDispatches($destination_id, $course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null)
     {
-        list($response) = $this->getDestinationDispatchesWithHttpInfo($destination_id, $course_id, $more, $since, $until, $tags, $datetime_filter, $order_by);
+        list($response) = $this->getDestinationDispatchesWithHttpInfo($destination_id, $course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more);
         return $response;
     }
 
     /**
      * Operation getDestinationDispatchesWithHttpInfo
      *
-     * Get a list of dispatches in this destination
+     * Get a list of a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
-     * @param  string $course_id Only retreive resources having &#x60;courseId&#x60; (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string[] $tags (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string $order_by (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\DispatchListSchema, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDestinationDispatchesWithHttpInfo($destination_id, $course_id = null, $more = null, $since = null, $until = null, $tags = null, $datetime_filter = 'updated', $order_by = null)
+    public function getDestinationDispatchesWithHttpInfo($destination_id, $course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\DispatchListSchema';
-        $request = $this->getDestinationDispatchesRequest($destination_id, $course_id, $more, $since, $until, $tags, $datetime_filter, $order_by);
+        $request = $this->getDestinationDispatchesRequest($destination_id, $course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3441,23 +3740,25 @@ class DispatchApi
     /**
      * Operation getDestinationDispatchesAsync
      *
-     * Get a list of dispatches in this destination
+     * Get a list of a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
-     * @param  string $course_id Only retreive resources having &#x60;courseId&#x60; (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string[] $tags (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string $order_by (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDestinationDispatchesAsync($destination_id, $course_id = null, $more = null, $since = null, $until = null, $tags = null, $datetime_filter = 'updated', $order_by = null)
+    public function getDestinationDispatchesAsync($destination_id, $course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null)
     {
-        return $this->getDestinationDispatchesAsyncWithHttpInfo($destination_id, $course_id, $more, $since, $until, $tags, $datetime_filter, $order_by)
+        return $this->getDestinationDispatchesAsyncWithHttpInfo($destination_id, $course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3468,24 +3769,26 @@ class DispatchApi
     /**
      * Operation getDestinationDispatchesAsyncWithHttpInfo
      *
-     * Get a list of dispatches in this destination
+     * Get a list of a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
-     * @param  string $course_id Only retreive resources having &#x60;courseId&#x60; (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string[] $tags (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string $order_by (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDestinationDispatchesAsyncWithHttpInfo($destination_id, $course_id = null, $more = null, $since = null, $until = null, $tags = null, $datetime_filter = 'updated', $order_by = null)
+    public function getDestinationDispatchesAsyncWithHttpInfo($destination_id, $course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\DispatchListSchema';
-        $request = $this->getDestinationDispatchesRequest($destination_id, $course_id, $more, $since, $until, $tags, $datetime_filter, $order_by);
+        $request = $this->getDestinationDispatchesRequest($destination_id, $course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3528,18 +3831,20 @@ class DispatchApi
      * Create request for operation 'getDestinationDispatches'
      *
      * @param  string $destination_id Identifier for the destination (required)
-     * @param  string $course_id Only retreive resources having &#x60;courseId&#x60; (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string[] $tags (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string $order_by (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getDestinationDispatchesRequest($destination_id, $course_id = null, $more = null, $since = null, $until = null, $tags = null, $datetime_filter = 'updated', $order_by = null)
+    protected function getDestinationDispatchesRequest($destination_id, $course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null)
     {
         // verify the required parameter 'destination_id' is set
         if ($destination_id === null || (is_array($destination_id) && count($destination_id) === 0)) {
@@ -3560,16 +3865,16 @@ class DispatchApi
             $queryParams['courseId'] = ObjectSerializer::toQueryValue($course_id);
         }
         // query params
-        if ($more !== null) {
-            $queryParams['more'] = ObjectSerializer::toQueryValue($more);
-        }
-        // query params
         if ($since !== null) {
             $queryParams['since'] = ObjectSerializer::toQueryValue($since);
         }
         // query params
         if ($until !== null) {
             $queryParams['until'] = ObjectSerializer::toQueryValue($until);
+        }
+        // query params
+        if ($datetime_filter !== null) {
+            $queryParams['datetimeFilter'] = ObjectSerializer::toQueryValue($datetime_filter);
         }
         // query params
         if (is_array($tags)) {
@@ -3579,12 +3884,20 @@ class DispatchApi
             $queryParams['tags'] = ObjectSerializer::toQueryValue($tags);
         }
         // query params
-        if ($datetime_filter !== null) {
-            $queryParams['datetimeFilter'] = ObjectSerializer::toQueryValue($datetime_filter);
+        if ($filter !== null) {
+            $queryParams['filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($filter_by !== null) {
+            $queryParams['filterBy'] = ObjectSerializer::toQueryValue($filter_by);
         }
         // query params
         if ($order_by !== null) {
             $queryParams['orderBy'] = ObjectSerializer::toQueryValue($order_by);
+        }
+        // query params
+        if ($more !== null) {
+            $queryParams['more'] = ObjectSerializer::toQueryValue($more);
         }
 
         // path params
@@ -3614,7 +3927,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -3642,7 +3955,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -3666,7 +3979,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3678,7 +3991,7 @@ class DispatchApi
     /**
      * Operation getDestinationHashUserInfo
      *
-     * True if the destination is set to hash user info, or false if it is disabled.
+     * Get user PII hashing status for a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -3695,7 +4008,7 @@ class DispatchApi
     /**
      * Operation getDestinationHashUserInfoWithHttpInfo
      *
-     * True if the destination is set to hash user info, or false if it is disabled.
+     * Get user PII hashing status for a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -3786,7 +4099,7 @@ class DispatchApi
     /**
      * Operation getDestinationHashUserInfoAsync
      *
-     * True if the destination is set to hash user info, or false if it is disabled.
+     * Get user PII hashing status for a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -3806,7 +4119,7 @@ class DispatchApi
     /**
      * Operation getDestinationHashUserInfoAsyncWithHttpInfo
      *
-     * True if the destination is set to hash user info, or false if it is disabled.
+     * Get user PII hashing status for a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -3907,7 +4220,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -3935,7 +4248,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -3959,7 +4272,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3971,7 +4284,7 @@ class DispatchApi
     /**
      * Operation getDestinationTags
      *
-     * Get the tags for this destination
+     * Get tags for a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -3988,7 +4301,7 @@ class DispatchApi
     /**
      * Operation getDestinationTagsWithHttpInfo
      *
-     * Get the tags for this destination
+     * Get tags for a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -4079,7 +4392,7 @@ class DispatchApi
     /**
      * Operation getDestinationTagsAsync
      *
-     * Get the tags for this destination
+     * Get tags for a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -4099,7 +4412,7 @@ class DispatchApi
     /**
      * Operation getDestinationTagsAsyncWithHttpInfo
      *
-     * Get the tags for this destination
+     * Get tags for a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -4200,7 +4513,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -4228,7 +4541,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -4252,7 +4565,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4264,47 +4577,51 @@ class DispatchApi
     /**
      * Operation getDestinations
      *
-     * getAllDestinations
+     * Get a list of Destinations
      *
-     * @param  string $course_id Only retreive resources having &#x60;courseId&#x60; (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string[] $tags tags (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results.  Defaults to updated_asc (optional, default to updated_asc)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to destination_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\DestinationListSchema
      */
-    public function getDestinations($course_id = null, $more = null, $since = null, $until = null, $tags = null, $datetime_filter = 'updated', $order_by = 'updated_asc')
+    public function getDestinations($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'destination_id', $order_by = 'updated_asc', $more = null)
     {
-        list($response) = $this->getDestinationsWithHttpInfo($course_id, $more, $since, $until, $tags, $datetime_filter, $order_by);
+        list($response) = $this->getDestinationsWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more);
         return $response;
     }
 
     /**
      * Operation getDestinationsWithHttpInfo
      *
-     * getAllDestinations
+     * Get a list of Destinations
      *
-     * @param  string $course_id Only retreive resources having &#x60;courseId&#x60; (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string[] $tags (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results.  Defaults to updated_asc (optional, default to updated_asc)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to destination_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\DestinationListSchema, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDestinationsWithHttpInfo($course_id = null, $more = null, $since = null, $until = null, $tags = null, $datetime_filter = 'updated', $order_by = 'updated_asc')
+    public function getDestinationsWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'destination_id', $order_by = 'updated_asc', $more = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\DestinationListSchema';
-        $request = $this->getDestinationsRequest($course_id, $more, $since, $until, $tags, $datetime_filter, $order_by);
+        $request = $this->getDestinationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4376,22 +4693,24 @@ class DispatchApi
     /**
      * Operation getDestinationsAsync
      *
-     * getAllDestinations
+     * Get a list of Destinations
      *
-     * @param  string $course_id Only retreive resources having &#x60;courseId&#x60; (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string[] $tags (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results.  Defaults to updated_asc (optional, default to updated_asc)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to destination_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDestinationsAsync($course_id = null, $more = null, $since = null, $until = null, $tags = null, $datetime_filter = 'updated', $order_by = 'updated_asc')
+    public function getDestinationsAsync($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'destination_id', $order_by = 'updated_asc', $more = null)
     {
-        return $this->getDestinationsAsyncWithHttpInfo($course_id, $more, $since, $until, $tags, $datetime_filter, $order_by)
+        return $this->getDestinationsAsyncWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4402,23 +4721,25 @@ class DispatchApi
     /**
      * Operation getDestinationsAsyncWithHttpInfo
      *
-     * getAllDestinations
+     * Get a list of Destinations
      *
-     * @param  string $course_id Only retreive resources having &#x60;courseId&#x60; (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string[] $tags (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results.  Defaults to updated_asc (optional, default to updated_asc)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to destination_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDestinationsAsyncWithHttpInfo($course_id = null, $more = null, $since = null, $until = null, $tags = null, $datetime_filter = 'updated', $order_by = 'updated_asc')
+    public function getDestinationsAsyncWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'destination_id', $order_by = 'updated_asc', $more = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\DestinationListSchema';
-        $request = $this->getDestinationsRequest($course_id, $more, $since, $until, $tags, $datetime_filter, $order_by);
+        $request = $this->getDestinationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4460,18 +4781,20 @@ class DispatchApi
     /**
      * Create request for operation 'getDestinations'
      *
-     * @param  string $course_id Only retreive resources having &#x60;courseId&#x60; (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string[] $tags (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results.  Defaults to updated_asc (optional, default to updated_asc)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to destination_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getDestinationsRequest($course_id = null, $more = null, $since = null, $until = null, $tags = null, $datetime_filter = 'updated', $order_by = 'updated_asc')
+    protected function getDestinationsRequest($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'destination_id', $order_by = 'updated_asc', $more = null)
     {
 
         $resourcePath = '/dispatch/destinations';
@@ -4486,16 +4809,16 @@ class DispatchApi
             $queryParams['courseId'] = ObjectSerializer::toQueryValue($course_id);
         }
         // query params
-        if ($more !== null) {
-            $queryParams['more'] = ObjectSerializer::toQueryValue($more);
-        }
-        // query params
         if ($since !== null) {
             $queryParams['since'] = ObjectSerializer::toQueryValue($since);
         }
         // query params
         if ($until !== null) {
             $queryParams['until'] = ObjectSerializer::toQueryValue($until);
+        }
+        // query params
+        if ($datetime_filter !== null) {
+            $queryParams['datetimeFilter'] = ObjectSerializer::toQueryValue($datetime_filter);
         }
         // query params
         if (is_array($tags)) {
@@ -4505,12 +4828,20 @@ class DispatchApi
             $queryParams['tags'] = ObjectSerializer::toQueryValue($tags);
         }
         // query params
-        if ($datetime_filter !== null) {
-            $queryParams['datetimeFilter'] = ObjectSerializer::toQueryValue($datetime_filter);
+        if ($filter !== null) {
+            $queryParams['filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($filter_by !== null) {
+            $queryParams['filterBy'] = ObjectSerializer::toQueryValue($filter_by);
         }
         // query params
         if ($order_by !== null) {
             $queryParams['orderBy'] = ObjectSerializer::toQueryValue($order_by);
+        }
+        // query params
+        if ($more !== null) {
+            $queryParams['more'] = ObjectSerializer::toQueryValue($more);
         }
 
 
@@ -4532,7 +4863,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -4560,7 +4891,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -4584,7 +4915,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4596,7 +4927,7 @@ class DispatchApi
     /**
      * Operation getDispatch
      *
-     * Get dispatch by id.
+     * Get detailed information about a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -4613,7 +4944,7 @@ class DispatchApi
     /**
      * Operation getDispatchWithHttpInfo
      *
-     * Get dispatch by id.
+     * Get detailed information about a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -4704,7 +5035,7 @@ class DispatchApi
     /**
      * Operation getDispatchAsync
      *
-     * Get dispatch by id.
+     * Get detailed information about a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -4724,7 +5055,7 @@ class DispatchApi
     /**
      * Operation getDispatchAsyncWithHttpInfo
      *
-     * Get dispatch by id.
+     * Get detailed information about a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -4825,7 +5156,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -4853,7 +5184,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -4877,7 +5208,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4889,7 +5220,7 @@ class DispatchApi
     /**
      * Operation getDispatchEnabled
      *
-     * Get the `enabled` status for `dispatchId`.
+     * Get enabled status of a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -4906,7 +5237,7 @@ class DispatchApi
     /**
      * Operation getDispatchEnabledWithHttpInfo
      *
-     * Get the `enabled` status for `dispatchId`.
+     * Get enabled status of a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -4997,7 +5328,7 @@ class DispatchApi
     /**
      * Operation getDispatchEnabledAsync
      *
-     * Get the `enabled` status for `dispatchId`.
+     * Get enabled status of a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -5017,7 +5348,7 @@ class DispatchApi
     /**
      * Operation getDispatchEnabledAsyncWithHttpInfo
      *
-     * Get the `enabled` status for `dispatchId`.
+     * Get enabled status of a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -5118,7 +5449,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -5146,7 +5477,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -5170,7 +5501,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -5182,7 +5513,7 @@ class DispatchApi
     /**
      * Operation getDispatchHashUserInfo
      *
-     * Get if this dispatch has PII hashing enabled.
+     * Get user PII hashing status for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -5199,7 +5530,7 @@ class DispatchApi
     /**
      * Operation getDispatchHashUserInfoWithHttpInfo
      *
-     * Get if this dispatch has PII hashing enabled.
+     * Get user PII hashing status for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -5290,7 +5621,7 @@ class DispatchApi
     /**
      * Operation getDispatchHashUserInfoAsync
      *
-     * Get if this dispatch has PII hashing enabled.
+     * Get user PII hashing status for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -5310,7 +5641,7 @@ class DispatchApi
     /**
      * Operation getDispatchHashUserInfoAsyncWithHttpInfo
      *
-     * Get if this dispatch has PII hashing enabled.
+     * Get user PII hashing status for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -5411,7 +5742,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -5439,7 +5770,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -5463,7 +5794,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -5475,7 +5806,7 @@ class DispatchApi
     /**
      * Operation getDispatchRegistrationCount
      *
-     * Get the registration count for `dispatchId`.
+     * Get registration count for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -5492,7 +5823,7 @@ class DispatchApi
     /**
      * Operation getDispatchRegistrationCountWithHttpInfo
      *
-     * Get the registration count for `dispatchId`.
+     * Get registration count for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -5583,7 +5914,7 @@ class DispatchApi
     /**
      * Operation getDispatchRegistrationCountAsync
      *
-     * Get the registration count for `dispatchId`.
+     * Get registration count for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -5603,7 +5934,7 @@ class DispatchApi
     /**
      * Operation getDispatchRegistrationCountAsyncWithHttpInfo
      *
-     * Get the registration count for `dispatchId`.
+     * Get registration count for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -5704,7 +6035,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -5732,7 +6063,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -5756,7 +6087,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -5768,7 +6099,7 @@ class DispatchApi
     /**
      * Operation getDispatchTags
      *
-     * Get the tags for this dispatch.
+     * Get tags for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -5785,7 +6116,7 @@ class DispatchApi
     /**
      * Operation getDispatchTagsWithHttpInfo
      *
-     * Get the tags for this dispatch.
+     * Get tags for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -5876,7 +6207,7 @@ class DispatchApi
     /**
      * Operation getDispatchTagsAsync
      *
-     * Get the tags for this dispatch.
+     * Get tags for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -5896,7 +6227,7 @@ class DispatchApi
     /**
      * Operation getDispatchTagsAsyncWithHttpInfo
      *
-     * Get the tags for this dispatch.
+     * Get tags for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -5997,7 +6328,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -6025,7 +6356,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -6049,7 +6380,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -6061,17 +6392,17 @@ class DispatchApi
     /**
      * Operation getDispatchZip
      *
-     * Get the ZIP for the dispatchId.
+     * Download a zip package for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
-     * @param  string $type The type of dispatch package to export (SCORM12 only supported in cloud today) (optional, default to SCORM12)
-     * @param  string $css_url css_url (optional)
+     * @param  string $type The type of dispatch package to export (currently only SCORM_12 available) (optional, default to SCORM_12)
+     * @param  string $css_url Custom CSS to apply to the dispatch package (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SplFileObject
      */
-    public function getDispatchZip($dispatch_id, $type = 'SCORM12', $css_url = null)
+    public function getDispatchZip($dispatch_id, $type = 'SCORM_12', $css_url = null)
     {
         list($response) = $this->getDispatchZipWithHttpInfo($dispatch_id, $type, $css_url);
         return $response;
@@ -6080,17 +6411,17 @@ class DispatchApi
     /**
      * Operation getDispatchZipWithHttpInfo
      *
-     * Get the ZIP for the dispatchId.
+     * Download a zip package for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
-     * @param  string $type The type of dispatch package to export (SCORM12 only supported in cloud today) (optional, default to SCORM12)
-     * @param  string $css_url (optional)
+     * @param  string $type The type of dispatch package to export (currently only SCORM_12 available) (optional, default to SCORM_12)
+     * @param  string $css_url Custom CSS to apply to the dispatch package (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDispatchZipWithHttpInfo($dispatch_id, $type = 'SCORM12', $css_url = null)
+    public function getDispatchZipWithHttpInfo($dispatch_id, $type = 'SCORM_12', $css_url = null)
     {
         $returnType = '\SplFileObject';
         $request = $this->getDispatchZipRequest($dispatch_id, $type, $css_url);
@@ -6173,16 +6504,16 @@ class DispatchApi
     /**
      * Operation getDispatchZipAsync
      *
-     * Get the ZIP for the dispatchId.
+     * Download a zip package for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
-     * @param  string $type The type of dispatch package to export (SCORM12 only supported in cloud today) (optional, default to SCORM12)
-     * @param  string $css_url (optional)
+     * @param  string $type The type of dispatch package to export (currently only SCORM_12 available) (optional, default to SCORM_12)
+     * @param  string $css_url Custom CSS to apply to the dispatch package (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDispatchZipAsync($dispatch_id, $type = 'SCORM12', $css_url = null)
+    public function getDispatchZipAsync($dispatch_id, $type = 'SCORM_12', $css_url = null)
     {
         return $this->getDispatchZipAsyncWithHttpInfo($dispatch_id, $type, $css_url)
             ->then(
@@ -6195,16 +6526,16 @@ class DispatchApi
     /**
      * Operation getDispatchZipAsyncWithHttpInfo
      *
-     * Get the ZIP for the dispatchId.
+     * Download a zip package for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
-     * @param  string $type The type of dispatch package to export (SCORM12 only supported in cloud today) (optional, default to SCORM12)
-     * @param  string $css_url (optional)
+     * @param  string $type The type of dispatch package to export (currently only SCORM_12 available) (optional, default to SCORM_12)
+     * @param  string $css_url Custom CSS to apply to the dispatch package (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDispatchZipAsyncWithHttpInfo($dispatch_id, $type = 'SCORM12', $css_url = null)
+    public function getDispatchZipAsyncWithHttpInfo($dispatch_id, $type = 'SCORM_12', $css_url = null)
     {
         $returnType = '\SplFileObject';
         $request = $this->getDispatchZipRequest($dispatch_id, $type, $css_url);
@@ -6250,13 +6581,13 @@ class DispatchApi
      * Create request for operation 'getDispatchZip'
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
-     * @param  string $type The type of dispatch package to export (SCORM12 only supported in cloud today) (optional, default to SCORM12)
-     * @param  string $css_url (optional)
+     * @param  string $type The type of dispatch package to export (currently only SCORM_12 available) (optional, default to SCORM_12)
+     * @param  string $css_url Custom CSS to apply to the dispatch package (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getDispatchZipRequest($dispatch_id, $type = 'SCORM12', $css_url = null)
+    protected function getDispatchZipRequest($dispatch_id, $type = 'SCORM_12', $css_url = null)
     {
         // verify the required parameter 'dispatch_id' is set
         if ($dispatch_id === null || (is_array($dispatch_id) && count($dispatch_id) === 0)) {
@@ -6308,7 +6639,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -6336,7 +6667,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -6360,7 +6691,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -6372,47 +6703,51 @@ class DispatchApi
     /**
      * Operation getDispatches
      *
-     * All Dispatches in the system for an AppId
+     * Get a list of Dispatches
      *
-     * @param  string $course_id Only retreive resources having &#x60;courseId&#x60; (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string[] $tags tags (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results.  Defaults to updated_asc (optional, default to updated_asc)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\DispatchListSchema
      */
-    public function getDispatches($course_id = null, $more = null, $since = null, $until = null, $tags = null, $datetime_filter = 'updated', $order_by = 'updated_asc')
+    public function getDispatches($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null)
     {
-        list($response) = $this->getDispatchesWithHttpInfo($course_id, $more, $since, $until, $tags, $datetime_filter, $order_by);
+        list($response) = $this->getDispatchesWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more);
         return $response;
     }
 
     /**
      * Operation getDispatchesWithHttpInfo
      *
-     * All Dispatches in the system for an AppId
+     * Get a list of Dispatches
      *
-     * @param  string $course_id Only retreive resources having &#x60;courseId&#x60; (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string[] $tags (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results.  Defaults to updated_asc (optional, default to updated_asc)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\DispatchListSchema, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDispatchesWithHttpInfo($course_id = null, $more = null, $since = null, $until = null, $tags = null, $datetime_filter = 'updated', $order_by = 'updated_asc')
+    public function getDispatchesWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\DispatchListSchema';
-        $request = $this->getDispatchesRequest($course_id, $more, $since, $until, $tags, $datetime_filter, $order_by);
+        $request = $this->getDispatchesRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6484,22 +6819,24 @@ class DispatchApi
     /**
      * Operation getDispatchesAsync
      *
-     * All Dispatches in the system for an AppId
+     * Get a list of Dispatches
      *
-     * @param  string $course_id Only retreive resources having &#x60;courseId&#x60; (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string[] $tags (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results.  Defaults to updated_asc (optional, default to updated_asc)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDispatchesAsync($course_id = null, $more = null, $since = null, $until = null, $tags = null, $datetime_filter = 'updated', $order_by = 'updated_asc')
+    public function getDispatchesAsync($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null)
     {
-        return $this->getDispatchesAsyncWithHttpInfo($course_id, $more, $since, $until, $tags, $datetime_filter, $order_by)
+        return $this->getDispatchesAsyncWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6510,23 +6847,25 @@ class DispatchApi
     /**
      * Operation getDispatchesAsyncWithHttpInfo
      *
-     * All Dispatches in the system for an AppId
+     * Get a list of Dispatches
      *
-     * @param  string $course_id Only retreive resources having &#x60;courseId&#x60; (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string[] $tags (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results.  Defaults to updated_asc (optional, default to updated_asc)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDispatchesAsyncWithHttpInfo($course_id = null, $more = null, $since = null, $until = null, $tags = null, $datetime_filter = 'updated', $order_by = 'updated_asc')
+    public function getDispatchesAsyncWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\DispatchListSchema';
-        $request = $this->getDispatchesRequest($course_id, $more, $since, $until, $tags, $datetime_filter, $order_by);
+        $request = $this->getDispatchesRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6568,18 +6907,20 @@ class DispatchApi
     /**
      * Create request for operation 'getDispatches'
      *
-     * @param  string $course_id Only retreive resources having &#x60;courseId&#x60; (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string[] $tags (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results.  Defaults to updated_asc (optional, default to updated_asc)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getDispatchesRequest($course_id = null, $more = null, $since = null, $until = null, $tags = null, $datetime_filter = 'updated', $order_by = 'updated_asc')
+    protected function getDispatchesRequest($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null)
     {
 
         $resourcePath = '/dispatch/dispatches';
@@ -6594,16 +6935,16 @@ class DispatchApi
             $queryParams['courseId'] = ObjectSerializer::toQueryValue($course_id);
         }
         // query params
-        if ($more !== null) {
-            $queryParams['more'] = ObjectSerializer::toQueryValue($more);
-        }
-        // query params
         if ($since !== null) {
             $queryParams['since'] = ObjectSerializer::toQueryValue($since);
         }
         // query params
         if ($until !== null) {
             $queryParams['until'] = ObjectSerializer::toQueryValue($until);
+        }
+        // query params
+        if ($datetime_filter !== null) {
+            $queryParams['datetimeFilter'] = ObjectSerializer::toQueryValue($datetime_filter);
         }
         // query params
         if (is_array($tags)) {
@@ -6613,12 +6954,20 @@ class DispatchApi
             $queryParams['tags'] = ObjectSerializer::toQueryValue($tags);
         }
         // query params
-        if ($datetime_filter !== null) {
-            $queryParams['datetimeFilter'] = ObjectSerializer::toQueryValue($datetime_filter);
+        if ($filter !== null) {
+            $queryParams['filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($filter_by !== null) {
+            $queryParams['filterBy'] = ObjectSerializer::toQueryValue($filter_by);
         }
         // query params
         if ($order_by !== null) {
             $queryParams['orderBy'] = ObjectSerializer::toQueryValue($order_by);
+        }
+        // query params
+        if ($more !== null) {
+            $queryParams['more'] = ObjectSerializer::toQueryValue($more);
         }
 
 
@@ -6640,7 +6989,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -6668,7 +7017,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -6692,7 +7041,300 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getLTIDispatch
+     *
+     * Get the information necessary to launch this dispatch using the IMS LTI 1.1 specification.
+     *
+     * @param  string $dispatch_id Identifier for the dispatch (required)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \RusticiSoftware\Cloud\V2\Model\DispatchLtiInfoSchema
+     */
+    public function getLTIDispatch($dispatch_id)
+    {
+        list($response) = $this->getLTIDispatchWithHttpInfo($dispatch_id);
+        return $response;
+    }
+
+    /**
+     * Operation getLTIDispatchWithHttpInfo
+     *
+     * Get the information necessary to launch this dispatch using the IMS LTI 1.1 specification.
+     *
+     * @param  string $dispatch_id Identifier for the dispatch (required)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \RusticiSoftware\Cloud\V2\Model\DispatchLtiInfoSchema, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getLTIDispatchWithHttpInfo($dispatch_id)
+    {
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\DispatchLtiInfoSchema';
+        $request = $this->getLTIDispatchRequest($dispatch_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\DispatchLtiInfoSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getLTIDispatchAsync
+     *
+     * Get the information necessary to launch this dispatch using the IMS LTI 1.1 specification.
+     *
+     * @param  string $dispatch_id Identifier for the dispatch (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getLTIDispatchAsync($dispatch_id)
+    {
+        return $this->getLTIDispatchAsyncWithHttpInfo($dispatch_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getLTIDispatchAsyncWithHttpInfo
+     *
+     * Get the information necessary to launch this dispatch using the IMS LTI 1.1 specification.
+     *
+     * @param  string $dispatch_id Identifier for the dispatch (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getLTIDispatchAsyncWithHttpInfo($dispatch_id)
+    {
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\DispatchLtiInfoSchema';
+        $request = $this->getLTIDispatchRequest($dispatch_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getLTIDispatch'
+     *
+     * @param  string $dispatch_id Identifier for the dispatch (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getLTIDispatchRequest($dispatch_id)
+    {
+        // verify the required parameter 'dispatch_id' is set
+        if ($dispatch_id === null || (is_array($dispatch_id) && count($dispatch_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $dispatch_id when calling getLTIDispatch'
+            );
+        }
+
+        $resourcePath = '/dispatch/dispatches/{dispatchId}/lti';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($dispatch_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'dispatchId' . '}',
+                ObjectSerializer::toPathValue($dispatch_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -6704,7 +7346,7 @@ class DispatchApi
     /**
      * Operation putDestinationTags
      *
-     * Set the tags for this destination
+     * Add tags to a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
@@ -6721,7 +7363,7 @@ class DispatchApi
     /**
      * Operation putDestinationTagsWithHttpInfo
      *
-     * Set the tags for this destination
+     * Add tags to a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
@@ -6791,7 +7433,7 @@ class DispatchApi
     /**
      * Operation putDestinationTagsAsync
      *
-     * Set the tags for this destination
+     * Add tags to a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
@@ -6812,7 +7454,7 @@ class DispatchApi
     /**
      * Operation putDestinationTagsAsyncWithHttpInfo
      *
-     * Set the tags for this destination
+     * Add tags to a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
@@ -6910,7 +7552,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -6938,7 +7580,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -6962,7 +7604,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -6974,9 +7616,9 @@ class DispatchApi
     /**
      * Operation putDestinationTagsBatch
      *
-     * Sets all of the provided tags on all of the provided destinations
+     * Add a group of tags to a group of Destinations
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6990,9 +7632,9 @@ class DispatchApi
     /**
      * Operation putDestinationTagsBatchWithHttpInfo
      *
-     * Sets all of the provided tags on all of the provided destinations
+     * Add a group of tags to a group of Destinations
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -7059,9 +7701,9 @@ class DispatchApi
     /**
      * Operation putDestinationTagsBatchAsync
      *
-     * Sets all of the provided tags on all of the provided destinations
+     * Add a group of tags to a group of Destinations
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7079,9 +7721,9 @@ class DispatchApi
     /**
      * Operation putDestinationTagsBatchAsyncWithHttpInfo
      *
-     * Sets all of the provided tags on all of the provided destinations
+     * Add a group of tags to a group of Destinations
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7117,7 +7759,7 @@ class DispatchApi
     /**
      * Create request for operation 'putDestinationTagsBatch'
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -7161,7 +7803,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -7189,7 +7831,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -7213,7 +7855,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -7225,7 +7867,7 @@ class DispatchApi
     /**
      * Operation putDispatchTags
      *
-     * Set the tags for this dispatch.
+     * Add tags to a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
@@ -7242,7 +7884,7 @@ class DispatchApi
     /**
      * Operation putDispatchTagsWithHttpInfo
      *
-     * Set the tags for this dispatch.
+     * Add tags to a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
@@ -7312,7 +7954,7 @@ class DispatchApi
     /**
      * Operation putDispatchTagsAsync
      *
-     * Set the tags for this dispatch.
+     * Add tags to a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
@@ -7333,7 +7975,7 @@ class DispatchApi
     /**
      * Operation putDispatchTagsAsyncWithHttpInfo
      *
-     * Set the tags for this dispatch.
+     * Add tags to a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
@@ -7431,7 +8073,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -7459,7 +8101,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -7483,7 +8125,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -7495,9 +8137,9 @@ class DispatchApi
     /**
      * Operation putDispatchTagsBatch
      *
-     * Sets all of the provided tags on all of the provided dispatches
+     * Add a group of tags to a group of Dispatches
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -7511,9 +8153,9 @@ class DispatchApi
     /**
      * Operation putDispatchTagsBatchWithHttpInfo
      *
-     * Sets all of the provided tags on all of the provided dispatches
+     * Add a group of tags to a group of Dispatches
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -7580,9 +8222,9 @@ class DispatchApi
     /**
      * Operation putDispatchTagsBatchAsync
      *
-     * Sets all of the provided tags on all of the provided dispatches
+     * Add a group of tags to a group of Dispatches
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7600,9 +8242,9 @@ class DispatchApi
     /**
      * Operation putDispatchTagsBatchAsyncWithHttpInfo
      *
-     * Sets all of the provided tags on all of the provided dispatches
+     * Add a group of tags to a group of Dispatches
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7638,7 +8280,7 @@ class DispatchApi
     /**
      * Create request for operation 'putDispatchTagsBatch'
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -7682,7 +8324,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -7710,7 +8352,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -7734,7 +8376,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -7746,7 +8388,7 @@ class DispatchApi
     /**
      * Operation resetDestinationDispatchRegistrationCount
      *
-     * DestinationsDispatchesRegistrationCount
+     * Reset registration counts for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -7762,7 +8404,7 @@ class DispatchApi
     /**
      * Operation resetDestinationDispatchRegistrationCountWithHttpInfo
      *
-     * DestinationsDispatchesRegistrationCount
+     * Reset registration counts for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -7831,7 +8473,7 @@ class DispatchApi
     /**
      * Operation resetDestinationDispatchRegistrationCountAsync
      *
-     * DestinationsDispatchesRegistrationCount
+     * Reset registration counts for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -7851,7 +8493,7 @@ class DispatchApi
     /**
      * Operation resetDestinationDispatchRegistrationCountAsyncWithHttpInfo
      *
-     * DestinationsDispatchesRegistrationCount
+     * Reset registration counts for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      *
@@ -7938,7 +8580,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -7966,7 +8608,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -7990,7 +8632,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -8002,7 +8644,7 @@ class DispatchApi
     /**
      * Operation resetDispatchRegistrationCount
      *
-     * Reset registration count.
+     * Reset registration count for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -8018,7 +8660,7 @@ class DispatchApi
     /**
      * Operation resetDispatchRegistrationCountWithHttpInfo
      *
-     * Reset registration count.
+     * Reset registration count for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -8087,7 +8729,7 @@ class DispatchApi
     /**
      * Operation resetDispatchRegistrationCountAsync
      *
-     * Reset registration count.
+     * Reset registration count for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -8107,7 +8749,7 @@ class DispatchApi
     /**
      * Operation resetDispatchRegistrationCountAsyncWithHttpInfo
      *
-     * Reset registration count.
+     * Reset registration count for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      *
@@ -8194,7 +8836,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -8222,7 +8864,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -8246,7 +8888,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -8257,6 +8899,8 @@ class DispatchApi
 
     /**
      * Operation setDestination
+     *
+     * Create or update a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\DestinationSchema $destination destination (required)
@@ -8272,6 +8916,8 @@ class DispatchApi
 
     /**
      * Operation setDestinationWithHttpInfo
+     *
+     * Create or update a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\DestinationSchema $destination (required)
@@ -8333,7 +8979,7 @@ class DispatchApi
     /**
      * Operation setDestinationAsync
      *
-     * 
+     * Create or update a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\DestinationSchema $destination (required)
@@ -8354,7 +9000,7 @@ class DispatchApi
     /**
      * Operation setDestinationAsyncWithHttpInfo
      *
-     * 
+     * Create or update a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\DestinationSchema $destination (required)
@@ -8452,7 +9098,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -8480,7 +9126,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -8504,7 +9150,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -8516,7 +9162,7 @@ class DispatchApi
     /**
      * Operation setDestinationDispatchEnabled
      *
-     * DestinationsDispatchesEnabledByTenant
+     * Update enabled status for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled  (required)
@@ -8533,7 +9179,7 @@ class DispatchApi
     /**
      * Operation setDestinationDispatchEnabledWithHttpInfo
      *
-     * DestinationsDispatchesEnabledByTenant
+     * Update enabled status for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled  (required)
@@ -8595,7 +9241,7 @@ class DispatchApi
     /**
      * Operation setDestinationDispatchEnabledAsync
      *
-     * DestinationsDispatchesEnabledByTenant
+     * Update enabled status for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled  (required)
@@ -8616,7 +9262,7 @@ class DispatchApi
     /**
      * Operation setDestinationDispatchEnabledAsyncWithHttpInfo
      *
-     * DestinationsDispatchesEnabledByTenant
+     * Update enabled status for a Destination's Dispatches
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled  (required)
@@ -8714,7 +9360,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -8742,7 +9388,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -8766,7 +9412,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -8778,7 +9424,7 @@ class DispatchApi
     /**
      * Operation setDispatchEnabled
      *
-     * Set the `enabled` status for `dispatchId`.
+     * Update enabled status for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled  (required)
@@ -8795,7 +9441,7 @@ class DispatchApi
     /**
      * Operation setDispatchEnabledWithHttpInfo
      *
-     * Set the `enabled` status for `dispatchId`.
+     * Update enabled status for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled  (required)
@@ -8865,7 +9511,7 @@ class DispatchApi
     /**
      * Operation setDispatchEnabledAsync
      *
-     * Set the `enabled` status for `dispatchId`.
+     * Update enabled status for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled  (required)
@@ -8886,7 +9532,7 @@ class DispatchApi
     /**
      * Operation setDispatchEnabledAsyncWithHttpInfo
      *
-     * Set the `enabled` status for `dispatchId`.
+     * Update enabled status for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled  (required)
@@ -8984,7 +9630,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -9012,7 +9658,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -9036,7 +9682,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -9048,7 +9694,7 @@ class DispatchApi
     /**
      * Operation updateDestinationHashUserInfo
      *
-     * Enable or disable hashing of the user info for the destination.
+     * Update user PII hashing status for a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled enabled (required)
@@ -9065,7 +9711,7 @@ class DispatchApi
     /**
      * Operation updateDestinationHashUserInfoWithHttpInfo
      *
-     * Enable or disable hashing of the user info for the destination.
+     * Update user PII hashing status for a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled (required)
@@ -9135,7 +9781,7 @@ class DispatchApi
     /**
      * Operation updateDestinationHashUserInfoAsync
      *
-     * Enable or disable hashing of the user info for the destination.
+     * Update user PII hashing status for a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled (required)
@@ -9156,7 +9802,7 @@ class DispatchApi
     /**
      * Operation updateDestinationHashUserInfoAsyncWithHttpInfo
      *
-     * Enable or disable hashing of the user info for the destination.
+     * Update user PII hashing status for a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled (required)
@@ -9254,7 +9900,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -9282,7 +9928,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -9306,7 +9952,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -9318,7 +9964,7 @@ class DispatchApi
     /**
      * Operation updateDispatch
      *
-     * Update the dispatch with `dispatchId`.
+     * Update information about a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\UpdateDispatchSchema $dispatch_properties dispatch_properties (required)
@@ -9335,7 +9981,7 @@ class DispatchApi
     /**
      * Operation updateDispatchWithHttpInfo
      *
-     * Update the dispatch with `dispatchId`.
+     * Update information about a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\UpdateDispatchSchema $dispatch_properties (required)
@@ -9405,7 +10051,7 @@ class DispatchApi
     /**
      * Operation updateDispatchAsync
      *
-     * Update the dispatch with `dispatchId`.
+     * Update information about a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\UpdateDispatchSchema $dispatch_properties (required)
@@ -9426,7 +10072,7 @@ class DispatchApi
     /**
      * Operation updateDispatchAsyncWithHttpInfo
      *
-     * Update the dispatch with `dispatchId`.
+     * Update information about a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\UpdateDispatchSchema $dispatch_properties (required)
@@ -9524,7 +10170,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -9552,7 +10198,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -9576,7 +10222,7 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -9588,7 +10234,7 @@ class DispatchApi
     /**
      * Operation updateDispatchHashUserInfo
      *
-     * Enable or disable hashing of the user info for the dispatch.
+     * Update user PII hashing status for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled enabled (required)
@@ -9605,7 +10251,7 @@ class DispatchApi
     /**
      * Operation updateDispatchHashUserInfoWithHttpInfo
      *
-     * Enable or disable hashing of the user info for the dispatch.
+     * Update user PII hashing status for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled (required)
@@ -9675,7 +10321,7 @@ class DispatchApi
     /**
      * Operation updateDispatchHashUserInfoAsync
      *
-     * Enable or disable hashing of the user info for the dispatch.
+     * Update user PII hashing status for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled (required)
@@ -9696,7 +10342,7 @@ class DispatchApi
     /**
      * Operation updateDispatchHashUserInfoAsyncWithHttpInfo
      *
-     * Enable or disable hashing of the user info for the dispatch.
+     * Update user PII hashing status for a Dispatch
      *
      * @param  string $dispatch_id Identifier for the dispatch (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled (required)
@@ -9794,7 +10440,7 @@ class DispatchApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -9822,7 +10468,7 @@ class DispatchApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -9846,7 +10492,316 @@ class DispatchApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'PUT',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateDispatches
+     *
+     * Update a group of Dispatches
+     *
+     * @param  \RusticiSoftware\Cloud\V2\Model\UpdateDispatchSchema $dispatch_properties dispatch_properties (required)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function updateDispatches($dispatch_properties, $course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id')
+    {
+        $this->updateDispatchesWithHttpInfo($dispatch_properties, $course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by);
+    }
+
+    /**
+     * Operation updateDispatchesWithHttpInfo
+     *
+     * Update a group of Dispatches
+     *
+     * @param  \RusticiSoftware\Cloud\V2\Model\UpdateDispatchSchema $dispatch_properties (required)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateDispatchesWithHttpInfo($dispatch_properties, $course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id')
+    {
+        $returnType = '';
+        $request = $this->updateDispatchesRequest($dispatch_properties, $course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateDispatchesAsync
+     *
+     * Update a group of Dispatches
+     *
+     * @param  \RusticiSoftware\Cloud\V2\Model\UpdateDispatchSchema $dispatch_properties (required)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateDispatchesAsync($dispatch_properties, $course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id')
+    {
+        return $this->updateDispatchesAsyncWithHttpInfo($dispatch_properties, $course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateDispatchesAsyncWithHttpInfo
+     *
+     * Update a group of Dispatches
+     *
+     * @param  \RusticiSoftware\Cloud\V2\Model\UpdateDispatchSchema $dispatch_properties (required)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateDispatchesAsyncWithHttpInfo($dispatch_properties, $course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id')
+    {
+        $returnType = '';
+        $request = $this->updateDispatchesRequest($dispatch_properties, $course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateDispatches'
+     *
+     * @param  \RusticiSoftware\Cloud\V2\Model\UpdateDispatchSchema $dispatch_properties (required)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to dispatch_id)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function updateDispatchesRequest($dispatch_properties, $course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id')
+    {
+        // verify the required parameter 'dispatch_properties' is set
+        if ($dispatch_properties === null || (is_array($dispatch_properties) && count($dispatch_properties) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $dispatch_properties when calling updateDispatches'
+            );
+        }
+
+        $resourcePath = '/dispatch/dispatches';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($course_id !== null) {
+            $queryParams['courseId'] = ObjectSerializer::toQueryValue($course_id);
+        }
+        // query params
+        if ($since !== null) {
+            $queryParams['since'] = ObjectSerializer::toQueryValue($since);
+        }
+        // query params
+        if ($until !== null) {
+            $queryParams['until'] = ObjectSerializer::toQueryValue($until);
+        }
+        // query params
+        if ($datetime_filter !== null) {
+            $queryParams['datetimeFilter'] = ObjectSerializer::toQueryValue($datetime_filter);
+        }
+        // query params
+        if (is_array($tags)) {
+            $queryParams['tags'] = $tags;
+        } else
+        if ($tags !== null) {
+            $queryParams['tags'] = ObjectSerializer::toQueryValue($tags);
+        }
+        // query params
+        if ($filter !== null) {
+            $queryParams['filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($filter_by !== null) {
+            $queryParams['filterBy'] = ObjectSerializer::toQueryValue($filter_by);
+        }
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($dispatch_properties)) {
+            $_tempBody = $dispatch_properties;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

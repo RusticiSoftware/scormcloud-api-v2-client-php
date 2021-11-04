@@ -1,8 +1,8 @@
 <?php
 /**
- * ConnectorSchema
+ * FileListSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -33,15 +33,14 @@ use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
 
 /**
- * ConnectorSchema Class Doc Comment
+ * FileListSchema Class Doc Comment
  *
  * @category Class
- * @description A content connector.
  * @package  RusticiSoftware\Cloud\V2
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ConnectorSchema implements ModelInterface, ArrayAccess
+class FileListSchema implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class ConnectorSchema implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ConnectorSchema';
+    protected static $swaggerModelName = 'FileListSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +57,7 @@ class ConnectorSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'connector_id' => 'string',
-        'content_connector_type' => 'string',
-        'configuration' => 'object',
-        'additional_instance_information' => 'object',
-        'enabled' => 'bool'
+        'files' => '\RusticiSoftware\Cloud\V2\Model\FileListItemSchema[]'
     ];
 
     /**
@@ -71,11 +66,7 @@ class ConnectorSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'connector_id' => null,
-        'content_connector_type' => null,
-        'configuration' => null,
-        'additional_instance_information' => null,
-        'enabled' => null
+        'files' => null
     ];
 
     /**
@@ -105,11 +96,7 @@ class ConnectorSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'connector_id' => 'connectorId',
-        'content_connector_type' => 'contentConnectorType',
-        'configuration' => 'configuration',
-        'additional_instance_information' => 'additionalInstanceInformation',
-        'enabled' => 'enabled'
+        'files' => 'files'
     ];
 
     /**
@@ -118,11 +105,7 @@ class ConnectorSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'connector_id' => 'setConnectorId',
-        'content_connector_type' => 'setContentConnectorType',
-        'configuration' => 'setConfiguration',
-        'additional_instance_information' => 'setAdditionalInstanceInformation',
-        'enabled' => 'setEnabled'
+        'files' => 'setFiles'
     ];
 
     /**
@@ -131,11 +114,7 @@ class ConnectorSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'connector_id' => 'getConnectorId',
-        'content_connector_type' => 'getContentConnectorType',
-        'configuration' => 'getConfiguration',
-        'additional_instance_information' => 'getAdditionalInstanceInformation',
-        'enabled' => 'getEnabled'
+        'files' => 'getFiles'
     ];
 
     /**
@@ -198,11 +177,7 @@ class ConnectorSchema implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['connector_id'] = isset($data['connector_id']) ? $data['connector_id'] : null;
-        $this->container['content_connector_type'] = isset($data['content_connector_type']) ? $data['content_connector_type'] : null;
-        $this->container['configuration'] = isset($data['configuration']) ? $data['configuration'] : null;
-        $this->container['additional_instance_information'] = isset($data['additional_instance_information']) ? $data['additional_instance_information'] : null;
-        $this->container['enabled'] = isset($data['enabled']) ? $data['enabled'] : null;
+        $this->container['files'] = isset($data['files']) ? $data['files'] : null;
     }
 
     /**
@@ -230,121 +205,25 @@ class ConnectorSchema implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets connector_id
+     * Gets files
      *
-     * @return string
+     * @return \RusticiSoftware\Cloud\V2\Model\FileListItemSchema[]
      */
-    public function getConnectorId()
+    public function getFiles()
     {
-        return $this->container['connector_id'];
+        return $this->container['files'];
     }
 
     /**
-     * Sets connector_id
+     * Sets files
      *
-     * @param string $connector_id connector_id
+     * @param \RusticiSoftware\Cloud\V2\Model\FileListItemSchema[] $files files
      *
      * @return $this
      */
-    public function setConnectorId($connector_id)
+    public function setFiles($files)
     {
-        $this->container['connector_id'] = $connector_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets content_connector_type
-     *
-     * @return string
-     */
-    public function getContentConnectorType()
-    {
-        return $this->container['content_connector_type'];
-    }
-
-    /**
-     * Sets content_connector_type
-     *
-     * @param string $content_connector_type type of this content connector
-     *
-     * @return $this
-     */
-    public function setContentConnectorType($content_connector_type)
-    {
-        $this->container['content_connector_type'] = $content_connector_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets configuration
-     *
-     * @return object
-     */
-    public function getConfiguration()
-    {
-        return $this->container['configuration'];
-    }
-
-    /**
-     * Sets configuration
-     *
-     * @param object $configuration configuration for this content connector, format is implementation specific
-     *
-     * @return $this
-     */
-    public function setConfiguration($configuration)
-    {
-        $this->container['configuration'] = $configuration;
-
-        return $this;
-    }
-
-    /**
-     * Gets additional_instance_information
-     *
-     * @return object
-     */
-    public function getAdditionalInstanceInformation()
-    {
-        return $this->container['additional_instance_information'];
-    }
-
-    /**
-     * Sets additional_instance_information
-     *
-     * @param object $additional_instance_information additional information about this content connector, format is implementation specific and will only be present if the connector is enabled
-     *
-     * @return $this
-     */
-    public function setAdditionalInstanceInformation($additional_instance_information)
-    {
-        $this->container['additional_instance_information'] = $additional_instance_information;
-
-        return $this;
-    }
-
-    /**
-     * Gets enabled
-     *
-     * @return bool
-     */
-    public function getEnabled()
-    {
-        return $this->container['enabled'];
-    }
-
-    /**
-     * Sets enabled
-     *
-     * @param bool $enabled is this connector enabled
-     *
-     * @return $this
-     */
-    public function setEnabled($enabled)
-    {
-        $this->container['enabled'] = $enabled;
+        $this->container['files'] = $files;
 
         return $this;
     }

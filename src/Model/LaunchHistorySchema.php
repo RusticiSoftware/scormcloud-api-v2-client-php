@@ -2,7 +2,7 @@
 /**
  * LaunchHistorySchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -277,22 +277,6 @@ class LaunchHistorySchema implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getCompletionStatusAllowableValues();
-        if (!is_null($this->container['completion_status']) && !in_array($this->container['completion_status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'completion_status', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getSuccessStatusAllowableValues();
-        if (!is_null($this->container['success_status']) && !in_array($this->container['success_status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'success_status', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -399,15 +383,6 @@ class LaunchHistorySchema implements ModelInterface, ArrayAccess
      */
     public function setCompletionStatus($completion_status)
     {
-        $allowedValues = $this->getCompletionStatusAllowableValues();
-        if (!is_null($completion_status) && !in_array($completion_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'completion_status', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['completion_status'] = $completion_status;
 
         return $this;
@@ -432,15 +407,6 @@ class LaunchHistorySchema implements ModelInterface, ArrayAccess
      */
     public function setSuccessStatus($success_status)
     {
-        $allowedValues = $this->getSuccessStatusAllowableValues();
-        if (!is_null($success_status) && !in_array($success_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'success_status', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['success_status'] = $success_status;
 
         return $this;

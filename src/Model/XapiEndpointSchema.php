@@ -2,7 +2,7 @@
 /**
  * XapiEndpointSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2

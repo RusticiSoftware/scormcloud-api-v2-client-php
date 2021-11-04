@@ -2,7 +2,7 @@
 /**
  * ObjectiveSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -312,30 +312,6 @@ class ObjectiveSchema implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getObjectiveCompletionAllowableValues();
-        if (!is_null($this->container['objective_completion']) && !in_array($this->container['objective_completion'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'objective_completion', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getObjectiveSuccessAllowableValues();
-        if (!is_null($this->container['objective_success']) && !in_array($this->container['objective_success'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'objective_success', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getPreviousObjectiveSuccessAllowableValues();
-        if (!is_null($this->container['previous_objective_success']) && !in_array($this->container['previous_objective_success'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'previous_objective_success', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -610,15 +586,6 @@ class ObjectiveSchema implements ModelInterface, ArrayAccess
      */
     public function setObjectiveCompletion($objective_completion)
     {
-        $allowedValues = $this->getObjectiveCompletionAllowableValues();
-        if (!is_null($objective_completion) && !in_array($objective_completion, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'objective_completion', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['objective_completion'] = $objective_completion;
 
         return $this;
@@ -643,15 +610,6 @@ class ObjectiveSchema implements ModelInterface, ArrayAccess
      */
     public function setObjectiveSuccess($objective_success)
     {
-        $allowedValues = $this->getObjectiveSuccessAllowableValues();
-        if (!is_null($objective_success) && !in_array($objective_success, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'objective_success', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['objective_success'] = $objective_success;
 
         return $this;
@@ -676,15 +634,6 @@ class ObjectiveSchema implements ModelInterface, ArrayAccess
      */
     public function setPreviousObjectiveSuccess($previous_objective_success)
     {
-        $allowedValues = $this->getPreviousObjectiveSuccessAllowableValues();
-        if (!is_null($previous_objective_success) && !in_array($previous_objective_success, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'previous_objective_success', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['previous_objective_success'] = $previous_objective_success;
 
         return $this;

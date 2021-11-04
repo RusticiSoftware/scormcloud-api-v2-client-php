@@ -1,7 +1,7 @@
 <?php
 /**
  * CourseApi
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -75,7 +75,7 @@ class CourseApi
         HeaderSelector $selector = null
     ) {
         $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
+        $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
     }
 
@@ -90,39 +90,37 @@ class CourseApi
     /**
      * Operation buildCoursePreviewLaunchLink
      *
-     * Get a link to preview a course.
+     * Get a launch link to preview a Course
      *
      * @param  string $course_id course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request launch_link_request (required)
-     * @param  string $css_url css_url (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema
      */
-    public function buildCoursePreviewLaunchLink($course_id, $launch_link_request, $css_url = null)
+    public function buildCoursePreviewLaunchLink($course_id, $launch_link_request)
     {
-        list($response) = $this->buildCoursePreviewLaunchLinkWithHttpInfo($course_id, $launch_link_request, $css_url);
+        list($response) = $this->buildCoursePreviewLaunchLinkWithHttpInfo($course_id, $launch_link_request);
         return $response;
     }
 
     /**
      * Operation buildCoursePreviewLaunchLinkWithHttpInfo
      *
-     * Get a link to preview a course.
+     * Get a launch link to preview a Course
      *
      * @param  string $course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
-     * @param  string $css_url (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema, HTTP status code, HTTP response headers (array of strings)
      */
-    public function buildCoursePreviewLaunchLinkWithHttpInfo($course_id, $launch_link_request, $css_url = null)
+    public function buildCoursePreviewLaunchLinkWithHttpInfo($course_id, $launch_link_request)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema';
-        $request = $this->buildCoursePreviewLaunchLinkRequest($course_id, $launch_link_request, $css_url);
+        $request = $this->buildCoursePreviewLaunchLinkRequest($course_id, $launch_link_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -202,18 +200,17 @@ class CourseApi
     /**
      * Operation buildCoursePreviewLaunchLinkAsync
      *
-     * Get a link to preview a course.
+     * Get a launch link to preview a Course
      *
      * @param  string $course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
-     * @param  string $css_url (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function buildCoursePreviewLaunchLinkAsync($course_id, $launch_link_request, $css_url = null)
+    public function buildCoursePreviewLaunchLinkAsync($course_id, $launch_link_request)
     {
-        return $this->buildCoursePreviewLaunchLinkAsyncWithHttpInfo($course_id, $launch_link_request, $css_url)
+        return $this->buildCoursePreviewLaunchLinkAsyncWithHttpInfo($course_id, $launch_link_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -224,19 +221,18 @@ class CourseApi
     /**
      * Operation buildCoursePreviewLaunchLinkAsyncWithHttpInfo
      *
-     * Get a link to preview a course.
+     * Get a launch link to preview a Course
      *
      * @param  string $course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
-     * @param  string $css_url (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function buildCoursePreviewLaunchLinkAsyncWithHttpInfo($course_id, $launch_link_request, $css_url = null)
+    public function buildCoursePreviewLaunchLinkAsyncWithHttpInfo($course_id, $launch_link_request)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\LaunchLinkSchema';
-        $request = $this->buildCoursePreviewLaunchLinkRequest($course_id, $launch_link_request, $css_url);
+        $request = $this->buildCoursePreviewLaunchLinkRequest($course_id, $launch_link_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -280,12 +276,11 @@ class CourseApi
      *
      * @param  string $course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
-     * @param  string $css_url (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function buildCoursePreviewLaunchLinkRequest($course_id, $launch_link_request, $css_url = null)
+    protected function buildCoursePreviewLaunchLinkRequest($course_id, $launch_link_request)
     {
         // verify the required parameter 'course_id' is set
         if ($course_id === null || (is_array($course_id) && count($course_id) === 0)) {
@@ -307,10 +302,6 @@ class CourseApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        if ($css_url !== null) {
-            $queryParams['cssUrl'] = ObjectSerializer::toQueryValue($css_url);
-        }
 
         // path params
         if ($course_id !== null) {
@@ -342,7 +333,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -370,7 +361,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -394,7 +385,7 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -406,10 +397,10 @@ class CourseApi
     /**
      * Operation buildCoursePreviewLaunchLinkWithVersion
      *
-     * Get a link to preview a particular course version.
+     * Get a launch link to preview a Course Version
      *
      * @param  string $course_id course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request launch_link_request (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -425,10 +416,10 @@ class CourseApi
     /**
      * Operation buildCoursePreviewLaunchLinkWithVersionWithHttpInfo
      *
-     * Get a link to preview a particular course version.
+     * Get a launch link to preview a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -518,10 +509,10 @@ class CourseApi
     /**
      * Operation buildCoursePreviewLaunchLinkWithVersionAsync
      *
-     * Get a link to preview a particular course version.
+     * Get a launch link to preview a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      *
      * @throws \InvalidArgumentException
@@ -540,10 +531,10 @@ class CourseApi
     /**
      * Operation buildCoursePreviewLaunchLinkWithVersionAsyncWithHttpInfo
      *
-     * Get a link to preview a particular course version.
+     * Get a launch link to preview a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      *
      * @throws \InvalidArgumentException
@@ -595,7 +586,7 @@ class CourseApi
      * Create request for operation 'buildCoursePreviewLaunchLinkWithVersion'
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LaunchLinkRequestSchema $launch_link_request (required)
      *
      * @throws \InvalidArgumentException
@@ -668,7 +659,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -696,7 +687,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -720,7 +711,7 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -732,7 +723,7 @@ class CourseApi
     /**
      * Operation createFetchAndImportCourseJob
      *
-     * Fetch and import a course.
+     * Create a Course from a package fetched from an external source
      *
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema $import_request import_request (required)
@@ -752,7 +743,7 @@ class CourseApi
     /**
      * Operation createFetchAndImportCourseJobWithHttpInfo
      *
-     * Fetch and import a course.
+     * Create a Course from a package fetched from an external source
      *
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema $import_request (required)
@@ -846,7 +837,7 @@ class CourseApi
     /**
      * Operation createFetchAndImportCourseJobAsync
      *
-     * Fetch and import a course.
+     * Create a Course from a package fetched from an external source
      *
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema $import_request (required)
@@ -869,7 +860,7 @@ class CourseApi
     /**
      * Operation createFetchAndImportCourseJobAsyncWithHttpInfo
      *
-     * Fetch and import a course.
+     * Create a Course from a package fetched from an external source
      *
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema $import_request (required)
@@ -989,7 +980,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1017,7 +1008,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1041,7 +1032,7 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1053,7 +1044,7 @@ class CourseApi
     /**
      * Operation createNoUploadAndImportCourseJob
      *
-     * Import a course that fetches or references an external media file
+     * Create a Course from a fetched or referenced external media file
      *
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\ImportRequestSchema $import_request import_request (required)
@@ -1073,7 +1064,7 @@ class CourseApi
     /**
      * Operation createNoUploadAndImportCourseJobWithHttpInfo
      *
-     * Import a course that fetches or references an external media file
+     * Create a Course from a fetched or referenced external media file
      *
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\ImportRequestSchema $import_request (required)
@@ -1167,7 +1158,7 @@ class CourseApi
     /**
      * Operation createNoUploadAndImportCourseJobAsync
      *
-     * Import a course that fetches or references an external media file
+     * Create a Course from a fetched or referenced external media file
      *
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\ImportRequestSchema $import_request (required)
@@ -1190,7 +1181,7 @@ class CourseApi
     /**
      * Operation createNoUploadAndImportCourseJobAsyncWithHttpInfo
      *
-     * Import a course that fetches or references an external media file
+     * Create a Course from a fetched or referenced external media file
      *
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\ImportRequestSchema $import_request (required)
@@ -1310,7 +1301,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1338,7 +1329,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1362,7 +1353,7 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1374,7 +1365,7 @@ class CourseApi
     /**
      * Operation createUploadAndImportCourseJob
      *
-     * Upload and import a course.
+     * Create a Course from an uploaded package
      *
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
@@ -1396,7 +1387,7 @@ class CourseApi
     /**
      * Operation createUploadAndImportCourseJobWithHttpInfo
      *
-     * Upload and import a course.
+     * Create a Course from an uploaded package
      *
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
@@ -1492,7 +1483,7 @@ class CourseApi
     /**
      * Operation createUploadAndImportCourseJobAsync
      *
-     * Upload and import a course.
+     * Create a Course from an uploaded package
      *
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
@@ -1517,7 +1508,7 @@ class CourseApi
     /**
      * Operation createUploadAndImportCourseJobAsyncWithHttpInfo
      *
-     * Upload and import a course.
+     * Create a Course from an uploaded package
      *
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
@@ -1625,7 +1616,7 @@ class CourseApi
         // form params
         if ($file !== null) {
             $multipart = true;
-            $formParams['file'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($file), 'rb');
+            $formParams['file'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -1645,7 +1636,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1673,7 +1664,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1697,7 +1688,7 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1709,7 +1700,7 @@ class CourseApi
     /**
      * Operation deleteCourse
      *
-     * Delete a course.
+     * Delete a Course
      *
      * @param  string $course_id course_id (required)
      *
@@ -1725,7 +1716,7 @@ class CourseApi
     /**
      * Operation deleteCourseWithHttpInfo
      *
-     * Delete a course.
+     * Delete a Course
      *
      * @param  string $course_id (required)
      *
@@ -1794,7 +1785,7 @@ class CourseApi
     /**
      * Operation deleteCourseAsync
      *
-     * Delete a course.
+     * Delete a Course
      *
      * @param  string $course_id (required)
      *
@@ -1814,7 +1805,7 @@ class CourseApi
     /**
      * Operation deleteCourseAsyncWithHttpInfo
      *
-     * Delete a course.
+     * Delete a Course
      *
      * @param  string $course_id (required)
      *
@@ -1901,7 +1892,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1929,7 +1920,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1953,7 +1944,278 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteCourseAsset
+     *
+     * Delete an asset file from a Course
+     *
+     * @param  string $course_id course_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteCourseAsset($course_id, $relative_path)
+    {
+        $this->deleteCourseAssetWithHttpInfo($course_id, $relative_path);
+    }
+
+    /**
+     * Operation deleteCourseAssetWithHttpInfo
+     *
+     * Delete an asset file from a Course
+     *
+     * @param  string $course_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteCourseAssetWithHttpInfo($course_id, $relative_path)
+    {
+        $returnType = '';
+        $request = $this->deleteCourseAssetRequest($course_id, $relative_path);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteCourseAssetAsync
+     *
+     * Delete an asset file from a Course
+     *
+     * @param  string $course_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteCourseAssetAsync($course_id, $relative_path)
+    {
+        return $this->deleteCourseAssetAsyncWithHttpInfo($course_id, $relative_path)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteCourseAssetAsyncWithHttpInfo
+     *
+     * Delete an asset file from a Course
+     *
+     * @param  string $course_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteCourseAssetAsyncWithHttpInfo($course_id, $relative_path)
+    {
+        $returnType = '';
+        $request = $this->deleteCourseAssetRequest($course_id, $relative_path);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteCourseAsset'
+     *
+     * @param  string $course_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function deleteCourseAssetRequest($course_id, $relative_path)
+    {
+        // verify the required parameter 'course_id' is set
+        if ($course_id === null || (is_array($course_id) && count($course_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $course_id when calling deleteCourseAsset'
+            );
+        }
+        // verify the required parameter 'relative_path' is set
+        if ($relative_path === null || (is_array($relative_path) && count($relative_path) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $relative_path when calling deleteCourseAsset'
+            );
+        }
+
+        $resourcePath = '/courses/{courseId}/asset';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($relative_path !== null) {
+            $queryParams['relativePath'] = ObjectSerializer::toQueryValue($relative_path);
+        }
+
+        // path params
+        if ($course_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'courseId' . '}',
+                ObjectSerializer::toPathValue($course_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1965,7 +2227,7 @@ class CourseApi
     /**
      * Operation deleteCourseConfigurationSetting
      *
-     * Clear a course configuration.
+     * Delete a configuration setting explicitly set for a Course
      *
      * @param  string $course_id course_id (required)
      * @param  string $setting_id setting_id (required)
@@ -1982,7 +2244,7 @@ class CourseApi
     /**
      * Operation deleteCourseConfigurationSettingWithHttpInfo
      *
-     * Clear a course configuration.
+     * Delete a configuration setting explicitly set for a Course
      *
      * @param  string $course_id (required)
      * @param  string $setting_id (required)
@@ -2052,7 +2314,7 @@ class CourseApi
     /**
      * Operation deleteCourseConfigurationSettingAsync
      *
-     * Clear a course configuration.
+     * Delete a configuration setting explicitly set for a Course
      *
      * @param  string $course_id (required)
      * @param  string $setting_id (required)
@@ -2073,7 +2335,7 @@ class CourseApi
     /**
      * Operation deleteCourseConfigurationSettingAsyncWithHttpInfo
      *
-     * Clear a course configuration.
+     * Delete a configuration setting explicitly set for a Course
      *
      * @param  string $course_id (required)
      * @param  string $setting_id (required)
@@ -2176,7 +2438,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2204,7 +2466,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2228,7 +2490,7 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2240,7 +2502,7 @@ class CourseApi
     /**
      * Operation deleteCourseTags
      *
-     * Delete course tags.
+     * Delete tags from a Course
      *
      * @param  string $course_id course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
@@ -2257,7 +2519,7 @@ class CourseApi
     /**
      * Operation deleteCourseTagsWithHttpInfo
      *
-     * Delete course tags.
+     * Delete tags from a Course
      *
      * @param  string $course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
@@ -2327,7 +2589,7 @@ class CourseApi
     /**
      * Operation deleteCourseTagsAsync
      *
-     * Delete course tags.
+     * Delete tags from a Course
      *
      * @param  string $course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
@@ -2348,7 +2610,7 @@ class CourseApi
     /**
      * Operation deleteCourseTagsAsyncWithHttpInfo
      *
-     * Delete course tags.
+     * Delete tags from a Course
      *
      * @param  string $course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
@@ -2446,7 +2708,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2474,7 +2736,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2498,7 +2760,7 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2510,10 +2772,10 @@ class CourseApi
     /**
      * Operation deleteCourseVersion
      *
-     * Delete a course version.
+     * Delete a Course Version
      *
      * @param  string $course_id course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id version_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2527,10 +2789,10 @@ class CourseApi
     /**
      * Operation deleteCourseVersionWithHttpInfo
      *
-     * Delete a course version.
+     * Delete a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2597,10 +2859,10 @@ class CourseApi
     /**
      * Operation deleteCourseVersionAsync
      *
-     * Delete a course version.
+     * Delete a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2618,10 +2880,10 @@ class CourseApi
     /**
      * Operation deleteCourseVersionAsyncWithHttpInfo
      *
-     * Delete a course version.
+     * Delete a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2658,7 +2920,7 @@ class CourseApi
      * Create request for operation 'deleteCourseVersion'
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2721,7 +2983,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2749,7 +3011,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2773,7 +3035,297 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteCourseVersionAsset
+     *
+     * Delete an asset file from a Course Version
+     *
+     * @param  string $course_id course_id (required)
+     * @param  int $version_id version_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteCourseVersionAsset($course_id, $version_id, $relative_path)
+    {
+        $this->deleteCourseVersionAssetWithHttpInfo($course_id, $version_id, $relative_path);
+    }
+
+    /**
+     * Operation deleteCourseVersionAssetWithHttpInfo
+     *
+     * Delete an asset file from a Course Version
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteCourseVersionAssetWithHttpInfo($course_id, $version_id, $relative_path)
+    {
+        $returnType = '';
+        $request = $this->deleteCourseVersionAssetRequest($course_id, $version_id, $relative_path);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteCourseVersionAssetAsync
+     *
+     * Delete an asset file from a Course Version
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteCourseVersionAssetAsync($course_id, $version_id, $relative_path)
+    {
+        return $this->deleteCourseVersionAssetAsyncWithHttpInfo($course_id, $version_id, $relative_path)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteCourseVersionAssetAsyncWithHttpInfo
+     *
+     * Delete an asset file from a Course Version
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteCourseVersionAssetAsyncWithHttpInfo($course_id, $version_id, $relative_path)
+    {
+        $returnType = '';
+        $request = $this->deleteCourseVersionAssetRequest($course_id, $version_id, $relative_path);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteCourseVersionAsset'
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function deleteCourseVersionAssetRequest($course_id, $version_id, $relative_path)
+    {
+        // verify the required parameter 'course_id' is set
+        if ($course_id === null || (is_array($course_id) && count($course_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $course_id when calling deleteCourseVersionAsset'
+            );
+        }
+        // verify the required parameter 'version_id' is set
+        if ($version_id === null || (is_array($version_id) && count($version_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $version_id when calling deleteCourseVersionAsset'
+            );
+        }
+        // verify the required parameter 'relative_path' is set
+        if ($relative_path === null || (is_array($relative_path) && count($relative_path) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $relative_path when calling deleteCourseVersionAsset'
+            );
+        }
+
+        $resourcePath = '/courses/{courseId}/versions/{versionId}/asset';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($relative_path !== null) {
+            $queryParams['relativePath'] = ObjectSerializer::toQueryValue($relative_path);
+        }
+
+        // path params
+        if ($course_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'courseId' . '}',
+                ObjectSerializer::toPathValue($course_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($version_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'versionId' . '}',
+                ObjectSerializer::toPathValue($version_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2785,10 +3337,10 @@ class CourseApi
     /**
      * Operation deleteCourseVersionConfigurationSetting
      *
-     * Clear a configuration setting for a version of a course.
+     * Delete a configuration setting explicitly set for a Course Version
      *
      * @param  string $course_id course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id version_id (required)
      * @param  string $setting_id setting_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2803,10 +3355,10 @@ class CourseApi
     /**
      * Operation deleteCourseVersionConfigurationSettingWithHttpInfo
      *
-     * Clear a configuration setting for a version of a course.
+     * Delete a configuration setting explicitly set for a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  string $setting_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2874,10 +3426,10 @@ class CourseApi
     /**
      * Operation deleteCourseVersionConfigurationSettingAsync
      *
-     * Clear a configuration setting for a version of a course.
+     * Delete a configuration setting explicitly set for a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  string $setting_id (required)
      *
      * @throws \InvalidArgumentException
@@ -2896,10 +3448,10 @@ class CourseApi
     /**
      * Operation deleteCourseVersionConfigurationSettingAsyncWithHttpInfo
      *
-     * Clear a configuration setting for a version of a course.
+     * Delete a configuration setting explicitly set for a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  string $setting_id (required)
      *
      * @throws \InvalidArgumentException
@@ -2937,7 +3489,7 @@ class CourseApi
      * Create request for operation 'deleteCourseVersionConfigurationSetting'
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  string $setting_id (required)
      *
      * @throws \InvalidArgumentException
@@ -3015,7 +3567,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -3043,7 +3595,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -3067,7 +3619,7 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3079,7 +3631,7 @@ class CourseApi
     /**
      * Operation getCourse
      *
-     * Get course details.
+     * Get detailed information about a Course
      *
      * @param  string $course_id course_id (required)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
@@ -3098,7 +3650,7 @@ class CourseApi
     /**
      * Operation getCourseWithHttpInfo
      *
-     * Get course details.
+     * Get detailed information about a Course
      *
      * @param  string $course_id (required)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
@@ -3191,7 +3743,7 @@ class CourseApi
     /**
      * Operation getCourseAsync
      *
-     * Get course details.
+     * Get detailed information about a Course
      *
      * @param  string $course_id (required)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
@@ -3213,7 +3765,7 @@ class CourseApi
     /**
      * Operation getCourseAsyncWithHttpInfo
      *
-     * Get course details.
+     * Get detailed information about a Course
      *
      * @param  string $course_id (required)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
@@ -3326,7 +3878,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -3354,7 +3906,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -3378,7 +3930,315 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getCourseAsset
+     *
+     * Download an asset file from a Course
+     *
+     * @param  string $course_id course_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \SplFileObject
+     */
+    public function getCourseAsset($course_id, $relative_path)
+    {
+        list($response) = $this->getCourseAssetWithHttpInfo($course_id, $relative_path);
+        return $response;
+    }
+
+    /**
+     * Operation getCourseAssetWithHttpInfo
+     *
+     * Download an asset file from a Course
+     *
+     * @param  string $course_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCourseAssetWithHttpInfo($course_id, $relative_path)
+    {
+        $returnType = '\SplFileObject';
+        $request = $this->getCourseAssetRequest($course_id, $relative_path);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SplFileObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getCourseAssetAsync
+     *
+     * Download an asset file from a Course
+     *
+     * @param  string $course_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCourseAssetAsync($course_id, $relative_path)
+    {
+        return $this->getCourseAssetAsyncWithHttpInfo($course_id, $relative_path)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCourseAssetAsyncWithHttpInfo
+     *
+     * Download an asset file from a Course
+     *
+     * @param  string $course_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCourseAssetAsyncWithHttpInfo($course_id, $relative_path)
+    {
+        $returnType = '\SplFileObject';
+        $request = $this->getCourseAssetRequest($course_id, $relative_path);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCourseAsset'
+     *
+     * @param  string $course_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getCourseAssetRequest($course_id, $relative_path)
+    {
+        // verify the required parameter 'course_id' is set
+        if ($course_id === null || (is_array($course_id) && count($course_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $course_id when calling getCourseAsset'
+            );
+        }
+        // verify the required parameter 'relative_path' is set
+        if ($relative_path === null || (is_array($relative_path) && count($relative_path) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $relative_path when calling getCourseAsset'
+            );
+        }
+
+        $resourcePath = '/courses/{courseId}/asset';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($relative_path !== null) {
+            $queryParams['relativePath'] = ObjectSerializer::toQueryValue($relative_path);
+        }
+
+        // path params
+        if ($course_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'courseId' . '}',
+                ObjectSerializer::toPathValue($course_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3390,7 +4250,7 @@ class CourseApi
     /**
      * Operation getCourseConfiguration
      *
-     * Get course configuration.
+     * Get effective configuration settings for a Course
      *
      * @param  string $course_id course_id (required)
      * @param  bool $include_metadata include_metadata (optional, default to false)
@@ -3408,7 +4268,7 @@ class CourseApi
     /**
      * Operation getCourseConfigurationWithHttpInfo
      *
-     * Get course configuration.
+     * Get effective configuration settings for a Course
      *
      * @param  string $course_id (required)
      * @param  bool $include_metadata (optional, default to false)
@@ -3500,7 +4360,7 @@ class CourseApi
     /**
      * Operation getCourseConfigurationAsync
      *
-     * Get course configuration.
+     * Get effective configuration settings for a Course
      *
      * @param  string $course_id (required)
      * @param  bool $include_metadata (optional, default to false)
@@ -3521,7 +4381,7 @@ class CourseApi
     /**
      * Operation getCourseConfigurationAsyncWithHttpInfo
      *
-     * Get course configuration.
+     * Get effective configuration settings for a Course
      *
      * @param  string $course_id (required)
      * @param  bool $include_metadata (optional, default to false)
@@ -3628,7 +4488,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -3656,7 +4516,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -3680,7 +4540,300 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getCourseFileList
+     *
+     * Get a list of asset files in a Course
+     *
+     * @param  string $course_id course_id (required)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \RusticiSoftware\Cloud\V2\Model\FileListSchema
+     */
+    public function getCourseFileList($course_id)
+    {
+        list($response) = $this->getCourseFileListWithHttpInfo($course_id);
+        return $response;
+    }
+
+    /**
+     * Operation getCourseFileListWithHttpInfo
+     *
+     * Get a list of asset files in a Course
+     *
+     * @param  string $course_id (required)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \RusticiSoftware\Cloud\V2\Model\FileListSchema, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCourseFileListWithHttpInfo($course_id)
+    {
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\FileListSchema';
+        $request = $this->getCourseFileListRequest($course_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\FileListSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getCourseFileListAsync
+     *
+     * Get a list of asset files in a Course
+     *
+     * @param  string $course_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCourseFileListAsync($course_id)
+    {
+        return $this->getCourseFileListAsyncWithHttpInfo($course_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCourseFileListAsyncWithHttpInfo
+     *
+     * Get a list of asset files in a Course
+     *
+     * @param  string $course_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCourseFileListAsyncWithHttpInfo($course_id)
+    {
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\FileListSchema';
+        $request = $this->getCourseFileListRequest($course_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCourseFileList'
+     *
+     * @param  string $course_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getCourseFileListRequest($course_id)
+    {
+        // verify the required parameter 'course_id' is set
+        if ($course_id === null || (is_array($course_id) && count($course_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $course_id when calling getCourseFileList'
+            );
+        }
+
+        $resourcePath = '/courses/{courseId}/asset/list';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($course_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'courseId' . '}',
+                ObjectSerializer::toPathValue($course_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3692,13 +4845,13 @@ class CourseApi
     /**
      * Operation getCourseStatements
      *
-     * Get course xAPI statements.
+     * Get xAPI statements for a Course
      *
      * @param  string $course_id course_id (required)
      * @param  string $learner_id Only entries for the specified learner id will be included. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3713,13 +4866,13 @@ class CourseApi
     /**
      * Operation getCourseStatementsWithHttpInfo
      *
-     * Get course xAPI statements.
+     * Get xAPI statements for a Course
      *
      * @param  string $course_id (required)
      * @param  string $learner_id Only entries for the specified learner id will be included. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3808,13 +4961,13 @@ class CourseApi
     /**
      * Operation getCourseStatementsAsync
      *
-     * Get course xAPI statements.
+     * Get xAPI statements for a Course
      *
      * @param  string $course_id (required)
      * @param  string $learner_id Only entries for the specified learner id will be included. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3832,13 +4985,13 @@ class CourseApi
     /**
      * Operation getCourseStatementsAsyncWithHttpInfo
      *
-     * Get course xAPI statements.
+     * Get xAPI statements for a Course
      *
      * @param  string $course_id (required)
      * @param  string $learner_id Only entries for the specified learner id will be included. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3890,9 +5043,9 @@ class CourseApi
      *
      * @param  string $course_id (required)
      * @param  string $learner_id Only entries for the specified learner id will be included. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3957,7 +5110,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -3985,7 +5138,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -4009,7 +5162,7 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4021,7 +5174,7 @@ class CourseApi
     /**
      * Operation getCourseTags
      *
-     * Get course tags.
+     * Get tags for a Course
      *
      * @param  string $course_id course_id (required)
      *
@@ -4038,7 +5191,7 @@ class CourseApi
     /**
      * Operation getCourseTagsWithHttpInfo
      *
-     * Get course tags.
+     * Get tags for a Course
      *
      * @param  string $course_id (required)
      *
@@ -4129,7 +5282,7 @@ class CourseApi
     /**
      * Operation getCourseTagsAsync
      *
-     * Get course tags.
+     * Get tags for a Course
      *
      * @param  string $course_id (required)
      *
@@ -4149,7 +5302,7 @@ class CourseApi
     /**
      * Operation getCourseTagsAsyncWithHttpInfo
      *
-     * Get course tags.
+     * Get tags for a Course
      *
      * @param  string $course_id (required)
      *
@@ -4250,7 +5403,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -4278,7 +5431,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -4302,7 +5455,334 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getCourseVersionAsset
+     *
+     * Download an asset file from a specific Course Version
+     *
+     * @param  string $course_id course_id (required)
+     * @param  int $version_id version_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \SplFileObject
+     */
+    public function getCourseVersionAsset($course_id, $version_id, $relative_path)
+    {
+        list($response) = $this->getCourseVersionAssetWithHttpInfo($course_id, $version_id, $relative_path);
+        return $response;
+    }
+
+    /**
+     * Operation getCourseVersionAssetWithHttpInfo
+     *
+     * Download an asset file from a specific Course Version
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCourseVersionAssetWithHttpInfo($course_id, $version_id, $relative_path)
+    {
+        $returnType = '\SplFileObject';
+        $request = $this->getCourseVersionAssetRequest($course_id, $version_id, $relative_path);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SplFileObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getCourseVersionAssetAsync
+     *
+     * Download an asset file from a specific Course Version
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCourseVersionAssetAsync($course_id, $version_id, $relative_path)
+    {
+        return $this->getCourseVersionAssetAsyncWithHttpInfo($course_id, $version_id, $relative_path)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCourseVersionAssetAsyncWithHttpInfo
+     *
+     * Download an asset file from a specific Course Version
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCourseVersionAssetAsyncWithHttpInfo($course_id, $version_id, $relative_path)
+    {
+        $returnType = '\SplFileObject';
+        $request = $this->getCourseVersionAssetRequest($course_id, $version_id, $relative_path);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCourseVersionAsset'
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     * @param  string $relative_path Relative path of the asset within the course. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getCourseVersionAssetRequest($course_id, $version_id, $relative_path)
+    {
+        // verify the required parameter 'course_id' is set
+        if ($course_id === null || (is_array($course_id) && count($course_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $course_id when calling getCourseVersionAsset'
+            );
+        }
+        // verify the required parameter 'version_id' is set
+        if ($version_id === null || (is_array($version_id) && count($version_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $version_id when calling getCourseVersionAsset'
+            );
+        }
+        // verify the required parameter 'relative_path' is set
+        if ($relative_path === null || (is_array($relative_path) && count($relative_path) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $relative_path when calling getCourseVersionAsset'
+            );
+        }
+
+        $resourcePath = '/courses/{courseId}/versions/{versionId}/asset';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($relative_path !== null) {
+            $queryParams['relativePath'] = ObjectSerializer::toQueryValue($relative_path);
+        }
+
+        // path params
+        if ($course_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'courseId' . '}',
+                ObjectSerializer::toPathValue($course_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($version_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'versionId' . '}',
+                ObjectSerializer::toPathValue($version_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4314,10 +5794,10 @@ class CourseApi
     /**
      * Operation getCourseVersionConfiguration
      *
-     * Get configuration for a version of a course.
+     * Get effective configuration settings for a Course Version
      *
      * @param  string $course_id course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id version_id (required)
      * @param  bool $include_metadata include_metadata (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -4333,10 +5813,10 @@ class CourseApi
     /**
      * Operation getCourseVersionConfigurationWithHttpInfo
      *
-     * Get configuration for a version of a course.
+     * Get effective configuration settings for a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  bool $include_metadata (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -4426,10 +5906,10 @@ class CourseApi
     /**
      * Operation getCourseVersionConfigurationAsync
      *
-     * Get configuration for a version of a course.
+     * Get effective configuration settings for a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  bool $include_metadata (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -4448,10 +5928,10 @@ class CourseApi
     /**
      * Operation getCourseVersionConfigurationAsyncWithHttpInfo
      *
-     * Get configuration for a version of a course.
+     * Get effective configuration settings for a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  bool $include_metadata (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -4503,7 +5983,7 @@ class CourseApi
      * Create request for operation 'getCourseVersionConfiguration'
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  bool $include_metadata (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -4571,7 +6051,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -4599,7 +6079,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -4623,7 +6103,319 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getCourseVersionFileList
+     *
+     * Get a list of asset files in a Course Version
+     *
+     * @param  string $course_id course_id (required)
+     * @param  int $version_id version_id (required)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \RusticiSoftware\Cloud\V2\Model\FileListSchema
+     */
+    public function getCourseVersionFileList($course_id, $version_id)
+    {
+        list($response) = $this->getCourseVersionFileListWithHttpInfo($course_id, $version_id);
+        return $response;
+    }
+
+    /**
+     * Operation getCourseVersionFileListWithHttpInfo
+     *
+     * Get a list of asset files in a Course Version
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \RusticiSoftware\Cloud\V2\Model\FileListSchema, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCourseVersionFileListWithHttpInfo($course_id, $version_id)
+    {
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\FileListSchema';
+        $request = $this->getCourseVersionFileListRequest($course_id, $version_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\FileListSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getCourseVersionFileListAsync
+     *
+     * Get a list of asset files in a Course Version
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCourseVersionFileListAsync($course_id, $version_id)
+    {
+        return $this->getCourseVersionFileListAsyncWithHttpInfo($course_id, $version_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCourseVersionFileListAsyncWithHttpInfo
+     *
+     * Get a list of asset files in a Course Version
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCourseVersionFileListAsyncWithHttpInfo($course_id, $version_id)
+    {
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\FileListSchema';
+        $request = $this->getCourseVersionFileListRequest($course_id, $version_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCourseVersionFileList'
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getCourseVersionFileListRequest($course_id, $version_id)
+    {
+        // verify the required parameter 'course_id' is set
+        if ($course_id === null || (is_array($course_id) && count($course_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $course_id when calling getCourseVersionFileList'
+            );
+        }
+        // verify the required parameter 'version_id' is set
+        if ($version_id === null || (is_array($version_id) && count($version_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $version_id when calling getCourseVersionFileList'
+            );
+        }
+
+        $resourcePath = '/courses/{courseId}/versions/{versionId}/asset/list';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($course_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'courseId' . '}',
+                ObjectSerializer::toPathValue($course_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($version_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'versionId' . '}',
+                ObjectSerializer::toPathValue($version_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4635,10 +6427,10 @@ class CourseApi
     /**
      * Operation getCourseVersionInfo
      *
-     * Get details on a course version.
+     * Get detailed information about a Course Version
      *
      * @param  string $course_id course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id version_id (required)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect. (optional, default to false)
      *
@@ -4655,10 +6447,10 @@ class CourseApi
     /**
      * Operation getCourseVersionInfoWithHttpInfo
      *
-     * Get details on a course version.
+     * Get detailed information about a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect. (optional, default to false)
      *
@@ -4749,10 +6541,10 @@ class CourseApi
     /**
      * Operation getCourseVersionInfoAsync
      *
-     * Get details on a course version.
+     * Get detailed information about a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect. (optional, default to false)
      *
@@ -4772,10 +6564,10 @@ class CourseApi
     /**
      * Operation getCourseVersionInfoAsyncWithHttpInfo
      *
-     * Get details on a course version.
+     * Get detailed information about a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect. (optional, default to false)
      *
@@ -4828,7 +6620,7 @@ class CourseApi
      * Create request for operation 'getCourseVersionInfo'
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect. (optional, default to false)
      *
@@ -4901,7 +6693,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -4929,7 +6721,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -4953,7 +6745,7 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4965,14 +6757,14 @@ class CourseApi
     /**
      * Operation getCourseVersionStatements
      *
-     * Get xAPI statements for a course version.
+     * Get xAPI statements for a Course Version
      *
      * @param  string $course_id course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id version_id (required)
      * @param  string $learner_id Only entries for the specified learner id will be included. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4987,14 +6779,14 @@ class CourseApi
     /**
      * Operation getCourseVersionStatementsWithHttpInfo
      *
-     * Get xAPI statements for a course version.
+     * Get xAPI statements for a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  string $learner_id Only entries for the specified learner id will be included. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5083,14 +6875,14 @@ class CourseApi
     /**
      * Operation getCourseVersionStatementsAsync
      *
-     * Get xAPI statements for a course version.
+     * Get xAPI statements for a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  string $learner_id Only entries for the specified learner id will be included. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5108,14 +6900,14 @@ class CourseApi
     /**
      * Operation getCourseVersionStatementsAsyncWithHttpInfo
      *
-     * Get xAPI statements for a course version.
+     * Get xAPI statements for a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  string $learner_id Only entries for the specified learner id will be included. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5166,11 +6958,11 @@ class CourseApi
      * Create request for operation 'getCourseVersionStatements'
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  string $learner_id Only entries for the specified learner id will be included. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5249,7 +7041,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -5277,7 +7069,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -5301,7 +7093,7 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -5313,11 +7105,11 @@ class CourseApi
     /**
      * Operation getCourseVersions
      *
-     * Get details on a course's versions.
+     * Get a list of a Course's Versions
      *
      * @param  string $course_id course_id (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect. (optional, default to false)
      *
@@ -5334,11 +7126,11 @@ class CourseApi
     /**
      * Operation getCourseVersionsWithHttpInfo
      *
-     * Get details on a course's versions.
+     * Get a list of a Course's Versions
      *
      * @param  string $course_id (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect. (optional, default to false)
      *
@@ -5429,11 +7221,11 @@ class CourseApi
     /**
      * Operation getCourseVersionsAsync
      *
-     * Get details on a course's versions.
+     * Get a list of a Course's Versions
      *
      * @param  string $course_id (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect. (optional, default to false)
      *
@@ -5453,11 +7245,11 @@ class CourseApi
     /**
      * Operation getCourseVersionsAsyncWithHttpInfo
      *
-     * Get details on a course's versions.
+     * Get a list of a Course's Versions
      *
      * @param  string $course_id (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect. (optional, default to false)
      *
@@ -5510,8 +7302,8 @@ class CourseApi
      * Create request for operation 'getCourseVersions'
      *
      * @param  string $course_id (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect. (optional, default to false)
      *
@@ -5578,7 +7370,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -5606,7 +7398,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -5630,7 +7422,7 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -5642,51 +7434,53 @@ class CourseApi
     /**
      * Operation getCourses
      *
-     * Get all courses.
+     * Get a list of Courses
      *
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
      * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
-     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter.  Defaults to course_id. (optional)
-     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results.  Defaults to creation_date_desc. (optional)
-     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to course_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to created_desc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      * @param  bool $include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect. (optional, default to false)
-     * @param  string[] $tags tags (optional)
+     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\CourseListSchema
      */
-    public function getCourses($more = null, $since = null, $until = null, $filter = null, $filter_by = null, $order_by = null, $include_registration_count = 'false', $include_course_metadata = 'false', $tags = null)
+    public function getCourses($since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'course_id', $order_by = 'created_desc', $more = null, $include_course_metadata = 'false', $include_registration_count = 'false')
     {
-        list($response) = $this->getCoursesWithHttpInfo($more, $since, $until, $filter, $filter_by, $order_by, $include_registration_count, $include_course_metadata, $tags);
+        list($response) = $this->getCoursesWithHttpInfo($since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_course_metadata, $include_registration_count);
         return $response;
     }
 
     /**
      * Operation getCoursesWithHttpInfo
      *
-     * Get all courses.
+     * Get a list of Courses
      *
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
      * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
-     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter.  Defaults to course_id. (optional)
-     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results.  Defaults to creation_date_desc. (optional)
-     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to course_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to created_desc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      * @param  bool $include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect. (optional, default to false)
-     * @param  string[] $tags (optional)
+     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\CourseListSchema, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCoursesWithHttpInfo($more = null, $since = null, $until = null, $filter = null, $filter_by = null, $order_by = null, $include_registration_count = 'false', $include_course_metadata = 'false', $tags = null)
+    public function getCoursesWithHttpInfo($since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'course_id', $order_by = 'created_desc', $more = null, $include_course_metadata = 'false', $include_registration_count = 'false')
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\CourseListSchema';
-        $request = $this->getCoursesRequest($more, $since, $until, $filter, $filter_by, $order_by, $include_registration_count, $include_course_metadata, $tags);
+        $request = $this->getCoursesRequest($since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_course_metadata, $include_registration_count);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5758,24 +7552,25 @@ class CourseApi
     /**
      * Operation getCoursesAsync
      *
-     * Get all courses.
+     * Get a list of Courses
      *
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
      * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
-     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter.  Defaults to course_id. (optional)
-     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results.  Defaults to creation_date_desc. (optional)
-     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to course_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to created_desc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      * @param  bool $include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect. (optional, default to false)
-     * @param  string[] $tags (optional)
+     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCoursesAsync($more = null, $since = null, $until = null, $filter = null, $filter_by = null, $order_by = null, $include_registration_count = 'false', $include_course_metadata = 'false', $tags = null)
+    public function getCoursesAsync($since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'course_id', $order_by = 'created_desc', $more = null, $include_course_metadata = 'false', $include_registration_count = 'false')
     {
-        return $this->getCoursesAsyncWithHttpInfo($more, $since, $until, $filter, $filter_by, $order_by, $include_registration_count, $include_course_metadata, $tags)
+        return $this->getCoursesAsyncWithHttpInfo($since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_course_metadata, $include_registration_count)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5786,25 +7581,26 @@ class CourseApi
     /**
      * Operation getCoursesAsyncWithHttpInfo
      *
-     * Get all courses.
+     * Get a list of Courses
      *
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
      * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
-     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter.  Defaults to course_id. (optional)
-     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results.  Defaults to creation_date_desc. (optional)
-     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to course_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to created_desc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      * @param  bool $include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect. (optional, default to false)
-     * @param  string[] $tags (optional)
+     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCoursesAsyncWithHttpInfo($more = null, $since = null, $until = null, $filter = null, $filter_by = null, $order_by = null, $include_registration_count = 'false', $include_course_metadata = 'false', $tags = null)
+    public function getCoursesAsyncWithHttpInfo($since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'course_id', $order_by = 'created_desc', $more = null, $include_course_metadata = 'false', $include_registration_count = 'false')
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\CourseListSchema';
-        $request = $this->getCoursesRequest($more, $since, $until, $filter, $filter_by, $order_by, $include_registration_count, $include_course_metadata, $tags);
+        $request = $this->getCoursesRequest($since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_course_metadata, $include_registration_count);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5846,20 +7642,21 @@ class CourseApi
     /**
      * Create request for operation 'getCourses'
      *
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
      * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
-     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter.  Defaults to course_id. (optional)
-     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results.  Defaults to creation_date_desc. (optional)
-     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to course_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to created_desc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      * @param  bool $include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect. (optional, default to false)
-     * @param  string[] $tags (optional)
+     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getCoursesRequest($more = null, $since = null, $until = null, $filter = null, $filter_by = null, $order_by = null, $include_registration_count = 'false', $include_course_metadata = 'false', $tags = null)
+    protected function getCoursesRequest($since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'course_id', $order_by = 'created_desc', $more = null, $include_course_metadata = 'false', $include_registration_count = 'false')
     {
 
         $resourcePath = '/courses';
@@ -5870,16 +7667,23 @@ class CourseApi
         $multipart = false;
 
         // query params
-        if ($more !== null) {
-            $queryParams['more'] = ObjectSerializer::toQueryValue($more);
-        }
-        // query params
         if ($since !== null) {
             $queryParams['since'] = ObjectSerializer::toQueryValue($since);
         }
         // query params
         if ($until !== null) {
             $queryParams['until'] = ObjectSerializer::toQueryValue($until);
+        }
+        // query params
+        if ($datetime_filter !== null) {
+            $queryParams['datetimeFilter'] = ObjectSerializer::toQueryValue($datetime_filter);
+        }
+        // query params
+        if (is_array($tags)) {
+            $queryParams['tags'] = $tags;
+        } else
+        if ($tags !== null) {
+            $queryParams['tags'] = ObjectSerializer::toQueryValue($tags);
         }
         // query params
         if ($filter !== null) {
@@ -5894,19 +7698,16 @@ class CourseApi
             $queryParams['orderBy'] = ObjectSerializer::toQueryValue($order_by);
         }
         // query params
-        if ($include_registration_count !== null) {
-            $queryParams['includeRegistrationCount'] = ObjectSerializer::toQueryValue($include_registration_count);
+        if ($more !== null) {
+            $queryParams['more'] = ObjectSerializer::toQueryValue($more);
         }
         // query params
         if ($include_course_metadata !== null) {
             $queryParams['includeCourseMetadata'] = ObjectSerializer::toQueryValue($include_course_metadata);
         }
         // query params
-        if (is_array($tags)) {
-            $queryParams['tags'] = $tags;
-        } else
-        if ($tags !== null) {
-            $queryParams['tags'] = ObjectSerializer::toQueryValue($tags);
+        if ($include_registration_count !== null) {
+            $queryParams['includeRegistrationCount'] = ObjectSerializer::toQueryValue($include_registration_count);
         }
 
 
@@ -5928,7 +7729,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -5956,7 +7757,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -5980,7 +7781,7 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -5992,7 +7793,7 @@ class CourseApi
     /**
      * Operation getImportJobStatus
      *
-     * Get course import job status.
+     * Get import job status for a Course
      *
      * @param  string $import_job_id Id received when the import job was submitted to the importJobs resource. (required)
      *
@@ -6009,7 +7810,7 @@ class CourseApi
     /**
      * Operation getImportJobStatusWithHttpInfo
      *
-     * Get course import job status.
+     * Get import job status for a Course
      *
      * @param  string $import_job_id Id received when the import job was submitted to the importJobs resource. (required)
      *
@@ -6100,7 +7901,7 @@ class CourseApi
     /**
      * Operation getImportJobStatusAsync
      *
-     * Get course import job status.
+     * Get import job status for a Course
      *
      * @param  string $import_job_id Id received when the import job was submitted to the importJobs resource. (required)
      *
@@ -6120,7 +7921,7 @@ class CourseApi
     /**
      * Operation getImportJobStatusAsyncWithHttpInfo
      *
-     * Get course import job status.
+     * Get import job status for a Course
      *
      * @param  string $import_job_id Id received when the import job was submitted to the importJobs resource. (required)
      *
@@ -6221,7 +8022,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -6249,7 +8050,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -6273,7 +8074,7 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -6283,9 +8084,660 @@ class CourseApi
     }
 
     /**
+     * Operation importCourseAssetFile
+     *
+     * Import an asset file for a Course
+     *
+     * @param  string $course_id course_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\ImportAssetRequestSchema $asset_schema asset_schema (required)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \RusticiSoftware\Cloud\V2\Model\AssetFileSchema
+     */
+    public function importCourseAssetFile($course_id, $asset_schema, $update_asset_policy = 'lax')
+    {
+        list($response) = $this->importCourseAssetFileWithHttpInfo($course_id, $asset_schema, $update_asset_policy);
+        return $response;
+    }
+
+    /**
+     * Operation importCourseAssetFileWithHttpInfo
+     *
+     * Import an asset file for a Course
+     *
+     * @param  string $course_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\ImportAssetRequestSchema $asset_schema (required)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \RusticiSoftware\Cloud\V2\Model\AssetFileSchema, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function importCourseAssetFileWithHttpInfo($course_id, $asset_schema, $update_asset_policy = 'lax')
+    {
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\AssetFileSchema';
+        $request = $this->importCourseAssetFileRequest($course_id, $asset_schema, $update_asset_policy);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\AssetFileSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation importCourseAssetFileAsync
+     *
+     * Import an asset file for a Course
+     *
+     * @param  string $course_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\ImportAssetRequestSchema $asset_schema (required)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function importCourseAssetFileAsync($course_id, $asset_schema, $update_asset_policy = 'lax')
+    {
+        return $this->importCourseAssetFileAsyncWithHttpInfo($course_id, $asset_schema, $update_asset_policy)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation importCourseAssetFileAsyncWithHttpInfo
+     *
+     * Import an asset file for a Course
+     *
+     * @param  string $course_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\ImportAssetRequestSchema $asset_schema (required)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function importCourseAssetFileAsyncWithHttpInfo($course_id, $asset_schema, $update_asset_policy = 'lax')
+    {
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\AssetFileSchema';
+        $request = $this->importCourseAssetFileRequest($course_id, $asset_schema, $update_asset_policy);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'importCourseAssetFile'
+     *
+     * @param  string $course_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\ImportAssetRequestSchema $asset_schema (required)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function importCourseAssetFileRequest($course_id, $asset_schema, $update_asset_policy = 'lax')
+    {
+        // verify the required parameter 'course_id' is set
+        if ($course_id === null || (is_array($course_id) && count($course_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $course_id when calling importCourseAssetFile'
+            );
+        }
+        // verify the required parameter 'asset_schema' is set
+        if ($asset_schema === null || (is_array($asset_schema) && count($asset_schema) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $asset_schema when calling importCourseAssetFile'
+            );
+        }
+
+        $resourcePath = '/courses/{courseId}/asset';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($update_asset_policy !== null) {
+            $queryParams['updateAssetPolicy'] = ObjectSerializer::toQueryValue($update_asset_policy);
+        }
+
+        // path params
+        if ($course_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'courseId' . '}',
+                ObjectSerializer::toPathValue($course_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($asset_schema)) {
+            $_tempBody = $asset_schema;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation importCourseVersionAssetFile
+     *
+     * Import an asset file for a Course Version
+     *
+     * @param  string $course_id course_id (required)
+     * @param  int $version_id version_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\ImportAssetRequestSchema $asset_schema asset_schema (required)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \RusticiSoftware\Cloud\V2\Model\AssetFileSchema
+     */
+    public function importCourseVersionAssetFile($course_id, $version_id, $asset_schema, $update_asset_policy = 'lax')
+    {
+        list($response) = $this->importCourseVersionAssetFileWithHttpInfo($course_id, $version_id, $asset_schema, $update_asset_policy);
+        return $response;
+    }
+
+    /**
+     * Operation importCourseVersionAssetFileWithHttpInfo
+     *
+     * Import an asset file for a Course Version
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\ImportAssetRequestSchema $asset_schema (required)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \RusticiSoftware\Cloud\V2\Model\AssetFileSchema, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function importCourseVersionAssetFileWithHttpInfo($course_id, $version_id, $asset_schema, $update_asset_policy = 'lax')
+    {
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\AssetFileSchema';
+        $request = $this->importCourseVersionAssetFileRequest($course_id, $version_id, $asset_schema, $update_asset_policy);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\AssetFileSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation importCourseVersionAssetFileAsync
+     *
+     * Import an asset file for a Course Version
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\ImportAssetRequestSchema $asset_schema (required)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function importCourseVersionAssetFileAsync($course_id, $version_id, $asset_schema, $update_asset_policy = 'lax')
+    {
+        return $this->importCourseVersionAssetFileAsyncWithHttpInfo($course_id, $version_id, $asset_schema, $update_asset_policy)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation importCourseVersionAssetFileAsyncWithHttpInfo
+     *
+     * Import an asset file for a Course Version
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\ImportAssetRequestSchema $asset_schema (required)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function importCourseVersionAssetFileAsyncWithHttpInfo($course_id, $version_id, $asset_schema, $update_asset_policy = 'lax')
+    {
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\AssetFileSchema';
+        $request = $this->importCourseVersionAssetFileRequest($course_id, $version_id, $asset_schema, $update_asset_policy);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'importCourseVersionAssetFile'
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\ImportAssetRequestSchema $asset_schema (required)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function importCourseVersionAssetFileRequest($course_id, $version_id, $asset_schema, $update_asset_policy = 'lax')
+    {
+        // verify the required parameter 'course_id' is set
+        if ($course_id === null || (is_array($course_id) && count($course_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $course_id when calling importCourseVersionAssetFile'
+            );
+        }
+        // verify the required parameter 'version_id' is set
+        if ($version_id === null || (is_array($version_id) && count($version_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $version_id when calling importCourseVersionAssetFile'
+            );
+        }
+        // verify the required parameter 'asset_schema' is set
+        if ($asset_schema === null || (is_array($asset_schema) && count($asset_schema) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $asset_schema when calling importCourseVersionAssetFile'
+            );
+        }
+
+        $resourcePath = '/courses/{courseId}/versions/{versionId}/asset';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($update_asset_policy !== null) {
+            $queryParams['updateAssetPolicy'] = ObjectSerializer::toQueryValue($update_asset_policy);
+        }
+
+        // path params
+        if ($course_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'courseId' . '}',
+                ObjectSerializer::toPathValue($course_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($version_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'versionId' . '}',
+                ObjectSerializer::toPathValue($version_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($asset_schema)) {
+            $_tempBody = $asset_schema;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation putCourseTags
      *
-     * Set course tags.
+     * Add tags to a Course
      *
      * @param  string $course_id course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
@@ -6302,7 +8754,7 @@ class CourseApi
     /**
      * Operation putCourseTagsWithHttpInfo
      *
-     * Set course tags.
+     * Add tags to a Course
      *
      * @param  string $course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
@@ -6372,7 +8824,7 @@ class CourseApi
     /**
      * Operation putCourseTagsAsync
      *
-     * Set course tags.
+     * Add tags to a Course
      *
      * @param  string $course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
@@ -6393,7 +8845,7 @@ class CourseApi
     /**
      * Operation putCourseTagsAsyncWithHttpInfo
      *
-     * Set course tags.
+     * Add tags to a Course
      *
      * @param  string $course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
@@ -6491,7 +8943,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -6519,7 +8971,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -6543,7 +8995,7 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -6555,9 +9007,9 @@ class CourseApi
     /**
      * Operation putCourseTagsBatch
      *
-     * Set tags on courses.
+     * Add a group of tags to a group of Courses
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6571,9 +9023,9 @@ class CourseApi
     /**
      * Operation putCourseTagsBatchWithHttpInfo
      *
-     * Set tags on courses.
+     * Add a group of tags to a group of Courses
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6640,9 +9092,9 @@ class CourseApi
     /**
      * Operation putCourseTagsBatchAsync
      *
-     * Set tags on courses.
+     * Add a group of tags to a group of Courses
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6660,9 +9112,9 @@ class CourseApi
     /**
      * Operation putCourseTagsBatchAsyncWithHttpInfo
      *
-     * Set tags on courses.
+     * Add a group of tags to a group of Courses
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6698,7 +9150,7 @@ class CourseApi
     /**
      * Create request for operation 'putCourseTagsBatch'
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -6742,7 +9194,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -6770,7 +9222,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -6794,7 +9246,7 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -6806,7 +9258,7 @@ class CourseApi
     /**
      * Operation setCourseConfiguration
      *
-     * Set course configuration.
+     * Update configuration settings for a Course
      *
      * @param  string $course_id course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings configuration_settings (required)
@@ -6823,7 +9275,7 @@ class CourseApi
     /**
      * Operation setCourseConfigurationWithHttpInfo
      *
-     * Set course configuration.
+     * Update configuration settings for a Course
      *
      * @param  string $course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
@@ -6893,7 +9345,7 @@ class CourseApi
     /**
      * Operation setCourseConfigurationAsync
      *
-     * Set course configuration.
+     * Update configuration settings for a Course
      *
      * @param  string $course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
@@ -6914,7 +9366,7 @@ class CourseApi
     /**
      * Operation setCourseConfigurationAsyncWithHttpInfo
      *
-     * Set course configuration.
+     * Update configuration settings for a Course
      *
      * @param  string $course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
@@ -7012,7 +9464,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -7040,7 +9492,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -7064,7 +9516,7 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -7076,7 +9528,7 @@ class CourseApi
     /**
      * Operation setCourseTitle
      *
-     * Set the title of a course.
+     * Update title for a Course
      *
      * @param  string $course_id course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TitleSchema $title title (required)
@@ -7093,7 +9545,7 @@ class CourseApi
     /**
      * Operation setCourseTitleWithHttpInfo
      *
-     * Set the title of a course.
+     * Update title for a Course
      *
      * @param  string $course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TitleSchema $title (required)
@@ -7163,7 +9615,7 @@ class CourseApi
     /**
      * Operation setCourseTitleAsync
      *
-     * Set the title of a course.
+     * Update title for a Course
      *
      * @param  string $course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TitleSchema $title (required)
@@ -7184,7 +9636,7 @@ class CourseApi
     /**
      * Operation setCourseTitleAsyncWithHttpInfo
      *
-     * Set the title of a course.
+     * Update title for a Course
      *
      * @param  string $course_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TitleSchema $title (required)
@@ -7282,7 +9734,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -7310,7 +9762,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -7334,7 +9786,7 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -7346,10 +9798,10 @@ class CourseApi
     /**
      * Operation setCourseVersionConfiguration
      *
-     * Set configuration for a version of a course.
+     * Update configuration settings for a Course Version
      *
      * @param  string $course_id course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings configuration_settings (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -7364,10 +9816,10 @@ class CourseApi
     /**
      * Operation setCourseVersionConfigurationWithHttpInfo
      *
-     * Set configuration for a version of a course.
+     * Update configuration settings for a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -7435,10 +9887,10 @@ class CourseApi
     /**
      * Operation setCourseVersionConfigurationAsync
      *
-     * Set configuration for a version of a course.
+     * Update configuration settings for a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
@@ -7457,10 +9909,10 @@ class CourseApi
     /**
      * Operation setCourseVersionConfigurationAsyncWithHttpInfo
      *
-     * Set configuration for a version of a course.
+     * Update configuration settings for a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
@@ -7498,7 +9950,7 @@ class CourseApi
      * Create request for operation 'setCourseVersionConfiguration'
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\SettingsPostSchema $configuration_settings (required)
      *
      * @throws \InvalidArgumentException
@@ -7571,7 +10023,7 @@ class CourseApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -7599,7 +10051,7 @@ class CourseApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -7623,7 +10075,680 @@ class CourseApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation uploadCourseAssetFile
+     *
+     * Upload an asset file for a Course
+     *
+     * @param  string $course_id course_id (required)
+     * @param  string $destination Relative path from the course&#39;s base directory where the asset file will be uploaded. &#x60;/Etiquette/Course.html&#x60; will upload the file into the Etiquette folder of the course. (required)
+     * @param  \SplFileObject $file The asset file to import into the course. (optional)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \RusticiSoftware\Cloud\V2\Model\AssetFileSchema
+     */
+    public function uploadCourseAssetFile($course_id, $destination, $file = null, $update_asset_policy = 'lax')
+    {
+        list($response) = $this->uploadCourseAssetFileWithHttpInfo($course_id, $destination, $file, $update_asset_policy);
+        return $response;
+    }
+
+    /**
+     * Operation uploadCourseAssetFileWithHttpInfo
+     *
+     * Upload an asset file for a Course
+     *
+     * @param  string $course_id (required)
+     * @param  string $destination Relative path from the course&#39;s base directory where the asset file will be uploaded. &#x60;/Etiquette/Course.html&#x60; will upload the file into the Etiquette folder of the course. (required)
+     * @param  \SplFileObject $file The asset file to import into the course. (optional)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \RusticiSoftware\Cloud\V2\Model\AssetFileSchema, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function uploadCourseAssetFileWithHttpInfo($course_id, $destination, $file = null, $update_asset_policy = 'lax')
+    {
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\AssetFileSchema';
+        $request = $this->uploadCourseAssetFileRequest($course_id, $destination, $file, $update_asset_policy);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\AssetFileSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation uploadCourseAssetFileAsync
+     *
+     * Upload an asset file for a Course
+     *
+     * @param  string $course_id (required)
+     * @param  string $destination Relative path from the course&#39;s base directory where the asset file will be uploaded. &#x60;/Etiquette/Course.html&#x60; will upload the file into the Etiquette folder of the course. (required)
+     * @param  \SplFileObject $file The asset file to import into the course. (optional)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function uploadCourseAssetFileAsync($course_id, $destination, $file = null, $update_asset_policy = 'lax')
+    {
+        return $this->uploadCourseAssetFileAsyncWithHttpInfo($course_id, $destination, $file, $update_asset_policy)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation uploadCourseAssetFileAsyncWithHttpInfo
+     *
+     * Upload an asset file for a Course
+     *
+     * @param  string $course_id (required)
+     * @param  string $destination Relative path from the course&#39;s base directory where the asset file will be uploaded. &#x60;/Etiquette/Course.html&#x60; will upload the file into the Etiquette folder of the course. (required)
+     * @param  \SplFileObject $file The asset file to import into the course. (optional)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function uploadCourseAssetFileAsyncWithHttpInfo($course_id, $destination, $file = null, $update_asset_policy = 'lax')
+    {
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\AssetFileSchema';
+        $request = $this->uploadCourseAssetFileRequest($course_id, $destination, $file, $update_asset_policy);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'uploadCourseAssetFile'
+     *
+     * @param  string $course_id (required)
+     * @param  string $destination Relative path from the course&#39;s base directory where the asset file will be uploaded. &#x60;/Etiquette/Course.html&#x60; will upload the file into the Etiquette folder of the course. (required)
+     * @param  \SplFileObject $file The asset file to import into the course. (optional)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function uploadCourseAssetFileRequest($course_id, $destination, $file = null, $update_asset_policy = 'lax')
+    {
+        // verify the required parameter 'course_id' is set
+        if ($course_id === null || (is_array($course_id) && count($course_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $course_id when calling uploadCourseAssetFile'
+            );
+        }
+        // verify the required parameter 'destination' is set
+        if ($destination === null || (is_array($destination) && count($destination) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $destination when calling uploadCourseAssetFile'
+            );
+        }
+
+        $resourcePath = '/courses/{courseId}/asset/upload';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($update_asset_policy !== null) {
+            $queryParams['updateAssetPolicy'] = ObjectSerializer::toQueryValue($update_asset_policy);
+        }
+
+        // path params
+        if ($course_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'courseId' . '}',
+                ObjectSerializer::toPathValue($course_id),
+                $resourcePath
+            );
+        }
+
+        // form params
+        if ($file !== null) {
+            $multipart = true;
+            $formParams['file'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($file), 'rb');
+        }
+        // form params
+        if ($destination !== null) {
+            $formParams['destination'] = ObjectSerializer::toFormValue($destination);
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation uploadCourseVersionAssetFile
+     *
+     * Upload an asset file for Course Version
+     *
+     * @param  string $course_id course_id (required)
+     * @param  int $version_id version_id (required)
+     * @param  string $destination Relative path from the course&#39;s base directory where the asset file will be uploaded. &#x60;/Etiquette/Course.html&#x60; will upload the file into the Etiquette folder of the course. (required)
+     * @param  \SplFileObject $file The asset file to import into the course. (optional)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \RusticiSoftware\Cloud\V2\Model\AssetFileSchema
+     */
+    public function uploadCourseVersionAssetFile($course_id, $version_id, $destination, $file = null, $update_asset_policy = 'lax')
+    {
+        list($response) = $this->uploadCourseVersionAssetFileWithHttpInfo($course_id, $version_id, $destination, $file, $update_asset_policy);
+        return $response;
+    }
+
+    /**
+     * Operation uploadCourseVersionAssetFileWithHttpInfo
+     *
+     * Upload an asset file for Course Version
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     * @param  string $destination Relative path from the course&#39;s base directory where the asset file will be uploaded. &#x60;/Etiquette/Course.html&#x60; will upload the file into the Etiquette folder of the course. (required)
+     * @param  \SplFileObject $file The asset file to import into the course. (optional)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \RusticiSoftware\Cloud\V2\Model\AssetFileSchema, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function uploadCourseVersionAssetFileWithHttpInfo($course_id, $version_id, $destination, $file = null, $update_asset_policy = 'lax')
+    {
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\AssetFileSchema';
+        $request = $this->uploadCourseVersionAssetFileRequest($course_id, $version_id, $destination, $file, $update_asset_policy);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\AssetFileSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation uploadCourseVersionAssetFileAsync
+     *
+     * Upload an asset file for Course Version
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     * @param  string $destination Relative path from the course&#39;s base directory where the asset file will be uploaded. &#x60;/Etiquette/Course.html&#x60; will upload the file into the Etiquette folder of the course. (required)
+     * @param  \SplFileObject $file The asset file to import into the course. (optional)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function uploadCourseVersionAssetFileAsync($course_id, $version_id, $destination, $file = null, $update_asset_policy = 'lax')
+    {
+        return $this->uploadCourseVersionAssetFileAsyncWithHttpInfo($course_id, $version_id, $destination, $file, $update_asset_policy)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation uploadCourseVersionAssetFileAsyncWithHttpInfo
+     *
+     * Upload an asset file for Course Version
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     * @param  string $destination Relative path from the course&#39;s base directory where the asset file will be uploaded. &#x60;/Etiquette/Course.html&#x60; will upload the file into the Etiquette folder of the course. (required)
+     * @param  \SplFileObject $file The asset file to import into the course. (optional)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function uploadCourseVersionAssetFileAsyncWithHttpInfo($course_id, $version_id, $destination, $file = null, $update_asset_policy = 'lax')
+    {
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\AssetFileSchema';
+        $request = $this->uploadCourseVersionAssetFileRequest($course_id, $version_id, $destination, $file, $update_asset_policy);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'uploadCourseVersionAssetFile'
+     *
+     * @param  string $course_id (required)
+     * @param  int $version_id (required)
+     * @param  string $destination Relative path from the course&#39;s base directory where the asset file will be uploaded. &#x60;/Etiquette/Course.html&#x60; will upload the file into the Etiquette folder of the course. (required)
+     * @param  \SplFileObject $file The asset file to import into the course. (optional)
+     * @param  string $update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). (optional, default to lax)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function uploadCourseVersionAssetFileRequest($course_id, $version_id, $destination, $file = null, $update_asset_policy = 'lax')
+    {
+        // verify the required parameter 'course_id' is set
+        if ($course_id === null || (is_array($course_id) && count($course_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $course_id when calling uploadCourseVersionAssetFile'
+            );
+        }
+        // verify the required parameter 'version_id' is set
+        if ($version_id === null || (is_array($version_id) && count($version_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $version_id when calling uploadCourseVersionAssetFile'
+            );
+        }
+        // verify the required parameter 'destination' is set
+        if ($destination === null || (is_array($destination) && count($destination) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $destination when calling uploadCourseVersionAssetFile'
+            );
+        }
+
+        $resourcePath = '/courses/{courseId}/versions/{versionId}/asset/upload';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($update_asset_policy !== null) {
+            $queryParams['updateAssetPolicy'] = ObjectSerializer::toQueryValue($update_asset_policy);
+        }
+
+        // path params
+        if ($course_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'courseId' . '}',
+                ObjectSerializer::toPathValue($course_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($version_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'versionId' . '}',
+                ObjectSerializer::toPathValue($version_id),
+                $resourcePath
+            );
+        }
+
+        // form params
+        if ($file !== null) {
+            $multipart = true;
+            $formParams['file'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($file), 'rb');
+        }
+        // form params
+        if ($destination !== null) {
+            $formParams['destination'] = ObjectSerializer::toFormValue($destination);
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

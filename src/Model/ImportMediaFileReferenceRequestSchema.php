@@ -2,7 +2,7 @@
 /**
  * ImportMediaFileReferenceRequestSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -36,7 +36,7 @@ use \RusticiSoftware\Cloud\V2\ObjectSerializer;
  * ImportMediaFileReferenceRequestSchema Class Doc Comment
  *
  * @category Class
- * @description Used to create a course that references a media file. Upon import, the actual file is not downloaded and stored on Cloud&#39;s servers. Instead, the media file wrapper will load the content from the provided URL.
+ * @description Used to create a course that references a media file. Upon import, the actual file is not downloaded and stored on SCORM Cloud&#39;s servers. Instead, the media file wrapper will load the content from the provided URL.
  * @package  RusticiSoftware\Cloud\V2
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen

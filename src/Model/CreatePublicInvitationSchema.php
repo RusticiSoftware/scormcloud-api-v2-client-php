@@ -2,7 +2,7 @@
 /**
  * CreatePublicInvitationSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -349,7 +349,7 @@ class CreatePublicInvitationSchema implements ModelInterface, ArrayAccess
     /**
      * Sets expiration_date
      *
-     * @param \DateTime $expiration_date The date this invitation will expire and can no longer be launched (formatted yyyyMMddHHmmss in UTC time).
+     * @param \DateTime $expiration_date The ISO 8601 TimeStamp (defaults to UTC) after which this invitation will expire and can no longer be launched. An empty value will represent no expiration date.
      *
      * @return $this
      */

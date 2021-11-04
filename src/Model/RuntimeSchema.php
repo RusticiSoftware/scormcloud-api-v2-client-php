@@ -2,7 +2,7 @@
 /**
  * RuntimeSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -319,14 +319,6 @@ class RuntimeSchema implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getRuntimeSuccessStatusAllowableValues();
-        if (!is_null($this->container['runtime_success_status']) && !in_array($this->container['runtime_success_status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'runtime_success_status', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -698,15 +690,6 @@ class RuntimeSchema implements ModelInterface, ArrayAccess
      */
     public function setRuntimeSuccessStatus($runtime_success_status)
     {
-        $allowedValues = $this->getRuntimeSuccessStatusAllowableValues();
-        if (!is_null($runtime_success_status) && !in_array($runtime_success_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'runtime_success_status', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['runtime_success_status'] = $runtime_success_status;
 
         return $this;

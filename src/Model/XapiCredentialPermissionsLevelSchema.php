@@ -2,7 +2,7 @@
 /**
  * XapiCredentialPermissionsLevelSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -210,14 +210,6 @@ class XapiCredentialPermissionsLevelSchema implements ModelInterface, ArrayAcces
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getXapiCredentialPermissionsLevelAllowableValues();
-        if (!is_null($this->container['xapi_credential_permissions_level']) && !in_array($this->container['xapi_credential_permissions_level'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'xapi_credential_permissions_level', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -252,15 +244,6 @@ class XapiCredentialPermissionsLevelSchema implements ModelInterface, ArrayAcces
      */
     public function setXapiCredentialPermissionsLevel($xapi_credential_permissions_level)
     {
-        $allowedValues = $this->getXapiCredentialPermissionsLevelAllowableValues();
-        if (!is_null($xapi_credential_permissions_level) && !in_array($xapi_credential_permissions_level, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'xapi_credential_permissions_level', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['xapi_credential_permissions_level'] = $xapi_credential_permissions_level;
 
         return $this;

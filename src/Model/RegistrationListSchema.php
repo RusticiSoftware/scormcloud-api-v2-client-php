@@ -2,7 +2,7 @@
 /**
  * RegistrationListSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -250,7 +250,7 @@ class RegistrationListSchema implements ModelInterface, ArrayAccess
     /**
      * Sets more
      *
-     * @param string $more more
+     * @param string $more Token for getting the next set of results, from the prior set of results.
      *
      * @return $this
      */

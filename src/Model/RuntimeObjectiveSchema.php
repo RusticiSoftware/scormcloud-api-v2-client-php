@@ -2,7 +2,7 @@
 /**
  * RuntimeObjectiveSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -275,22 +275,6 @@ class RuntimeObjectiveSchema implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getRuntimeObjectiveSuccessStatusAllowableValues();
-        if (!is_null($this->container['runtime_objective_success_status']) && !in_array($this->container['runtime_objective_success_status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'runtime_objective_success_status', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getRuntimeObjectiveCompletionStatusAllowableValues();
-        if (!is_null($this->container['runtime_objective_completion_status']) && !in_array($this->container['runtime_objective_completion_status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'runtime_objective_completion_status', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -445,15 +429,6 @@ class RuntimeObjectiveSchema implements ModelInterface, ArrayAccess
      */
     public function setRuntimeObjectiveSuccessStatus($runtime_objective_success_status)
     {
-        $allowedValues = $this->getRuntimeObjectiveSuccessStatusAllowableValues();
-        if (!is_null($runtime_objective_success_status) && !in_array($runtime_objective_success_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'runtime_objective_success_status', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['runtime_objective_success_status'] = $runtime_objective_success_status;
 
         return $this;
@@ -478,15 +453,6 @@ class RuntimeObjectiveSchema implements ModelInterface, ArrayAccess
      */
     public function setRuntimeObjectiveCompletionStatus($runtime_objective_completion_status)
     {
-        $allowedValues = $this->getRuntimeObjectiveCompletionStatusAllowableValues();
-        if (!is_null($runtime_objective_completion_status) && !in_array($runtime_objective_completion_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'runtime_objective_completion_status', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['runtime_objective_completion_status'] = $runtime_objective_completion_status;
 
         return $this;

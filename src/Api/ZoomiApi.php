@@ -1,7 +1,7 @@
 <?php
 /**
  * ZoomiApi
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -75,7 +75,7 @@ class ZoomiApi
         HeaderSelector $selector = null
     ) {
         $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
+        $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
     }
 
@@ -90,7 +90,7 @@ class ZoomiApi
     /**
      * Operation deleteApplicationZoomiKeys
      *
-     * Delete the Zoomi keys for an application.
+     * Delete the Zoomi keys for an Application
      *
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -105,7 +105,7 @@ class ZoomiApi
     /**
      * Operation deleteApplicationZoomiKeysWithHttpInfo
      *
-     * Delete the Zoomi keys for an application.
+     * Delete the Zoomi keys for an Application
      *
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -173,7 +173,7 @@ class ZoomiApi
     /**
      * Operation deleteApplicationZoomiKeysAsync
      *
-     * Delete the Zoomi keys for an application.
+     * Delete the Zoomi keys for an Application
      *
      *
      * @throws \InvalidArgumentException
@@ -192,7 +192,7 @@ class ZoomiApi
     /**
      * Operation deleteApplicationZoomiKeysAsyncWithHttpInfo
      *
-     * Delete the Zoomi keys for an application.
+     * Delete the Zoomi keys for an Application
      *
      *
      * @throws \InvalidArgumentException
@@ -263,7 +263,7 @@ class ZoomiApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -291,7 +291,7 @@ class ZoomiApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -315,7 +315,7 @@ class ZoomiApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -327,10 +327,10 @@ class ZoomiApi
     /**
      * Operation deleteZoomiCourse
      *
-     * Deletes the course in Zoomi but not in cloud
+     * Delete the Course from Zoomi
      *
      * @param  string $course_id course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id version_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -344,10 +344,10 @@ class ZoomiApi
     /**
      * Operation deleteZoomiCourseWithHttpInfo
      *
-     * Deletes the course in Zoomi but not in cloud
+     * Delete the Course from Zoomi
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -414,10 +414,10 @@ class ZoomiApi
     /**
      * Operation deleteZoomiCourseAsync
      *
-     * Deletes the course in Zoomi but not in cloud
+     * Delete the Course from Zoomi
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -435,10 +435,10 @@ class ZoomiApi
     /**
      * Operation deleteZoomiCourseAsyncWithHttpInfo
      *
-     * Deletes the course in Zoomi but not in cloud
+     * Delete the Course from Zoomi
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -475,7 +475,7 @@ class ZoomiApi
      * Create request for operation 'deleteZoomiCourse'
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -538,7 +538,7 @@ class ZoomiApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -566,7 +566,7 @@ class ZoomiApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -590,7 +590,7 @@ class ZoomiApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -602,7 +602,7 @@ class ZoomiApi
     /**
      * Operation getApplicationZoomiCompanyId
      *
-     * Gets the Zoomi company id of an application.
+     * Get the Zoomi company ID of an Application
      *
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -618,7 +618,7 @@ class ZoomiApi
     /**
      * Operation getApplicationZoomiCompanyIdWithHttpInfo
      *
-     * Gets the Zoomi company id of an application.
+     * Get the Zoomi company ID of an Application
      *
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -708,7 +708,7 @@ class ZoomiApi
     /**
      * Operation getApplicationZoomiCompanyIdAsync
      *
-     * Gets the Zoomi company id of an application.
+     * Get the Zoomi company ID of an Application
      *
      *
      * @throws \InvalidArgumentException
@@ -727,7 +727,7 @@ class ZoomiApi
     /**
      * Operation getApplicationZoomiCompanyIdAsyncWithHttpInfo
      *
-     * Gets the Zoomi company id of an application.
+     * Get the Zoomi company ID of an Application
      *
      *
      * @throws \InvalidArgumentException
@@ -812,7 +812,7 @@ class ZoomiApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -840,7 +840,7 @@ class ZoomiApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -864,7 +864,7 @@ class ZoomiApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -876,7 +876,7 @@ class ZoomiApi
     /**
      * Operation getApplicationZoomiPublicKey
      *
-     * Gets the Zoomi public key for an application.
+     * Get the Zoomi public key for an Application
      *
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -892,7 +892,7 @@ class ZoomiApi
     /**
      * Operation getApplicationZoomiPublicKeyWithHttpInfo
      *
-     * Gets the Zoomi public key for an application.
+     * Get the Zoomi public key for an Application
      *
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -982,7 +982,7 @@ class ZoomiApi
     /**
      * Operation getApplicationZoomiPublicKeyAsync
      *
-     * Gets the Zoomi public key for an application.
+     * Get the Zoomi public key for an Application
      *
      *
      * @throws \InvalidArgumentException
@@ -1001,7 +1001,7 @@ class ZoomiApi
     /**
      * Operation getApplicationZoomiPublicKeyAsyncWithHttpInfo
      *
-     * Gets the Zoomi public key for an application.
+     * Get the Zoomi public key for an Application
      *
      *
      * @throws \InvalidArgumentException
@@ -1086,7 +1086,7 @@ class ZoomiApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1114,7 +1114,7 @@ class ZoomiApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1138,7 +1138,7 @@ class ZoomiApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1150,10 +1150,10 @@ class ZoomiApi
     /**
      * Operation getCourseZoomiEnabled
      *
-     * Gets the Zoomi enabled value of a course version
+     * Get the Zoomi enabled value of a Course Version
      *
      * @param  string $course_id course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id version_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1168,10 +1168,10 @@ class ZoomiApi
     /**
      * Operation getCourseZoomiEnabledWithHttpInfo
      *
-     * Gets the Zoomi enabled value of a course version
+     * Get the Zoomi enabled value of a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1260,10 +1260,10 @@ class ZoomiApi
     /**
      * Operation getCourseZoomiEnabledAsync
      *
-     * Gets the Zoomi enabled value of a course version
+     * Get the Zoomi enabled value of a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1281,10 +1281,10 @@ class ZoomiApi
     /**
      * Operation getCourseZoomiEnabledAsyncWithHttpInfo
      *
-     * Gets the Zoomi enabled value of a course version
+     * Get the Zoomi enabled value of a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1335,7 +1335,7 @@ class ZoomiApi
      * Create request for operation 'getCourseZoomiEnabled'
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1398,7 +1398,7 @@ class ZoomiApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1426,7 +1426,7 @@ class ZoomiApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1450,7 +1450,7 @@ class ZoomiApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1462,10 +1462,10 @@ class ZoomiApi
     /**
      * Operation getZoomiCourseStatus
      *
-     * Gets the status for a course from Zoomi
+     * Get the status for a Course from Zoomi
      *
      * @param  string $course_id course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id version_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1480,10 +1480,10 @@ class ZoomiApi
     /**
      * Operation getZoomiCourseStatusWithHttpInfo
      *
-     * Gets the status for a course from Zoomi
+     * Get the status for a Course from Zoomi
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1572,10 +1572,10 @@ class ZoomiApi
     /**
      * Operation getZoomiCourseStatusAsync
      *
-     * Gets the status for a course from Zoomi
+     * Get the status for a Course from Zoomi
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1593,10 +1593,10 @@ class ZoomiApi
     /**
      * Operation getZoomiCourseStatusAsyncWithHttpInfo
      *
-     * Gets the status for a course from Zoomi
+     * Get the status for a Course from Zoomi
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1647,7 +1647,7 @@ class ZoomiApi
      * Create request for operation 'getZoomiCourseStatus'
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1710,7 +1710,7 @@ class ZoomiApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1738,7 +1738,7 @@ class ZoomiApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1762,7 +1762,7 @@ class ZoomiApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1774,10 +1774,10 @@ class ZoomiApi
     /**
      * Operation importCourseVersionToZoomi
      *
-     * Begin the import process with Zoomi.
+     * Begin the import process with Zoomi
      *
      * @param  string $course_id course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\ZoomiCourseOptionsSchema $zoomi_course_options zoomi_course_options (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -1792,10 +1792,10 @@ class ZoomiApi
     /**
      * Operation importCourseVersionToZoomiWithHttpInfo
      *
-     * Begin the import process with Zoomi.
+     * Begin the import process with Zoomi
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\ZoomiCourseOptionsSchema $zoomi_course_options (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -1863,10 +1863,10 @@ class ZoomiApi
     /**
      * Operation importCourseVersionToZoomiAsync
      *
-     * Begin the import process with Zoomi.
+     * Begin the import process with Zoomi
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\ZoomiCourseOptionsSchema $zoomi_course_options (required)
      *
      * @throws \InvalidArgumentException
@@ -1885,10 +1885,10 @@ class ZoomiApi
     /**
      * Operation importCourseVersionToZoomiAsyncWithHttpInfo
      *
-     * Begin the import process with Zoomi.
+     * Begin the import process with Zoomi
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\ZoomiCourseOptionsSchema $zoomi_course_options (required)
      *
      * @throws \InvalidArgumentException
@@ -1926,7 +1926,7 @@ class ZoomiApi
      * Create request for operation 'importCourseVersionToZoomi'
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\ZoomiCourseOptionsSchema $zoomi_course_options (required)
      *
      * @throws \InvalidArgumentException
@@ -1999,7 +1999,7 @@ class ZoomiApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2027,7 +2027,7 @@ class ZoomiApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2051,7 +2051,7 @@ class ZoomiApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2063,7 +2063,7 @@ class ZoomiApi
     /**
      * Operation setApplicationZoomiCompanyId
      *
-     * Set the Zoomi company id value of an application.
+     * Set the Zoomi company ID of an Application
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\ZoomiCompanyId $zoomi_company_id zoomi_company_id (required)
      *
@@ -2079,7 +2079,7 @@ class ZoomiApi
     /**
      * Operation setApplicationZoomiCompanyIdWithHttpInfo
      *
-     * Set the Zoomi company id value of an application.
+     * Set the Zoomi company ID of an Application
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\ZoomiCompanyId $zoomi_company_id (required)
      *
@@ -2148,7 +2148,7 @@ class ZoomiApi
     /**
      * Operation setApplicationZoomiCompanyIdAsync
      *
-     * Set the Zoomi company id value of an application.
+     * Set the Zoomi company ID of an Application
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\ZoomiCompanyId $zoomi_company_id (required)
      *
@@ -2168,7 +2168,7 @@ class ZoomiApi
     /**
      * Operation setApplicationZoomiCompanyIdAsyncWithHttpInfo
      *
-     * Set the Zoomi company id value of an application.
+     * Set the Zoomi company ID of an Application
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\ZoomiCompanyId $zoomi_company_id (required)
      *
@@ -2250,7 +2250,7 @@ class ZoomiApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2278,7 +2278,7 @@ class ZoomiApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2302,7 +2302,7 @@ class ZoomiApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2314,10 +2314,10 @@ class ZoomiApi
     /**
      * Operation setCourseZoomiEnabled
      *
-     * Set the Zoomi enabled value of a course version.
+     * Set the Zoomi enabled value of a Course Version
      *
      * @param  string $course_id course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled enabled (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2332,10 +2332,10 @@ class ZoomiApi
     /**
      * Operation setCourseZoomiEnabledWithHttpInfo
      *
-     * Set the Zoomi enabled value of a course version.
+     * Set the Zoomi enabled value of a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2403,10 +2403,10 @@ class ZoomiApi
     /**
      * Operation setCourseZoomiEnabledAsync
      *
-     * Set the Zoomi enabled value of a course version.
+     * Set the Zoomi enabled value of a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled (required)
      *
      * @throws \InvalidArgumentException
@@ -2425,10 +2425,10 @@ class ZoomiApi
     /**
      * Operation setCourseZoomiEnabledAsyncWithHttpInfo
      *
-     * Set the Zoomi enabled value of a course version.
+     * Set the Zoomi enabled value of a Course Version
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled (required)
      *
      * @throws \InvalidArgumentException
@@ -2466,7 +2466,7 @@ class ZoomiApi
      * Create request for operation 'setCourseZoomiEnabled'
      *
      * @param  string $course_id (required)
-     * @param  int $version_id The course version (required)
+     * @param  int $version_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\EnabledSchema $enabled (required)
      *
      * @throws \InvalidArgumentException
@@ -2539,7 +2539,7 @@ class ZoomiApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2567,7 +2567,7 @@ class ZoomiApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2591,7 +2591,7 @@ class ZoomiApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

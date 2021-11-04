@@ -1,7 +1,7 @@
 <?php
 /**
  * LearnerApi
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -75,7 +75,7 @@ class LearnerApi
         HeaderSelector $selector = null
     ) {
         $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
+        $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
     }
 
@@ -90,9 +90,9 @@ class LearnerApi
     /**
      * Operation deleteAllLearnerData
      *
-     * Deletes all of the information associated with a learner in an application, by learner id.
+     * Deletes all PII for a learnerId
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  string $user_email The email of the user initiating this request on behalf of the learner being deleted. This must be a valid primary email address for a SCORM Cloud realm which this application is in. (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -107,9 +107,9 @@ class LearnerApi
     /**
      * Operation deleteAllLearnerDataWithHttpInfo
      *
-     * Deletes all of the information associated with a learner in an application, by learner id.
+     * Deletes all PII for a learnerId
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  string $user_email The email of the user initiating this request on behalf of the learner being deleted. This must be a valid primary email address for a SCORM Cloud realm which this application is in. (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -177,9 +177,9 @@ class LearnerApi
     /**
      * Operation deleteAllLearnerDataAsync
      *
-     * Deletes all of the information associated with a learner in an application, by learner id.
+     * Deletes all PII for a learnerId
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  string $user_email The email of the user initiating this request on behalf of the learner being deleted. This must be a valid primary email address for a SCORM Cloud realm which this application is in. (required)
      *
      * @throws \InvalidArgumentException
@@ -198,9 +198,9 @@ class LearnerApi
     /**
      * Operation deleteAllLearnerDataAsyncWithHttpInfo
      *
-     * Deletes all of the information associated with a learner in an application, by learner id.
+     * Deletes all PII for a learnerId
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  string $user_email The email of the user initiating this request on behalf of the learner being deleted. This must be a valid primary email address for a SCORM Cloud realm which this application is in. (required)
      *
      * @throws \InvalidArgumentException
@@ -237,7 +237,7 @@ class LearnerApi
     /**
      * Create request for operation 'deleteAllLearnerData'
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  string $user_email The email of the user initiating this request on behalf of the learner being deleted. This must be a valid primary email address for a SCORM Cloud realm which this application is in. (required)
      *
      * @throws \InvalidArgumentException
@@ -297,7 +297,7 @@ class LearnerApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -325,7 +325,7 @@ class LearnerApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -349,7 +349,7 @@ class LearnerApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -361,9 +361,9 @@ class LearnerApi
     /**
      * Operation deleteLearnerTags
      *
-     * Delete the tags for this learner
+     * Delete tags from a learnerId
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -378,9 +378,9 @@ class LearnerApi
     /**
      * Operation deleteLearnerTagsWithHttpInfo
      *
-     * Delete the tags for this learner
+     * Delete tags from a learnerId
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -448,9 +448,9 @@ class LearnerApi
     /**
      * Operation deleteLearnerTagsAsync
      *
-     * Delete the tags for this learner
+     * Delete tags from a learnerId
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
@@ -469,9 +469,9 @@ class LearnerApi
     /**
      * Operation deleteLearnerTagsAsyncWithHttpInfo
      *
-     * Delete the tags for this learner
+     * Delete tags from a learnerId
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
@@ -508,7 +508,7 @@ class LearnerApi
     /**
      * Create request for operation 'deleteLearnerTags'
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
@@ -567,7 +567,7 @@ class LearnerApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -595,7 +595,7 @@ class LearnerApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -619,7 +619,7 @@ class LearnerApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -631,9 +631,9 @@ class LearnerApi
     /**
      * Operation getLearnerTags
      *
-     * Get the tags for this learner
+     * Get tags for a learnerId
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -648,9 +648,9 @@ class LearnerApi
     /**
      * Operation getLearnerTagsWithHttpInfo
      *
-     * Get the tags for this learner
+     * Get tags for a learnerId
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -739,9 +739,9 @@ class LearnerApi
     /**
      * Operation getLearnerTagsAsync
      *
-     * Get the tags for this learner
+     * Get tags for a learnerId
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -759,9 +759,9 @@ class LearnerApi
     /**
      * Operation getLearnerTagsAsyncWithHttpInfo
      *
-     * Get the tags for this learner
+     * Get tags for a learnerId
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -811,7 +811,7 @@ class LearnerApi
     /**
      * Create request for operation 'getLearnerTags'
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -860,7 +860,7 @@ class LearnerApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -888,7 +888,7 @@ class LearnerApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -912,7 +912,7 @@ class LearnerApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -924,9 +924,9 @@ class LearnerApi
     /**
      * Operation putLearnerTags
      *
-     * Set the tags for this learner
+     * Add tags to a learnerId
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -941,9 +941,9 @@ class LearnerApi
     /**
      * Operation putLearnerTagsWithHttpInfo
      *
-     * Set the tags for this learner
+     * Add tags to a learnerId
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -1011,9 +1011,9 @@ class LearnerApi
     /**
      * Operation putLearnerTagsAsync
      *
-     * Set the tags for this learner
+     * Add tags to a learnerId
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
@@ -1032,9 +1032,9 @@ class LearnerApi
     /**
      * Operation putLearnerTagsAsyncWithHttpInfo
      *
-     * Set the tags for this learner
+     * Add tags to a learnerId
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
@@ -1071,7 +1071,7 @@ class LearnerApi
     /**
      * Create request for operation 'putLearnerTags'
      *
-     * @param  string $learner_id The id of the learner for which to remove all data from an application (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
@@ -1130,7 +1130,7 @@ class LearnerApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1158,7 +1158,7 @@ class LearnerApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1182,7 +1182,7 @@ class LearnerApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1194,9 +1194,9 @@ class LearnerApi
     /**
      * Operation putLearnerTagsBatch
      *
-     * Sets all of the provided tags on all of the provided learners
+     * Add a group of tags to a group of learnerIds
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1210,9 +1210,9 @@ class LearnerApi
     /**
      * Operation putLearnerTagsBatchWithHttpInfo
      *
-     * Sets all of the provided tags on all of the provided learners
+     * Add a group of tags to a group of learnerIds
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1279,9 +1279,9 @@ class LearnerApi
     /**
      * Operation putLearnerTagsBatchAsync
      *
-     * Sets all of the provided tags on all of the provided learners
+     * Add a group of tags to a group of learnerIds
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1299,9 +1299,9 @@ class LearnerApi
     /**
      * Operation putLearnerTagsBatchAsyncWithHttpInfo
      *
-     * Sets all of the provided tags on all of the provided learners
+     * Add a group of tags to a group of learnerIds
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1337,7 +1337,7 @@ class LearnerApi
     /**
      * Create request for operation 'putLearnerTagsBatch'
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1381,7 +1381,7 @@ class LearnerApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1409,7 +1409,7 @@ class LearnerApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1433,7 +1433,7 @@ class LearnerApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1445,9 +1445,9 @@ class LearnerApi
     /**
      * Operation updateLearnerInfo
      *
-     * Update a learner's info on all of their registrations.
+     * Update all Registrations for a learnerId
      *
-     * @param  string $learner_id The id of the learner to be updated (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LearnerSchema $learner_info learner_info (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -1462,9 +1462,9 @@ class LearnerApi
     /**
      * Operation updateLearnerInfoWithHttpInfo
      *
-     * Update a learner's info on all of their registrations.
+     * Update all Registrations for a learnerId
      *
-     * @param  string $learner_id The id of the learner to be updated (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LearnerSchema $learner_info (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -1524,9 +1524,9 @@ class LearnerApi
     /**
      * Operation updateLearnerInfoAsync
      *
-     * Update a learner's info on all of their registrations.
+     * Update all Registrations for a learnerId
      *
-     * @param  string $learner_id The id of the learner to be updated (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LearnerSchema $learner_info (required)
      *
      * @throws \InvalidArgumentException
@@ -1545,9 +1545,9 @@ class LearnerApi
     /**
      * Operation updateLearnerInfoAsyncWithHttpInfo
      *
-     * Update a learner's info on all of their registrations.
+     * Update all Registrations for a learnerId
      *
-     * @param  string $learner_id The id of the learner to be updated (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LearnerSchema $learner_info (required)
      *
      * @throws \InvalidArgumentException
@@ -1584,7 +1584,7 @@ class LearnerApi
     /**
      * Create request for operation 'updateLearnerInfo'
      *
-     * @param  string $learner_id The id of the learner to be updated (required)
+     * @param  string $learner_id The id of the learner (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\LearnerSchema $learner_info (required)
      *
      * @throws \InvalidArgumentException
@@ -1643,7 +1643,7 @@ class LearnerApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1671,7 +1671,7 @@ class LearnerApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1695,7 +1695,7 @@ class LearnerApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

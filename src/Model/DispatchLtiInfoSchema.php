@@ -1,8 +1,8 @@
 <?php
 /**
- * ConnectorContentItemSchema
+ * DispatchLtiInfoSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
 
 /**
- * ConnectorContentItemSchema Class Doc Comment
+ * DispatchLtiInfoSchema Class Doc Comment
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ConnectorContentItemSchema implements ModelInterface, ArrayAccess
+class DispatchLtiInfoSchema implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ConnectorContentItemSchema implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ConnectorContentItemSchema';
+    protected static $swaggerModelName = 'DispatchLtiInfoSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,9 @@ class ConnectorContentItemSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
-        'title' => 'string',
-        'updated' => '\DateTime',
-        'metadata' => '\RusticiSoftware\Cloud\V2\Model\MetadataSchema'
+        'url' => 'string',
+        'consumer_key' => 'string',
+        'shared_secret' => 'string'
     ];
 
     /**
@@ -69,10 +68,9 @@ class ConnectorContentItemSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
-        'title' => null,
-        'updated' => 'date-time',
-        'metadata' => null
+        'url' => null,
+        'consumer_key' => null,
+        'shared_secret' => null
     ];
 
     /**
@@ -102,10 +100,9 @@ class ConnectorContentItemSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'title' => 'title',
-        'updated' => 'updated',
-        'metadata' => 'metadata'
+        'url' => 'url',
+        'consumer_key' => 'consumerKey',
+        'shared_secret' => 'sharedSecret'
     ];
 
     /**
@@ -114,10 +111,9 @@ class ConnectorContentItemSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'title' => 'setTitle',
-        'updated' => 'setUpdated',
-        'metadata' => 'setMetadata'
+        'url' => 'setUrl',
+        'consumer_key' => 'setConsumerKey',
+        'shared_secret' => 'setSharedSecret'
     ];
 
     /**
@@ -126,10 +122,9 @@ class ConnectorContentItemSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'title' => 'getTitle',
-        'updated' => 'getUpdated',
-        'metadata' => 'getMetadata'
+        'url' => 'getUrl',
+        'consumer_key' => 'getConsumerKey',
+        'shared_secret' => 'getSharedSecret'
     ];
 
     /**
@@ -192,10 +187,9 @@ class ConnectorContentItemSchema implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
-        $this->container['updated'] = isset($data['updated']) ? $data['updated'] : null;
-        $this->container['metadata'] = isset($data['metadata']) ? $data['metadata'] : null;
+        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
+        $this->container['consumer_key'] = isset($data['consumer_key']) ? $data['consumer_key'] : null;
+        $this->container['shared_secret'] = isset($data['shared_secret']) ? $data['shared_secret'] : null;
     }
 
     /**
@@ -207,6 +201,15 @@ class ConnectorContentItemSchema implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
+        }
+        if ($this->container['consumer_key'] === null) {
+            $invalidProperties[] = "'consumer_key' can't be null";
+        }
+        if ($this->container['shared_secret'] === null) {
+            $invalidProperties[] = "'shared_secret' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -223,97 +226,73 @@ class ConnectorContentItemSchema implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets url
      *
      * @return string
      */
-    public function getId()
+    public function getUrl()
     {
-        return $this->container['id'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets id
+     * Sets url
      *
-     * @param string $id id
+     * @param string $url The LTI launch URL for this dispatch
      *
      * @return $this
      */
-    public function setId($id)
+    public function setUrl($url)
     {
-        $this->container['id'] = $id;
+        $this->container['url'] = $url;
 
         return $this;
     }
 
     /**
-     * Gets title
+     * Gets consumer_key
      *
      * @return string
      */
-    public function getTitle()
+    public function getConsumerKey()
     {
-        return $this->container['title'];
+        return $this->container['consumer_key'];
     }
 
     /**
-     * Sets title
+     * Sets consumer_key
      *
-     * @param string $title title
+     * @param string $consumer_key The OAuth consumer key that identifies the tool consumer for this dispatch.
      *
      * @return $this
      */
-    public function setTitle($title)
+    public function setConsumerKey($consumer_key)
     {
-        $this->container['title'] = $title;
+        $this->container['consumer_key'] = $consumer_key;
 
         return $this;
     }
 
     /**
-     * Gets updated
+     * Gets shared_secret
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getUpdated()
+    public function getSharedSecret()
     {
-        return $this->container['updated'];
+        return $this->container['shared_secret'];
     }
 
     /**
-     * Sets updated
+     * Sets shared_secret
      *
-     * @param \DateTime $updated updated
+     * @param string $shared_secret The OAuth secret to be used for LTI authentication for this dispatch.
      *
      * @return $this
      */
-    public function setUpdated($updated)
+    public function setSharedSecret($shared_secret)
     {
-        $this->container['updated'] = $updated;
-
-        return $this;
-    }
-
-    /**
-     * Gets metadata
-     *
-     * @return \RusticiSoftware\Cloud\V2\Model\MetadataSchema
-     */
-    public function getMetadata()
-    {
-        return $this->container['metadata'];
-    }
-
-    /**
-     * Sets metadata
-     *
-     * @param \RusticiSoftware\Cloud\V2\Model\MetadataSchema $metadata metadata
-     *
-     * @return $this
-     */
-    public function setMetadata($metadata)
-    {
-        $this->container['metadata'] = $metadata;
+        $this->container['shared_secret'] = $shared_secret;
 
         return $this;
     }

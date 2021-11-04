@@ -1,8 +1,8 @@
 <?php
 /**
- * CreateConnectorSchema
+ * FileListItemSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
 
 /**
- * CreateConnectorSchema Class Doc Comment
+ * FileListItemSchema Class Doc Comment
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class CreateConnectorSchema implements ModelInterface, ArrayAccess
+class FileListItemSchema implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CreateConnectorSchema implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'CreateConnectorSchema';
+    protected static $swaggerModelName = 'fileListItemSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,9 @@ class CreateConnectorSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'content_connector_type' => 'string',
-        'configuration' => 'object',
-        'enabled' => 'bool'
+        'path' => 'string',
+        'size' => 'int',
+        'modified' => '\DateTime'
     ];
 
     /**
@@ -68,9 +68,9 @@ class CreateConnectorSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'content_connector_type' => null,
-        'configuration' => null,
-        'enabled' => null
+        'path' => null,
+        'size' => 'int64',
+        'modified' => 'date-time'
     ];
 
     /**
@@ -100,9 +100,9 @@ class CreateConnectorSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'content_connector_type' => 'contentConnectorType',
-        'configuration' => 'configuration',
-        'enabled' => 'enabled'
+        'path' => 'path',
+        'size' => 'size',
+        'modified' => 'modified'
     ];
 
     /**
@@ -111,9 +111,9 @@ class CreateConnectorSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'content_connector_type' => 'setContentConnectorType',
-        'configuration' => 'setConfiguration',
-        'enabled' => 'setEnabled'
+        'path' => 'setPath',
+        'size' => 'setSize',
+        'modified' => 'setModified'
     ];
 
     /**
@@ -122,9 +122,9 @@ class CreateConnectorSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'content_connector_type' => 'getContentConnectorType',
-        'configuration' => 'getConfiguration',
-        'enabled' => 'getEnabled'
+        'path' => 'getPath',
+        'size' => 'getSize',
+        'modified' => 'getModified'
     ];
 
     /**
@@ -187,9 +187,9 @@ class CreateConnectorSchema implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['content_connector_type'] = isset($data['content_connector_type']) ? $data['content_connector_type'] : null;
-        $this->container['configuration'] = isset($data['configuration']) ? $data['configuration'] : null;
-        $this->container['enabled'] = isset($data['enabled']) ? $data['enabled'] : true;
+        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
+        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['modified'] = isset($data['modified']) ? $data['modified'] : null;
     }
 
     /**
@@ -201,12 +201,6 @@ class CreateConnectorSchema implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['content_connector_type'] === null) {
-            $invalidProperties[] = "'content_connector_type' can't be null";
-        }
-        if ($this->container['configuration'] === null) {
-            $invalidProperties[] = "'configuration' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -223,73 +217,73 @@ class CreateConnectorSchema implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets content_connector_type
+     * Gets path
      *
      * @return string
      */
-    public function getContentConnectorType()
+    public function getPath()
     {
-        return $this->container['content_connector_type'];
+        return $this->container['path'];
     }
 
     /**
-     * Sets content_connector_type
+     * Sets path
      *
-     * @param string $content_connector_type type of this content connector
+     * @param string $path Relative file path of the file. Used in asset manipulation calls
      *
      * @return $this
      */
-    public function setContentConnectorType($content_connector_type)
+    public function setPath($path)
     {
-        $this->container['content_connector_type'] = $content_connector_type;
+        $this->container['path'] = $path;
 
         return $this;
     }
 
     /**
-     * Gets configuration
+     * Gets size
      *
-     * @return object
+     * @return int
      */
-    public function getConfiguration()
+    public function getSize()
     {
-        return $this->container['configuration'];
+        return $this->container['size'];
     }
 
     /**
-     * Sets configuration
+     * Sets size
      *
-     * @param object $configuration configuration for this content connector, format is implementation specific
+     * @param int $size File size in bytes of the file
      *
      * @return $this
      */
-    public function setConfiguration($configuration)
+    public function setSize($size)
     {
-        $this->container['configuration'] = $configuration;
+        $this->container['size'] = $size;
 
         return $this;
     }
 
     /**
-     * Gets enabled
+     * Gets modified
      *
-     * @return bool
+     * @return \DateTime
      */
-    public function getEnabled()
+    public function getModified()
     {
-        return $this->container['enabled'];
+        return $this->container['modified'];
     }
 
     /**
-     * Sets enabled
+     * Sets modified
      *
-     * @param bool $enabled is this connector enabled
+     * @param \DateTime $modified modified
      *
      * @return $this
      */
-    public function setEnabled($enabled)
+    public function setModified($modified)
     {
-        $this->container['enabled'] = $enabled;
+        $this->container['modified'] = $modified;
 
         return $this;
     }

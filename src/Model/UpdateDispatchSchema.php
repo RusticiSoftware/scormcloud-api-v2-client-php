@@ -2,7 +2,7 @@
 /**
  * UpdateDispatchSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -60,6 +60,7 @@ class UpdateDispatchSchema implements ModelInterface, ArrayAccess
         'allow_new_registrations' => 'bool',
         'instanced' => 'bool',
         'registration_cap' => 'int',
+        'registration_count' => 'int',
         'expiration_date' => '\DateTime',
         'enabled' => 'bool',
         'email' => 'string',
@@ -76,6 +77,7 @@ class UpdateDispatchSchema implements ModelInterface, ArrayAccess
         'allow_new_registrations' => null,
         'instanced' => null,
         'registration_cap' => 'int32',
+        'registration_count' => 'int32',
         'expiration_date' => 'date-time',
         'enabled' => null,
         'email' => null,
@@ -113,6 +115,7 @@ class UpdateDispatchSchema implements ModelInterface, ArrayAccess
         'allow_new_registrations' => 'allowNewRegistrations',
         'instanced' => 'instanced',
         'registration_cap' => 'registrationCap',
+        'registration_count' => 'registrationCount',
         'expiration_date' => 'expirationDate',
         'enabled' => 'enabled',
         'email' => 'email',
@@ -129,6 +132,7 @@ class UpdateDispatchSchema implements ModelInterface, ArrayAccess
         'allow_new_registrations' => 'setAllowNewRegistrations',
         'instanced' => 'setInstanced',
         'registration_cap' => 'setRegistrationCap',
+        'registration_count' => 'setRegistrationCount',
         'expiration_date' => 'setExpirationDate',
         'enabled' => 'setEnabled',
         'email' => 'setEmail',
@@ -145,6 +149,7 @@ class UpdateDispatchSchema implements ModelInterface, ArrayAccess
         'allow_new_registrations' => 'getAllowNewRegistrations',
         'instanced' => 'getInstanced',
         'registration_cap' => 'getRegistrationCap',
+        'registration_count' => 'getRegistrationCount',
         'expiration_date' => 'getExpirationDate',
         'enabled' => 'getEnabled',
         'email' => 'getEmail',
@@ -215,6 +220,7 @@ class UpdateDispatchSchema implements ModelInterface, ArrayAccess
         $this->container['allow_new_registrations'] = isset($data['allow_new_registrations']) ? $data['allow_new_registrations'] : null;
         $this->container['instanced'] = isset($data['instanced']) ? $data['instanced'] : null;
         $this->container['registration_cap'] = isset($data['registration_cap']) ? $data['registration_cap'] : null;
+        $this->container['registration_count'] = isset($data['registration_count']) ? $data['registration_count'] : null;
         $this->container['expiration_date'] = isset($data['expiration_date']) ? $data['expiration_date'] : null;
         $this->container['enabled'] = isset($data['enabled']) ? $data['enabled'] : null;
         $this->container['email'] = isset($data['email']) ? $data['email'] : null;
@@ -319,6 +325,30 @@ class UpdateDispatchSchema implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets registration_count
+     *
+     * @return int
+     */
+    public function getRegistrationCount()
+    {
+        return $this->container['registration_count'];
+    }
+
+    /**
+     * Sets registration_count
+     *
+     * @param int $registration_count The current number of registrations that have been created for this dispatch.
+     *
+     * @return $this
+     */
+    public function setRegistrationCount($registration_count)
+    {
+        $this->container['registration_count'] = $registration_count;
+
+        return $this;
+    }
+
+    /**
      * Gets expiration_date
      *
      * @return \DateTime
@@ -331,7 +361,7 @@ class UpdateDispatchSchema implements ModelInterface, ArrayAccess
     /**
      * Sets expiration_date
      *
-     * @param \DateTime $expiration_date The date after which this dispatch will be disabled as an ISO 8601 string, or not present for no expiration date.
+     * @param \DateTime $expiration_date The ISO 8601 TimeStamp (defaults to UTC) after which this dispatch will be disabled. An empty value will represent no expiration date.
      *
      * @return $this
      */

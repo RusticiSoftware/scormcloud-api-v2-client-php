@@ -1,7 +1,7 @@
 <?php
 /**
  * InvitationsApi
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -75,7 +75,7 @@ class InvitationsApi
         HeaderSelector $selector = null
     ) {
         $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
+        $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
     }
 
@@ -90,7 +90,7 @@ class InvitationsApi
     /**
      * Operation createPrivateInvitation
      *
-     * Create a private invitation to a course.
+     * Create a Private Invitation to a Course
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\CreatePrivateInvitationSchema $private_invitation_request  (required)
      *
@@ -107,7 +107,7 @@ class InvitationsApi
     /**
      * Operation createPrivateInvitationWithHttpInfo
      *
-     * Create a private invitation to a course.
+     * Create a Private Invitation to a Course
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\CreatePrivateInvitationSchema $private_invitation_request  (required)
      *
@@ -190,7 +190,7 @@ class InvitationsApi
     /**
      * Operation createPrivateInvitationAsync
      *
-     * Create a private invitation to a course.
+     * Create a Private Invitation to a Course
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\CreatePrivateInvitationSchema $private_invitation_request  (required)
      *
@@ -210,7 +210,7 @@ class InvitationsApi
     /**
      * Operation createPrivateInvitationAsyncWithHttpInfo
      *
-     * Create a private invitation to a course.
+     * Create a Private Invitation to a Course
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\CreatePrivateInvitationSchema $private_invitation_request  (required)
      *
@@ -306,7 +306,7 @@ class InvitationsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -334,7 +334,7 @@ class InvitationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -358,7 +358,7 @@ class InvitationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -370,7 +370,7 @@ class InvitationsApi
     /**
      * Operation createPublicInvitation
      *
-     * Create a publicly accessible invitation to a course.
+     * Create a Public Invitation to a Course
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\CreatePublicInvitationSchema $public_invitation_request A description of the public invitation to be created. (required)
      *
@@ -387,7 +387,7 @@ class InvitationsApi
     /**
      * Operation createPublicInvitationWithHttpInfo
      *
-     * Create a publicly accessible invitation to a course.
+     * Create a Public Invitation to a Course
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\CreatePublicInvitationSchema $public_invitation_request A description of the public invitation to be created. (required)
      *
@@ -470,7 +470,7 @@ class InvitationsApi
     /**
      * Operation createPublicInvitationAsync
      *
-     * Create a publicly accessible invitation to a course.
+     * Create a Public Invitation to a Course
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\CreatePublicInvitationSchema $public_invitation_request A description of the public invitation to be created. (required)
      *
@@ -490,7 +490,7 @@ class InvitationsApi
     /**
      * Operation createPublicInvitationAsyncWithHttpInfo
      *
-     * Create a publicly accessible invitation to a course.
+     * Create a Public Invitation to a Course
      *
      * @param  \RusticiSoftware\Cloud\V2\Model\CreatePublicInvitationSchema $public_invitation_request A description of the public invitation to be created. (required)
      *
@@ -586,7 +586,7 @@ class InvitationsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -614,7 +614,7 @@ class InvitationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -638,7 +638,7 @@ class InvitationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -650,9 +650,9 @@ class InvitationsApi
     /**
      * Operation deleteInvitationTags
      *
-     * Delete the tags for this invitation
+     * Delete tags from an Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id invitation_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -667,9 +667,9 @@ class InvitationsApi
     /**
      * Operation deleteInvitationTagsWithHttpInfo
      *
-     * Delete the tags for this invitation
+     * Delete tags from an Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -737,9 +737,9 @@ class InvitationsApi
     /**
      * Operation deleteInvitationTagsAsync
      *
-     * Delete the tags for this invitation
+     * Delete tags from an Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
@@ -758,9 +758,9 @@ class InvitationsApi
     /**
      * Operation deleteInvitationTagsAsyncWithHttpInfo
      *
-     * Delete the tags for this invitation
+     * Delete tags from an Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
@@ -797,7 +797,7 @@ class InvitationsApi
     /**
      * Create request for operation 'deleteInvitationTags'
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
@@ -856,7 +856,7 @@ class InvitationsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -884,7 +884,7 @@ class InvitationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -908,7 +908,7 @@ class InvitationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -920,45 +920,51 @@ class InvitationsApi
     /**
      * Operation getAllInvitations
      *
-     * Get a list of invitation summaries.
+     * Get a list of Invitations
      *
-     * @param  string $course_id Limit the results to invitations with courseIds that match the filter. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string[] $tags tags (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\InvitationSummaryList
      */
-    public function getAllInvitations($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $more = null)
+    public function getAllInvitations($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null)
     {
-        list($response) = $this->getAllInvitationsWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $more);
+        list($response) = $this->getAllInvitationsWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more);
         return $response;
     }
 
     /**
      * Operation getAllInvitationsWithHttpInfo
      *
-     * Get a list of invitation summaries.
+     * Get a list of Invitations
      *
-     * @param  string $course_id Limit the results to invitations with courseIds that match the filter. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string[] $tags (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\InvitationSummaryList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllInvitationsWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $more = null)
+    public function getAllInvitationsWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\InvitationSummaryList';
-        $request = $this->getAllInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $more);
+        $request = $this->getAllInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1030,21 +1036,24 @@ class InvitationsApi
     /**
      * Operation getAllInvitationsAsync
      *
-     * Get a list of invitation summaries.
+     * Get a list of Invitations
      *
-     * @param  string $course_id Limit the results to invitations with courseIds that match the filter. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string[] $tags (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllInvitationsAsync($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $more = null)
+    public function getAllInvitationsAsync($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null)
     {
-        return $this->getAllInvitationsAsyncWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $more)
+        return $this->getAllInvitationsAsyncWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1055,22 +1064,25 @@ class InvitationsApi
     /**
      * Operation getAllInvitationsAsyncWithHttpInfo
      *
-     * Get a list of invitation summaries.
+     * Get a list of Invitations
      *
-     * @param  string $course_id Limit the results to invitations with courseIds that match the filter. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string[] $tags (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllInvitationsAsyncWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $more = null)
+    public function getAllInvitationsAsyncWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\InvitationSummaryList';
-        $request = $this->getAllInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $more);
+        $request = $this->getAllInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1112,17 +1124,20 @@ class InvitationsApi
     /**
      * Create request for operation 'getAllInvitations'
      *
-     * @param  string $course_id Limit the results to invitations with courseIds that match the filter. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string[] $tags (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getAllInvitationsRequest($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $more = null)
+    protected function getAllInvitationsRequest($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null)
     {
 
         $resourcePath = '/invitations';
@@ -1156,6 +1171,18 @@ class InvitationsApi
             $queryParams['tags'] = ObjectSerializer::toQueryValue($tags);
         }
         // query params
+        if ($filter !== null) {
+            $queryParams['filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($filter_by !== null) {
+            $queryParams['filterBy'] = ObjectSerializer::toQueryValue($filter_by);
+        }
+        // query params
+        if ($order_by !== null) {
+            $queryParams['orderBy'] = ObjectSerializer::toQueryValue($order_by);
+        }
+        // query params
         if ($more !== null) {
             $queryParams['more'] = ObjectSerializer::toQueryValue($more);
         }
@@ -1179,7 +1206,7 @@ class InvitationsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1207,7 +1234,7 @@ class InvitationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1231,7 +1258,7 @@ class InvitationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1243,9 +1270,9 @@ class InvitationsApi
     /**
      * Operation getInvitationTags
      *
-     * Get the tags for this invitation
+     * Get tags for an Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id invitation_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1260,9 +1287,9 @@ class InvitationsApi
     /**
      * Operation getInvitationTagsWithHttpInfo
      *
-     * Get the tags for this invitation
+     * Get tags for an Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1351,9 +1378,9 @@ class InvitationsApi
     /**
      * Operation getInvitationTagsAsync
      *
-     * Get the tags for this invitation
+     * Get tags for an Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1371,9 +1398,9 @@ class InvitationsApi
     /**
      * Operation getInvitationTagsAsyncWithHttpInfo
      *
-     * Get the tags for this invitation
+     * Get tags for an Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1423,7 +1450,7 @@ class InvitationsApi
     /**
      * Create request for operation 'getInvitationTags'
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1472,7 +1499,7 @@ class InvitationsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1500,7 +1527,7 @@ class InvitationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1524,7 +1551,7 @@ class InvitationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1536,9 +1563,9 @@ class InvitationsApi
     /**
      * Operation getPrivateInvitation
      *
-     * Get a information about a private invitation.
+     * Get detailed information about a Private Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id invitation_id (required)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -1554,9 +1581,9 @@ class InvitationsApi
     /**
      * Operation getPrivateInvitationWithHttpInfo
      *
-     * Get a information about a private invitation.
+     * Get detailed information about a Private Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -1646,9 +1673,9 @@ class InvitationsApi
     /**
      * Operation getPrivateInvitationAsync
      *
-     * Get a information about a private invitation.
+     * Get detailed information about a Private Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -1667,9 +1694,9 @@ class InvitationsApi
     /**
      * Operation getPrivateInvitationAsyncWithHttpInfo
      *
-     * Get a information about a private invitation.
+     * Get detailed information about a Private Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -1720,7 +1747,7 @@ class InvitationsApi
     /**
      * Create request for operation 'getPrivateInvitation'
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -1774,7 +1801,7 @@ class InvitationsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -1802,7 +1829,7 @@ class InvitationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1826,7 +1853,7 @@ class InvitationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1838,9 +1865,9 @@ class InvitationsApi
     /**
      * Operation getPrivateInvitationJobStatus
      *
-     * Get the status of an invitation job.
+     * Get email job status for a Private Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id invitation_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1855,9 +1882,9 @@ class InvitationsApi
     /**
      * Operation getPrivateInvitationJobStatusWithHttpInfo
      *
-     * Get the status of an invitation job.
+     * Get email job status for a Private Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1946,9 +1973,9 @@ class InvitationsApi
     /**
      * Operation getPrivateInvitationJobStatusAsync
      *
-     * Get the status of an invitation job.
+     * Get email job status for a Private Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1966,9 +1993,9 @@ class InvitationsApi
     /**
      * Operation getPrivateInvitationJobStatusAsyncWithHttpInfo
      *
-     * Get the status of an invitation job.
+     * Get email job status for a Private Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2018,7 +2045,7 @@ class InvitationsApi
     /**
      * Create request for operation 'getPrivateInvitationJobStatus'
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2067,7 +2094,7 @@ class InvitationsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2095,7 +2122,7 @@ class InvitationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2119,7 +2146,7 @@ class InvitationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2131,45 +2158,51 @@ class InvitationsApi
     /**
      * Operation getPrivateInvitations
      *
-     * Get a list of all private invitations.
+     * Get a list of Private Invitations
      *
-     * @param  string $course_id Limit the results to invitations with courseIds that match the filter. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string[] $tags tags (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\PrivateInvitationList
      */
-    public function getPrivateInvitations($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $more = null)
+    public function getPrivateInvitations($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null)
     {
-        list($response) = $this->getPrivateInvitationsWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $more);
+        list($response) = $this->getPrivateInvitationsWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more);
         return $response;
     }
 
     /**
      * Operation getPrivateInvitationsWithHttpInfo
      *
-     * Get a list of all private invitations.
+     * Get a list of Private Invitations
      *
-     * @param  string $course_id Limit the results to invitations with courseIds that match the filter. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string[] $tags (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\PrivateInvitationList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPrivateInvitationsWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $more = null)
+    public function getPrivateInvitationsWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\PrivateInvitationList';
-        $request = $this->getPrivateInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $more);
+        $request = $this->getPrivateInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2241,21 +2274,24 @@ class InvitationsApi
     /**
      * Operation getPrivateInvitationsAsync
      *
-     * Get a list of all private invitations.
+     * Get a list of Private Invitations
      *
-     * @param  string $course_id Limit the results to invitations with courseIds that match the filter. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string[] $tags (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPrivateInvitationsAsync($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $more = null)
+    public function getPrivateInvitationsAsync($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null)
     {
-        return $this->getPrivateInvitationsAsyncWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $more)
+        return $this->getPrivateInvitationsAsyncWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2266,22 +2302,25 @@ class InvitationsApi
     /**
      * Operation getPrivateInvitationsAsyncWithHttpInfo
      *
-     * Get a list of all private invitations.
+     * Get a list of Private Invitations
      *
-     * @param  string $course_id Limit the results to invitations with courseIds that match the filter. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string[] $tags (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPrivateInvitationsAsyncWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $more = null)
+    public function getPrivateInvitationsAsyncWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\PrivateInvitationList';
-        $request = $this->getPrivateInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $more);
+        $request = $this->getPrivateInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2323,17 +2362,20 @@ class InvitationsApi
     /**
      * Create request for operation 'getPrivateInvitations'
      *
-     * @param  string $course_id Limit the results to invitations with courseIds that match the filter. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string[] $tags (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getPrivateInvitationsRequest($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $more = null)
+    protected function getPrivateInvitationsRequest($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null)
     {
 
         $resourcePath = '/invitations/private';
@@ -2367,6 +2409,18 @@ class InvitationsApi
             $queryParams['tags'] = ObjectSerializer::toQueryValue($tags);
         }
         // query params
+        if ($filter !== null) {
+            $queryParams['filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($filter_by !== null) {
+            $queryParams['filterBy'] = ObjectSerializer::toQueryValue($filter_by);
+        }
+        // query params
+        if ($order_by !== null) {
+            $queryParams['orderBy'] = ObjectSerializer::toQueryValue($order_by);
+        }
+        // query params
         if ($more !== null) {
             $queryParams['more'] = ObjectSerializer::toQueryValue($more);
         }
@@ -2390,7 +2444,7 @@ class InvitationsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2418,7 +2472,7 @@ class InvitationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2442,7 +2496,7 @@ class InvitationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2454,43 +2508,51 @@ class InvitationsApi
     /**
      * Operation getPrivateUserInvitations
      *
-     * Get a list of user invitations.
+     * Get a list of Private User Invitations
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  bool $include_registration_report include_registration_report (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $invitation_id invitation_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to registration_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_report Optional flag to include basic registration information (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\UserInvitationList
      */
-    public function getPrivateUserInvitations($invitation_id, $since = null, $until = null, $include_registration_report = null, $more = null)
+    public function getPrivateUserInvitations($invitation_id, $since = null, $until = null, $datetime_filter = 'updated', $filter = null, $filter_by = 'registration_id', $order_by = 'updated_asc', $more = null, $include_registration_report = null)
     {
-        list($response) = $this->getPrivateUserInvitationsWithHttpInfo($invitation_id, $since, $until, $include_registration_report, $more);
+        list($response) = $this->getPrivateUserInvitationsWithHttpInfo($invitation_id, $since, $until, $datetime_filter, $filter, $filter_by, $order_by, $more, $include_registration_report);
         return $response;
     }
 
     /**
      * Operation getPrivateUserInvitationsWithHttpInfo
      *
-     * Get a list of user invitations.
+     * Get a list of Private User Invitations
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  bool $include_registration_report (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $invitation_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to registration_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_report Optional flag to include basic registration information (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\UserInvitationList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPrivateUserInvitationsWithHttpInfo($invitation_id, $since = null, $until = null, $include_registration_report = null, $more = null)
+    public function getPrivateUserInvitationsWithHttpInfo($invitation_id, $since = null, $until = null, $datetime_filter = 'updated', $filter = null, $filter_by = 'registration_id', $order_by = 'updated_asc', $more = null, $include_registration_report = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\UserInvitationList';
-        $request = $this->getPrivateUserInvitationsRequest($invitation_id, $since, $until, $include_registration_report, $more);
+        $request = $this->getPrivateUserInvitationsRequest($invitation_id, $since, $until, $datetime_filter, $filter, $filter_by, $order_by, $more, $include_registration_report);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2570,20 +2632,24 @@ class InvitationsApi
     /**
      * Operation getPrivateUserInvitationsAsync
      *
-     * Get a list of user invitations.
+     * Get a list of Private User Invitations
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  bool $include_registration_report (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $invitation_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to registration_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_report Optional flag to include basic registration information (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPrivateUserInvitationsAsync($invitation_id, $since = null, $until = null, $include_registration_report = null, $more = null)
+    public function getPrivateUserInvitationsAsync($invitation_id, $since = null, $until = null, $datetime_filter = 'updated', $filter = null, $filter_by = 'registration_id', $order_by = 'updated_asc', $more = null, $include_registration_report = null)
     {
-        return $this->getPrivateUserInvitationsAsyncWithHttpInfo($invitation_id, $since, $until, $include_registration_report, $more)
+        return $this->getPrivateUserInvitationsAsyncWithHttpInfo($invitation_id, $since, $until, $datetime_filter, $filter, $filter_by, $order_by, $more, $include_registration_report)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2594,21 +2660,25 @@ class InvitationsApi
     /**
      * Operation getPrivateUserInvitationsAsyncWithHttpInfo
      *
-     * Get a list of user invitations.
+     * Get a list of Private User Invitations
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  bool $include_registration_report (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $invitation_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to registration_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_report Optional flag to include basic registration information (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPrivateUserInvitationsAsyncWithHttpInfo($invitation_id, $since = null, $until = null, $include_registration_report = null, $more = null)
+    public function getPrivateUserInvitationsAsyncWithHttpInfo($invitation_id, $since = null, $until = null, $datetime_filter = 'updated', $filter = null, $filter_by = 'registration_id', $order_by = 'updated_asc', $more = null, $include_registration_report = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\UserInvitationList';
-        $request = $this->getPrivateUserInvitationsRequest($invitation_id, $since, $until, $include_registration_report, $more);
+        $request = $this->getPrivateUserInvitationsRequest($invitation_id, $since, $until, $datetime_filter, $filter, $filter_by, $order_by, $more, $include_registration_report);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2650,16 +2720,20 @@ class InvitationsApi
     /**
      * Create request for operation 'getPrivateUserInvitations'
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  bool $include_registration_report (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $invitation_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to registration_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_report Optional flag to include basic registration information (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getPrivateUserInvitationsRequest($invitation_id, $since = null, $until = null, $include_registration_report = null, $more = null)
+    protected function getPrivateUserInvitationsRequest($invitation_id, $since = null, $until = null, $datetime_filter = 'updated', $filter = null, $filter_by = 'registration_id', $order_by = 'updated_asc', $more = null, $include_registration_report = null)
     {
         // verify the required parameter 'invitation_id' is set
         if ($invitation_id === null || (is_array($invitation_id) && count($invitation_id) === 0)) {
@@ -2684,12 +2758,28 @@ class InvitationsApi
             $queryParams['until'] = ObjectSerializer::toQueryValue($until);
         }
         // query params
-        if ($include_registration_report !== null) {
-            $queryParams['includeRegistrationReport'] = ObjectSerializer::toQueryValue($include_registration_report);
+        if ($datetime_filter !== null) {
+            $queryParams['datetimeFilter'] = ObjectSerializer::toQueryValue($datetime_filter);
+        }
+        // query params
+        if ($filter !== null) {
+            $queryParams['filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($filter_by !== null) {
+            $queryParams['filterBy'] = ObjectSerializer::toQueryValue($filter_by);
+        }
+        // query params
+        if ($order_by !== null) {
+            $queryParams['orderBy'] = ObjectSerializer::toQueryValue($order_by);
         }
         // query params
         if ($more !== null) {
             $queryParams['more'] = ObjectSerializer::toQueryValue($more);
+        }
+        // query params
+        if ($include_registration_report !== null) {
+            $queryParams['includeRegistrationReport'] = ObjectSerializer::toQueryValue($include_registration_report);
         }
 
         // path params
@@ -2719,7 +2809,7 @@ class InvitationsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -2747,7 +2837,7 @@ class InvitationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2771,7 +2861,7 @@ class InvitationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2783,9 +2873,9 @@ class InvitationsApi
     /**
      * Operation getPublicInvitation
      *
-     * Get a information about a public invitation.
+     * Get detailed information about a Public Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id invitation_id (required)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2801,9 +2891,9 @@ class InvitationsApi
     /**
      * Operation getPublicInvitationWithHttpInfo
      *
-     * Get a information about a public invitation.
+     * Get detailed information about a Public Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -2893,9 +2983,9 @@ class InvitationsApi
     /**
      * Operation getPublicInvitationAsync
      *
-     * Get a information about a public invitation.
+     * Get detailed information about a Public Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -2914,9 +3004,9 @@ class InvitationsApi
     /**
      * Operation getPublicInvitationAsyncWithHttpInfo
      *
-     * Get a information about a public invitation.
+     * Get detailed information about a Public Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -2967,7 +3057,7 @@ class InvitationsApi
     /**
      * Create request for operation 'getPublicInvitation'
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -3021,7 +3111,7 @@ class InvitationsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -3049,7 +3139,7 @@ class InvitationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -3073,7 +3163,7 @@ class InvitationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3085,45 +3175,51 @@ class InvitationsApi
     /**
      * Operation getPublicInvitations
      *
-     * Get a list of all public invitations.
+     * Get a list of Public Invitations
      *
-     * @param  string $course_id Limit the results to invitations with courseIds that match the filter. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string[] $tags tags (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\PublicInvitationList
      */
-    public function getPublicInvitations($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $more = null)
+    public function getPublicInvitations($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null)
     {
-        list($response) = $this->getPublicInvitationsWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $more);
+        list($response) = $this->getPublicInvitationsWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more);
         return $response;
     }
 
     /**
      * Operation getPublicInvitationsWithHttpInfo
      *
-     * Get a list of all public invitations.
+     * Get a list of Public Invitations
      *
-     * @param  string $course_id Limit the results to invitations with courseIds that match the filter. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string[] $tags (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\PublicInvitationList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPublicInvitationsWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $more = null)
+    public function getPublicInvitationsWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\PublicInvitationList';
-        $request = $this->getPublicInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $more);
+        $request = $this->getPublicInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3195,21 +3291,24 @@ class InvitationsApi
     /**
      * Operation getPublicInvitationsAsync
      *
-     * Get a list of all public invitations.
+     * Get a list of Public Invitations
      *
-     * @param  string $course_id Limit the results to invitations with courseIds that match the filter. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string[] $tags (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPublicInvitationsAsync($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $more = null)
+    public function getPublicInvitationsAsync($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null)
     {
-        return $this->getPublicInvitationsAsyncWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $more)
+        return $this->getPublicInvitationsAsyncWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3220,22 +3319,25 @@ class InvitationsApi
     /**
      * Operation getPublicInvitationsAsyncWithHttpInfo
      *
-     * Get a list of all public invitations.
+     * Get a list of Public Invitations
      *
-     * @param  string $course_id Limit the results to invitations with courseIds that match the filter. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string[] $tags (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPublicInvitationsAsyncWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $more = null)
+    public function getPublicInvitationsAsyncWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\PublicInvitationList';
-        $request = $this->getPublicInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $more);
+        $request = $this->getPublicInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3277,17 +3379,20 @@ class InvitationsApi
     /**
      * Create request for operation 'getPublicInvitations'
      *
-     * @param  string $course_id Limit the results to invitations with courseIds that match the filter. (optional)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  string $datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (optional, default to updated)
-     * @param  string[] $tags (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string[] $tags Filter items matching any tag provided (not all) (optional)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getPublicInvitationsRequest($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $more = null)
+    protected function getPublicInvitationsRequest($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null)
     {
 
         $resourcePath = '/invitations/public';
@@ -3321,6 +3426,18 @@ class InvitationsApi
             $queryParams['tags'] = ObjectSerializer::toQueryValue($tags);
         }
         // query params
+        if ($filter !== null) {
+            $queryParams['filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($filter_by !== null) {
+            $queryParams['filterBy'] = ObjectSerializer::toQueryValue($filter_by);
+        }
+        // query params
+        if ($order_by !== null) {
+            $queryParams['orderBy'] = ObjectSerializer::toQueryValue($order_by);
+        }
+        // query params
         if ($more !== null) {
             $queryParams['more'] = ObjectSerializer::toQueryValue($more);
         }
@@ -3344,7 +3461,7 @@ class InvitationsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -3372,7 +3489,7 @@ class InvitationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -3396,7 +3513,7 @@ class InvitationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3408,43 +3525,51 @@ class InvitationsApi
     /**
      * Operation getPublicUserInvitations
      *
-     * Get a list of user invitations.
+     * Get a list of Public User Invitations
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  bool $include_registration_report include_registration_report (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $invitation_id invitation_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to registration_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_report Optional flag to include basic registration information (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\UserInvitationList
      */
-    public function getPublicUserInvitations($invitation_id, $since = null, $until = null, $include_registration_report = null, $more = null)
+    public function getPublicUserInvitations($invitation_id, $since = null, $until = null, $datetime_filter = 'updated', $filter = null, $filter_by = 'registration_id', $order_by = 'updated_asc', $more = null, $include_registration_report = null)
     {
-        list($response) = $this->getPublicUserInvitationsWithHttpInfo($invitation_id, $since, $until, $include_registration_report, $more);
+        list($response) = $this->getPublicUserInvitationsWithHttpInfo($invitation_id, $since, $until, $datetime_filter, $filter, $filter_by, $order_by, $more, $include_registration_report);
         return $response;
     }
 
     /**
      * Operation getPublicUserInvitationsWithHttpInfo
      *
-     * Get a list of user invitations.
+     * Get a list of Public User Invitations
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  bool $include_registration_report (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $invitation_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to registration_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_report Optional flag to include basic registration information (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\UserInvitationList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPublicUserInvitationsWithHttpInfo($invitation_id, $since = null, $until = null, $include_registration_report = null, $more = null)
+    public function getPublicUserInvitationsWithHttpInfo($invitation_id, $since = null, $until = null, $datetime_filter = 'updated', $filter = null, $filter_by = 'registration_id', $order_by = 'updated_asc', $more = null, $include_registration_report = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\UserInvitationList';
-        $request = $this->getPublicUserInvitationsRequest($invitation_id, $since, $until, $include_registration_report, $more);
+        $request = $this->getPublicUserInvitationsRequest($invitation_id, $since, $until, $datetime_filter, $filter, $filter_by, $order_by, $more, $include_registration_report);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3524,20 +3649,24 @@ class InvitationsApi
     /**
      * Operation getPublicUserInvitationsAsync
      *
-     * Get a list of user invitations.
+     * Get a list of Public User Invitations
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  bool $include_registration_report (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $invitation_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to registration_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_report Optional flag to include basic registration information (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPublicUserInvitationsAsync($invitation_id, $since = null, $until = null, $include_registration_report = null, $more = null)
+    public function getPublicUserInvitationsAsync($invitation_id, $since = null, $until = null, $datetime_filter = 'updated', $filter = null, $filter_by = 'registration_id', $order_by = 'updated_asc', $more = null, $include_registration_report = null)
     {
-        return $this->getPublicUserInvitationsAsyncWithHttpInfo($invitation_id, $since, $until, $include_registration_report, $more)
+        return $this->getPublicUserInvitationsAsyncWithHttpInfo($invitation_id, $since, $until, $datetime_filter, $filter, $filter_by, $order_by, $more, $include_registration_report)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3548,21 +3677,25 @@ class InvitationsApi
     /**
      * Operation getPublicUserInvitationsAsyncWithHttpInfo
      *
-     * Get a list of user invitations.
+     * Get a list of Public User Invitations
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  bool $include_registration_report (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $invitation_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to registration_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_report Optional flag to include basic registration information (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPublicUserInvitationsAsyncWithHttpInfo($invitation_id, $since = null, $until = null, $include_registration_report = null, $more = null)
+    public function getPublicUserInvitationsAsyncWithHttpInfo($invitation_id, $since = null, $until = null, $datetime_filter = 'updated', $filter = null, $filter_by = 'registration_id', $order_by = 'updated_asc', $more = null, $include_registration_report = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\UserInvitationList';
-        $request = $this->getPublicUserInvitationsRequest($invitation_id, $since, $until, $include_registration_report, $more);
+        $request = $this->getPublicUserInvitationsRequest($invitation_id, $since, $until, $datetime_filter, $filter, $filter_by, $order_by, $more, $include_registration_report);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3604,16 +3737,20 @@ class InvitationsApi
     /**
      * Create request for operation 'getPublicUserInvitations'
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \DateTime $since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  \DateTime $until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used. (optional)
-     * @param  bool $include_registration_report (optional)
-     * @param  string $more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice. (optional)
+     * @param  string $invitation_id (required)
+     * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
+     * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
+     * @param  string $filter Optional string which filters results by a specified field (described by filterBy). (optional)
+     * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to registration_id)
+     * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
+     * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_report Optional flag to include basic registration information (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getPublicUserInvitationsRequest($invitation_id, $since = null, $until = null, $include_registration_report = null, $more = null)
+    protected function getPublicUserInvitationsRequest($invitation_id, $since = null, $until = null, $datetime_filter = 'updated', $filter = null, $filter_by = 'registration_id', $order_by = 'updated_asc', $more = null, $include_registration_report = null)
     {
         // verify the required parameter 'invitation_id' is set
         if ($invitation_id === null || (is_array($invitation_id) && count($invitation_id) === 0)) {
@@ -3638,12 +3775,28 @@ class InvitationsApi
             $queryParams['until'] = ObjectSerializer::toQueryValue($until);
         }
         // query params
-        if ($include_registration_report !== null) {
-            $queryParams['includeRegistrationReport'] = ObjectSerializer::toQueryValue($include_registration_report);
+        if ($datetime_filter !== null) {
+            $queryParams['datetimeFilter'] = ObjectSerializer::toQueryValue($datetime_filter);
+        }
+        // query params
+        if ($filter !== null) {
+            $queryParams['filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($filter_by !== null) {
+            $queryParams['filterBy'] = ObjectSerializer::toQueryValue($filter_by);
+        }
+        // query params
+        if ($order_by !== null) {
+            $queryParams['orderBy'] = ObjectSerializer::toQueryValue($order_by);
         }
         // query params
         if ($more !== null) {
             $queryParams['more'] = ObjectSerializer::toQueryValue($more);
+        }
+        // query params
+        if ($include_registration_report !== null) {
+            $queryParams['includeRegistrationReport'] = ObjectSerializer::toQueryValue($include_registration_report);
         }
 
         // path params
@@ -3673,7 +3826,7 @@ class InvitationsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -3701,7 +3854,7 @@ class InvitationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -3725,7 +3878,7 @@ class InvitationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3737,9 +3890,9 @@ class InvitationsApi
     /**
      * Operation putInvitationTags
      *
-     * Set the tags for this invitation
+     * Add tags to an Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id invitation_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -3754,9 +3907,9 @@ class InvitationsApi
     /**
      * Operation putInvitationTagsWithHttpInfo
      *
-     * Set the tags for this invitation
+     * Add tags to an Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
@@ -3824,9 +3977,9 @@ class InvitationsApi
     /**
      * Operation putInvitationTagsAsync
      *
-     * Set the tags for this invitation
+     * Add tags to an Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
@@ -3845,9 +3998,9 @@ class InvitationsApi
     /**
      * Operation putInvitationTagsAsyncWithHttpInfo
      *
-     * Set the tags for this invitation
+     * Add tags to an Invitation
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
@@ -3884,7 +4037,7 @@ class InvitationsApi
     /**
      * Create request for operation 'putInvitationTags'
      *
-     * @param  string $invitation_id invitation id (required)
+     * @param  string $invitation_id (required)
      * @param  \RusticiSoftware\Cloud\V2\Model\TagListSchema $tags (required)
      *
      * @throws \InvalidArgumentException
@@ -3943,7 +4096,7 @@ class InvitationsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -3971,7 +4124,7 @@ class InvitationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -3995,7 +4148,7 @@ class InvitationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4007,9 +4160,9 @@ class InvitationsApi
     /**
      * Operation putInvitationTagsBatch
      *
-     * Sets all of the provided tags on all of the provided invitations
+     * Add a group of tags to a group of Invitations
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4023,9 +4176,9 @@ class InvitationsApi
     /**
      * Operation putInvitationTagsBatchWithHttpInfo
      *
-     * Sets all of the provided tags on all of the provided invitations
+     * Add a group of tags to a group of Invitations
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4092,9 +4245,9 @@ class InvitationsApi
     /**
      * Operation putInvitationTagsBatchAsync
      *
-     * Sets all of the provided tags on all of the provided invitations
+     * Add a group of tags to a group of Invitations
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4112,9 +4265,9 @@ class InvitationsApi
     /**
      * Operation putInvitationTagsBatchAsyncWithHttpInfo
      *
-     * Sets all of the provided tags on all of the provided invitations
+     * Add a group of tags to a group of Invitations
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4150,7 +4303,7 @@ class InvitationsApi
     /**
      * Create request for operation 'putInvitationTagsBatch'
      *
-     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Object representing an array of ids to apply an array of tags to. (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\BatchTagsSchema $batch Array of ids, and array of tags for bulk tag operations (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4194,7 +4347,7 @@ class InvitationsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -4222,7 +4375,7 @@ class InvitationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -4246,7 +4399,7 @@ class InvitationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4258,10 +4411,10 @@ class InvitationsApi
     /**
      * Operation updatePrivateInvitation
      *
-     * Update attributes of this invitation.
+     * Update information about a Private Invitation
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \RusticiSoftware\Cloud\V2\Model\PrivateInvitationSchema $invitation_update_schema A PrivateInvitationSchema with values to update.  This can be a sparse schema only containing the values to be updated.  Any value not allowed for update will be ignored. (required)
+     * @param  string $invitation_id invitation_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\PrivateInvitationUpdateSchema $invitation_update_schema Object with values to be updated.  Any value not specified above will be ignored. (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4276,10 +4429,10 @@ class InvitationsApi
     /**
      * Operation updatePrivateInvitationWithHttpInfo
      *
-     * Update attributes of this invitation.
+     * Update information about a Private Invitation
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \RusticiSoftware\Cloud\V2\Model\PrivateInvitationSchema $invitation_update_schema A PrivateInvitationSchema with values to update.  This can be a sparse schema only containing the values to be updated.  Any value not allowed for update will be ignored. (required)
+     * @param  string $invitation_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\PrivateInvitationUpdateSchema $invitation_update_schema Object with values to be updated.  Any value not specified above will be ignored. (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4368,10 +4521,10 @@ class InvitationsApi
     /**
      * Operation updatePrivateInvitationAsync
      *
-     * Update attributes of this invitation.
+     * Update information about a Private Invitation
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \RusticiSoftware\Cloud\V2\Model\PrivateInvitationSchema $invitation_update_schema A PrivateInvitationSchema with values to update.  This can be a sparse schema only containing the values to be updated.  Any value not allowed for update will be ignored. (required)
+     * @param  string $invitation_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\PrivateInvitationUpdateSchema $invitation_update_schema Object with values to be updated.  Any value not specified above will be ignored. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4389,10 +4542,10 @@ class InvitationsApi
     /**
      * Operation updatePrivateInvitationAsyncWithHttpInfo
      *
-     * Update attributes of this invitation.
+     * Update information about a Private Invitation
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \RusticiSoftware\Cloud\V2\Model\PrivateInvitationSchema $invitation_update_schema A PrivateInvitationSchema with values to update.  This can be a sparse schema only containing the values to be updated.  Any value not allowed for update will be ignored. (required)
+     * @param  string $invitation_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\PrivateInvitationUpdateSchema $invitation_update_schema Object with values to be updated.  Any value not specified above will be ignored. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4442,8 +4595,8 @@ class InvitationsApi
     /**
      * Create request for operation 'updatePrivateInvitation'
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \RusticiSoftware\Cloud\V2\Model\PrivateInvitationSchema $invitation_update_schema A PrivateInvitationSchema with values to update.  This can be a sparse schema only containing the values to be updated.  Any value not allowed for update will be ignored. (required)
+     * @param  string $invitation_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\PrivateInvitationUpdateSchema $invitation_update_schema Object with values to be updated.  Any value not specified above will be ignored. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4501,7 +4654,7 @@ class InvitationsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -4529,7 +4682,7 @@ class InvitationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -4553,7 +4706,7 @@ class InvitationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4565,10 +4718,10 @@ class InvitationsApi
     /**
      * Operation updatePublicInvitation
      *
-     * Update attributes of this invitation.
+     * Update information about a Public Invitation
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \RusticiSoftware\Cloud\V2\Model\PublicInvitationSchema $invitation_update_schema A PublicInvitationSchema with values to update.  This can be a sparse schema only containing the values to be updated.  Any value not allowed for update will be ignored. (required)
+     * @param  string $invitation_id invitation_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\PublicInvitationUpdateSchema $invitation_update_schema Object with values to be updated.  Any value not specified above will be ignored. (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4583,10 +4736,10 @@ class InvitationsApi
     /**
      * Operation updatePublicInvitationWithHttpInfo
      *
-     * Update attributes of this invitation.
+     * Update information about a Public Invitation
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \RusticiSoftware\Cloud\V2\Model\PublicInvitationSchema $invitation_update_schema A PublicInvitationSchema with values to update.  This can be a sparse schema only containing the values to be updated.  Any value not allowed for update will be ignored. (required)
+     * @param  string $invitation_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\PublicInvitationUpdateSchema $invitation_update_schema Object with values to be updated.  Any value not specified above will be ignored. (required)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4675,10 +4828,10 @@ class InvitationsApi
     /**
      * Operation updatePublicInvitationAsync
      *
-     * Update attributes of this invitation.
+     * Update information about a Public Invitation
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \RusticiSoftware\Cloud\V2\Model\PublicInvitationSchema $invitation_update_schema A PublicInvitationSchema with values to update.  This can be a sparse schema only containing the values to be updated.  Any value not allowed for update will be ignored. (required)
+     * @param  string $invitation_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\PublicInvitationUpdateSchema $invitation_update_schema Object with values to be updated.  Any value not specified above will be ignored. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4696,10 +4849,10 @@ class InvitationsApi
     /**
      * Operation updatePublicInvitationAsyncWithHttpInfo
      *
-     * Update attributes of this invitation.
+     * Update information about a Public Invitation
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \RusticiSoftware\Cloud\V2\Model\PublicInvitationSchema $invitation_update_schema A PublicInvitationSchema with values to update.  This can be a sparse schema only containing the values to be updated.  Any value not allowed for update will be ignored. (required)
+     * @param  string $invitation_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\PublicInvitationUpdateSchema $invitation_update_schema Object with values to be updated.  Any value not specified above will be ignored. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4749,8 +4902,8 @@ class InvitationsApi
     /**
      * Create request for operation 'updatePublicInvitation'
      *
-     * @param  string $invitation_id invitation id (required)
-     * @param  \RusticiSoftware\Cloud\V2\Model\PublicInvitationSchema $invitation_update_schema A PublicInvitationSchema with values to update.  This can be a sparse schema only containing the values to be updated.  Any value not allowed for update will be ignored. (required)
+     * @param  string $invitation_id (required)
+     * @param  \RusticiSoftware\Cloud\V2\Model\PublicInvitationUpdateSchema $invitation_update_schema Object with values to be updated.  Any value not specified above will be ignored. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4808,7 +4961,7 @@ class InvitationsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
-            
+
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
@@ -4836,7 +4989,7 @@ class InvitationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -4860,7 +5013,7 @@ class InvitationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

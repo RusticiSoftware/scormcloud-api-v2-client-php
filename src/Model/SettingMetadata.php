@@ -2,7 +2,7 @@
 /**
  * SettingMetadata
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -248,14 +248,6 @@ class SettingMetadata implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getLearningStandardVariantAllowableValues();
-        if (!is_null($this->container['learning_standard_variant']) && !in_array($this->container['learning_standard_variant'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'learning_standard_variant', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -410,15 +402,6 @@ class SettingMetadata implements ModelInterface, ArrayAccess
      */
     public function setLearningStandardVariant($learning_standard_variant)
     {
-        $allowedValues = $this->getLearningStandardVariantAllowableValues();
-        if (!is_null($learning_standard_variant) && !in_array($learning_standard_variant, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'learning_standard_variant', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['learning_standard_variant'] = $learning_standard_variant;
 
         return $this;

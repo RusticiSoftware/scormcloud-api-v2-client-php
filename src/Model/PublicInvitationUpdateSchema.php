@@ -1,8 +1,8 @@
 <?php
 /**
- * ConnectorContentSearchContextSchema
+ * PublicInvitationUpdateSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -33,15 +33,14 @@ use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
 
 /**
- * ConnectorContentSearchContextSchema Class Doc Comment
+ * PublicInvitationUpdateSchema Class Doc Comment
  *
  * @category Class
- * @description Additional information about the sort of result desired, or who the audience of the results will be. May only impact the results for some connectors.
  * @package  RusticiSoftware\Cloud\V2
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ConnectorContentSearchContextSchema implements ModelInterface, ArrayAccess
+class PublicInvitationUpdateSchema implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class ConnectorContentSearchContextSchema implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ConnectorContentSearchContextSchema';
+    protected static $swaggerModelName = 'PublicInvitationUpdateSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +57,11 @@ class ConnectorContentSearchContextSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'language' => 'string'
+        'allow_launch' => 'bool',
+        'allow_new_registrations' => 'bool',
+        'post_back' => '\RusticiSoftware\Cloud\V2\Model\PostBackSchema',
+        'expiration_date' => '\DateTime',
+        'registration_cap' => 'int'
     ];
 
     /**
@@ -67,7 +70,11 @@ class ConnectorContentSearchContextSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'language' => null
+        'allow_launch' => null,
+        'allow_new_registrations' => null,
+        'post_back' => null,
+        'expiration_date' => 'date-time',
+        'registration_cap' => 'int32'
     ];
 
     /**
@@ -97,7 +104,11 @@ class ConnectorContentSearchContextSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'language' => 'language'
+        'allow_launch' => 'allowLaunch',
+        'allow_new_registrations' => 'allowNewRegistrations',
+        'post_back' => 'postBack',
+        'expiration_date' => 'expirationDate',
+        'registration_cap' => 'registrationCap'
     ];
 
     /**
@@ -106,7 +117,11 @@ class ConnectorContentSearchContextSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'language' => 'setLanguage'
+        'allow_launch' => 'setAllowLaunch',
+        'allow_new_registrations' => 'setAllowNewRegistrations',
+        'post_back' => 'setPostBack',
+        'expiration_date' => 'setExpirationDate',
+        'registration_cap' => 'setRegistrationCap'
     ];
 
     /**
@@ -115,7 +130,11 @@ class ConnectorContentSearchContextSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'language' => 'getLanguage'
+        'allow_launch' => 'getAllowLaunch',
+        'allow_new_registrations' => 'getAllowNewRegistrations',
+        'post_back' => 'getPostBack',
+        'expiration_date' => 'getExpirationDate',
+        'registration_cap' => 'getRegistrationCap'
     ];
 
     /**
@@ -178,7 +197,11 @@ class ConnectorContentSearchContextSchema implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['language'] = isset($data['language']) ? $data['language'] : null;
+        $this->container['allow_launch'] = isset($data['allow_launch']) ? $data['allow_launch'] : null;
+        $this->container['allow_new_registrations'] = isset($data['allow_new_registrations']) ? $data['allow_new_registrations'] : null;
+        $this->container['post_back'] = isset($data['post_back']) ? $data['post_back'] : null;
+        $this->container['expiration_date'] = isset($data['expiration_date']) ? $data['expiration_date'] : null;
+        $this->container['registration_cap'] = isset($data['registration_cap']) ? $data['registration_cap'] : 0;
     }
 
     /**
@@ -206,25 +229,121 @@ class ConnectorContentSearchContextSchema implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets language
+     * Gets allow_launch
      *
-     * @return string
+     * @return bool
      */
-    public function getLanguage()
+    public function getAllowLaunch()
     {
-        return $this->container['language'];
+        return $this->container['allow_launch'];
     }
 
     /**
-     * Sets language
+     * Sets allow_launch
      *
-     * @param string $language language
+     * @param bool $allow_launch If true, then new registrations can be created for this invitation.
      *
      * @return $this
      */
-    public function setLanguage($language)
+    public function setAllowLaunch($allow_launch)
     {
-        $this->container['language'] = $language;
+        $this->container['allow_launch'] = $allow_launch;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_new_registrations
+     *
+     * @return bool
+     */
+    public function getAllowNewRegistrations()
+    {
+        return $this->container['allow_new_registrations'];
+    }
+
+    /**
+     * Sets allow_new_registrations
+     *
+     * @param bool $allow_new_registrations If true, then new registrations can be created for this invitation.
+     *
+     * @return $this
+     */
+    public function setAllowNewRegistrations($allow_new_registrations)
+    {
+        $this->container['allow_new_registrations'] = $allow_new_registrations;
+
+        return $this;
+    }
+
+    /**
+     * Gets post_back
+     *
+     * @return \RusticiSoftware\Cloud\V2\Model\PostBackSchema
+     */
+    public function getPostBack()
+    {
+        return $this->container['post_back'];
+    }
+
+    /**
+     * Sets post_back
+     *
+     * @param \RusticiSoftware\Cloud\V2\Model\PostBackSchema $post_back Specifies a URL for which to post activity and status data in real time as the course is completed
+     *
+     * @return $this
+     */
+    public function setPostBack($post_back)
+    {
+        $this->container['post_back'] = $post_back;
+
+        return $this;
+    }
+
+    /**
+     * Gets expiration_date
+     *
+     * @return \DateTime
+     */
+    public function getExpirationDate()
+    {
+        return $this->container['expiration_date'];
+    }
+
+    /**
+     * Sets expiration_date
+     *
+     * @param \DateTime $expiration_date The ISO 8601 TimeStamp (defaults to UTC) after which this invitation will expire and can no longer be launched. An empty value will represent no expiration date.
+     *
+     * @return $this
+     */
+    public function setExpirationDate($expiration_date)
+    {
+        $this->container['expiration_date'] = $expiration_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets registration_cap
+     *
+     * @return int
+     */
+    public function getRegistrationCap()
+    {
+        return $this->container['registration_cap'];
+    }
+
+    /**
+     * Sets registration_cap
+     *
+     * @param int $registration_cap Integer value that limits the amount of registrations a public invitation can generate.
+     *
+     * @return $this
+     */
+    public function setRegistrationCap($registration_cap)
+    {
+        $this->container['registration_cap'] = $registration_cap;
 
         return $this;
     }

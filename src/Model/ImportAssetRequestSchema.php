@@ -1,8 +1,8 @@
 <?php
 /**
- * RefreshConnectorResultSchema
+ * ImportAssetRequestSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -33,14 +33,15 @@ use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
 
 /**
- * RefreshConnectorResultSchema Class Doc Comment
+ * ImportAssetRequestSchema Class Doc Comment
  *
  * @category Class
+ * @description Request schema to import a course asset file by fetching it from a url
  * @package  RusticiSoftware\Cloud\V2
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class RefreshConnectorResultSchema implements ModelInterface, ArrayAccess
+class ImportAssetRequestSchema implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class RefreshConnectorResultSchema implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'RefreshConnectorResultSchema';
+    protected static $swaggerModelName = 'ImportAssetRequestSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +58,8 @@ class RefreshConnectorResultSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'connector_id' => 'string',
-        'connector_plugin_name' => 'string',
-        'refresh_status' => 'string',
-        'updated_items' => 'int',
-        'message' => 'string'
+        'fetch_url' => 'string',
+        'destination' => 'string'
     ];
 
     /**
@@ -70,11 +68,8 @@ class RefreshConnectorResultSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'connector_id' => null,
-        'connector_plugin_name' => null,
-        'refresh_status' => null,
-        'updated_items' => null,
-        'message' => null
+        'fetch_url' => null,
+        'destination' => null
     ];
 
     /**
@@ -104,11 +99,8 @@ class RefreshConnectorResultSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'connector_id' => 'connectorId',
-        'connector_plugin_name' => 'connectorPluginName',
-        'refresh_status' => 'refreshStatus',
-        'updated_items' => 'updatedItems',
-        'message' => 'message'
+        'fetch_url' => 'fetchUrl',
+        'destination' => 'destination'
     ];
 
     /**
@@ -117,11 +109,8 @@ class RefreshConnectorResultSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'connector_id' => 'setConnectorId',
-        'connector_plugin_name' => 'setConnectorPluginName',
-        'refresh_status' => 'setRefreshStatus',
-        'updated_items' => 'setUpdatedItems',
-        'message' => 'setMessage'
+        'fetch_url' => 'setFetchUrl',
+        'destination' => 'setDestination'
     ];
 
     /**
@@ -130,11 +119,8 @@ class RefreshConnectorResultSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'connector_id' => 'getConnectorId',
-        'connector_plugin_name' => 'getConnectorPluginName',
-        'refresh_status' => 'getRefreshStatus',
-        'updated_items' => 'getUpdatedItems',
-        'message' => 'getMessage'
+        'fetch_url' => 'getFetchUrl',
+        'destination' => 'getDestination'
     ];
 
     /**
@@ -178,27 +164,8 @@ class RefreshConnectorResultSchema implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const REFRESH_STATUS_SUBMITTED = 'SUBMITTED';
-    const REFRESH_STATUS_RUNNING = 'RUNNING';
-    const REFRESH_STATUS_COMPLETE = 'COMPLETE';
-    const REFRESH_STATUS_ERROR = 'ERROR';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getRefreshStatusAllowableValues()
-    {
-        return [
-            self::REFRESH_STATUS_SUBMITTED,
-            self::REFRESH_STATUS_RUNNING,
-            self::REFRESH_STATUS_COMPLETE,
-            self::REFRESH_STATUS_ERROR,
-        ];
-    }
     
 
     /**
@@ -216,11 +183,8 @@ class RefreshConnectorResultSchema implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['connector_id'] = isset($data['connector_id']) ? $data['connector_id'] : null;
-        $this->container['connector_plugin_name'] = isset($data['connector_plugin_name']) ? $data['connector_plugin_name'] : null;
-        $this->container['refresh_status'] = isset($data['refresh_status']) ? $data['refresh_status'] : null;
-        $this->container['updated_items'] = isset($data['updated_items']) ? $data['updated_items'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['fetch_url'] = isset($data['fetch_url']) ? $data['fetch_url'] : null;
+        $this->container['destination'] = isset($data['destination']) ? $data['destination'] : null;
     }
 
     /**
@@ -232,14 +196,12 @@ class RefreshConnectorResultSchema implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getRefreshStatusAllowableValues();
-        if (!is_null($this->container['refresh_status']) && !in_array($this->container['refresh_status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'refresh_status', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['fetch_url'] === null) {
+            $invalidProperties[] = "'fetch_url' can't be null";
         }
-
+        if ($this->container['destination'] === null) {
+            $invalidProperties[] = "'destination' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -256,130 +218,49 @@ class RefreshConnectorResultSchema implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets connector_id
+     * Gets fetch_url
      *
      * @return string
      */
-    public function getConnectorId()
+    public function getFetchUrl()
     {
-        return $this->container['connector_id'];
+        return $this->container['fetch_url'];
     }
 
     /**
-     * Sets connector_id
+     * Sets fetch_url
      *
-     * @param string $connector_id connector_id
+     * @param string $fetch_url URL path to the asset file to import.
      *
      * @return $this
      */
-    public function setConnectorId($connector_id)
+    public function setFetchUrl($fetch_url)
     {
-        $this->container['connector_id'] = $connector_id;
+        $this->container['fetch_url'] = $fetch_url;
 
         return $this;
     }
 
     /**
-     * Gets connector_plugin_name
+     * Gets destination
      *
      * @return string
      */
-    public function getConnectorPluginName()
+    public function getDestination()
     {
-        return $this->container['connector_plugin_name'];
+        return $this->container['destination'];
     }
 
     /**
-     * Sets connector_plugin_name
+     * Sets destination
      *
-     * @param string $connector_plugin_name connector_plugin_name
+     * @param string $destination Relative path from the course's base directory where the asset file will be imported. `/Etiquette/Course.html` will upload the file into the Etiquette folder of the course.
      *
      * @return $this
      */
-    public function setConnectorPluginName($connector_plugin_name)
+    public function setDestination($destination)
     {
-        $this->container['connector_plugin_name'] = $connector_plugin_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets refresh_status
-     *
-     * @return string
-     */
-    public function getRefreshStatus()
-    {
-        return $this->container['refresh_status'];
-    }
-
-    /**
-     * Sets refresh_status
-     *
-     * @param string $refresh_status refresh_status
-     *
-     * @return $this
-     */
-    public function setRefreshStatus($refresh_status)
-    {
-        $allowedValues = $this->getRefreshStatusAllowableValues();
-        if (!is_null($refresh_status) && !in_array($refresh_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'refresh_status', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['refresh_status'] = $refresh_status;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_items
-     *
-     * @return int
-     */
-    public function getUpdatedItems()
-    {
-        return $this->container['updated_items'];
-    }
-
-    /**
-     * Sets updated_items
-     *
-     * @param int $updated_items updated_items
-     *
-     * @return $this
-     */
-    public function setUpdatedItems($updated_items)
-    {
-        $this->container['updated_items'] = $updated_items;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string $message message
-     *
-     * @return $this
-     */
-    public function setMessage($message)
-    {
-        $this->container['message'] = $message;
+        $this->container['destination'] = $destination;
 
         return $this;
     }

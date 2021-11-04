@@ -2,7 +2,7 @@
 /**
  * XapiCredentialAuthTypeSchema
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -204,14 +204,6 @@ class XapiCredentialAuthTypeSchema implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getXapiCredentialAuthTypeAllowableValues();
-        if (!is_null($this->container['xapi_credential_auth_type']) && !in_array($this->container['xapi_credential_auth_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'xapi_credential_auth_type', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -246,15 +238,6 @@ class XapiCredentialAuthTypeSchema implements ModelInterface, ArrayAccess
      */
     public function setXapiCredentialAuthType($xapi_credential_auth_type)
     {
-        $allowedValues = $this->getXapiCredentialAuthTypeAllowableValues();
-        if (!is_null($xapi_credential_auth_type) && !in_array($xapi_credential_auth_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'xapi_credential_auth_type', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['xapi_credential_auth_type'] = $xapi_credential_auth_type;
 
         return $this;

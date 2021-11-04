@@ -2,7 +2,7 @@
 /**
  * SettingItem
  *
- * PHP version 5
+ * PHP version 7
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -238,14 +238,6 @@ class SettingItem implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getEffectiveValueSourceAllowableValues();
-        if (!is_null($this->container['effective_value_source']) && !in_array($this->container['effective_value_source'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'effective_value_source', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -328,15 +320,6 @@ class SettingItem implements ModelInterface, ArrayAccess
      */
     public function setEffectiveValueSource($effective_value_source)
     {
-        $allowedValues = $this->getEffectiveValueSourceAllowableValues();
-        if (!is_null($effective_value_source) && !in_array($effective_value_source, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'effective_value_source', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['effective_value_source'] = $effective_value_source;
 
         return $this;
