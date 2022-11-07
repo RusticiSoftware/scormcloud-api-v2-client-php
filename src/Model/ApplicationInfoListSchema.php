@@ -1,6 +1,6 @@
 <?php
 /**
- * DispatchLtiInfoSchema
+ * ApplicationInfoListSchema
  *
  * PHP version 7
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
 
 /**
- * DispatchLtiInfoSchema Class Doc Comment
+ * ApplicationInfoListSchema Class Doc Comment
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class DispatchLtiInfoSchema implements ModelInterface, ArrayAccess
+class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class DispatchLtiInfoSchema implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'DispatchLtiInfoSchema';
+    protected static $swaggerModelName = 'ApplicationInfoListSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,8 @@ class DispatchLtiInfoSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'url' => 'string',
-        'consumer_key' => 'string',
-        'shared_secret' => 'string'
+        'applications' => '\RusticiSoftware\Cloud\V2\Model\ApplicationInfoSchema[]',
+        'more' => 'string'
     ];
 
     /**
@@ -67,9 +66,8 @@ class DispatchLtiInfoSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'url' => null,
-        'consumer_key' => null,
-        'shared_secret' => null
+        'applications' => null,
+        'more' => null
     ];
 
     /**
@@ -99,9 +97,8 @@ class DispatchLtiInfoSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'url' => 'url',
-        'consumer_key' => 'consumerKey',
-        'shared_secret' => 'sharedSecret'
+        'applications' => 'applications',
+        'more' => 'more'
     ];
 
     /**
@@ -110,9 +107,8 @@ class DispatchLtiInfoSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'url' => 'setUrl',
-        'consumer_key' => 'setConsumerKey',
-        'shared_secret' => 'setSharedSecret'
+        'applications' => 'setApplications',
+        'more' => 'setMore'
     ];
 
     /**
@@ -121,9 +117,8 @@ class DispatchLtiInfoSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'url' => 'getUrl',
-        'consumer_key' => 'getConsumerKey',
-        'shared_secret' => 'getSharedSecret'
+        'applications' => 'getApplications',
+        'more' => 'getMore'
     ];
 
     /**
@@ -186,9 +181,8 @@ class DispatchLtiInfoSchema implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
-        $this->container['consumer_key'] = isset($data['consumer_key']) ? $data['consumer_key'] : null;
-        $this->container['shared_secret'] = isset($data['shared_secret']) ? $data['shared_secret'] : null;
+        $this->container['applications'] = isset($data['applications']) ? $data['applications'] : null;
+        $this->container['more'] = isset($data['more']) ? $data['more'] : null;
     }
 
     /**
@@ -200,15 +194,6 @@ class DispatchLtiInfoSchema implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
-        }
-        if ($this->container['consumer_key'] === null) {
-            $invalidProperties[] = "'consumer_key' can't be null";
-        }
-        if ($this->container['shared_secret'] === null) {
-            $invalidProperties[] = "'shared_secret' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -225,73 +210,49 @@ class DispatchLtiInfoSchema implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets url
+     * Gets applications
      *
-     * @return string
+     * @return \RusticiSoftware\Cloud\V2\Model\ApplicationInfoSchema[]
      */
-    public function getUrl()
+    public function getApplications()
     {
-        return $this->container['url'];
+        return $this->container['applications'];
     }
 
     /**
-     * Sets url
+     * Sets applications
      *
-     * @param string $url The LTI launch URL for this dispatch
+     * @param \RusticiSoftware\Cloud\V2\Model\ApplicationInfoSchema[] $applications applications
      *
      * @return $this
      */
-    public function setUrl($url)
+    public function setApplications($applications)
     {
-        $this->container['url'] = $url;
+        $this->container['applications'] = $applications;
 
         return $this;
     }
 
     /**
-     * Gets consumer_key
+     * Gets more
      *
      * @return string
      */
-    public function getConsumerKey()
+    public function getMore()
     {
-        return $this->container['consumer_key'];
+        return $this->container['more'];
     }
 
     /**
-     * Sets consumer_key
+     * Sets more
      *
-     * @param string $consumer_key The OAuth consumer key that identifies the tool consumer for this dispatch.
+     * @param string $more Token for getting the next set of results, from the prior set of results.
      *
      * @return $this
      */
-    public function setConsumerKey($consumer_key)
+    public function setMore($more)
     {
-        $this->container['consumer_key'] = $consumer_key;
-
-        return $this;
-    }
-
-    /**
-     * Gets shared_secret
-     *
-     * @return string
-     */
-    public function getSharedSecret()
-    {
-        return $this->container['shared_secret'];
-    }
-
-    /**
-     * Sets shared_secret
-     *
-     * @param string $shared_secret The OAuth secret to be used for LTI authentication for this dispatch.
-     *
-     * @return $this
-     */
-    public function setSharedSecret($shared_secret)
-    {
-        $this->container['shared_secret'] = $shared_secret;
+        $this->container['more'] = $more;
 
         return $this;
     }
