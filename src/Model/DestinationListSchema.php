@@ -56,8 +56,7 @@ class DestinationListSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'destinations' => '\RusticiSoftware\Cloud\V2\Model\DestinationIdSchema[]',
-        'more' => 'string'
+        'destinations' => '\RusticiSoftware\Cloud\V2\Model\DestinationIdSchema[]'
     ];
 
     /**
@@ -66,8 +65,7 @@ class DestinationListSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'destinations' => null,
-        'more' => null
+        'destinations' => null
     ];
 
     /**
@@ -97,8 +95,7 @@ class DestinationListSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'destinations' => 'destinations',
-        'more' => 'more'
+        'destinations' => 'destinations'
     ];
 
     /**
@@ -107,8 +104,7 @@ class DestinationListSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'destinations' => 'setDestinations',
-        'more' => 'setMore'
+        'destinations' => 'setDestinations'
     ];
 
     /**
@@ -117,8 +113,7 @@ class DestinationListSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'destinations' => 'getDestinations',
-        'more' => 'getMore'
+        'destinations' => 'getDestinations'
     ];
 
     /**
@@ -182,7 +177,6 @@ class DestinationListSchema implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['destinations'] = isset($data['destinations']) ? $data['destinations'] : null;
-        $this->container['more'] = isset($data['more']) ? $data['more'] : null;
     }
 
     /**
@@ -232,38 +226,14 @@ class DestinationListSchema implements ModelInterface, ArrayAccess
 
         return $this;
     }
-
-    /**
-     * Gets more
-     *
-     * @return string
-     */
-    public function getMore()
-    {
-        return $this->container['more'];
-    }
-
-    /**
-     * Sets more
-     *
-     * @param string $more Token for getting the next set of results, from the prior set of results.
-     *
-     * @return $this
-     */
-    public function setMore($more)
-    {
-        $this->container['more'] = $more;
-
-        return $this;
-    }
     /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -275,7 +245,7 @@ class DestinationListSchema implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -288,7 +258,7 @@ class DestinationListSchema implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -304,7 +274,7 @@ class DestinationListSchema implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

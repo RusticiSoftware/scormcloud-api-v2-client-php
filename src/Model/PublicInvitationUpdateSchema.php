@@ -240,7 +240,7 @@ class PublicInvitationUpdateSchema implements ModelInterface, ArrayAccess
     /**
      * Sets allow_launch
      *
-     * @param bool $allow_launch If true, then new registrations can be created for this invitation.
+     * @param bool $allow_launch Determines if learners are allowed to launch the invitation. If false, the invitation is disabled and no new or existing learners are allowed to launch it.
      *
      * @return $this
      */
@@ -264,7 +264,7 @@ class PublicInvitationUpdateSchema implements ModelInterface, ArrayAccess
     /**
      * Sets allow_new_registrations
      *
-     * @param bool $allow_new_registrations If true, then new registrations can be created for this invitation.
+     * @param bool $allow_new_registrations Determines if new registrations can be created for this public invitation. If false, no new registrations can be created for the invitation, so only learners with existing registrations can access the invitation.
      *
      * @return $this
      */
@@ -336,7 +336,7 @@ class PublicInvitationUpdateSchema implements ModelInterface, ArrayAccess
     /**
      * Sets registration_cap
      *
-     * @param int $registration_cap Integer value that limits the amount of registrations a public invitation can generate.
+     * @param int $registration_cap Integer value that represents the maximum number of registrations that can be created for a public invitation. Setting this value to '0' allows an unlimited amount of registrations to be created for the invitation.
      *
      * @return $this
      */
@@ -351,9 +351,9 @@ class PublicInvitationUpdateSchema implements ModelInterface, ArrayAccess
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -365,7 +365,7 @@ class PublicInvitationUpdateSchema implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -378,7 +378,7 @@ class PublicInvitationUpdateSchema implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -394,7 +394,7 @@ class PublicInvitationUpdateSchema implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

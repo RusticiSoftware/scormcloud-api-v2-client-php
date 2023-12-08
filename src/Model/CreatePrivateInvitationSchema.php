@@ -61,7 +61,8 @@ class CreatePrivateInvitationSchema implements ModelInterface, ArrayAccess
         'invitation_email' => '\RusticiSoftware\Cloud\V2\Model\InvitationEmailSchema',
         'post_back' => '\RusticiSoftware\Cloud\V2\Model\PostBackSchema',
         'expiration_date' => '\DateTime',
-        'tags' => 'string[]'
+        'tags' => 'string[]',
+        'duplicate_registration_option' => 'string'
     ];
 
     /**
@@ -75,7 +76,8 @@ class CreatePrivateInvitationSchema implements ModelInterface, ArrayAccess
         'invitation_email' => null,
         'post_back' => null,
         'expiration_date' => 'date-time',
-        'tags' => null
+        'tags' => null,
+        'duplicate_registration_option' => null
     ];
 
     /**
@@ -110,7 +112,8 @@ class CreatePrivateInvitationSchema implements ModelInterface, ArrayAccess
         'invitation_email' => 'invitationEmail',
         'post_back' => 'postBack',
         'expiration_date' => 'expirationDate',
-        'tags' => 'tags'
+        'tags' => 'tags',
+        'duplicate_registration_option' => 'duplicateRegistrationOption'
     ];
 
     /**
@@ -124,7 +127,8 @@ class CreatePrivateInvitationSchema implements ModelInterface, ArrayAccess
         'invitation_email' => 'setInvitationEmail',
         'post_back' => 'setPostBack',
         'expiration_date' => 'setExpirationDate',
-        'tags' => 'setTags'
+        'tags' => 'setTags',
+        'duplicate_registration_option' => 'setDuplicateRegistrationOption'
     ];
 
     /**
@@ -138,7 +142,8 @@ class CreatePrivateInvitationSchema implements ModelInterface, ArrayAccess
         'invitation_email' => 'getInvitationEmail',
         'post_back' => 'getPostBack',
         'expiration_date' => 'getExpirationDate',
-        'tags' => 'getTags'
+        'tags' => 'getTags',
+        'duplicate_registration_option' => 'getDuplicateRegistrationOption'
     ];
 
     /**
@@ -182,8 +187,27 @@ class CreatePrivateInvitationSchema implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
+    const DUPLICATE_REGISTRATION_OPTION_FAIL = 'FAIL';
+    const DUPLICATE_REGISTRATION_OPTION_INSTANCE_EXISTING = 'INSTANCE_EXISTING';
+    const DUPLICATE_REGISTRATION_OPTION_SEND_EXISTING = 'SEND_EXISTING';
+    const DUPLICATE_REGISTRATION_OPTION_CREATE_NEW = 'CREATE_NEW';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getDuplicateRegistrationOptionAllowableValues()
+    {
+        return [
+            self::DUPLICATE_REGISTRATION_OPTION_FAIL,
+            self::DUPLICATE_REGISTRATION_OPTION_INSTANCE_EXISTING,
+            self::DUPLICATE_REGISTRATION_OPTION_SEND_EXISTING,
+            self::DUPLICATE_REGISTRATION_OPTION_CREATE_NEW,
+        ];
+    }
     
 
     /**
@@ -207,6 +231,7 @@ class CreatePrivateInvitationSchema implements ModelInterface, ArrayAccess
         $this->container['post_back'] = isset($data['post_back']) ? $data['post_back'] : null;
         $this->container['expiration_date'] = isset($data['expiration_date']) ? $data['expiration_date'] : null;
         $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
+        $this->container['duplicate_registration_option'] = isset($data['duplicate_registration_option']) ? $data['duplicate_registration_option'] : 'SEND_EXISTING';
     }
 
     /**
@@ -385,14 +410,38 @@ class CreatePrivateInvitationSchema implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
+    /**
+     * Gets duplicate_registration_option
+     *
+     * @return string
+     */
+    public function getDuplicateRegistrationOption()
+    {
+        return $this->container['duplicate_registration_option'];
+    }
+
+    /**
+     * Sets duplicate_registration_option
+     *
+     * @param string $duplicate_registration_option Represents the possible values that determine how existing registrations will be handled when an invitation is sent to an email address that has already received an invitation:   - `FAIL`: Do not create a new invitation, do not send an email, and do nothing with registrations   - `INSTANCE_EXISTING`: Create a new instance of the existing registration and send it with the invitation   - `SEND_EXISTING`: Re-send the existing registration with the new invitation   - `CREATE_NEW`: Create a new registration for the invitation
+     *
+     * @return $this
+     */
+    public function setDuplicateRegistrationOption($duplicate_registration_option)
+    {
+        $this->container['duplicate_registration_option'] = $duplicate_registration_option;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -404,7 +453,7 @@ class CreatePrivateInvitationSchema implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -417,7 +466,7 @@ class CreatePrivateInvitationSchema implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -433,7 +482,7 @@ class CreatePrivateInvitationSchema implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

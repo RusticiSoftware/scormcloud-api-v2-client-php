@@ -1,6 +1,6 @@
 <?php
 /**
- * CredentialCreatedSchema
+ * DestinationInfoListSchema
  *
  * PHP version 7
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
 
 /**
- * CredentialCreatedSchema Class Doc Comment
+ * DestinationInfoListSchema Class Doc Comment
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class CredentialCreatedSchema implements ModelInterface, ArrayAccess
+class DestinationInfoListSchema implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class CredentialCreatedSchema implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'CredentialCreatedSchema';
+    protected static $swaggerModelName = 'DestinationInfoListSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,11 +56,8 @@ class CredentialCreatedSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'credential' => 'string',
-        'pens_credential' => 'string',
-        'status' => 'string'
+        'destinations' => '\RusticiSoftware\Cloud\V2\Model\DestinationInfoIdSchema[]',
+        'more' => 'string'
     ];
 
     /**
@@ -69,11 +66,8 @@ class CredentialCreatedSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
-        'name' => null,
-        'credential' => null,
-        'pens_credential' => null,
-        'status' => null
+        'destinations' => null,
+        'more' => null
     ];
 
     /**
@@ -103,11 +97,8 @@ class CredentialCreatedSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'credential' => 'credential',
-        'pens_credential' => 'pensCredential',
-        'status' => 'status'
+        'destinations' => 'destinations',
+        'more' => 'more'
     ];
 
     /**
@@ -116,11 +107,8 @@ class CredentialCreatedSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'credential' => 'setCredential',
-        'pens_credential' => 'setPensCredential',
-        'status' => 'setStatus'
+        'destinations' => 'setDestinations',
+        'more' => 'setMore'
     ];
 
     /**
@@ -129,11 +117,8 @@ class CredentialCreatedSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'credential' => 'getCredential',
-        'pens_credential' => 'getPensCredential',
-        'status' => 'getStatus'
+        'destinations' => 'getDestinations',
+        'more' => 'getMore'
     ];
 
     /**
@@ -196,11 +181,8 @@ class CredentialCreatedSchema implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['credential'] = isset($data['credential']) ? $data['credential'] : null;
-        $this->container['pens_credential'] = isset($data['pens_credential']) ? $data['pens_credential'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['destinations'] = isset($data['destinations']) ? $data['destinations'] : null;
+        $this->container['more'] = isset($data['more']) ? $data['more'] : null;
     }
 
     /**
@@ -228,121 +210,49 @@ class CredentialCreatedSchema implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets destinations
      *
-     * @return string
+     * @return \RusticiSoftware\Cloud\V2\Model\DestinationInfoIdSchema[]
      */
-    public function getId()
+    public function getDestinations()
     {
-        return $this->container['id'];
+        return $this->container['destinations'];
     }
 
     /**
-     * Sets id
+     * Sets destinations
      *
-     * @param string $id id for this credential
+     * @param \RusticiSoftware\Cloud\V2\Model\DestinationInfoIdSchema[] $destinations 
      *
      * @return $this
      */
-    public function setId($id)
+    public function setDestinations($destinations)
     {
-        $this->container['id'] = $id;
+        $this->container['destinations'] = $destinations;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets more
      *
      * @return string
      */
-    public function getName()
+    public function getMore()
     {
-        return $this->container['name'];
+        return $this->container['more'];
     }
 
     /**
-     * Sets name
+     * Sets more
      *
-     * @param string $name name for this credential
+     * @param string $more Token for getting the next set of results, from the prior set of results.
      *
      * @return $this
      */
-    public function setName($name)
+    public function setMore($more)
     {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets credential
-     *
-     * @return string
-     */
-    public function getCredential()
-    {
-        return $this->container['credential'];
-    }
-
-    /**
-     * Sets credential
-     *
-     * @param string $credential The newly created API credential
-     *
-     * @return $this
-     */
-    public function setCredential($credential)
-    {
-        $this->container['credential'] = $credential;
-
-        return $this;
-    }
-
-    /**
-     * Gets pens_credential
-     *
-     * @return string
-     */
-    public function getPensCredential()
-    {
-        return $this->container['pens_credential'];
-    }
-
-    /**
-     * Sets pens_credential
-     *
-     * @param string $pens_credential The PENS key for this credential
-     *
-     * @return $this
-     */
-    public function setPensCredential($pens_credential)
-    {
-        $this->container['pens_credential'] = $pens_credential;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return $this
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
+        $this->container['more'] = $more;
 
         return $this;
     }
@@ -351,9 +261,9 @@ class CredentialCreatedSchema implements ModelInterface, ArrayAccess
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -365,7 +275,7 @@ class CredentialCreatedSchema implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -378,7 +288,7 @@ class CredentialCreatedSchema implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -394,7 +304,7 @@ class CredentialCreatedSchema implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

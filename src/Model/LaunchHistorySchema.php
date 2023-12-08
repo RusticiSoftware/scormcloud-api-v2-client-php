@@ -65,7 +65,8 @@ class LaunchHistorySchema implements ModelInterface, ArrayAccess
         'total_seconds_tracked' => 'double',
         'launch_time' => '\DateTime',
         'exit_time' => '\DateTime',
-        'last_runtime_update' => '\DateTime'
+        'last_runtime_update' => '\DateTime',
+        'launch_history_id' => 'string'
     ];
 
     /**
@@ -83,7 +84,8 @@ class LaunchHistorySchema implements ModelInterface, ArrayAccess
         'total_seconds_tracked' => 'double',
         'launch_time' => 'date-time',
         'exit_time' => 'date-time',
-        'last_runtime_update' => 'date-time'
+        'last_runtime_update' => 'date-time',
+        'launch_history_id' => null
     ];
 
     /**
@@ -122,7 +124,8 @@ class LaunchHistorySchema implements ModelInterface, ArrayAccess
         'total_seconds_tracked' => 'totalSecondsTracked',
         'launch_time' => 'launchTime',
         'exit_time' => 'exitTime',
-        'last_runtime_update' => 'lastRuntimeUpdate'
+        'last_runtime_update' => 'lastRuntimeUpdate',
+        'launch_history_id' => 'launchHistoryId'
     ];
 
     /**
@@ -140,7 +143,8 @@ class LaunchHistorySchema implements ModelInterface, ArrayAccess
         'total_seconds_tracked' => 'setTotalSecondsTracked',
         'launch_time' => 'setLaunchTime',
         'exit_time' => 'setExitTime',
-        'last_runtime_update' => 'setLastRuntimeUpdate'
+        'last_runtime_update' => 'setLastRuntimeUpdate',
+        'launch_history_id' => 'setLaunchHistoryId'
     ];
 
     /**
@@ -158,7 +162,8 @@ class LaunchHistorySchema implements ModelInterface, ArrayAccess
         'total_seconds_tracked' => 'getTotalSecondsTracked',
         'launch_time' => 'getLaunchTime',
         'exit_time' => 'getExitTime',
-        'last_runtime_update' => 'getLastRuntimeUpdate'
+        'last_runtime_update' => 'getLastRuntimeUpdate',
+        'launch_history_id' => 'getLaunchHistoryId'
     ];
 
     /**
@@ -265,6 +270,7 @@ class LaunchHistorySchema implements ModelInterface, ArrayAccess
         $this->container['launch_time'] = isset($data['launch_time']) ? $data['launch_time'] : null;
         $this->container['exit_time'] = isset($data['exit_time']) ? $data['exit_time'] : null;
         $this->container['last_runtime_update'] = isset($data['last_runtime_update']) ? $data['last_runtime_update'] : null;
+        $this->container['launch_history_id'] = isset($data['launch_history_id']) ? $data['launch_history_id'] : null;
     }
 
     /**
@@ -304,7 +310,7 @@ class LaunchHistorySchema implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param string $id id
+     * @param string $id Identifier for the registration associated with this record
      *
      * @return $this
      */
@@ -530,14 +536,38 @@ class LaunchHistorySchema implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
+    /**
+     * Gets launch_history_id
+     *
+     * @return string
+     */
+    public function getLaunchHistoryId()
+    {
+        return $this->container['launch_history_id'];
+    }
+
+    /**
+     * Sets launch_history_id
+     *
+     * @param string $launch_history_id A unique identifier for this launch history record
+     *
+     * @return $this
+     */
+    public function setLaunchHistoryId($launch_history_id)
+    {
+        $this->container['launch_history_id'] = $launch_history_id;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -549,7 +579,7 @@ class LaunchHistorySchema implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -562,7 +592,7 @@ class LaunchHistorySchema implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -578,7 +608,7 @@ class LaunchHistorySchema implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

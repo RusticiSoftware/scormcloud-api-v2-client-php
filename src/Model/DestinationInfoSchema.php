@@ -1,6 +1,6 @@
 <?php
 /**
- * ImportJobResultSchema
+ * DestinationInfoSchema
  *
  * PHP version 7
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
 
 /**
- * ImportJobResultSchema Class Doc Comment
+ * DestinationInfoSchema Class Doc Comment
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ImportJobResultSchema implements ModelInterface, ArrayAccess
+class DestinationInfoSchema implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class ImportJobResultSchema implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ImportJobResultSchema';
+    protected static $swaggerModelName = 'DestinationInfoSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,10 +56,15 @@ class ImportJobResultSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'job_id' => 'string',
-        'status' => 'string',
-        'message' => 'string',
-        'import_result' => '\RusticiSoftware\Cloud\V2\Model\ImportResultSchema'
+        'name' => 'string',
+        'dispatch_count' => 'int',
+        'updated' => '\DateTime',
+        'created' => '\DateTime',
+        'tags' => 'string[]',
+        'email' => 'string',
+        'notes' => 'string',
+        'launch_auth' => '\RusticiSoftware\Cloud\V2\Model\LaunchAuthSchema',
+        'lti13_data' => '\RusticiSoftware\Cloud\V2\Model\Lti13PlatformConfigurationSchema'
     ];
 
     /**
@@ -68,10 +73,15 @@ class ImportJobResultSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'job_id' => null,
-        'status' => null,
-        'message' => null,
-        'import_result' => null
+        'name' => null,
+        'dispatch_count' => 'int32',
+        'updated' => 'date-time',
+        'created' => 'date-time',
+        'tags' => null,
+        'email' => null,
+        'notes' => null,
+        'launch_auth' => null,
+        'lti13_data' => null
     ];
 
     /**
@@ -101,10 +111,15 @@ class ImportJobResultSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'job_id' => 'jobId',
-        'status' => 'status',
-        'message' => 'message',
-        'import_result' => 'importResult'
+        'name' => 'name',
+        'dispatch_count' => 'dispatchCount',
+        'updated' => 'updated',
+        'created' => 'created',
+        'tags' => 'tags',
+        'email' => 'email',
+        'notes' => 'notes',
+        'launch_auth' => 'launchAuth',
+        'lti13_data' => 'lti13Data'
     ];
 
     /**
@@ -113,10 +128,15 @@ class ImportJobResultSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'job_id' => 'setJobId',
-        'status' => 'setStatus',
-        'message' => 'setMessage',
-        'import_result' => 'setImportResult'
+        'name' => 'setName',
+        'dispatch_count' => 'setDispatchCount',
+        'updated' => 'setUpdated',
+        'created' => 'setCreated',
+        'tags' => 'setTags',
+        'email' => 'setEmail',
+        'notes' => 'setNotes',
+        'launch_auth' => 'setLaunchAuth',
+        'lti13_data' => 'setLti13Data'
     ];
 
     /**
@@ -125,10 +145,15 @@ class ImportJobResultSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'job_id' => 'getJobId',
-        'status' => 'getStatus',
-        'message' => 'getMessage',
-        'import_result' => 'getImportResult'
+        'name' => 'getName',
+        'dispatch_count' => 'getDispatchCount',
+        'updated' => 'getUpdated',
+        'created' => 'getCreated',
+        'tags' => 'getTags',
+        'email' => 'getEmail',
+        'notes' => 'getNotes',
+        'launch_auth' => 'getLaunchAuth',
+        'lti13_data' => 'getLti13Data'
     ];
 
     /**
@@ -172,25 +197,8 @@ class ImportJobResultSchema implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const STATUS_RUNNING = 'RUNNING';
-    const STATUS_COMPLETE = 'COMPLETE';
-    const STATUS_ERROR = 'ERROR';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_RUNNING,
-            self::STATUS_COMPLETE,
-            self::STATUS_ERROR,
-        ];
-    }
     
 
     /**
@@ -208,10 +216,15 @@ class ImportJobResultSchema implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['job_id'] = isset($data['job_id']) ? $data['job_id'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['import_result'] = isset($data['import_result']) ? $data['import_result'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['dispatch_count'] = isset($data['dispatch_count']) ? $data['dispatch_count'] : null;
+        $this->container['updated'] = isset($data['updated']) ? $data['updated'] : null;
+        $this->container['created'] = isset($data['created']) ? $data['created'] : null;
+        $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
+        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
+        $this->container['notes'] = isset($data['notes']) ? $data['notes'] : null;
+        $this->container['launch_auth'] = isset($data['launch_auth']) ? $data['launch_auth'] : null;
+        $this->container['lti13_data'] = isset($data['lti13_data']) ? $data['lti13_data'] : null;
     }
 
     /**
@@ -239,97 +252,217 @@ class ImportJobResultSchema implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets job_id
+     * Gets name
      *
      * @return string
      */
-    public function getJobId()
+    public function getName()
     {
-        return $this->container['job_id'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets job_id
+     * Sets name
      *
-     * @param string $job_id job_id
+     * @param string $name The destination's name.
      *
      * @return $this
      */
-    public function setJobId($job_id)
+    public function setName($name)
     {
-        $this->container['job_id'] = $job_id;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets status
+     * Gets dispatch_count
      *
-     * @return string
+     * @return int
      */
-    public function getStatus()
+    public function getDispatchCount()
     {
-        return $this->container['status'];
+        return $this->container['dispatch_count'];
     }
 
     /**
-     * Sets status
+     * Sets dispatch_count
      *
-     * @param string $status status
+     * @param int $dispatch_count dispatch_count
      *
      * @return $this
      */
-    public function setStatus($status)
+    public function setDispatchCount($dispatch_count)
     {
-        $this->container['status'] = $status;
+        $this->container['dispatch_count'] = $dispatch_count;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets updated
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getMessage()
+    public function getUpdated()
     {
-        return $this->container['message'];
+        return $this->container['updated'];
     }
 
     /**
-     * Sets message
+     * Sets updated
      *
-     * @param string $message message
+     * @param \DateTime $updated updated
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setUpdated($updated)
     {
-        $this->container['message'] = $message;
+        $this->container['updated'] = $updated;
 
         return $this;
     }
 
     /**
-     * Gets import_result
+     * Gets created
      *
-     * @return \RusticiSoftware\Cloud\V2\Model\ImportResultSchema
+     * @return \DateTime
      */
-    public function getImportResult()
+    public function getCreated()
     {
-        return $this->container['import_result'];
+        return $this->container['created'];
     }
 
     /**
-     * Sets import_result
+     * Sets created
      *
-     * @param \RusticiSoftware\Cloud\V2\Model\ImportResultSchema $import_result import_result
+     * @param \DateTime $created created
      *
      * @return $this
      */
-    public function setImportResult($import_result)
+    public function setCreated($created)
     {
-        $this->container['import_result'] = $import_result;
+        $this->container['created'] = $created;
+
+        return $this;
+    }
+
+    /**
+     * Gets tags
+     *
+     * @return string[]
+     */
+    public function getTags()
+    {
+        return $this->container['tags'];
+    }
+
+    /**
+     * Sets tags
+     *
+     * @param string[] $tags Optional array of tags.
+     *
+     * @return $this
+     */
+    public function setTags($tags)
+    {
+        $this->container['tags'] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Gets email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->container['email'];
+    }
+
+    /**
+     * Sets email
+     *
+     * @param string $email SCORM Cloud user e-mail associated with this destination. If this is not provided, it will default to the owner of the Realm.
+     *
+     * @return $this
+     */
+    public function setEmail($email)
+    {
+        $this->container['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Gets notes
+     *
+     * @return string
+     */
+    public function getNotes()
+    {
+        return $this->container['notes'];
+    }
+
+    /**
+     * Sets notes
+     *
+     * @param string $notes Any provided notes about this Destination
+     *
+     * @return $this
+     */
+    public function setNotes($notes)
+    {
+        $this->container['notes'] = $notes;
+
+        return $this;
+    }
+
+    /**
+     * Gets launch_auth
+     *
+     * @return \RusticiSoftware\Cloud\V2\Model\LaunchAuthSchema
+     */
+    public function getLaunchAuth()
+    {
+        return $this->container['launch_auth'];
+    }
+
+    /**
+     * Sets launch_auth
+     *
+     * @param \RusticiSoftware\Cloud\V2\Model\LaunchAuthSchema $launch_auth launch_auth
+     *
+     * @return $this
+     */
+    public function setLaunchAuth($launch_auth)
+    {
+        $this->container['launch_auth'] = $launch_auth;
+
+        return $this;
+    }
+
+    /**
+     * Gets lti13_data
+     *
+     * @return \RusticiSoftware\Cloud\V2\Model\Lti13PlatformConfigurationSchema
+     */
+    public function getLti13Data()
+    {
+        return $this->container['lti13_data'];
+    }
+
+    /**
+     * Sets lti13_data
+     *
+     * @param \RusticiSoftware\Cloud\V2\Model\Lti13PlatformConfigurationSchema $lti13_data lti13_data
+     *
+     * @return $this
+     */
+    public function setLti13Data($lti13_data)
+    {
+        $this->container['lti13_data'] = $lti13_data;
 
         return $this;
     }

@@ -234,7 +234,7 @@ class PrivateInvitationUpdateSchema implements ModelInterface, ArrayAccess
     /**
      * Sets allow_launch
      *
-     * @param bool $allow_launch If true, then new registrations can be created for this invitation.
+     * @param bool $allow_launch Determines if learners are allowed to launch the invitation. If false, the invitation is disabled and no new or existing learners are allowed to launch it.
      *
      * @return $this
      */
@@ -321,9 +321,9 @@ class PrivateInvitationUpdateSchema implements ModelInterface, ArrayAccess
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -335,7 +335,7 @@ class PrivateInvitationUpdateSchema implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -348,7 +348,7 @@ class PrivateInvitationUpdateSchema implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -364,7 +364,7 @@ class PrivateInvitationUpdateSchema implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

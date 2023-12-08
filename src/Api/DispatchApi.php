@@ -272,11 +272,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -292,7 +292,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -515,11 +515,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -535,7 +535,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -771,11 +771,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -791,7 +791,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -1027,11 +1027,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -1047,7 +1047,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -1297,11 +1297,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -1317,7 +1317,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -1553,11 +1553,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -1573,7 +1573,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -1809,11 +1809,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -1829,7 +1829,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -2079,11 +2079,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -2099,7 +2099,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -2374,11 +2374,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -2394,7 +2394,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -2644,11 +2644,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -2664,7 +2664,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -2707,14 +2707,15 @@ class DispatchApi
      * Get detailed information about a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
+     * @param  bool $include_dispatch_count Include a count of dispatches for the destination. (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\Model\DestinationSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\DestinationInfoSchema
      */
-    public function getDestination($destination_id)
+    public function getDestination($destination_id, $include_dispatch_count = 'false')
     {
-        list($response) = $this->getDestinationWithHttpInfo($destination_id);
+        list($response) = $this->getDestinationWithHttpInfo($destination_id, $include_dispatch_count);
         return $response;
     }
 
@@ -2724,15 +2725,16 @@ class DispatchApi
      * Get detailed information about a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
+     * @param  bool $include_dispatch_count Include a count of dispatches for the destination. (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\Model\DestinationSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\DestinationInfoSchema, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDestinationWithHttpInfo($destination_id)
+    public function getDestinationWithHttpInfo($destination_id, $include_dispatch_count = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\Model\DestinationSchema';
-        $request = $this->getDestinationRequest($destination_id);
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\DestinationInfoSchema';
+        $request = $this->getDestinationRequest($destination_id, $include_dispatch_count);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2783,7 +2785,7 @@ class DispatchApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\Model\DestinationSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\DestinationInfoSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2815,13 +2817,14 @@ class DispatchApi
      * Get detailed information about a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
+     * @param  bool $include_dispatch_count Include a count of dispatches for the destination. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDestinationAsync($destination_id)
+    public function getDestinationAsync($destination_id, $include_dispatch_count = 'false')
     {
-        return $this->getDestinationAsyncWithHttpInfo($destination_id)
+        return $this->getDestinationAsyncWithHttpInfo($destination_id, $include_dispatch_count)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2835,14 +2838,15 @@ class DispatchApi
      * Get detailed information about a Destination
      *
      * @param  string $destination_id Identifier for the destination (required)
+     * @param  bool $include_dispatch_count Include a count of dispatches for the destination. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDestinationAsyncWithHttpInfo($destination_id)
+    public function getDestinationAsyncWithHttpInfo($destination_id, $include_dispatch_count = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\Model\DestinationSchema';
-        $request = $this->getDestinationRequest($destination_id);
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\DestinationInfoSchema';
+        $request = $this->getDestinationRequest($destination_id, $include_dispatch_count);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2885,11 +2889,12 @@ class DispatchApi
      * Create request for operation 'getDestination'
      *
      * @param  string $destination_id Identifier for the destination (required)
+     * @param  bool $include_dispatch_count Include a count of dispatches for the destination. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getDestinationRequest($destination_id)
+    protected function getDestinationRequest($destination_id, $include_dispatch_count = 'false')
     {
         // verify the required parameter 'destination_id' is set
         if ($destination_id === null || (is_array($destination_id) && count($destination_id) === 0)) {
@@ -2905,6 +2910,10 @@ class DispatchApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($include_dispatch_count !== null) {
+            $queryParams['includeDispatchCount'] = ObjectSerializer::toQueryValue($include_dispatch_count);
+        }
 
         // path params
         if ($destination_id !== null) {
@@ -2937,11 +2946,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -2957,7 +2966,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -3230,11 +3239,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -3250,7 +3259,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -3553,11 +3562,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -3573,7 +3582,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -3939,11 +3948,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -3959,7 +3968,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -4232,11 +4241,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -4252,7 +4261,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -4525,11 +4534,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -4545,7 +4554,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -4596,15 +4605,16 @@ class DispatchApi
      * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to destination_id)
      * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
      * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_dispatch_count Include a count of dispatches for each destination. (optional, default to false)
      * @param  bool $include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\Model\DestinationListSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\DestinationInfoListSchema
      */
-    public function getDestinations($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'destination_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getDestinations($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'destination_id', $order_by = 'updated_asc', $more = null, $include_dispatch_count = 'false', $include_total_count = 'false')
     {
-        list($response) = $this->getDestinationsWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
+        list($response) = $this->getDestinationsWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_dispatch_count, $include_total_count);
         return $response;
     }
 
@@ -4622,16 +4632,17 @@ class DispatchApi
      * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to destination_id)
      * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
      * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_dispatch_count Include a count of dispatches for each destination. (optional, default to false)
      * @param  bool $include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\Model\DestinationListSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \RusticiSoftware\Cloud\V2\Model\DestinationInfoListSchema, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDestinationsWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'destination_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getDestinationsWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'destination_id', $order_by = 'updated_asc', $more = null, $include_dispatch_count = 'false', $include_total_count = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\Model\DestinationListSchema';
-        $request = $this->getDestinationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\DestinationInfoListSchema';
+        $request = $this->getDestinationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_dispatch_count, $include_total_count);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4682,7 +4693,7 @@ class DispatchApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\Model\DestinationListSchema',
+                        '\RusticiSoftware\Cloud\V2\Model\DestinationInfoListSchema',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4714,14 +4725,15 @@ class DispatchApi
      * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to destination_id)
      * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
      * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_dispatch_count Include a count of dispatches for each destination. (optional, default to false)
      * @param  bool $include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDestinationsAsync($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'destination_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getDestinationsAsync($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'destination_id', $order_by = 'updated_asc', $more = null, $include_dispatch_count = 'false', $include_total_count = 'false')
     {
-        return $this->getDestinationsAsyncWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count)
+        return $this->getDestinationsAsyncWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_dispatch_count, $include_total_count)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4743,15 +4755,16 @@ class DispatchApi
      * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to destination_id)
      * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
      * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_dispatch_count Include a count of dispatches for each destination. (optional, default to false)
      * @param  bool $include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDestinationsAsyncWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'destination_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getDestinationsAsyncWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'destination_id', $order_by = 'updated_asc', $more = null, $include_dispatch_count = 'false', $include_total_count = 'false')
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\Model\DestinationListSchema';
-        $request = $this->getDestinationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
+        $returnType = '\RusticiSoftware\Cloud\V2\Model\DestinationInfoListSchema';
+        $request = $this->getDestinationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_dispatch_count, $include_total_count);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4802,12 +4815,13 @@ class DispatchApi
      * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to destination_id)
      * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
      * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_dispatch_count Include a count of dispatches for each destination. (optional, default to false)
      * @param  bool $include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getDestinationsRequest($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'destination_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    protected function getDestinationsRequest($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'destination_id', $order_by = 'updated_asc', $more = null, $include_dispatch_count = 'false', $include_total_count = 'false')
     {
 
         $resourcePath = '/dispatch/destinations';
@@ -4857,6 +4871,10 @@ class DispatchApi
             $queryParams['more'] = ObjectSerializer::toQueryValue($more);
         }
         // query params
+        if ($include_dispatch_count !== null) {
+            $queryParams['includeDispatchCount'] = ObjectSerializer::toQueryValue($include_dispatch_count);
+        }
+        // query params
         if ($include_total_count !== null) {
             $queryParams['includeTotalCount'] = ObjectSerializer::toQueryValue($include_total_count);
         }
@@ -4884,11 +4902,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -4904,7 +4922,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -5177,11 +5195,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -5197,7 +5215,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -5470,11 +5488,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -5490,7 +5508,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -5763,11 +5781,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -5783,7 +5801,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -6056,11 +6074,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -6076,7 +6094,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -6349,11 +6367,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -6369,7 +6387,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -6660,11 +6678,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -6680,7 +6698,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -7019,11 +7037,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -7039,7 +7057,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -7312,11 +7330,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -7332,7 +7350,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -7605,11 +7623,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -7625,7 +7643,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -7891,11 +7909,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -7911,7 +7929,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -8176,11 +8194,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -8196,7 +8214,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -8446,11 +8464,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -8466,7 +8484,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -8697,11 +8715,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -8717,7 +8735,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -8967,11 +8985,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -8987,7 +9005,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -9218,11 +9236,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -9238,7 +9256,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -9474,11 +9492,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -9494,7 +9512,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -9730,11 +9748,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -9750,7 +9768,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -9992,11 +10010,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -10012,7 +10030,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -10254,11 +10272,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -10274,7 +10292,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -10524,11 +10542,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -10544,7 +10562,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -10794,11 +10812,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -10814,7 +10832,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -11064,11 +11082,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -11084,7 +11102,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -11334,11 +11352,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -11354,7 +11372,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -11643,11 +11661,11 @@ class DispatchApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -11663,7 +11681,7 @@ class DispatchApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)

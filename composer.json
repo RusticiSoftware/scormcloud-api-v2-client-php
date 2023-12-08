@@ -1,6 +1,6 @@
 {
     "name": "rustici-software/scormcloud-api-v2-client-php",
-    "version": "3.0.0",
+    "version": "4.0.0",
     "description": "",
     "keywords": [
         "scorm",
@@ -19,7 +19,7 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
+        "php": ">=8.0",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
