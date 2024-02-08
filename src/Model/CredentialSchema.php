@@ -60,7 +60,9 @@ class CredentialSchema implements ModelInterface, ArrayAccess
         'name' => 'string',
         'credential' => 'string',
         'pens_credential' => 'string',
-        'status' => 'string'
+        'status' => 'string',
+        'created' => '\DateTime',
+        'updated' => '\DateTime'
     ];
 
     /**
@@ -73,7 +75,9 @@ class CredentialSchema implements ModelInterface, ArrayAccess
         'name' => null,
         'credential' => null,
         'pens_credential' => null,
-        'status' => null
+        'status' => null,
+        'created' => 'date-time',
+        'updated' => 'date-time'
     ];
 
     /**
@@ -107,7 +111,9 @@ class CredentialSchema implements ModelInterface, ArrayAccess
         'name' => 'name',
         'credential' => 'credential',
         'pens_credential' => 'pensCredential',
-        'status' => 'status'
+        'status' => 'status',
+        'created' => 'created',
+        'updated' => 'updated'
     ];
 
     /**
@@ -120,7 +126,9 @@ class CredentialSchema implements ModelInterface, ArrayAccess
         'name' => 'setName',
         'credential' => 'setCredential',
         'pens_credential' => 'setPensCredential',
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'created' => 'setCreated',
+        'updated' => 'setUpdated'
     ];
 
     /**
@@ -133,7 +141,9 @@ class CredentialSchema implements ModelInterface, ArrayAccess
         'name' => 'getName',
         'credential' => 'getCredential',
         'pens_credential' => 'getPensCredential',
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'created' => 'getCreated',
+        'updated' => 'getUpdated'
     ];
 
     /**
@@ -201,6 +211,8 @@ class CredentialSchema implements ModelInterface, ArrayAccess
         $this->container['credential'] = isset($data['credential']) ? $data['credential'] : null;
         $this->container['pens_credential'] = isset($data['pens_credential']) ? $data['pens_credential'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['created'] = isset($data['created']) ? $data['created'] : null;
+        $this->container['updated'] = isset($data['updated']) ? $data['updated'] : null;
     }
 
     /**
@@ -346,14 +358,62 @@ class CredentialSchema implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
+    /**
+     * Gets created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->container['created'];
+    }
+
+    /**
+     * Sets created
+     *
+     * @param \DateTime $created The time the API credential was created in UTC
+     *
+     * @return $this
+     */
+    public function setCreated($created)
+    {
+        $this->container['created'] = $created;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->container['updated'];
+    }
+
+    /**
+     * Sets updated
+     *
+     * @param \DateTime $updated The time the API credential was last updated in UTC
+     *
+     * @return $this
+     */
+    public function setUpdated($updated)
+    {
+        $this->container['updated'] = $updated;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -365,7 +425,7 @@ class CredentialSchema implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -378,7 +438,7 @@ class CredentialSchema implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -394,7 +454,7 @@ class CredentialSchema implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

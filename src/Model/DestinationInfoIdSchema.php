@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationInfoListSchema
+ * DestinationInfoIdSchema
  *
  * PHP version 7
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
 
 /**
- * ApplicationInfoListSchema Class Doc Comment
+ * DestinationInfoIdSchema Class Doc Comment
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
+class DestinationInfoIdSchema implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ApplicationInfoListSchema';
+    protected static $swaggerModelName = 'DestinationInfoIdSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,8 +56,8 @@ class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'applications' => '\RusticiSoftware\Cloud\V2\Model\ApplicationInfoSchema[]',
-        'more' => 'string'
+        'id' => 'string',
+        'data' => '\RusticiSoftware\Cloud\V2\Model\DestinationInfoSchema'
     ];
 
     /**
@@ -66,8 +66,8 @@ class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'applications' => null,
-        'more' => null
+        'id' => null,
+        'data' => null
     ];
 
     /**
@@ -97,8 +97,8 @@ class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'applications' => 'applications',
-        'more' => 'more'
+        'id' => 'id',
+        'data' => 'data'
     ];
 
     /**
@@ -107,8 +107,8 @@ class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'applications' => 'setApplications',
-        'more' => 'setMore'
+        'id' => 'setId',
+        'data' => 'setData'
     ];
 
     /**
@@ -117,8 +117,8 @@ class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'applications' => 'getApplications',
-        'more' => 'getMore'
+        'id' => 'getId',
+        'data' => 'getData'
     ];
 
     /**
@@ -181,8 +181,8 @@ class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['applications'] = isset($data['applications']) ? $data['applications'] : null;
-        $this->container['more'] = isset($data['more']) ? $data['more'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
     }
 
     /**
@@ -210,49 +210,49 @@ class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets applications
+     * Gets id
      *
-     * @return \RusticiSoftware\Cloud\V2\Model\ApplicationInfoSchema[]
+     * @return string
      */
-    public function getApplications()
+    public function getId()
     {
-        return $this->container['applications'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets applications
+     * Sets id
      *
-     * @param \RusticiSoftware\Cloud\V2\Model\ApplicationInfoSchema[] $applications applications
+     * @param string $id 
      *
      * @return $this
      */
-    public function setApplications($applications)
+    public function setId($id)
     {
-        $this->container['applications'] = $applications;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets more
+     * Gets data
      *
-     * @return string
+     * @return \RusticiSoftware\Cloud\V2\Model\DestinationInfoSchema
      */
-    public function getMore()
+    public function getData()
     {
-        return $this->container['more'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets more
+     * Sets data
      *
-     * @param string $more Token for getting the next set of results, from the prior set of results.
+     * @param \RusticiSoftware\Cloud\V2\Model\DestinationInfoSchema $data data
      *
      * @return $this
      */
-    public function setMore($more)
+    public function setData($data)
     {
-        $this->container['more'] = $more;
+        $this->container['data'] = $data;
 
         return $this;
     }

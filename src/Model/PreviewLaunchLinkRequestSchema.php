@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationInfoListSchema
+ * PreviewLaunchLinkRequestSchema
  *
  * PHP version 7
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
 
 /**
- * ApplicationInfoListSchema Class Doc Comment
+ * PreviewLaunchLinkRequestSchema Class Doc Comment
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
+class PreviewLaunchLinkRequestSchema implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ApplicationInfoListSchema';
+    protected static $swaggerModelName = 'PreviewLaunchLinkRequestSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,8 +56,12 @@ class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'applications' => '\RusticiSoftware\Cloud\V2\Model\ApplicationInfoSchema[]',
-        'more' => 'string'
+        'expiry' => 'int',
+        'redirect_on_exit_url' => 'string',
+        'start_sco' => 'string',
+        'culture' => 'string',
+        'css_url' => 'string',
+        'additionalvalues' => '\RusticiSoftware\Cloud\V2\Model\ItemValuePairSchema[]'
     ];
 
     /**
@@ -66,8 +70,12 @@ class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'applications' => null,
-        'more' => null
+        'expiry' => 'int32',
+        'redirect_on_exit_url' => null,
+        'start_sco' => null,
+        'culture' => null,
+        'css_url' => null,
+        'additionalvalues' => null
     ];
 
     /**
@@ -97,8 +105,12 @@ class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'applications' => 'applications',
-        'more' => 'more'
+        'expiry' => 'expiry',
+        'redirect_on_exit_url' => 'redirectOnExitUrl',
+        'start_sco' => 'startSco',
+        'culture' => 'culture',
+        'css_url' => 'cssUrl',
+        'additionalvalues' => 'additionalvalues'
     ];
 
     /**
@@ -107,8 +119,12 @@ class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'applications' => 'setApplications',
-        'more' => 'setMore'
+        'expiry' => 'setExpiry',
+        'redirect_on_exit_url' => 'setRedirectOnExitUrl',
+        'start_sco' => 'setStartSco',
+        'culture' => 'setCulture',
+        'css_url' => 'setCssUrl',
+        'additionalvalues' => 'setAdditionalvalues'
     ];
 
     /**
@@ -117,8 +133,12 @@ class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'applications' => 'getApplications',
-        'more' => 'getMore'
+        'expiry' => 'getExpiry',
+        'redirect_on_exit_url' => 'getRedirectOnExitUrl',
+        'start_sco' => 'getStartSco',
+        'culture' => 'getCulture',
+        'css_url' => 'getCssUrl',
+        'additionalvalues' => 'getAdditionalvalues'
     ];
 
     /**
@@ -181,8 +201,12 @@ class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['applications'] = isset($data['applications']) ? $data['applications'] : null;
-        $this->container['more'] = isset($data['more']) ? $data['more'] : null;
+        $this->container['expiry'] = isset($data['expiry']) ? $data['expiry'] : 120;
+        $this->container['redirect_on_exit_url'] = isset($data['redirect_on_exit_url']) ? $data['redirect_on_exit_url'] : null;
+        $this->container['start_sco'] = isset($data['start_sco']) ? $data['start_sco'] : null;
+        $this->container['culture'] = isset($data['culture']) ? $data['culture'] : null;
+        $this->container['css_url'] = isset($data['css_url']) ? $data['css_url'] : null;
+        $this->container['additionalvalues'] = isset($data['additionalvalues']) ? $data['additionalvalues'] : null;
     }
 
     /**
@@ -210,49 +234,145 @@ class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets applications
+     * Gets expiry
      *
-     * @return \RusticiSoftware\Cloud\V2\Model\ApplicationInfoSchema[]
+     * @return int
      */
-    public function getApplications()
+    public function getExpiry()
     {
-        return $this->container['applications'];
+        return $this->container['expiry'];
     }
 
     /**
-     * Sets applications
+     * Sets expiry
      *
-     * @param \RusticiSoftware\Cloud\V2\Model\ApplicationInfoSchema[] $applications applications
+     * @param int $expiry Number of seconds from now this link will expire in. Defaults to 120s. Range 10s:300s
      *
      * @return $this
      */
-    public function setApplications($applications)
+    public function setExpiry($expiry)
     {
-        $this->container['applications'] = $applications;
+        $this->container['expiry'] = $expiry;
 
         return $this;
     }
 
     /**
-     * Gets more
+     * Gets redirect_on_exit_url
      *
      * @return string
      */
-    public function getMore()
+    public function getRedirectOnExitUrl()
     {
-        return $this->container['more'];
+        return $this->container['redirect_on_exit_url'];
     }
 
     /**
-     * Sets more
+     * Sets redirect_on_exit_url
      *
-     * @param string $more Token for getting the next set of results, from the prior set of results.
+     * @param string $redirect_on_exit_url The URL the application should redirect to when the learner exits a course.  Alternatively one of the following keywords can be used to redirect to: - `closer` - A page that automatically tries to close the browser tab/window - `blank` - A blank page - `message` - A page with a message about the course being complete  If an empty string is specified, the configured setting will be used (default www.scorm.com). If an invalid url is specified, the Message.html page will be loaded.
      *
      * @return $this
      */
-    public function setMore($more)
+    public function setRedirectOnExitUrl($redirect_on_exit_url)
     {
-        $this->container['more'] = $more;
+        $this->container['redirect_on_exit_url'] = $redirect_on_exit_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_sco
+     *
+     * @return string
+     */
+    public function getStartSco()
+    {
+        return $this->container['start_sco'];
+    }
+
+    /**
+     * Sets start_sco
+     *
+     * @param string $start_sco For SCORM, SCO identifier to override launch, overriding the normal sequencing.
+     *
+     * @return $this
+     */
+    public function setStartSco($start_sco)
+    {
+        $this->container['start_sco'] = $start_sco;
+
+        return $this;
+    }
+
+    /**
+     * Gets culture
+     *
+     * @return string
+     */
+    public function getCulture()
+    {
+        return $this->container['culture'];
+    }
+
+    /**
+     * Sets culture
+     *
+     * @param string $culture This parameter should specify a culture code. If specified, and supported, the navigation and alerts in the player will be displayed in the associated language. If not specified, the locale of the user’s browser will be used.
+     *
+     * @return $this
+     */
+    public function setCulture($culture)
+    {
+        $this->container['culture'] = $culture;
+
+        return $this;
+    }
+
+    /**
+     * Gets css_url
+     *
+     * @return string
+     */
+    public function getCssUrl()
+    {
+        return $this->container['css_url'];
+    }
+
+    /**
+     * Sets css_url
+     *
+     * @param string $css_url A url pointing to custom CSS for the player to use.
+     *
+     * @return $this
+     */
+    public function setCssUrl($css_url)
+    {
+        $this->container['css_url'] = $css_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets additionalvalues
+     *
+     * @return \RusticiSoftware\Cloud\V2\Model\ItemValuePairSchema[]
+     */
+    public function getAdditionalvalues()
+    {
+        return $this->container['additionalvalues'];
+    }
+
+    /**
+     * Sets additionalvalues
+     *
+     * @param \RusticiSoftware\Cloud\V2\Model\ItemValuePairSchema[] $additionalvalues additionalvalues
+     *
+     * @return $this
+     */
+    public function setAdditionalvalues($additionalvalues)
+    {
+        $this->container['additionalvalues'] = $additionalvalues;
 
         return $this;
     }
