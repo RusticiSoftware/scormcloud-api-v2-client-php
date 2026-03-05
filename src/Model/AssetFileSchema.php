@@ -179,7 +179,7 @@ class AssetFileSchema implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['filename'] = isset($data['filename']) ? $data['filename'] : null;
         $this->container['destination'] = isset($data['destination']) ? $data['destination'] : null;

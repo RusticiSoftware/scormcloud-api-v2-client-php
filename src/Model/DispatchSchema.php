@@ -244,7 +244,7 @@ class DispatchSchema implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['destination_id'] = isset($data['destination_id']) ? $data['destination_id'] : null;
         $this->container['destination_name'] = isset($data['destination_name']) ? $data['destination_name'] : null;

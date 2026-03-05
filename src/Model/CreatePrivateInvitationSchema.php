@@ -223,7 +223,7 @@ class CreatePrivateInvitationSchema implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['course_id'] = isset($data['course_id']) ? $data['course_id'] : null;
         $this->container['creating_user_email'] = isset($data['creating_user_email']) ? $data['creating_user_email'] : null;

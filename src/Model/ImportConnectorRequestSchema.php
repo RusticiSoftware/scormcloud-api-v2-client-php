@@ -185,7 +185,7 @@ class ImportConnectorRequestSchema implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['connector_id'] = isset($data['connector_id']) ? $data['connector_id'] : null;
         $this->container['connector_id_for_content'] = isset($data['connector_id_for_content']) ? $data['connector_id_for_content'] : null;

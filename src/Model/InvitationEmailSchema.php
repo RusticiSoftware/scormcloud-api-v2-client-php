@@ -185,7 +185,7 @@ class InvitationEmailSchema implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['subject'] = isset($data['subject']) ? $data['subject'] : null;
         $this->container['body'] = isset($data['body']) ? $data['body'] : null;

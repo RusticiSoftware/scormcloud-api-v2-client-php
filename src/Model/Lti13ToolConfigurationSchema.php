@@ -189,7 +189,7 @@ class Lti13ToolConfigurationSchema implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['public_key'] = isset($data['public_key']) ? $data['public_key'] : null;
         $this->container['oidc_login_initiations_url'] = isset($data['oidc_login_initiations_url']) ? $data['oidc_login_initiations_url'] : null;

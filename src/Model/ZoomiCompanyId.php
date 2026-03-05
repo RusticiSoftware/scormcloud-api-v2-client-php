@@ -174,7 +174,7 @@ class ZoomiCompanyId implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['zoomi_company_id'] = isset($data['zoomi_company_id']) ? $data['zoomi_company_id'] : null;
     }

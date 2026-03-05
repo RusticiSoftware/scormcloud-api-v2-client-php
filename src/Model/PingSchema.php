@@ -179,7 +179,7 @@ class PingSchema implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['api_message'] = isset($data['api_message']) ? $data['api_message'] : null;
         $this->container['current_time'] = isset($data['current_time']) ? $data['current_time'] : null;

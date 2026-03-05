@@ -179,7 +179,7 @@ class ApplicationInfoListSchema implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['applications'] = isset($data['applications']) ? $data['applications'] : null;
         $this->container['more'] = isset($data['more']) ? $data['more'] : null;

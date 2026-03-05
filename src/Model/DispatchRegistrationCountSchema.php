@@ -179,7 +179,7 @@ class DispatchRegistrationCountSchema implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['registration_count'] = isset($data['registration_count']) ? $data['registration_count'] : null;
         $this->container['last_reset_date'] = isset($data['last_reset_date']) ? $data['last_reset_date'] : null;

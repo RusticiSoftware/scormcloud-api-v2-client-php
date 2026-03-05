@@ -194,7 +194,7 @@ class PublicInvitationUpdateSchema implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['allow_launch'] = isset($data['allow_launch']) ? $data['allow_launch'] : null;
         $this->container['allow_new_registrations'] = isset($data['allow_new_registrations']) ? $data['allow_new_registrations'] : null;

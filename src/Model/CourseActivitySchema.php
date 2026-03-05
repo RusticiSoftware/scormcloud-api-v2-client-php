@@ -230,7 +230,7 @@ class CourseActivitySchema implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['external_identifier'] = isset($data['external_identifier']) ? $data['external_identifier'] : null;
         $this->container['item_identifier'] = isset($data['item_identifier']) ? $data['item_identifier'] : null;

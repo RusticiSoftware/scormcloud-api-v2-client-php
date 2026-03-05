@@ -189,7 +189,7 @@ class ImportResultSchema implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['web_path_to_course'] = isset($data['web_path_to_course']) ? $data['web_path_to_course'] : null;
         $this->container['parser_warnings'] = isset($data['parser_warnings']) ? $data['parser_warnings'] : null;

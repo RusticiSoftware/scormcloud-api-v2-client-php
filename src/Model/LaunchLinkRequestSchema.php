@@ -224,7 +224,7 @@ class LaunchLinkRequestSchema implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['expiry'] = isset($data['expiry']) ? $data['expiry'] : 120;
         $this->container['redirect_on_exit_url'] = isset($data['redirect_on_exit_url']) ? $data['redirect_on_exit_url'] : null;

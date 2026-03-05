@@ -189,7 +189,7 @@ class ReportageAccountInfoUsageSchema implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['month_start'] = isset($data['month_start']) ? $data['month_start'] : null;
         $this->container['reg_count'] = isset($data['reg_count']) ? $data['reg_count'] : null;

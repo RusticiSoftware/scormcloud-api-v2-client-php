@@ -179,7 +179,7 @@ class ZoomiCourseOptionsSchema implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['nti'] = isset($data['nti']) ? $data['nti'] : null;
         $this->container['cta'] = isset($data['cta']) ? $data['cta'] : null;

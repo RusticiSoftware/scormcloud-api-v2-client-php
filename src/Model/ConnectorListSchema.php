@@ -175,7 +175,7 @@ class ConnectorListSchema implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['connector_entries'] = isset($data['connector_entries']) ? $data['connector_entries'] : null;
     }

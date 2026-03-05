@@ -205,7 +205,7 @@ class XapiAttachment implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['usage_type'] = isset($data['usage_type']) ? $data['usage_type'] : null;
         $this->container['display'] = isset($data['display']) ? $data['display'] : null;
