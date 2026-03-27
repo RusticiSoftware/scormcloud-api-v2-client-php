@@ -2,7 +2,7 @@
 /**
  * XapiStatementResult
  *
- * PHP version 7
+ * PHP version 8.2
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -177,10 +177,10 @@ class XapiStatementResult implements ModelInterface, ArrayAccess
     /**
      * Constructor
      *
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
+     * @param mixed[]|null $data Associated array of property values
+     *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['statements'] = isset($data['statements']) ? $data['statements'] : null;
         $this->container['more'] = isset($data['more']) ? $data['more'] : null;

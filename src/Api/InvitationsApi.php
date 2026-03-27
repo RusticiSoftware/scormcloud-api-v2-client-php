@@ -1,7 +1,7 @@
 <?php
 /**
  * InvitationsApi
- * PHP version 7
+ * PHP version 8.2
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -64,14 +64,14 @@ class InvitationsApi
     protected $headerSelector;
 
     /**
-     * @param ClientInterface $client
-     * @param Configuration   $config
-     * @param HeaderSelector  $selector
+     * @param ClientInterface|null $client
+     * @param Configuration|null   $config
+     * @param HeaderSelector|null  $selector
      */
     public function __construct(
-        ClientInterface $client = null,
-        Configuration $config = null,
-        HeaderSelector $selector = null
+        ?ClientInterface $client = null,
+        ?Configuration $config = null,
+        ?HeaderSelector $selector = null
     ) {
         $this->client = $client ?: new Client();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
@@ -2177,15 +2177,16 @@ class InvitationsApi
      * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
      * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
      * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\PrivateInvitationList
      */
-    public function getPrivateInvitations($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getPrivateInvitations($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_registration_count = 'false', $include_total_count = 'false')
     {
-        list($response) = $this->getPrivateInvitationsWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
+        list($response) = $this->getPrivateInvitationsWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_registration_count, $include_total_count);
         return $response;
     }
 
@@ -2203,16 +2204,17 @@ class InvitationsApi
      * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
      * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
      * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\PrivateInvitationList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPrivateInvitationsWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getPrivateInvitationsWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_registration_count = 'false', $include_total_count = 'false')
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\PrivateInvitationList';
-        $request = $this->getPrivateInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
+        $request = $this->getPrivateInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_registration_count, $include_total_count);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2295,14 +2297,15 @@ class InvitationsApi
      * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
      * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
      * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPrivateInvitationsAsync($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getPrivateInvitationsAsync($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_registration_count = 'false', $include_total_count = 'false')
     {
-        return $this->getPrivateInvitationsAsyncWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count)
+        return $this->getPrivateInvitationsAsyncWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_registration_count, $include_total_count)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2324,15 +2327,16 @@ class InvitationsApi
      * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
      * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
      * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPrivateInvitationsAsyncWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getPrivateInvitationsAsyncWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_registration_count = 'false', $include_total_count = 'false')
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\PrivateInvitationList';
-        $request = $this->getPrivateInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
+        $request = $this->getPrivateInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_registration_count, $include_total_count);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2383,12 +2387,13 @@ class InvitationsApi
      * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
      * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
      * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getPrivateInvitationsRequest($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    protected function getPrivateInvitationsRequest($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_registration_count = 'false', $include_total_count = 'false')
     {
 
         $resourcePath = '/invitations/private';
@@ -2436,6 +2441,10 @@ class InvitationsApi
         // query params
         if ($more !== null) {
             $queryParams['more'] = ObjectSerializer::toQueryValue($more);
+        }
+        // query params
+        if ($include_registration_count !== null) {
+            $queryParams['includeRegistrationCount'] = ObjectSerializer::toQueryValue($include_registration_count);
         }
         // query params
         if ($include_total_count !== null) {
@@ -3212,15 +3221,16 @@ class InvitationsApi
      * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
      * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
      * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\PublicInvitationList
      */
-    public function getPublicInvitations($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getPublicInvitations($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_registration_count = 'false', $include_total_count = 'false')
     {
-        list($response) = $this->getPublicInvitationsWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
+        list($response) = $this->getPublicInvitationsWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_registration_count, $include_total_count);
         return $response;
     }
 
@@ -3238,16 +3248,17 @@ class InvitationsApi
      * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
      * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
      * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. (optional, default to false)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\PublicInvitationList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPublicInvitationsWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getPublicInvitationsWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_registration_count = 'false', $include_total_count = 'false')
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\PublicInvitationList';
-        $request = $this->getPublicInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
+        $request = $this->getPublicInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_registration_count, $include_total_count);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3330,14 +3341,15 @@ class InvitationsApi
      * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
      * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
      * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPublicInvitationsAsync($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getPublicInvitationsAsync($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_registration_count = 'false', $include_total_count = 'false')
     {
-        return $this->getPublicInvitationsAsyncWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count)
+        return $this->getPublicInvitationsAsyncWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_registration_count, $include_total_count)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3359,15 +3371,16 @@ class InvitationsApi
      * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
      * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
      * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPublicInvitationsAsyncWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getPublicInvitationsAsyncWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_registration_count = 'false', $include_total_count = 'false')
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\PublicInvitationList';
-        $request = $this->getPublicInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
+        $request = $this->getPublicInvitationsRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_registration_count, $include_total_count);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3418,12 +3431,13 @@ class InvitationsApi
      * @param  string $filter_by Optional enum parameter for specifying the field on which to run the filter. (optional, default to invitation_id)
      * @param  string $order_by Optional enum parameter for specifying the field and order by which to sort the results. (optional, default to updated_asc)
      * @param  string $more Pagination token returned as &#x60;more&#x60; property of multi page list requests (optional)
+     * @param  bool $include_registration_count Include the registration count in the results (optional, default to false)
      * @param  bool $include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getPublicInvitationsRequest($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    protected function getPublicInvitationsRequest($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'invitation_id', $order_by = 'updated_asc', $more = null, $include_registration_count = 'false', $include_total_count = 'false')
     {
 
         $resourcePath = '/invitations/public';
@@ -3471,6 +3485,10 @@ class InvitationsApi
         // query params
         if ($more !== null) {
             $queryParams['more'] = ObjectSerializer::toQueryValue($more);
+        }
+        // query params
+        if ($include_registration_count !== null) {
+            $queryParams['includeRegistrationCount'] = ObjectSerializer::toQueryValue($include_registration_count);
         }
         // query params
         if ($include_total_count !== null) {

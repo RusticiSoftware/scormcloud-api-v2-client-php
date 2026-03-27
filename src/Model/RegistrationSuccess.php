@@ -2,7 +2,7 @@
 /**
  * RegistrationSuccess
  *
- * PHP version 7
+ * PHP version 8.2
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2

@@ -2,7 +2,7 @@
 /**
  * DispatchRegistrationCountSchema
  *
- * PHP version 7
+ * PHP version 8.2
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -176,10 +176,10 @@ class DispatchRegistrationCountSchema implements ModelInterface, ArrayAccess
     /**
      * Constructor
      *
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
+     * @param mixed[]|null $data Associated array of property values
+     *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['registration_count'] = isset($data['registration_count']) ? $data['registration_count'] : null;
         $this->container['last_reset_date'] = isset($data['last_reset_date']) ? $data['last_reset_date'] : null;
@@ -246,7 +246,7 @@ class DispatchRegistrationCountSchema implements ModelInterface, ArrayAccess
     /**
      * Sets last_reset_date
      *
-     * @param \DateTime $last_reset_date last_reset_date
+     * @param \DateTime $last_reset_date The ISO 8601 TimeStamp (defaults to UTC) at which the registration count for this dispatch was reset.
      *
      * @return $this
      */

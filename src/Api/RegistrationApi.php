@@ -1,7 +1,7 @@
 <?php
 /**
  * RegistrationApi
- * PHP version 7
+ * PHP version 8.2
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -64,14 +64,14 @@ class RegistrationApi
     protected $headerSelector;
 
     /**
-     * @param ClientInterface $client
-     * @param Configuration   $config
-     * @param HeaderSelector  $selector
+     * @param ClientInterface|null $client
+     * @param Configuration|null   $config
+     * @param HeaderSelector|null  $selector
      */
     public function __construct(
-        ClientInterface $client = null,
-        Configuration $config = null,
-        HeaderSelector $selector = null
+        ?ClientInterface $client = null,
+        ?Configuration $config = null,
+        ?HeaderSelector $selector = null
     ) {
         $this->client = $client ?: new Client();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
@@ -7786,6 +7786,14 @@ class RegistrationApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\RusticiSoftware\Cloud\V2\Model\MessageSchema',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\RusticiSoftware\Cloud\V2\Model\ResponseError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

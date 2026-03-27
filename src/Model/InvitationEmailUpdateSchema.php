@@ -1,8 +1,8 @@
 <?php
 /**
- * ZoomiCompanyId
+ * InvitationEmailUpdateSchema
  *
- * PHP version 7
+ * PHP version 8.2
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \RusticiSoftware\Cloud\V2\ObjectSerializer;
 
 /**
- * ZoomiCompanyId Class Doc Comment
+ * InvitationEmailUpdateSchema Class Doc Comment
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ZoomiCompanyId implements ModelInterface, ArrayAccess
+class InvitationEmailUpdateSchema implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class ZoomiCompanyId implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ZoomiCompanyId';
+    protected static $swaggerModelName = 'InvitationEmailUpdateSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,7 +56,8 @@ class ZoomiCompanyId implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'zoomi_company_id' => 'string'
+        'subject' => 'string',
+        'body' => 'string'
     ];
 
     /**
@@ -65,7 +66,8 @@ class ZoomiCompanyId implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'zoomi_company_id' => null
+        'subject' => null,
+        'body' => null
     ];
 
     /**
@@ -95,7 +97,8 @@ class ZoomiCompanyId implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'zoomi_company_id' => 'zoomi_company_id'
+        'subject' => 'subject',
+        'body' => 'body'
     ];
 
     /**
@@ -104,7 +107,8 @@ class ZoomiCompanyId implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'zoomi_company_id' => 'setZoomiCompanyId'
+        'subject' => 'setSubject',
+        'body' => 'setBody'
     ];
 
     /**
@@ -113,7 +117,8 @@ class ZoomiCompanyId implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'zoomi_company_id' => 'getZoomiCompanyId'
+        'subject' => 'getSubject',
+        'body' => 'getBody'
     ];
 
     /**
@@ -171,12 +176,13 @@ class ZoomiCompanyId implements ModelInterface, ArrayAccess
     /**
      * Constructor
      *
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
+     * @param mixed[]|null $data Associated array of property values
+     *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
-        $this->container['zoomi_company_id'] = isset($data['zoomi_company_id']) ? $data['zoomi_company_id'] : null;
+        $this->container['subject'] = isset($data['subject']) ? $data['subject'] : null;
+        $this->container['body'] = isset($data['body']) ? $data['body'] : null;
     }
 
     /**
@@ -204,25 +210,49 @@ class ZoomiCompanyId implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets zoomi_company_id
+     * Gets subject
      *
      * @return string
      */
-    public function getZoomiCompanyId()
+    public function getSubject()
     {
-        return $this->container['zoomi_company_id'];
+        return $this->container['subject'];
     }
 
     /**
-     * Sets zoomi_company_id
+     * Sets subject
      *
-     * @param string $zoomi_company_id zoomi_company_id
+     * @param string $subject The subject line for the email.
      *
      * @return $this
      */
-    public function setZoomiCompanyId($zoomi_company_id)
+    public function setSubject($subject)
     {
-        $this->container['zoomi_company_id'] = $zoomi_company_id;
+        $this->container['subject'] = $subject;
+
+        return $this;
+    }
+
+    /**
+     * Gets body
+     *
+     * @return string
+     */
+    public function getBody()
+    {
+        return $this->container['body'];
+    }
+
+    /**
+     * Sets body
+     *
+     * @param string $body The body of the email.
+     *
+     * @return $this
+     */
+    public function setBody($body)
+    {
+        $this->container['body'] = $body;
 
         return $this;
     }

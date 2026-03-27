@@ -2,7 +2,7 @@
 /**
  * PublicInvitationUpdateSchema
  *
- * PHP version 7
+ * PHP version 8.2
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -191,16 +191,16 @@ class PublicInvitationUpdateSchema implements ModelInterface, ArrayAccess
     /**
      * Constructor
      *
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
+     * @param mixed[]|null $data Associated array of property values
+     *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['allow_launch'] = isset($data['allow_launch']) ? $data['allow_launch'] : null;
         $this->container['allow_new_registrations'] = isset($data['allow_new_registrations']) ? $data['allow_new_registrations'] : null;
         $this->container['post_back'] = isset($data['post_back']) ? $data['post_back'] : null;
         $this->container['expiration_date'] = isset($data['expiration_date']) ? $data['expiration_date'] : null;
-        $this->container['registration_cap'] = isset($data['registration_cap']) ? $data['registration_cap'] : 0;
+        $this->container['registration_cap'] = isset($data['registration_cap']) ? $data['registration_cap'] : null;
     }
 
     /**

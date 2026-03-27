@@ -2,7 +2,7 @@
 /**
  * ApplicationToken
  *
- * PHP version 7
+ * PHP version 8.2
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -181,10 +181,10 @@ class ApplicationToken implements ModelInterface, ArrayAccess
     /**
      * Constructor
      *
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
+     * @param mixed[]|null $data Associated array of property values
+     *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['access_token'] = isset($data['access_token']) ? $data['access_token'] : null;
         $this->container['expires_in'] = isset($data['expires_in']) ? $data['expires_in'] : null;

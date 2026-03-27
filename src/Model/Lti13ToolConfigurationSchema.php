@@ -2,7 +2,7 @@
 /**
  * Lti13ToolConfigurationSchema
  *
- * PHP version 7
+ * PHP version 8.2
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -186,10 +186,10 @@ class Lti13ToolConfigurationSchema implements ModelInterface, ArrayAccess
     /**
      * Constructor
      *
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
+     * @param mixed[]|null $data Associated array of property values
+     *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['public_key'] = isset($data['public_key']) ? $data['public_key'] : null;
         $this->container['oidc_login_initiations_url'] = isset($data['oidc_login_initiations_url']) ? $data['oidc_login_initiations_url'] : null;
