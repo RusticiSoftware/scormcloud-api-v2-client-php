@@ -1,7 +1,7 @@
 <?php
 /**
  * CourseApi
- * PHP version 7
+ * PHP version 8.2
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -64,14 +64,14 @@ class CourseApi
     protected $headerSelector;
 
     /**
-     * @param ClientInterface $client
-     * @param Configuration   $config
-     * @param HeaderSelector  $selector
+     * @param ClientInterface|null $client
+     * @param Configuration|null   $config
+     * @param HeaderSelector|null  $selector
      */
     public function __construct(
-        ClientInterface $client = null,
-        Configuration $config = null,
-        HeaderSelector $selector = null
+        ?ClientInterface $client = null,
+        ?Configuration $config = null,
+        ?HeaderSelector $selector = null
     ) {
         $this->client = $client ?: new Client();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
@@ -728,14 +728,15 @@ class CourseApi
      * @param  \RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema $import_request import_request (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
+     * @param  string[] $tags A list of tags to apply, allowing for more refined filtering of resources (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\StringResultSchema
      */
-    public function createFetchAndImportCourseJob($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null)
+    public function createFetchAndImportCourseJob($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null, $tags = null)
     {
-        list($response) = $this->createFetchAndImportCourseJobWithHttpInfo($course_id, $import_request, $may_create_new_version, $postback_url);
+        list($response) = $this->createFetchAndImportCourseJobWithHttpInfo($course_id, $import_request, $may_create_new_version, $postback_url, $tags);
         return $response;
     }
 
@@ -748,15 +749,16 @@ class CourseApi
      * @param  \RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema $import_request (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
+     * @param  string[] $tags A list of tags to apply, allowing for more refined filtering of resources (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\StringResultSchema, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createFetchAndImportCourseJobWithHttpInfo($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null)
+    public function createFetchAndImportCourseJobWithHttpInfo($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null, $tags = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
-        $request = $this->createFetchAndImportCourseJobRequest($course_id, $import_request, $may_create_new_version, $postback_url);
+        $request = $this->createFetchAndImportCourseJobRequest($course_id, $import_request, $may_create_new_version, $postback_url, $tags);
 
         try {
             $options = $this->createHttpClientOption();
@@ -842,13 +844,14 @@ class CourseApi
      * @param  \RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema $import_request (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
+     * @param  string[] $tags A list of tags to apply, allowing for more refined filtering of resources (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createFetchAndImportCourseJobAsync($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null)
+    public function createFetchAndImportCourseJobAsync($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null, $tags = null)
     {
-        return $this->createFetchAndImportCourseJobAsyncWithHttpInfo($course_id, $import_request, $may_create_new_version, $postback_url)
+        return $this->createFetchAndImportCourseJobAsyncWithHttpInfo($course_id, $import_request, $may_create_new_version, $postback_url, $tags)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -865,14 +868,15 @@ class CourseApi
      * @param  \RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema $import_request (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
+     * @param  string[] $tags A list of tags to apply, allowing for more refined filtering of resources (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createFetchAndImportCourseJobAsyncWithHttpInfo($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null)
+    public function createFetchAndImportCourseJobAsyncWithHttpInfo($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null, $tags = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
-        $request = $this->createFetchAndImportCourseJobRequest($course_id, $import_request, $may_create_new_version, $postback_url);
+        $request = $this->createFetchAndImportCourseJobRequest($course_id, $import_request, $may_create_new_version, $postback_url, $tags);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -918,11 +922,12 @@ class CourseApi
      * @param  \RusticiSoftware\Cloud\V2\Model\ImportFetchRequestSchema $import_request (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
+     * @param  string[] $tags A list of tags to apply, allowing for more refined filtering of resources (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createFetchAndImportCourseJobRequest($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null)
+    protected function createFetchAndImportCourseJobRequest($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null, $tags = null)
     {
         // verify the required parameter 'course_id' is set
         if ($course_id === null || (is_array($course_id) && count($course_id) === 0)) {
@@ -955,6 +960,13 @@ class CourseApi
         // query params
         if ($postback_url !== null) {
             $queryParams['postbackUrl'] = ObjectSerializer::toQueryValue($postback_url);
+        }
+        // query params
+        if (is_array($tags)) {
+            $queryParams['tags'] = $tags;
+        } else
+        if ($tags !== null) {
+            $queryParams['tags'] = ObjectSerializer::toQueryValue($tags);
         }
 
 
@@ -1049,14 +1061,15 @@ class CourseApi
      * @param  \RusticiSoftware\Cloud\V2\Model\ImportRequestSchema $import_request import_request (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
+     * @param  string[] $tags A list of tags to apply, allowing for more refined filtering of resources (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\StringResultSchema
      */
-    public function createNoUploadAndImportCourseJob($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null)
+    public function createNoUploadAndImportCourseJob($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null, $tags = null)
     {
-        list($response) = $this->createNoUploadAndImportCourseJobWithHttpInfo($course_id, $import_request, $may_create_new_version, $postback_url);
+        list($response) = $this->createNoUploadAndImportCourseJobWithHttpInfo($course_id, $import_request, $may_create_new_version, $postback_url, $tags);
         return $response;
     }
 
@@ -1069,15 +1082,16 @@ class CourseApi
      * @param  \RusticiSoftware\Cloud\V2\Model\ImportRequestSchema $import_request (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
+     * @param  string[] $tags A list of tags to apply, allowing for more refined filtering of resources (optional)
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\StringResultSchema, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createNoUploadAndImportCourseJobWithHttpInfo($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null)
+    public function createNoUploadAndImportCourseJobWithHttpInfo($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null, $tags = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
-        $request = $this->createNoUploadAndImportCourseJobRequest($course_id, $import_request, $may_create_new_version, $postback_url);
+        $request = $this->createNoUploadAndImportCourseJobRequest($course_id, $import_request, $may_create_new_version, $postback_url, $tags);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1163,13 +1177,14 @@ class CourseApi
      * @param  \RusticiSoftware\Cloud\V2\Model\ImportRequestSchema $import_request (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
+     * @param  string[] $tags A list of tags to apply, allowing for more refined filtering of resources (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createNoUploadAndImportCourseJobAsync($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null)
+    public function createNoUploadAndImportCourseJobAsync($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null, $tags = null)
     {
-        return $this->createNoUploadAndImportCourseJobAsyncWithHttpInfo($course_id, $import_request, $may_create_new_version, $postback_url)
+        return $this->createNoUploadAndImportCourseJobAsyncWithHttpInfo($course_id, $import_request, $may_create_new_version, $postback_url, $tags)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1186,14 +1201,15 @@ class CourseApi
      * @param  \RusticiSoftware\Cloud\V2\Model\ImportRequestSchema $import_request (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
+     * @param  string[] $tags A list of tags to apply, allowing for more refined filtering of resources (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createNoUploadAndImportCourseJobAsyncWithHttpInfo($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null)
+    public function createNoUploadAndImportCourseJobAsyncWithHttpInfo($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null, $tags = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
-        $request = $this->createNoUploadAndImportCourseJobRequest($course_id, $import_request, $may_create_new_version, $postback_url);
+        $request = $this->createNoUploadAndImportCourseJobRequest($course_id, $import_request, $may_create_new_version, $postback_url, $tags);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1239,11 +1255,12 @@ class CourseApi
      * @param  \RusticiSoftware\Cloud\V2\Model\ImportRequestSchema $import_request (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
+     * @param  string[] $tags A list of tags to apply, allowing for more refined filtering of resources (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createNoUploadAndImportCourseJobRequest($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null)
+    protected function createNoUploadAndImportCourseJobRequest($course_id, $import_request, $may_create_new_version = 'false', $postback_url = null, $tags = null)
     {
         // verify the required parameter 'course_id' is set
         if ($course_id === null || (is_array($course_id) && count($course_id) === 0)) {
@@ -1276,6 +1293,13 @@ class CourseApi
         // query params
         if ($postback_url !== null) {
             $queryParams['postbackUrl'] = ObjectSerializer::toQueryValue($postback_url);
+        }
+        // query params
+        if (is_array($tags)) {
+            $queryParams['tags'] = $tags;
+        } else
+        if ($tags !== null) {
+            $queryParams['tags'] = ObjectSerializer::toQueryValue($tags);
         }
 
 
@@ -1369,6 +1393,7 @@ class CourseApi
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
+     * @param  string[] $tags A list of tags to apply, allowing for more refined filtering of resources (optional)
      * @param  string $uploaded_content_type The MIME type identifier for the content to be uploaded. This is required if uploading a media file (.pdf, .mp3, or .mp4). (optional, default to application/zip)
      * @param  string $content_metadata Serialized &#39;mediaFileMetadata&#39; schema. (optional)
      * @param  \SplFileObject $file The zip file of the course contents to import. (optional)
@@ -1377,9 +1402,9 @@ class CourseApi
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\StringResultSchema
      */
-    public function createUploadAndImportCourseJob($course_id, $may_create_new_version = 'false', $postback_url = null, $uploaded_content_type = 'application/zip', $content_metadata = null, $file = null)
+    public function createUploadAndImportCourseJob($course_id, $may_create_new_version = 'false', $postback_url = null, $tags = null, $uploaded_content_type = 'application/zip', $content_metadata = null, $file = null)
     {
-        list($response) = $this->createUploadAndImportCourseJobWithHttpInfo($course_id, $may_create_new_version, $postback_url, $uploaded_content_type, $content_metadata, $file);
+        list($response) = $this->createUploadAndImportCourseJobWithHttpInfo($course_id, $may_create_new_version, $postback_url, $tags, $uploaded_content_type, $content_metadata, $file);
         return $response;
     }
 
@@ -1391,6 +1416,7 @@ class CourseApi
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
+     * @param  string[] $tags A list of tags to apply, allowing for more refined filtering of resources (optional)
      * @param  string $uploaded_content_type The MIME type identifier for the content to be uploaded. This is required if uploading a media file (.pdf, .mp3, or .mp4). (optional, default to application/zip)
      * @param  string $content_metadata Serialized &#39;mediaFileMetadata&#39; schema. (optional)
      * @param  \SplFileObject $file The zip file of the course contents to import. (optional)
@@ -1399,10 +1425,10 @@ class CourseApi
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\StringResultSchema, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createUploadAndImportCourseJobWithHttpInfo($course_id, $may_create_new_version = 'false', $postback_url = null, $uploaded_content_type = 'application/zip', $content_metadata = null, $file = null)
+    public function createUploadAndImportCourseJobWithHttpInfo($course_id, $may_create_new_version = 'false', $postback_url = null, $tags = null, $uploaded_content_type = 'application/zip', $content_metadata = null, $file = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
-        $request = $this->createUploadAndImportCourseJobRequest($course_id, $may_create_new_version, $postback_url, $uploaded_content_type, $content_metadata, $file);
+        $request = $this->createUploadAndImportCourseJobRequest($course_id, $may_create_new_version, $postback_url, $tags, $uploaded_content_type, $content_metadata, $file);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1487,6 +1513,7 @@ class CourseApi
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
+     * @param  string[] $tags A list of tags to apply, allowing for more refined filtering of resources (optional)
      * @param  string $uploaded_content_type The MIME type identifier for the content to be uploaded. This is required if uploading a media file (.pdf, .mp3, or .mp4). (optional, default to application/zip)
      * @param  string $content_metadata Serialized &#39;mediaFileMetadata&#39; schema. (optional)
      * @param  \SplFileObject $file The zip file of the course contents to import. (optional)
@@ -1494,9 +1521,9 @@ class CourseApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createUploadAndImportCourseJobAsync($course_id, $may_create_new_version = 'false', $postback_url = null, $uploaded_content_type = 'application/zip', $content_metadata = null, $file = null)
+    public function createUploadAndImportCourseJobAsync($course_id, $may_create_new_version = 'false', $postback_url = null, $tags = null, $uploaded_content_type = 'application/zip', $content_metadata = null, $file = null)
     {
-        return $this->createUploadAndImportCourseJobAsyncWithHttpInfo($course_id, $may_create_new_version, $postback_url, $uploaded_content_type, $content_metadata, $file)
+        return $this->createUploadAndImportCourseJobAsyncWithHttpInfo($course_id, $may_create_new_version, $postback_url, $tags, $uploaded_content_type, $content_metadata, $file)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1512,6 +1539,7 @@ class CourseApi
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
+     * @param  string[] $tags A list of tags to apply, allowing for more refined filtering of resources (optional)
      * @param  string $uploaded_content_type The MIME type identifier for the content to be uploaded. This is required if uploading a media file (.pdf, .mp3, or .mp4). (optional, default to application/zip)
      * @param  string $content_metadata Serialized &#39;mediaFileMetadata&#39; schema. (optional)
      * @param  \SplFileObject $file The zip file of the course contents to import. (optional)
@@ -1519,10 +1547,10 @@ class CourseApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createUploadAndImportCourseJobAsyncWithHttpInfo($course_id, $may_create_new_version = 'false', $postback_url = null, $uploaded_content_type = 'application/zip', $content_metadata = null, $file = null)
+    public function createUploadAndImportCourseJobAsyncWithHttpInfo($course_id, $may_create_new_version = 'false', $postback_url = null, $tags = null, $uploaded_content_type = 'application/zip', $content_metadata = null, $file = null)
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
-        $request = $this->createUploadAndImportCourseJobRequest($course_id, $may_create_new_version, $postback_url, $uploaded_content_type, $content_metadata, $file);
+        $request = $this->createUploadAndImportCourseJobRequest($course_id, $may_create_new_version, $postback_url, $tags, $uploaded_content_type, $content_metadata, $file);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1567,6 +1595,7 @@ class CourseApi
      * @param  string $course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use. (required)
      * @param  bool $may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (optional, default to false)
      * @param  string $postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading. (optional)
+     * @param  string[] $tags A list of tags to apply, allowing for more refined filtering of resources (optional)
      * @param  string $uploaded_content_type The MIME type identifier for the content to be uploaded. This is required if uploading a media file (.pdf, .mp3, or .mp4). (optional, default to application/zip)
      * @param  string $content_metadata Serialized &#39;mediaFileMetadata&#39; schema. (optional)
      * @param  \SplFileObject $file The zip file of the course contents to import. (optional)
@@ -1574,7 +1603,7 @@ class CourseApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createUploadAndImportCourseJobRequest($course_id, $may_create_new_version = 'false', $postback_url = null, $uploaded_content_type = 'application/zip', $content_metadata = null, $file = null)
+    protected function createUploadAndImportCourseJobRequest($course_id, $may_create_new_version = 'false', $postback_url = null, $tags = null, $uploaded_content_type = 'application/zip', $content_metadata = null, $file = null)
     {
         // verify the required parameter 'course_id' is set
         if ($course_id === null || (is_array($course_id) && count($course_id) === 0)) {
@@ -1601,6 +1630,13 @@ class CourseApi
         // query params
         if ($postback_url !== null) {
             $queryParams['postbackUrl'] = ObjectSerializer::toQueryValue($postback_url);
+        }
+        // query params
+        if (is_array($tags)) {
+            $queryParams['tags'] = $tags;
+        } else
+        if ($tags !== null) {
+            $queryParams['tags'] = ObjectSerializer::toQueryValue($tags);
         }
         // header params
         if ($uploaded_content_type !== null) {

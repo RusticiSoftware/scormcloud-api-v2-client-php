@@ -2,7 +2,7 @@
 /**
  * PrivateInvitationUpdateSchema
  *
- * PHP version 7
+ * PHP version 8.2
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -57,7 +57,7 @@ class PrivateInvitationUpdateSchema implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'allow_launch' => 'bool',
-        'invitation_email' => '\RusticiSoftware\Cloud\V2\Model\InvitationEmailSchema',
+        'invitation_email' => '\RusticiSoftware\Cloud\V2\Model\InvitationEmailUpdateSchema',
         'post_back' => '\RusticiSoftware\Cloud\V2\Model\PostBackSchema',
         'expiration_date' => '\DateTime'
     ];
@@ -186,10 +186,10 @@ class PrivateInvitationUpdateSchema implements ModelInterface, ArrayAccess
     /**
      * Constructor
      *
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
+     * @param mixed[]|null $data Associated array of property values
+     *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['allow_launch'] = isset($data['allow_launch']) ? $data['allow_launch'] : null;
         $this->container['invitation_email'] = isset($data['invitation_email']) ? $data['invitation_email'] : null;
@@ -248,7 +248,7 @@ class PrivateInvitationUpdateSchema implements ModelInterface, ArrayAccess
     /**
      * Gets invitation_email
      *
-     * @return \RusticiSoftware\Cloud\V2\Model\InvitationEmailSchema
+     * @return \RusticiSoftware\Cloud\V2\Model\InvitationEmailUpdateSchema
      */
     public function getInvitationEmail()
     {
@@ -258,7 +258,7 @@ class PrivateInvitationUpdateSchema implements ModelInterface, ArrayAccess
     /**
      * Sets invitation_email
      *
-     * @param \RusticiSoftware\Cloud\V2\Model\InvitationEmailSchema $invitation_email invitation_email
+     * @param \RusticiSoftware\Cloud\V2\Model\InvitationEmailUpdateSchema $invitation_email invitation_email
      *
      * @return $this
      */

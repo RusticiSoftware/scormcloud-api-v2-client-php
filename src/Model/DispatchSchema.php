@@ -2,7 +2,7 @@
 /**
  * DispatchSchema
  *
- * PHP version 7
+ * PHP version 8.2
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -67,6 +67,7 @@ class DispatchSchema implements ModelInterface, ArrayAccess
         'instanced' => 'bool',
         'registration_cap' => 'int',
         'registration_count' => 'int',
+        'registration_reset_date' => '\DateTime',
         'expiration_date' => '\DateTime',
         'tags' => 'string[]',
         'email' => 'string',
@@ -90,6 +91,7 @@ class DispatchSchema implements ModelInterface, ArrayAccess
         'instanced' => null,
         'registration_cap' => 'int32',
         'registration_count' => 'int32',
+        'registration_reset_date' => 'date-time',
         'expiration_date' => 'date-time',
         'tags' => null,
         'email' => null,
@@ -134,6 +136,7 @@ class DispatchSchema implements ModelInterface, ArrayAccess
         'instanced' => 'instanced',
         'registration_cap' => 'registrationCap',
         'registration_count' => 'registrationCount',
+        'registration_reset_date' => 'registrationResetDate',
         'expiration_date' => 'expirationDate',
         'tags' => 'tags',
         'email' => 'email',
@@ -157,6 +160,7 @@ class DispatchSchema implements ModelInterface, ArrayAccess
         'instanced' => 'setInstanced',
         'registration_cap' => 'setRegistrationCap',
         'registration_count' => 'setRegistrationCount',
+        'registration_reset_date' => 'setRegistrationResetDate',
         'expiration_date' => 'setExpirationDate',
         'tags' => 'setTags',
         'email' => 'setEmail',
@@ -180,6 +184,7 @@ class DispatchSchema implements ModelInterface, ArrayAccess
         'instanced' => 'getInstanced',
         'registration_cap' => 'getRegistrationCap',
         'registration_count' => 'getRegistrationCount',
+        'registration_reset_date' => 'getRegistrationResetDate',
         'expiration_date' => 'getExpirationDate',
         'tags' => 'getTags',
         'email' => 'getEmail',
@@ -241,10 +246,10 @@ class DispatchSchema implements ModelInterface, ArrayAccess
     /**
      * Constructor
      *
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
+     * @param mixed[]|null $data Associated array of property values
+     *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['destination_id'] = isset($data['destination_id']) ? $data['destination_id'] : null;
         $this->container['destination_name'] = isset($data['destination_name']) ? $data['destination_name'] : null;
@@ -257,6 +262,7 @@ class DispatchSchema implements ModelInterface, ArrayAccess
         $this->container['instanced'] = isset($data['instanced']) ? $data['instanced'] : null;
         $this->container['registration_cap'] = isset($data['registration_cap']) ? $data['registration_cap'] : null;
         $this->container['registration_count'] = isset($data['registration_count']) ? $data['registration_count'] : null;
+        $this->container['registration_reset_date'] = isset($data['registration_reset_date']) ? $data['registration_reset_date'] : null;
         $this->container['expiration_date'] = isset($data['expiration_date']) ? $data['expiration_date'] : null;
         $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
         $this->container['email'] = isset($data['email']) ? $data['email'] : null;
@@ -547,6 +553,30 @@ class DispatchSchema implements ModelInterface, ArrayAccess
     public function setRegistrationCount($registration_count)
     {
         $this->container['registration_count'] = $registration_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets registration_reset_date
+     *
+     * @return \DateTime
+     */
+    public function getRegistrationResetDate()
+    {
+        return $this->container['registration_reset_date'];
+    }
+
+    /**
+     * Sets registration_reset_date
+     *
+     * @param \DateTime $registration_reset_date The ISO 8601 TimeStamp (defaults to UTC) at which the registration count for this dispatch was reset.
+     *
+     * @return $this
+     */
+    public function setRegistrationResetDate($registration_reset_date)
+    {
+        $this->container['registration_reset_date'] = $registration_reset_date;
 
         return $this;
     }

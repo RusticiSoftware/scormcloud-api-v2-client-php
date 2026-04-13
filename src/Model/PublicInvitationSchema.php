@@ -2,7 +2,7 @@
 /**
  * PublicInvitationSchema
  *
- * PHP version 7
+ * PHP version 8.2
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -58,8 +58,8 @@ class PublicInvitationSchema implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'id' => 'string',
         'course_id' => 'string',
+        'course_title' => 'string',
         'allow_launch' => 'bool',
-        'invitation_email' => '\RusticiSoftware\Cloud\V2\Model\InvitationEmailSchema',
         'allow_new_registrations' => 'bool',
         'url' => 'string',
         'create_date' => '\DateTime',
@@ -78,8 +78,8 @@ class PublicInvitationSchema implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'id' => null,
         'course_id' => null,
+        'course_title' => null,
         'allow_launch' => null,
-        'invitation_email' => null,
         'allow_new_registrations' => null,
         'url' => null,
         'create_date' => 'date-time',
@@ -119,8 +119,8 @@ class PublicInvitationSchema implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'id' => 'id',
         'course_id' => 'courseId',
+        'course_title' => 'courseTitle',
         'allow_launch' => 'allowLaunch',
-        'invitation_email' => 'invitationEmail',
         'allow_new_registrations' => 'allowNewRegistrations',
         'url' => 'url',
         'create_date' => 'createDate',
@@ -139,8 +139,8 @@ class PublicInvitationSchema implements ModelInterface, ArrayAccess
     protected static $setters = [
         'id' => 'setId',
         'course_id' => 'setCourseId',
+        'course_title' => 'setCourseTitle',
         'allow_launch' => 'setAllowLaunch',
-        'invitation_email' => 'setInvitationEmail',
         'allow_new_registrations' => 'setAllowNewRegistrations',
         'url' => 'setUrl',
         'create_date' => 'setCreateDate',
@@ -159,8 +159,8 @@ class PublicInvitationSchema implements ModelInterface, ArrayAccess
     protected static $getters = [
         'id' => 'getId',
         'course_id' => 'getCourseId',
+        'course_title' => 'getCourseTitle',
         'allow_launch' => 'getAllowLaunch',
-        'invitation_email' => 'getInvitationEmail',
         'allow_new_registrations' => 'getAllowNewRegistrations',
         'url' => 'getUrl',
         'create_date' => 'getCreateDate',
@@ -226,22 +226,22 @@ class PublicInvitationSchema implements ModelInterface, ArrayAccess
     /**
      * Constructor
      *
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
+     * @param mixed[]|null $data Associated array of property values
+     *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['course_id'] = isset($data['course_id']) ? $data['course_id'] : null;
+        $this->container['course_title'] = isset($data['course_title']) ? $data['course_title'] : null;
         $this->container['allow_launch'] = isset($data['allow_launch']) ? $data['allow_launch'] : null;
-        $this->container['invitation_email'] = isset($data['invitation_email']) ? $data['invitation_email'] : null;
         $this->container['allow_new_registrations'] = isset($data['allow_new_registrations']) ? $data['allow_new_registrations'] : null;
         $this->container['url'] = isset($data['url']) ? $data['url'] : null;
         $this->container['create_date'] = isset($data['create_date']) ? $data['create_date'] : null;
         $this->container['updated'] = isset($data['updated']) ? $data['updated'] : null;
         $this->container['post_back'] = isset($data['post_back']) ? $data['post_back'] : null;
         $this->container['expiration_date'] = isset($data['expiration_date']) ? $data['expiration_date'] : null;
-        $this->container['registration_cap'] = isset($data['registration_cap']) ? $data['registration_cap'] : 0;
+        $this->container['registration_cap'] = isset($data['registration_cap']) ? $data['registration_cap'] : null;
         $this->container['registration_count'] = isset($data['registration_count']) ? $data['registration_count'] : null;
     }
 
@@ -318,6 +318,30 @@ class PublicInvitationSchema implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets course_title
+     *
+     * @return string
+     */
+    public function getCourseTitle()
+    {
+        return $this->container['course_title'];
+    }
+
+    /**
+     * Sets course_title
+     *
+     * @param string $course_title Title of the course associated with this invitation.
+     *
+     * @return $this
+     */
+    public function setCourseTitle($course_title)
+    {
+        $this->container['course_title'] = $course_title;
+
+        return $this;
+    }
+
+    /**
      * Gets allow_launch
      *
      * @return bool
@@ -337,30 +361,6 @@ class PublicInvitationSchema implements ModelInterface, ArrayAccess
     public function setAllowLaunch($allow_launch)
     {
         $this->container['allow_launch'] = $allow_launch;
-
-        return $this;
-    }
-
-    /**
-     * Gets invitation_email
-     *
-     * @return \RusticiSoftware\Cloud\V2\Model\InvitationEmailSchema
-     */
-    public function getInvitationEmail()
-    {
-        return $this->container['invitation_email'];
-    }
-
-    /**
-     * Sets invitation_email
-     *
-     * @param \RusticiSoftware\Cloud\V2\Model\InvitationEmailSchema $invitation_email invitation_email
-     *
-     * @return $this
-     */
-    public function setInvitationEmail($invitation_email)
-    {
-        $this->container['invitation_email'] = $invitation_email;
 
         return $this;
     }

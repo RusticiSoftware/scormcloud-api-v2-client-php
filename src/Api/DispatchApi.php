@@ -1,7 +1,7 @@
 <?php
 /**
  * DispatchApi
- * PHP version 7
+ * PHP version 8.2
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -64,14 +64,14 @@ class DispatchApi
     protected $headerSelector;
 
     /**
-     * @param ClientInterface $client
-     * @param Configuration   $config
-     * @param HeaderSelector  $selector
+     * @param ClientInterface|null $client
+     * @param Configuration|null   $config
+     * @param HeaderSelector|null  $selector
      */
     public function __construct(
-        ClientInterface $client = null,
-        Configuration $config = null,
-        HeaderSelector $selector = null
+        ?ClientInterface $client = null,
+        ?Configuration $config = null,
+        ?HeaderSelector $selector = null
     ) {
         $this->client = $client ?: new Client();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
@@ -3626,6 +3626,7 @@ class DispatchApi
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  bool $is_enabled Optional boolean parameter used to filter the list of dispatches so that only enabled or disabled dispatches are retrieved. (optional)
      * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
@@ -3640,9 +3641,9 @@ class DispatchApi
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\DispatchListSchema
      */
-    public function getDestinationDispatches($destination_id, $course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getDestinationDispatches($destination_id, $course_id = null, $is_enabled = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
     {
-        list($response) = $this->getDestinationDispatchesWithHttpInfo($destination_id, $course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
+        list($response) = $this->getDestinationDispatchesWithHttpInfo($destination_id, $course_id, $is_enabled, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
         return $response;
     }
 
@@ -3653,6 +3654,7 @@ class DispatchApi
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  bool $is_enabled Optional boolean parameter used to filter the list of dispatches so that only enabled or disabled dispatches are retrieved. (optional)
      * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
@@ -3667,10 +3669,10 @@ class DispatchApi
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\DispatchListSchema, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDestinationDispatchesWithHttpInfo($destination_id, $course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getDestinationDispatchesWithHttpInfo($destination_id, $course_id = null, $is_enabled = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\DispatchListSchema';
-        $request = $this->getDestinationDispatchesRequest($destination_id, $course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
+        $request = $this->getDestinationDispatchesRequest($destination_id, $course_id, $is_enabled, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3754,6 +3756,7 @@ class DispatchApi
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  bool $is_enabled Optional boolean parameter used to filter the list of dispatches so that only enabled or disabled dispatches are retrieved. (optional)
      * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
@@ -3767,9 +3770,9 @@ class DispatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDestinationDispatchesAsync($destination_id, $course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getDestinationDispatchesAsync($destination_id, $course_id = null, $is_enabled = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
     {
-        return $this->getDestinationDispatchesAsyncWithHttpInfo($destination_id, $course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count)
+        return $this->getDestinationDispatchesAsyncWithHttpInfo($destination_id, $course_id, $is_enabled, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3784,6 +3787,7 @@ class DispatchApi
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  bool $is_enabled Optional boolean parameter used to filter the list of dispatches so that only enabled or disabled dispatches are retrieved. (optional)
      * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
@@ -3797,10 +3801,10 @@ class DispatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDestinationDispatchesAsyncWithHttpInfo($destination_id, $course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getDestinationDispatchesAsyncWithHttpInfo($destination_id, $course_id = null, $is_enabled = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\DispatchListSchema';
-        $request = $this->getDestinationDispatchesRequest($destination_id, $course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
+        $request = $this->getDestinationDispatchesRequest($destination_id, $course_id, $is_enabled, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3844,6 +3848,7 @@ class DispatchApi
      *
      * @param  string $destination_id Identifier for the destination (required)
      * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  bool $is_enabled Optional boolean parameter used to filter the list of dispatches so that only enabled or disabled dispatches are retrieved. (optional)
      * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
@@ -3857,7 +3862,7 @@ class DispatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getDestinationDispatchesRequest($destination_id, $course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    protected function getDestinationDispatchesRequest($destination_id, $course_id = null, $is_enabled = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
     {
         // verify the required parameter 'destination_id' is set
         if ($destination_id === null || (is_array($destination_id) && count($destination_id) === 0)) {
@@ -3876,6 +3881,10 @@ class DispatchApi
         // query params
         if ($course_id !== null) {
             $queryParams['courseId'] = ObjectSerializer::toQueryValue($course_id);
+        }
+        // query params
+        if ($is_enabled !== null) {
+            $queryParams['isEnabled'] = ObjectSerializer::toQueryValue($is_enabled);
         }
         // query params
         if ($since !== null) {
@@ -6741,6 +6750,7 @@ class DispatchApi
      * Get a list of Dispatches
      *
      * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  bool $is_enabled Optional boolean parameter used to filter the list of dispatches so that only enabled or disabled dispatches are retrieved. (optional)
      * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
@@ -6755,9 +6765,9 @@ class DispatchApi
      * @throws \InvalidArgumentException
      * @return \RusticiSoftware\Cloud\V2\Model\DispatchListSchema
      */
-    public function getDispatches($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getDispatches($course_id = null, $is_enabled = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
     {
-        list($response) = $this->getDispatchesWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
+        list($response) = $this->getDispatchesWithHttpInfo($course_id, $is_enabled, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
         return $response;
     }
 
@@ -6767,6 +6777,7 @@ class DispatchApi
      * Get a list of Dispatches
      *
      * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  bool $is_enabled Optional boolean parameter used to filter the list of dispatches so that only enabled or disabled dispatches are retrieved. (optional)
      * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
@@ -6781,10 +6792,10 @@ class DispatchApi
      * @throws \InvalidArgumentException
      * @return array of \RusticiSoftware\Cloud\V2\Model\DispatchListSchema, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDispatchesWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getDispatchesWithHttpInfo($course_id = null, $is_enabled = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\DispatchListSchema';
-        $request = $this->getDispatchesRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
+        $request = $this->getDispatchesRequest($course_id, $is_enabled, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6859,6 +6870,7 @@ class DispatchApi
      * Get a list of Dispatches
      *
      * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  bool $is_enabled Optional boolean parameter used to filter the list of dispatches so that only enabled or disabled dispatches are retrieved. (optional)
      * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
@@ -6872,9 +6884,9 @@ class DispatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDispatchesAsync($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getDispatchesAsync($course_id = null, $is_enabled = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
     {
-        return $this->getDispatchesAsyncWithHttpInfo($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count)
+        return $this->getDispatchesAsyncWithHttpInfo($course_id, $is_enabled, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6888,6 +6900,7 @@ class DispatchApi
      * Get a list of Dispatches
      *
      * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  bool $is_enabled Optional boolean parameter used to filter the list of dispatches so that only enabled or disabled dispatches are retrieved. (optional)
      * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
@@ -6901,10 +6914,10 @@ class DispatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDispatchesAsyncWithHttpInfo($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    public function getDispatchesAsyncWithHttpInfo($course_id = null, $is_enabled = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
     {
         $returnType = '\RusticiSoftware\Cloud\V2\Model\DispatchListSchema';
-        $request = $this->getDispatchesRequest($course_id, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
+        $request = $this->getDispatchesRequest($course_id, $is_enabled, $since, $until, $datetime_filter, $tags, $filter, $filter_by, $order_by, $more, $include_total_count);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6947,6 +6960,7 @@ class DispatchApi
      * Create request for operation 'getDispatches'
      *
      * @param  string $course_id Only retrieve resources having &#x60;courseId&#x60; (optional)
+     * @param  bool $is_enabled Optional boolean parameter used to filter the list of dispatches so that only enabled or disabled dispatches are retrieved. (optional)
      * @param  \DateTime $since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  \DateTime $until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC) (optional)
      * @param  string $datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (optional, default to updated)
@@ -6960,7 +6974,7 @@ class DispatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getDispatchesRequest($course_id = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
+    protected function getDispatchesRequest($course_id = null, $is_enabled = null, $since = null, $until = null, $datetime_filter = 'updated', $tags = null, $filter = null, $filter_by = 'dispatch_id', $order_by = 'updated_asc', $more = null, $include_total_count = 'false')
     {
 
         $resourcePath = '/dispatch/dispatches';
@@ -6973,6 +6987,10 @@ class DispatchApi
         // query params
         if ($course_id !== null) {
             $queryParams['courseId'] = ObjectSerializer::toQueryValue($course_id);
+        }
+        // query params
+        if ($is_enabled !== null) {
+            $queryParams['isEnabled'] = ObjectSerializer::toQueryValue($is_enabled);
         }
         // query params
         if ($since !== null) {

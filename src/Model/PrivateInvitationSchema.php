@@ -2,7 +2,7 @@
 /**
  * PrivateInvitationSchema
  *
- * PHP version 7
+ * PHP version 8.2
  *
  * @category Class
  * @package  RusticiSoftware\Cloud\V2
@@ -58,13 +58,15 @@ class PrivateInvitationSchema implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'id' => 'string',
         'course_id' => 'string',
+        'course_title' => 'string',
         'allow_launch' => 'bool',
         'invitation_email' => '\RusticiSoftware\Cloud\V2\Model\InvitationEmailSchema',
         'create_date' => '\DateTime',
         'updated' => '\DateTime',
         'post_back' => '\RusticiSoftware\Cloud\V2\Model\PostBackSchema',
         'expiration_date' => '\DateTime',
-        'registration_count' => 'int'
+        'registration_count' => 'int',
+        'launched_registration_count' => 'int'
     ];
 
     /**
@@ -75,13 +77,15 @@ class PrivateInvitationSchema implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'id' => null,
         'course_id' => null,
+        'course_title' => null,
         'allow_launch' => null,
         'invitation_email' => null,
         'create_date' => 'date-time',
         'updated' => 'date-time',
         'post_back' => null,
         'expiration_date' => 'date-time',
-        'registration_count' => 'int32'
+        'registration_count' => 'int32',
+        'launched_registration_count' => 'int32'
     ];
 
     /**
@@ -113,13 +117,15 @@ class PrivateInvitationSchema implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'id' => 'id',
         'course_id' => 'courseId',
+        'course_title' => 'courseTitle',
         'allow_launch' => 'allowLaunch',
         'invitation_email' => 'invitationEmail',
         'create_date' => 'createDate',
         'updated' => 'updated',
         'post_back' => 'postBack',
         'expiration_date' => 'expirationDate',
-        'registration_count' => 'registrationCount'
+        'registration_count' => 'registrationCount',
+        'launched_registration_count' => 'launchedRegistrationCount'
     ];
 
     /**
@@ -130,13 +136,15 @@ class PrivateInvitationSchema implements ModelInterface, ArrayAccess
     protected static $setters = [
         'id' => 'setId',
         'course_id' => 'setCourseId',
+        'course_title' => 'setCourseTitle',
         'allow_launch' => 'setAllowLaunch',
         'invitation_email' => 'setInvitationEmail',
         'create_date' => 'setCreateDate',
         'updated' => 'setUpdated',
         'post_back' => 'setPostBack',
         'expiration_date' => 'setExpirationDate',
-        'registration_count' => 'setRegistrationCount'
+        'registration_count' => 'setRegistrationCount',
+        'launched_registration_count' => 'setLaunchedRegistrationCount'
     ];
 
     /**
@@ -147,13 +155,15 @@ class PrivateInvitationSchema implements ModelInterface, ArrayAccess
     protected static $getters = [
         'id' => 'getId',
         'course_id' => 'getCourseId',
+        'course_title' => 'getCourseTitle',
         'allow_launch' => 'getAllowLaunch',
         'invitation_email' => 'getInvitationEmail',
         'create_date' => 'getCreateDate',
         'updated' => 'getUpdated',
         'post_back' => 'getPostBack',
         'expiration_date' => 'getExpirationDate',
-        'registration_count' => 'getRegistrationCount'
+        'registration_count' => 'getRegistrationCount',
+        'launched_registration_count' => 'getLaunchedRegistrationCount'
     ];
 
     /**
@@ -211,13 +221,14 @@ class PrivateInvitationSchema implements ModelInterface, ArrayAccess
     /**
      * Constructor
      *
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
+     * @param mixed[]|null $data Associated array of property values
+     *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['course_id'] = isset($data['course_id']) ? $data['course_id'] : null;
+        $this->container['course_title'] = isset($data['course_title']) ? $data['course_title'] : null;
         $this->container['allow_launch'] = isset($data['allow_launch']) ? $data['allow_launch'] : null;
         $this->container['invitation_email'] = isset($data['invitation_email']) ? $data['invitation_email'] : null;
         $this->container['create_date'] = isset($data['create_date']) ? $data['create_date'] : null;
@@ -225,6 +236,7 @@ class PrivateInvitationSchema implements ModelInterface, ArrayAccess
         $this->container['post_back'] = isset($data['post_back']) ? $data['post_back'] : null;
         $this->container['expiration_date'] = isset($data['expiration_date']) ? $data['expiration_date'] : null;
         $this->container['registration_count'] = isset($data['registration_count']) ? $data['registration_count'] : null;
+        $this->container['launched_registration_count'] = isset($data['launched_registration_count']) ? $data['launched_registration_count'] : null;
     }
 
     /**
@@ -295,6 +307,30 @@ class PrivateInvitationSchema implements ModelInterface, ArrayAccess
     public function setCourseId($course_id)
     {
         $this->container['course_id'] = $course_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets course_title
+     *
+     * @return string
+     */
+    public function getCourseTitle()
+    {
+        return $this->container['course_title'];
+    }
+
+    /**
+     * Sets course_title
+     *
+     * @param string $course_title Title of the course associated with this invitation.
+     *
+     * @return $this
+     */
+    public function setCourseTitle($course_title)
+    {
+        $this->container['course_title'] = $course_title;
 
         return $this;
     }
@@ -463,6 +499,30 @@ class PrivateInvitationSchema implements ModelInterface, ArrayAccess
     public function setRegistrationCount($registration_count)
     {
         $this->container['registration_count'] = $registration_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets launched_registration_count
+     *
+     * @return int
+     */
+    public function getLaunchedRegistrationCount()
+    {
+        return $this->container['launched_registration_count'];
+    }
+
+    /**
+     * Sets launched_registration_count
+     *
+     * @param int $launched_registration_count The count of launched registrations for this invitation
+     *
+     * @return $this
+     */
+    public function setLaunchedRegistrationCount($launched_registration_count)
+    {
+        $this->container['launched_registration_count'] = $launched_registration_count;
 
         return $this;
     }
