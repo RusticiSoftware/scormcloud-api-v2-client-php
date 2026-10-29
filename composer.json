@@ -1,6 +1,6 @@
 {
     "name": "rustici-software/scormcloud-api-v2-client-php",
-    "version": "5.0.0",
+    "version": "5.1.0",
     "description": "",
     "keywords": [
         "scorm",
@@ -23,7 +23,7 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "guzzlehttp/guzzle": "^7.8"
+        "guzzlehttp/guzzle": "^7.8 || ^8.0"
     },
     "autoload": {
         "psr-4": { "RusticiSoftware\\Cloud\\V2\\" : "src/" }

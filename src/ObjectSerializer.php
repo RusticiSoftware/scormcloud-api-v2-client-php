@@ -182,6 +182,25 @@ class ObjectSerializer
     }
 
     /**
+     * Encode a value as JSON for use as a request body.
+     * Encoding failures throw Guzzle's InvalidArgumentException, matching the
+     * Guzzle 7 Utils::jsonEncode() helper this replaces
+     *
+     * @param mixed $value the value to encode
+     *
+     * @throws \GuzzleHttp\Exception\InvalidArgumentException if the value cannot be encoded
+     * @return string the JSON string
+     */
+    public static function jsonEncode($value)
+    {
+        try {
+            return json_encode($value, JSON_THROW_ON_ERROR);
+        } catch (\JsonException $e) {
+            throw new \GuzzleHttp\Exception\InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
+        }
+    }
+
+    /**
      * Serialize an array to a string.
      *
      * @param array  $collection                 collection to serialize to a string
