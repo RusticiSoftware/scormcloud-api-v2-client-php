@@ -124,11 +124,13 @@ class XapiApi
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
+                // Guzzle 8 only exposes getResponse() on exceptions that carry a response
+                $errorResponse = method_exists($e, 'getResponse') ? $e->getResponse() : null;
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                    $errorResponse ? $errorResponse->getHeaders() : null,
+                    $errorResponse ? $errorResponse->getBody()->getContents() : null
                 );
             }
 
@@ -242,17 +244,18 @@ class XapiApi
                     ];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+
+                    $message = $response
+                        ? sprintf('[%d] Error connecting to the API (%s)', $statusCode, $exception->getRequest()->getUri())
+                        : "[{$statusCode}] {$exception->getMessage()}";
+
                     throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
+                        $message,
                         $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
+                        $response ? $response->getHeaders() : null,
+                        $response ? $response->getBody()->getContents() : null
                     );
                 }
             );
@@ -309,11 +312,11 @@ class XapiApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
+                    $httpBody = ObjectSerializer::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = ObjectSerializer::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -329,7 +332,7 @@ class XapiApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = ObjectSerializer::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -404,11 +407,13 @@ class XapiApi
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
+                // Guzzle 8 only exposes getResponse() on exceptions that carry a response
+                $errorResponse = method_exists($e, 'getResponse') ? $e->getResponse() : null;
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                    $errorResponse ? $errorResponse->getHeaders() : null,
+                    $errorResponse ? $errorResponse->getBody()->getContents() : null
                 );
             }
 
@@ -522,17 +527,18 @@ class XapiApi
                     ];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+
+                    $message = $response
+                        ? sprintf('[%d] Error connecting to the API (%s)', $statusCode, $exception->getRequest()->getUri())
+                        : "[{$statusCode}] {$exception->getMessage()}";
+
                     throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
+                        $message,
                         $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
+                        $response ? $response->getHeaders() : null,
+                        $response ? $response->getBody()->getContents() : null
                     );
                 }
             );
@@ -589,11 +595,11 @@ class XapiApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
+                    $httpBody = ObjectSerializer::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = ObjectSerializer::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -609,7 +615,7 @@ class XapiApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = ObjectSerializer::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -683,11 +689,13 @@ class XapiApi
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
+                // Guzzle 8 only exposes getResponse() on exceptions that carry a response
+                $errorResponse = method_exists($e, 'getResponse') ? $e->getResponse() : null;
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                    $errorResponse ? $errorResponse->getHeaders() : null,
+                    $errorResponse ? $errorResponse->getBody()->getContents() : null
                 );
             }
 
@@ -765,17 +773,18 @@ class XapiApi
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+
+                    $message = $response
+                        ? sprintf('[%d] Error connecting to the API (%s)', $statusCode, $exception->getRequest()->getUri())
+                        : "[{$statusCode}] {$exception->getMessage()}";
+
                     throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
+                        $message,
                         $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
+                        $response ? $response->getHeaders() : null,
+                        $response ? $response->getBody()->getContents() : null
                     );
                 }
             );
@@ -837,11 +846,11 @@ class XapiApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
+                    $httpBody = ObjectSerializer::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = ObjectSerializer::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -857,7 +866,7 @@ class XapiApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = ObjectSerializer::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -931,11 +940,13 @@ class XapiApi
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
+                // Guzzle 8 only exposes getResponse() on exceptions that carry a response
+                $errorResponse = method_exists($e, 'getResponse') ? $e->getResponse() : null;
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                    $errorResponse ? $errorResponse->getHeaders() : null,
+                    $errorResponse ? $errorResponse->getBody()->getContents() : null
                 );
             }
 
@@ -1013,17 +1024,18 @@ class XapiApi
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+
+                    $message = $response
+                        ? sprintf('[%d] Error connecting to the API (%s)', $statusCode, $exception->getRequest()->getUri())
+                        : "[{$statusCode}] {$exception->getMessage()}";
+
                     throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
+                        $message,
                         $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
+                        $response ? $response->getHeaders() : null,
+                        $response ? $response->getBody()->getContents() : null
                     );
                 }
             );
@@ -1085,11 +1097,11 @@ class XapiApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
+                    $httpBody = ObjectSerializer::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = ObjectSerializer::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -1105,7 +1117,7 @@ class XapiApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = ObjectSerializer::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -1180,11 +1192,13 @@ class XapiApi
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
+                // Guzzle 8 only exposes getResponse() on exceptions that carry a response
+                $errorResponse = method_exists($e, 'getResponse') ? $e->getResponse() : null;
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                    $errorResponse ? $errorResponse->getHeaders() : null,
+                    $errorResponse ? $errorResponse->getBody()->getContents() : null
                 );
             }
 
@@ -1298,17 +1312,18 @@ class XapiApi
                     ];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+
+                    $message = $response
+                        ? sprintf('[%d] Error connecting to the API (%s)', $statusCode, $exception->getRequest()->getUri())
+                        : "[{$statusCode}] {$exception->getMessage()}";
+
                     throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
+                        $message,
                         $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
+                        $response ? $response->getHeaders() : null,
+                        $response ? $response->getBody()->getContents() : null
                     );
                 }
             );
@@ -1370,11 +1385,11 @@ class XapiApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
+                    $httpBody = ObjectSerializer::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = ObjectSerializer::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -1390,7 +1405,7 @@ class XapiApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = ObjectSerializer::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -1463,11 +1478,13 @@ class XapiApi
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
+                // Guzzle 8 only exposes getResponse() on exceptions that carry a response
+                $errorResponse = method_exists($e, 'getResponse') ? $e->getResponse() : null;
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                    $errorResponse ? $errorResponse->getHeaders() : null,
+                    $errorResponse ? $errorResponse->getBody()->getContents() : null
                 );
             }
 
@@ -1571,17 +1588,18 @@ class XapiApi
                     ];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+
+                    $message = $response
+                        ? sprintf('[%d] Error connecting to the API (%s)', $statusCode, $exception->getRequest()->getUri())
+                        : "[{$statusCode}] {$exception->getMessage()}";
+
                     throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
+                        $message,
                         $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
+                        $response ? $response->getHeaders() : null,
+                        $response ? $response->getBody()->getContents() : null
                     );
                 }
             );
@@ -1628,11 +1646,11 @@ class XapiApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
+                    $httpBody = ObjectSerializer::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = ObjectSerializer::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -1648,7 +1666,7 @@ class XapiApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = ObjectSerializer::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -1723,11 +1741,13 @@ class XapiApi
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
+                // Guzzle 8 only exposes getResponse() on exceptions that carry a response
+                $errorResponse = method_exists($e, 'getResponse') ? $e->getResponse() : null;
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                    $errorResponse ? $errorResponse->getHeaders() : null,
+                    $errorResponse ? $errorResponse->getBody()->getContents() : null
                 );
             }
 
@@ -1841,17 +1861,18 @@ class XapiApi
                     ];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+
+                    $message = $response
+                        ? sprintf('[%d] Error connecting to the API (%s)', $statusCode, $exception->getRequest()->getUri())
+                        : "[{$statusCode}] {$exception->getMessage()}";
+
                     throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
+                        $message,
                         $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
+                        $response ? $response->getHeaders() : null,
+                        $response ? $response->getBody()->getContents() : null
                     );
                 }
             );
@@ -1913,11 +1934,11 @@ class XapiApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
+                    $httpBody = ObjectSerializer::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = ObjectSerializer::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -1933,7 +1954,7 @@ class XapiApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = ObjectSerializer::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -2022,11 +2043,13 @@ class XapiApi
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
+                // Guzzle 8 only exposes getResponse() on exceptions that carry a response
+                $errorResponse = method_exists($e, 'getResponse') ? $e->getResponse() : null;
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                    $errorResponse ? $errorResponse->getHeaders() : null,
+                    $errorResponse ? $errorResponse->getBody()->getContents() : null
                 );
             }
 
@@ -2146,17 +2169,18 @@ class XapiApi
                     ];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+
+                    $message = $response
+                        ? sprintf('[%d] Error connecting to the API (%s)', $statusCode, $exception->getRequest()->getUri())
+                        : "[{$statusCode}] {$exception->getMessage()}";
+
                     throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
+                        $message,
                         $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
+                        $response ? $response->getHeaders() : null,
+                        $response ? $response->getBody()->getContents() : null
                     );
                 }
             );
@@ -2243,11 +2267,11 @@ class XapiApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
+                    $httpBody = ObjectSerializer::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = ObjectSerializer::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -2263,7 +2287,7 @@ class XapiApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = ObjectSerializer::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -2310,12 +2334,11 @@ class XapiApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \RusticiSoftware\Cloud\V2\Model\StringResultSchema
+     * @return void
      */
     public function setStatementPipe($statement_pipe_id, $xapi_statement_pipe)
     {
-        list($response) = $this->setStatementPipeWithHttpInfo($statement_pipe_id, $xapi_statement_pipe);
-        return $response;
+        $this->setStatementPipeWithHttpInfo($statement_pipe_id, $xapi_statement_pipe);
     }
 
     /**
@@ -2328,11 +2351,11 @@ class XapiApi
      *
      * @throws \RusticiSoftware\Cloud\V2\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \RusticiSoftware\Cloud\V2\Model\StringResultSchema, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function setStatementPipeWithHttpInfo($statement_pipe_id, $xapi_statement_pipe)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
+        $returnType = '';
         $request = $this->setStatementPipeRequest($statement_pipe_id, $xapi_statement_pipe);
 
         try {
@@ -2340,11 +2363,13 @@ class XapiApi
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
+                // Guzzle 8 only exposes getResponse() on exceptions that carry a response
+                $errorResponse = method_exists($e, 'getResponse') ? $e->getResponse() : null;
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                    $errorResponse ? $errorResponse->getHeaders() : null,
+                    $errorResponse ? $errorResponse->getBody()->getContents() : null
                 );
             }
 
@@ -2363,32 +2388,10 @@ class XapiApi
                 );
             }
 
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\RusticiSoftware\Cloud\V2\Model\StringResultSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2444,41 +2447,28 @@ class XapiApi
      */
     public function setStatementPipeAsyncWithHttpInfo($statement_pipe_id, $xapi_statement_pipe)
     {
-        $returnType = '\RusticiSoftware\Cloud\V2\Model\StringResultSchema';
+        $returnType = '';
         $request = $this->setStatementPipeRequest($statement_pipe_id, $xapi_statement_pipe);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+
+                    $message = $response
+                        ? sprintf('[%d] Error connecting to the API (%s)', $statusCode, $exception->getRequest()->getUri())
+                        : "[{$statusCode}] {$exception->getMessage()}";
+
                     throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
+                        $message,
                         $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
+                        $response ? $response->getHeaders() : null,
+                        $response ? $response->getBody()->getContents() : null
                     );
                 }
             );
@@ -2550,11 +2540,11 @@ class XapiApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
+                    $httpBody = ObjectSerializer::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = ObjectSerializer::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -2570,7 +2560,7 @@ class XapiApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = ObjectSerializer::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
@@ -2646,11 +2636,13 @@ class XapiApi
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
+                // Guzzle 8 only exposes getResponse() on exceptions that carry a response
+                $errorResponse = method_exists($e, 'getResponse') ? $e->getResponse() : null;
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                    $errorResponse ? $errorResponse->getHeaders() : null,
+                    $errorResponse ? $errorResponse->getBody()->getContents() : null
                 );
             }
 
@@ -2730,17 +2722,18 @@ class XapiApi
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+
+                    $message = $response
+                        ? sprintf('[%d] Error connecting to the API (%s)', $statusCode, $exception->getRequest()->getUri())
+                        : "[{$statusCode}] {$exception->getMessage()}";
+
                     throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
+                        $message,
                         $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
+                        $response ? $response->getHeaders() : null,
+                        $response ? $response->getBody()->getContents() : null
                     );
                 }
             );
@@ -2812,11 +2805,11 @@ class XapiApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
+                    $httpBody = ObjectSerializer::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = ObjectSerializer::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -2832,7 +2825,7 @@ class XapiApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = ObjectSerializer::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)

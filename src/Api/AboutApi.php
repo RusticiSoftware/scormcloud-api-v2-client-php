@@ -122,11 +122,13 @@ class AboutApi
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
+                // Guzzle 8 only exposes getResponse() on exceptions that carry a response
+                $errorResponse = method_exists($e, 'getResponse') ? $e->getResponse() : null;
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                    $errorResponse ? $errorResponse->getHeaders() : null,
+                    $errorResponse ? $errorResponse->getBody()->getContents() : null
                 );
             }
 
@@ -230,17 +232,18 @@ class AboutApi
                     ];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+
+                    $message = $response
+                        ? sprintf('[%d] Error connecting to the API (%s)', $statusCode, $exception->getRequest()->getUri())
+                        : "[{$statusCode}] {$exception->getMessage()}";
+
                     throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
+                        $message,
                         $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
+                        $response ? $response->getHeaders() : null,
+                        $response ? $response->getBody()->getContents() : null
                     );
                 }
             );
@@ -287,11 +290,11 @@ class AboutApi
             if($headers['Content-Type'] === 'application/json') {
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
+                    $httpBody = ObjectSerializer::jsonEncode($httpBody);
                 }
                 // array has no __toString(), so we should encode it manually
                 if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                    $httpBody = ObjectSerializer::jsonEncode(ObjectSerializer::sanitizeForSerialization($httpBody));
                 }
             }
         } elseif (count($formParams) > 0) {
@@ -307,7 +310,7 @@ class AboutApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = ObjectSerializer::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
